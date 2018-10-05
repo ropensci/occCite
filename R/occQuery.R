@@ -7,9 +7,9 @@
 #' @param datasources A vector of occurrence datasources to search. This is currently limited to GBIF and BIEN, but may expand in the future.
 #'
 #' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.
-#' 
+#'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
-#' 
+#'
 #' @param GBIFOverwrite If false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).
 #'
 #' @param options A vector of options to pass to \code{\link{occ_download}}.
@@ -25,13 +25,13 @@
 #'
 #' @export
 
-occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL, GBIFDownloadDirectory = NULL, options = NULL) {
+occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL, GBIFDownloadDirectory = NULL, limit = NULL, options = NULL) {
   #Error check input x.
   if (!class(x)=="occCiteData" && !is.vector(x)){
     warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n");
     return(NULL);
   }
-  
+
   #Instantiate a occCite data object if one was not supplied
   if(class(x) != "occCiteData"){
     x <- studyTaxonList(x);
@@ -42,22 +42,28 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
     warning("Input datasources is not of class 'vector'. Datasources object must be a vector of class 'character'.\n");
     return(NULL);
   }
-  
+
+  #Error check input datasources.
+  if (!is.numeric(limit)){
+    warning("Input limit is not numeric.\n");
+    return(NULL);
+  }
+
   #Error check input GBIF directory.
   if ("gbif" %in% datasources && !is.null(GBIFDownloadDirectory) && class(GBIFDownloadDirectory) != "character"){
     warning("Input GBIFDownload directory is not of class 'character'.\n");
     return(NULL);
   }
-  
+
   if(is.null(GBIFDownloadDirectory)){
     GBIFDownloadDirectory <- getwd();
   }
-  
+
   if(!file.exists(GBIFDownloadDirectory)){
     warning("You have specified a non-existant location for your GBIF data downloads.\n");
     return(NULL);
   }
-  
+
   #Check to see if the sources input are actually ones used by occQuery
   sources <- c("gbif", "bien"); #sources
   if(sum(!datasources %in% sources) > 0){
@@ -76,7 +82,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
 
   #Get time stamp for search
   x@occurrenceSearchDate <- as.character(Sys.Date(), format = "%d %B, %Y");
-  
+
   #Occurrence queries for each species
   queryResults <- x;
 
@@ -86,12 +92,12 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
   names(gbifResults) <- searchTaxa;
   if("gbif" %in% datasources){
     for (i in searchTaxa){
-      temp <- getGBIFpoints(taxon = i, GBIFLogin = login, 
-                            GBIFDownloadDirectory = GBIFDownloadDirectory);
+      temp <- getGBIFpoints(taxon = i, GBIFLogin = login,
+                            GBIFDownloadDirectory = GBIFDownloadDirectory, limit = limit);
       gbifResults[[i]] <- temp;
     }
   }
-  
+
   #For BIEN
   bienResults <- vector(mode = "list", length = length(searchTaxa));
   names(bienResults) <- searchTaxa;
@@ -101,7 +107,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
       bienResults[[i]] <- temp;
     }
   }
-  
+
   #Merge GBIF and BIEN results
   occSearchResults <- vector(mode = "list", length = length(searchTaxa));
   for (i in searchTaxa){
@@ -110,7 +116,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
     occSearchResults[[i]] <- list(gbif, bien);
     names(occSearchResults[[i]]) <- c("GBIF", "BIEN");
   }
-  
+
   #Putting results into occCite object
   queryResults@occResults <- occSearchResults;
 
