@@ -85,11 +85,11 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
 
   #Occurrence queries for each species
   queryResults <- x;
+  searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
 
   #For GBIF
   gbifResults <- NULL;
   if ("gbif" %in% datasources){
-    searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
     names(gbifResults) <- searchTaxa;
     if("gbif" %in% datasources){
