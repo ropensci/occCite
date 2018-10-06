@@ -19,13 +19,13 @@ occCitation <-function(x = NULL){
     warning("Input x is not of class 'occCiteData'. Input x must be result of a studyTaxonList() search.\n");
     return(NULL);
   }
-  
+
   #Initializing citation lists
   GBIFCitationList <- vector(mode = "list");
   GBIFDatasetCount <- NULL;
   BIENCitationList <- vector(mode = "list");
   BIENDatasetCount <- NULL;
-  
+
   #GBIF
   if ("gbif" %in% x@occSources){
   ##Pull dataset keys from occurrence table
@@ -43,7 +43,7 @@ occCitation <-function(x = NULL){
                              rgbif::gbif_citation(i)$citation$text);
     }
   }
-  
+
   #BIEN
   if ("bien" %in% x@occSources){
     ##Pull dataset keys from occurrence table
@@ -61,14 +61,27 @@ occCitation <-function(x = NULL){
                  SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
     BIENsources <- BIEN:::.BIEN_sql(query);
   }
-  
-  #Columns: UUID, Citation, Access date, number of records
-  gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)), GBIFdatasetKeys, unlist(GBIFCitationList), rep(x@occurrenceSearchDate, length(GBIFdatasetKeys)), GBIFDatasetCount[,2]);
-  colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
-  
-  bienTable <- data.frame(rep("BIEN", length(BIENdatasetKeys)), BIENdatasetKeys, BIENsources$source_citation, rep(x@occurrenceSearchDate, length(BIENdatasetKeys)), BIENDatasetCount[,2]);
-  colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
 
-  citationTable <- rbind(gbifTable,bienTable)
+  #Columns: UUID, Citation, Access date, number of records
+  if("gbif" %in% x@occSources){
+    gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)), GBIFdatasetKeys, unlist(GBIFCitationList), rep(x@occurrenceSearchDate, length(GBIFdatasetKeys)), GBIFDatasetCount[,2]);
+  colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences");
+  }
+
+  if("bien" %in% x@occSources){
+    bienTable <- data.frame(rep("BIEN", length(BIENdatasetKeys)), BIENdatasetKeys, BIENsources$source_citation, rep(x@occurrenceSearchDate, length(BIENdatasetKeys)), BIENDatasetCount[,2]);
+    colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
+  }
+
+  if("bien" %in% x@occSources && "gbif" && x@occSources){
+    citationTable <- rbind(gbifTable,bienTable);
+  }
+  else if("bien" %in% x@occSources){
+    citationTable <- bienTable
+  }
+  else if("gbif" %in% x@occSources){
+    citationTable <- gbifTable
+  }
+
   return(citationTable);
 }
