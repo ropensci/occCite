@@ -44,7 +44,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
   }
 
   #Error check input datasources.
-  if (!is.numeric(limit)){
+  if (!is.numeric(limit) && !is.null(limit)){
     warning("Input limit is not numeric.\n");
     return(NULL);
   }

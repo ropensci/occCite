@@ -10,6 +10,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     BIEN,
+    lubridate,
     readr,
     rgbif,
     taxize
