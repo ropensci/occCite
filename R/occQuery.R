@@ -87,24 +87,30 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
   queryResults <- x;
 
   #For GBIF
-  searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
-  gbifResults <- vector(mode = "list", length = length(searchTaxa));
-  names(gbifResults) <- searchTaxa;
-  if("gbif" %in% datasources){
-    for (i in searchTaxa){
-      temp <- getGBIFpoints(taxon = i, GBIFLogin = login,
-                            GBIFDownloadDirectory = GBIFDownloadDirectory, limit = limit);
-      gbifResults[[i]] <- temp;
+  gbifResults <- NULL;
+  if ("gbif" %in% datasources){
+    searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
+    gbifResults <- vector(mode = "list", length = length(searchTaxa));
+    names(gbifResults) <- searchTaxa;
+    if("gbif" %in% datasources){
+      for (i in searchTaxa){
+        temp <- getGBIFpoints(taxon = i, GBIFLogin = login,
+                              GBIFDownloadDirectory = GBIFDownloadDirectory, limit = limit);
+        gbifResults[[i]] <- temp;
+      }
     }
   }
 
   #For BIEN
-  bienResults <- vector(mode = "list", length = length(searchTaxa));
-  names(bienResults) <- searchTaxa;
-  if("bien" %in% datasources){
-    for (i in searchTaxa){
-      temp <- getBIENpoints(taxon = i);
-      bienResults[[i]] <- temp;
+  bienResults <- NULL;
+  if ("bien" %in% datasources){
+    bienResults <- vector(mode = "list", length = length(searchTaxa));
+    names(bienResults) <- searchTaxa;
+    if("bien" %in% datasources){
+      for (i in searchTaxa){
+        temp <- getBIENpoints(taxon = i);
+        bienResults[[i]] <- temp;
+      }
     }
   }
 
