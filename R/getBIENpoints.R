@@ -1,4 +1,5 @@
 library(BIEN)
+library(lubridate)
 
 #' @title Download occurrence points from BIEN
 #'
@@ -21,7 +22,7 @@ getBIENpoints<-function(taxon){
 
   #Fixing dates
   occs <-occs[which(!is.na(occs$date_collected)),];
-  occs$date_collected <- as.Date(occs$date_collected);
+  occs$date_collected <- lubridate::ymd(occs$date_collected);
   yearCollected <- as.numeric(format(occs$date_collected, format = "%Y"))
   monthCollected <- as.numeric(format(occs$date_collected, format = "%m"))
   dayCollected <- as.numeric(format(occs$date_collected, format = "%d"))

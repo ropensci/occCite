@@ -9,9 +9,9 @@ tree <- read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",package=
 myOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 
 #Query GBIF for occurrence data
-login <- GBIFLoginManager(user = "******",
-                          email = "*****@*****",
-                          pwd = "*****");
+login <- GBIFLoginManager(user = "wallacetester",
+                          email = "cmerow@yahoo.com",
+                          pwd = "wallacetester");
 myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop");
 
 #Get citations
