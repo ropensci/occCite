@@ -50,7 +50,7 @@ occCitation <-function(x = NULL){
     BIENdatasetKeys <- vector(mode = "list");
     for(i in x@occResults){
       BIENdatasetKeys <- append(BIENdatasetKeys,
-                            unlist(as.character((i$BIEN$OccurrenceTable$datasource_id))));
+                            unlist(as.character((i$BIEN$OccurrenceTable$DatasetKey))));
     }
     BIENDatasetCount <- as.data.frame(table(unlist(BIENdatasetKeys)));
     BIENdatasetKeys <- unique(unlist(BIENdatasetKeys));
@@ -58,7 +58,7 @@ occCitation <-function(x = NULL){
     ##Get data sources
     query<-paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
                  paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),"))
-                 SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
+                 SELECT * FROM datasource where datasource_id in (SELECT proximate_provider_datasource_id FROM a) OR datasource_id in (SELECT datasource_id FROM a);");
     BIENsources <- BIEN:::.BIEN_sql(query);
   }
 
