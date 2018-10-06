@@ -58,7 +58,7 @@ occCitation <-function(x = NULL){
     ##Get data sources
     query<-paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
                  paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),"))
-                 SELECT * FROM datasource where datasource_id in (SELECT proximate_provider_datasource_id FROM a) OR datasource_id in (SELECT datasource_id FROM a);");
+                 SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
     BIENsources <- BIEN:::.BIEN_sql(query);
   }
 
@@ -73,7 +73,7 @@ occCitation <-function(x = NULL){
     colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
   }
 
-  if("bien" %in% x@occSources && "gbif" && x@occSources){
+  if("bien" %in% x@occSources && "gbif" %in% x@occSources){
     citationTable <- rbind(gbifTable,bienTable);
   }
   else if("bien" %in% x@occSources){
