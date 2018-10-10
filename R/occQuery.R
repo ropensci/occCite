@@ -87,7 +87,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
     return(NULL);
   }
   else{
-    x@occSources <- sources;
+    x@occSources <- datasources;
   }
 
   #If GBIF was selected, check to see if GBIF login information is supplied.
@@ -115,6 +115,9 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
         gbifResults[[i]] <- temp;
       }
     }
+    if (is.null(limit)){
+      limit = "No limit"
+    }
   }
 
   #For BIEN
@@ -133,10 +136,22 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
   #Merge GBIF and BIEN results
   occSearchResults <- vector(mode = "list", length = length(searchTaxa));
   for (i in searchTaxa){
-    bien <- bienResults[[i]];
-    gbif <- gbifResults[[i]]
-    occSearchResults[[i]] <- list(gbif, bien);
-    names(occSearchResults[[i]]) <- c("GBIF", "BIEN");
+    if ("bien" %in% datasources && "gbif" %in% datasources){
+      bien <- bienResults[[i]];
+      gbif <- gbifResults[[i]]
+      occSearchResults[[i]] <- list(gbif, bien);
+      names(occSearchResults[[i]]) <- c("GBIF", "BIEN");
+    }
+    else if("bien" %in% datasources && length(datasources)==1){
+      bien <- bienResults[[i]];
+      occSearchResults[[i]] <- list(bien);
+      names(occSearchResults[[i]]) <- c("BIEN");
+    }
+    else {
+      gbif <- gbifResults[[i]]
+      occSearchResults[[i]] <- list(gbif);
+      names(occSearchResults[[i]]) <- c("GBIF");
+    }
   }
 
   #Putting results into occCite object
