@@ -86,6 +86,9 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
     warning(paste("The following datasources are not implemented in occQuery(): ", datasources[!datasources %in% sources], sep = ""));
     return(NULL);
   }
+  else if(is.null(datasources)){#Fills in NULL
+    x@occSources <- sources;
+  }
   else{
     x@occSources <- datasources;
   }

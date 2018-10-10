@@ -17,7 +17,7 @@ occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
 
 \item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
 
-\item{limit}{An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
+\item{limit}{An optional argument that limits the number of records from EACH data aggregator returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
 
 \item{GBIFOverwrite}{FEATURE IN DEVELOPMENT. Eventually, if false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).}
 

@@ -85,14 +85,14 @@ occCitation <-function(x = NULL){
   if("bien" %in% x@occSources && "gbif" %in% x@occSources){
     #TempComm:citationTable <- rbind(gbifTable,bienTable);
     citationTable <- gbifTable
-    print("BIEN citation not yet supported, but coming soon.")
+    print("BIEN citation not yet supported, but is coming soon.")
   }
   else if("bien" %in% x@occSources && length(x@occSources)==1){
     #TempComm:citationTable <- bienTable
     citationTable <- NULL;
-    print("BIEN citation not yet supported, but coming soon.")
+    print("BIEN citation not yet supported, but is coming soon.")
   }
-  else if("gbif" %in% x@occSources && length(x@occSources)==1){
+  else{
     citationTable <- gbifTable
   }
 

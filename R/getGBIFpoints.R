@@ -64,7 +64,7 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
     limit <- nrow(occFromGBIF);
   }
 
-  occFromGBIF <- as.data.frame(occFromGBIF)[1:limit,];
+  occFromGBIF <- as.data.frame(occFromGBIF)[1:min(limit,nrow(occFromGBIF)),];
   colnames(occFromGBIF) <- c("gbifID", "name", "longitude",
                              "latitude", "day", "month",
                              "year", "Dataset",
