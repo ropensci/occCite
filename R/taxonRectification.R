@@ -1,10 +1,12 @@
+library(taxize);
+
 #' @title Taxon Rectification
 #'
 #' @description An internal helper function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
 #'
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
-#' @param datasources A vector of taxonomic datasources implemented in \code{\link{gnr_resolve}}. See \code{\link{http://gni.globalnames.org/} for more information.}
+#' @param datasources A vector of taxonomic datasources implemented in \code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}{Global Names List} for more information.
 #'
 #' @return A string with the closeset match according to \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain the matching name.
 #'

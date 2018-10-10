@@ -1,5 +1,5 @@
-library(BIEN)
-library(lubridate)
+library(BIEN);
+library(lubridate);
 
 #' @title Download occurrence points from BIEN
 #'

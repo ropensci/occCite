@@ -1,21 +1,32 @@
+library(methods);
+library(rgbif);
+library(methods);
+
 #' @title GBIF Login Manager
 #'
-#' @description Takes users GBIF login particulars and turns it into a \code{\link{GBIFLogin}} for use in downloading data from GBIF. You MUST ALREADY HAVE AN ACCOUNT at \code{\link{http://gbif.org/}.
+#' @description Takes users GBIF login particulars and turns it into a \code{\link{GBIFLogin}} for use in downloading data from GBIF. You MUST ALREADY HAVE AN ACCOUNT at \href{http://gbif.org/}{GBIF}.
 #'
-#' @param username A vector of type character specifying a GBIF username.
+#' @param user A vector of type character specifying a GBIF username.
 #'
 #' @param email A vector of type character specifying the email associated with a GBIF username.
 #'
 #' @param pwd A vector of type character containing the user's password for logging in to GBIF.
 #'
-#' @return An object of class \code{\link{GBIF}} containing the user's GBIF login data.
+#' @return An object of class \code{\link{GBIFLogin}} containing the user's GBIF login data.
 #'
 #' @examples
 #' ## Inputting user particulars
-#' myLogin <- GBIFLoginMaster(user = "theWoman", email = "ireneAdler@@laScala.org", pwd = "sh3r");
+#'\dontrun{
+#' myLogin <- GBIFLoginManager(user = "theWoman",
+#'                             email = "ireneAdler@@laScala.org",
+#'                             pwd = "sh3r");
+#'}
 #'
+#'\dontrun{
 #' ## Can also be mined from your system environment
-#' myLogin <- GBIFLoginMaster(user = NULL, email = NULL, pwd = NULL);
+#' myLogin <- GBIFLoginManager(user = NULL,
+#'                             email = NULL, pwd = NULL);
+#'}
 #'
 #' @export
 
@@ -47,9 +58,9 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
     warning("GBIF user login data incorrect.\n");
     return(NULL);
   }
-  
+
   #Populating an instance of class occCiteData
-  loginInstance <- new("GBIFLogin", username = user, email = email, pwd = pwd);
+  loginInstance <- methods::new("GBIFLogin", username = user, email = email, pwd = pwd);
   return(loginInstance);
 }
 

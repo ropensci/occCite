@@ -1,4 +1,5 @@
-library(rgbif)
+library(rgbif);
+library(stats);
 
 #' @title Download occurrence points from GBIF
 #'
@@ -10,10 +11,17 @@ library(rgbif)
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
 #'
+#' @param limit An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
+#'
 #' @return A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata
 #'
 #' @examples
-#' getGBIFpoints(taxon="Gadus morhua", GBIFLogin = myGBIFLogin, GBIFDownloadDirectory = NULL);
+#' \dontrun{
+#' getGBIFpoints(taxon="Gadus morhua",
+#'               GBIFLogin = myGBIFLogin,
+#'               GBIFDownloadDirectory = NULL,
+#'               limit = NULL);
+#'}
 #'
 #' @export
 
@@ -51,6 +59,7 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
                             occFromGBIF$datasetKey)
   dataService <- rep("GBIF", nrow(occFromGBIF));
   occFromGBIF <- cbind(occFromGBIF, dataService);
+  occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF),]
   if (is.null(limit)){
     limit <- nrow(occFromGBIF);
   }

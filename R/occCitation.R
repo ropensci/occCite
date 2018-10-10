@@ -9,7 +9,10 @@ library(rgbif)
 #' @return A dataframe with citations information for occurrences
 #'
 #' @examples
+#'
+#' \dontrun{
 #' myCitations <- occCitation(x = myoccCiteObject);
+#'}
 #'
 #' @export
 

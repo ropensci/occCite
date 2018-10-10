@@ -10,7 +10,9 @@
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
 #'
-#' @param GBIFOverwrite If false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).
+#' @param GBIFOverwrite FEATURE IN DEVELOPMENT. Eventually, if false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).
+#'
+#' @param limit An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
 #'
 #' @param options A vector of options to pass to \code{\link{occ_download}}.
 #'
@@ -18,14 +20,28 @@
 #'
 #' @examples
 #' ## If you have already created a occCite object
-#' occQuery(x = myBridgTreeObject, datasources = c("gbif", "bien"), GBIFLogin = myLogin, GBIFDownloadDirectory = "./Desktop");
+#' \dontrun{
+#' occQuery(x = myBridgeTreeObject,
+#'          datasources = c("gbif", "bien"),
+#'          GBIFLogin = myLogin,
+#'          limit = NULL,
+#'          GBIFOverwrite = T,
+#'          GBIFDownloadDirectory = "./Desktop");
+#'}
 #'
+#'\dontrun{
 #' ## If you don't have a occCite object yet
-#' occQuery(x = c("Buteo buteo", "Protea cynaroides"), datasources = c("gbif", "bien"), GBIFLogin = myLogin, GBIFDownloadDirectory = "./Desktop");
+#' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
+#'          datasources = c("gbif", "bien"),
+#'          GBIFLogin = myLogin,
+#'          limit = NULL,
+#'          GBIFOverwrite = T,
+#'          GBIFDownloadDirectory = "./Desktop");
+#'}
 #'
 #' @export
 
-occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL, GBIFDownloadDirectory = NULL, limit = NULL, options = NULL) {
+occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL, GBIFDownloadDirectory = NULL, limit = NULL, GBIFOverwrite = T, options = NULL) {
   #Error check input x.
   if (!class(x)=="occCiteData" && !is.vector(x)){
     warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n");
@@ -94,7 +110,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
     names(gbifResults) <- searchTaxa;
     if("gbif" %in% datasources){
       for (i in searchTaxa){
-        temp <- getGBIFpoints(taxon = i, GBIFLogin = login,
+        temp <- getGBIFpoints(taxon = i, GBIFLogin = GBIFLogin,
                               GBIFDownloadDirectory = GBIFDownloadDirectory, limit = limit);
         gbifResults[[i]] <- temp;
       }
@@ -125,6 +141,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
 
   #Putting results into occCite object
   queryResults@occResults <- occSearchResults;
+  queryResults@occNLimit <- limit;
 
   return(queryResults);
 }

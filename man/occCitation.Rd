@@ -16,6 +16,9 @@ A dataframe with citations information for occurrences
 Harvests citations from GBIF for occurrence data
 }
 \examples{
+
+\dontrun{
 myCitations <- occCitation(x = myoccCiteObject);
+}
 
 }

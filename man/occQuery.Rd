@@ -5,7 +5,8 @@
 \title{Query from Taxon List}
 \usage{
 occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
-  GBIFDownloadDirectory = NULL, limit = NULL, options = NULL)
+  GBIFDownloadDirectory = NULL, limit = NULL, GBIFOverwrite = T,
+  options = NULL)
 }
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of a \code{\link{studyTaxonList}} search) OR a vector with a list of species names. Note: If the latter, taxonomic rectfication uses EOL and NCBI taxonomies. If you want more control than this, use \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object first.}
@@ -16,9 +17,11 @@ occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
 
 \item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
 
-\item{options}{A vector of options to pass to \code{\link{occ_download}}.}
+\item{limit}{An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
 
-\item{GBIFOverwrite}{If false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).}
+\item{GBIFOverwrite}{FEATURE IN DEVELOPMENT. Eventually, if false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).}
+
+\item{options}{A vector of options to pass to \code{\link{occ_download}}.}
 }
 \value{
 The object of class \code{\link{occCiteData}} supplied by the user as an argument, with occurrence data search results, as well as metadata on the occurrence sources queried.
@@ -28,9 +31,23 @@ Takes rectified list of specimens from \code{\link{studyTaxonList}} and returns 
 }
 \examples{
 ## If you have already created a occCite object
-occQuery(x = myBridgTreeObject, datasources = c("gbif", "bien"), GBIFLogin = myLogin, GBIFDownloadDirectory = "./Desktop");
+\dontrun{
+occQuery(x = myBridgeTreeObject,
+         datasources = c("gbif", "bien"),
+         GBIFLogin = myLogin,
+         limit = NULL,
+         GBIFOverwrite = T,
+         GBIFDownloadDirectory = "./Desktop");
+}
 
+\dontrun{
 ## If you don't have a occCite object yet
-occQuery(x = c("Buteo buteo", "Protea cynaroides"), datasources = c("gbif", "bien"), GBIFLogin = myLogin, GBIFDownloadDirectory = "./Desktop");
+occQuery(x = c("Buteo buteo", "Protea cynaroides"),
+         datasources = c("gbif", "bien"),
+         GBIFLogin = myLogin,
+         limit = NULL,
+         GBIFOverwrite = T,
+         GBIFDownloadDirectory = "./Desktop");
+}
 
 }

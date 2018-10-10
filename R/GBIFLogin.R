@@ -1,3 +1,5 @@
+library(methods);
+
 #' @title GBIFLogin Data Class
 #'
 #' @description A class for managing GBIF login data.

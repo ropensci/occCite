@@ -9,7 +9,7 @@ studyTaxonList(x = NULL, datasources = c("NCBI", "EOL"))
 \arguments{
 \item{x}{A phylogeny of class 'phylo' or a vector of class 'character' containing the names of taxa of interest}
 
-\item{datasources}{A vector of taxonomic datasources implemented in \code{\link{gnr_resolve}}. See \code{\link{http://gni.globalnames.org/} for more information.}}
+\item{datasources}{A vector of taxonomic datasources implemented in \code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}{Global Names List} for more information.}
 }
 \value{
 An object of class \code{\link{occCiteData}} containing the type of inquiry the user has made --a phylogeny or a vector of names-- and a dataframe containing input taxa names, the closeset match according to \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain the matching name.
@@ -19,9 +19,14 @@ Takes input phylogenies or vectors of taxon names, checks against taxonomic data
 }
 \examples{
 ## Inputting a phylogeny
+\dontrun{
 studyTaxonList(x = phylogeny, datasources = c('NCBI', 'EOL'));
+}
 
 ## Inputting a vector of taxon names
-studyTaxonList(x = c("Buteo buteo", "Buteo buteo hartedi", "Buteo japonicus"), datasources = c('NCBI', 'EOL'));
+studyTaxonList(x = c("Buteo buteo",
+                     "Buteo buteo hartedi",
+                     "Buteo japonicus"),
+                     datasources = c('NCBI', 'EOL'));
 
 }
