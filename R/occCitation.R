@@ -79,10 +79,10 @@ occCitation <-function(x = NULL){
   if("bien" %in% x@occSources && "gbif" %in% x@occSources){
     citationTable <- rbind(gbifTable,bienTable);
   }
-  else if("bien" %in% x@occSources){
+  else if("bien" %in% x@occSources && length(x@occSources)==1){
     citationTable <- bienTable
   }
-  else if("gbif" %in% x@occSources){
+  else if("gbif" %in% x@occSources && length(x@occSources)==1){
     citationTable <- gbifTable
   }
 
