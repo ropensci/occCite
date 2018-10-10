@@ -7,13 +7,15 @@ library(lubridate);
 #'
 #' @param taxon A single plant species or vector of plant species
 #'
+#' @param limit An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
+#'
 #' @return A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii aknowledgement information.
 #'
 #' @examples
-#' getBIENpoints(taxon="Acer rubrum");
+#' getBIENpoints(taxon="Acer rubrum", limit = NULL);
 #'
 #' @export
-getBIENpoints<-function(taxon){
+getBIENpoints<-function(taxon, limit = NULL){
   occs<-BIEN::BIEN_occurrence_species(species = taxon,cultivated = T,
                                   only.new.world = F, native.status = T,
                                   collection.info = T,natives.only = F);
@@ -34,7 +36,13 @@ getBIENpoints<-function(taxon){
                   'yearCollected', 'dataset','datasource_id')];
   dataService <- rep("BIEN", nrow(outdata));
   outdata <- cbind(outdata, dataService);
-  outdata <- as.data.frame(outdata);
+
+  if (is.null(limit)){
+    limit <- nrow(outdata);
+  }
+
+  outdata <- as.data.frame(outdata)[1:limit,];
+
   colnames(outdata) <- c("name", "longitude",
                          "latitude", "day", "month",
                          "year", "Dataset",
