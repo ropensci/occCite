@@ -43,6 +43,7 @@ getBIENpoints<-function(taxon){
   #Get metadata
   occMetadata <- BIEN::BIEN_metadata_citation(occs);
   occMetadata$license<-"CC BY-NC-ND";
+  occMetadata$warnings <-
 
   #Package it all up
   outlist<-list();
