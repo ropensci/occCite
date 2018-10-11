@@ -41,7 +41,7 @@ getBIENpoints<-function(taxon, limit = NULL){
     limit <- nrow(outdata);
   }
 
-  outdata <- as.data.frame(outdata)[1:min(limit,nrow(occFromGBIF)),];
+  outdata <- as.data.frame(outdata)[1:min(limit,nrow(outdata)),];
 
   colnames(outdata) <- c("name", "longitude",
                          "latitude", "day", "month",
