@@ -65,6 +65,9 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
   }
 
   occFromGBIF <- as.data.frame(occFromGBIF)[1:min(limit,nrow(occFromGBIF)),];
+  if (nrow(occFromGBIF)<limit){
+    print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(occFromGBIF), ") than the stipulated limit (", limit, ").", sep = ""))
+  }
   colnames(occFromGBIF) <- c("gbifID", "name", "longitude",
                              "latitude", "day", "month",
                              "year", "Dataset",

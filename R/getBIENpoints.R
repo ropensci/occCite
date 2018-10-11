@@ -43,6 +43,10 @@ getBIENpoints<-function(taxon, limit = NULL){
 
   outdata <- as.data.frame(outdata)[1:min(limit,nrow(outdata)),];
 
+  if (nrow(outdata)<limit){
+    print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(outdata), ") than the stipulated limit (", limit, ").", sep = ""))
+  }
+
   colnames(outdata) <- c("name", "longitude",
                          "latitude", "day", "month",
                          "year", "Dataset",
