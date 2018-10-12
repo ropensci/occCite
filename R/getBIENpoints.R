@@ -43,6 +43,11 @@ getBIENpoints<-function(taxon, limit = NULL){
 
   outdata <- as.data.frame(outdata)[1:min(limit,nrow(outdata)),];
 
+  if(nrow(outdata)==0){
+    print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?"));
+    return(NULL);
+  }
+
   if (nrow(outdata)<limit){
     print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(outdata), ") than the stipulated limit (", limit, ").", sep = ""))
   }
