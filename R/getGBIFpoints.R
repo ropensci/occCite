@@ -52,7 +52,7 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
                                  file.path(getwd(), taxon));
   occFromGBIF <- rgbif::occ_download_import(res);
 
-  if(nrow(occs)==0){
+  if(nrow(occFromGBIF)==0){
     print(paste("Note: there are no GBIF points for ", taxon, ".", sep = ""));
     return(NULL);
   }
