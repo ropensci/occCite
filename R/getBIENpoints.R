@@ -20,6 +20,11 @@ getBIENpoints<-function(taxon, limit = NULL){
                                   only.new.world = F, native.status = T,
                                   collection.info = T,natives.only = F);
 
+  if(nrow(occs)==0){
+    print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?", sep = ""));
+    return(NULL);
+  }
+
   occs<-occs[which(!is.na(occs$latitude) & !is.na(occs$longitude)),];
 
   #Fixing dates
@@ -42,11 +47,6 @@ getBIENpoints<-function(taxon, limit = NULL){
   }
 
   outdata <- as.data.frame(outdata)[1:min(limit,nrow(outdata)),];
-
-  if(nrow(outdata)==0){
-    print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?"));
-    return(NULL);
-  }
 
   if (nrow(outdata)<limit){
     print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(outdata), ") than the stipulated limit (", limit, ").", sep = ""))

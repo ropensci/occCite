@@ -134,6 +134,10 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
         bienResults[[i]] <- temp;
       }
     }
+
+    if (is.null(limit)){
+      limit = "No limit"
+    }
   }
 
   #Merge GBIF and BIEN results
