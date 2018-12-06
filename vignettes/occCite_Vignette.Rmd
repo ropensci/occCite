@@ -1,3 +1,27 @@
+
+---
+title: "occCite Vignette"
+author: "Hannah Owens and Cory Merow"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    toc: true
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{An overview of making rangeModelMetadata objects}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+# Introduction 
+
+```{r}
 library(occCite);
 library(ape);
 
@@ -31,3 +55,6 @@ myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownload
 
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);
+
+```
+
