@@ -39,6 +39,7 @@ occCitation <-function(x = NULL){
     }
     GBIFDatasetCount <- as.data.frame(table(unlist(datasetKeys)));
     GBIFdatasetKeys <- unique(unlist(datasetKeys));
+    GBIFdatasetKeys <- na.omit(GBIFdatasetKeys);
 
   ##Look up citations on GBIF based on dataset keys
     for(i in GBIFdatasetKeys){

@@ -1,7 +1,9 @@
 
 ---
-title: "occCite Vignette"
-author: "Hannah Owens and Cory Merow"
+title: "occCite Vignette: Downloading and Citing Biodiversity Data"
+author:
+- Hannah Owens
+- Cory Merow
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
@@ -21,29 +23,92 @@ knitr::opts_chunk$set(cache = TRUE)
 
 # Introduction 
 
-```{r}
+*occCite* is an `R`-based application for downloading, managing, and citing biodiversity data. This package is designed to facilitate querying multiple biodiversity database aggregators, tracking sources through the occurrence point cleaning process, and citing primary datasources, as well as database aggregator services.
+
+# Setup
+
+If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below. You will need to provide actual account information.
+
+```{r login}
 library(occCite);
 library(ape);
 
-##Simple search
-#Query databases for names
-myOccCiteObject <- studyTaxonList(x = "Protea cynaroides");
-
-#Query GBIF for occurrence data
+#Creating a GBIF login
 login <- GBIFLoginManager(user = "wallacetester",
                           email = "cmerow@yahoo.com",
                           pwd = "wallacetester");
-myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop");
+```
+
+# Performing a Simple Search
+
+## The Basics
+
+At its simplest, *occCite* allows you to search for occurrences for a single species. The taxonomy of the user-specified species will be verified using EOL and NCBI taxonomies.
+
+```{r simple search}
+##Simple search
+myOccCiteObject <- occQuery(x = "Protea cynaroides",
+                            datasources = c("gbif", "bien"),
+                            GBIFLogin = login, 
+                            GBIFDownloadDirectory = "~/Desktop");
+```
+
+```{r simple search GBIF results}
+#GBIF search results
+head(myOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
+```
+
+```{r simple search BIEN results}
+#GBIF search results
+head(myOccCiteObject@occResults$`Protea cynaroides`$BIEN$OccurrenceTable);
+```
+
+## Simple Taxonomic Rectification
+
+The taxonomy of your input species name is rectified using `gnr_resolve()` from the `taxize` `R` package. If you would like to change the source of the taxonomy being used to rectify your species names, you can specify as many taxonomic repositories as you like from the Global Names Index (GNI). The complete list of GNI repositories can be found [here](http://gni.globalnames.org/data_sources). `taxonRectification()` is an internal function in `studyTaxonList()` in `occCite` that chooses the taxonomic names closest to those being input and documents which taxonomic repositories agreed with those names.
+
+```{r taxonomic rectification}
+#Rectify taxonomy
+myOccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
+                                  datasources = c("NCBI", "EOL", "ITIS"));
+myOccCiteObject@cleanedTaxonomy
+```
+
+## Simple Citations
+
+After doing a search for occurrence points, you can use `occCitation()` to generate citations for primary biodiversity databases, as well as database aggregators.
+**Note:** Currently, GBIF is the only aggregator for which citations are supported.
+
+```{r simple citation}
+#Do a simple search
+myOccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
+                                  datasources = c("NCBI", "EOL", "ITIS"));
+myOccCiteObject <- occQuery(x = myOccCiteObject, 
+                            GBIFLogin = login, 
+                            GBIFDownloadDirectory = "~/Desktop");
 
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);
+```
+```{r show simple citations}
+cat(paste(myOccCitations$Citation, sep = ""), sep = "\n");
+```
 
-##With a tree
+***
+
+# Performing a Multi-Species Search
+
+In addition to doing a simple, single species search, you can also use *occCite* to search for and manage occurrence datasets for multiple species. You can either submit a vector of species names, or you can submit a *phylogeny!*
+
+## occCite with a Phylogeny
+
+Here is an example of a search done using an unpublished phylogeny of billfishes.
+
+```{r multispecies search with phylogeny}
 #Get tree
-# the next one should work now CM(12/6)
-#tree <- read.nexus("~/Dropbox/occCite/TestData/Fish_12Tax_time_calibrated.tre");
 # try
-tree <- read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",package='occCite'))
+tree <- read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite'));
+
 #Query databases for names
 myOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 
@@ -51,10 +116,13 @@ myOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 login <- GBIFLoginManager(user = "wallacetester",
                           email = "cmerow@yahoo.com",
                           pwd = "wallacetester");
-myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop");
-
-#Get citations
-myOccCitations <- occCitation(myOccCiteObject);
-
+myOccCiteObject <- occQuery(x = myOccCiteObject, 
+                            GBIFLogin = login, 
+                            datasources = "gbif",
+                            GBIFDownloadDirectory = "~/Desktop");
 ```
 
+```{r getting citations for a multispecies search}
+#Get citations
+myOccCitations <- occCitation(myOccCiteObject);
+```
