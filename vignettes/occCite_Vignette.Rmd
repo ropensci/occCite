@@ -31,7 +31,6 @@ If you plan to query GBIF, you will need to provide them with your user login in
 
 ```{r login}
 library(occCite);
-library(ape);
 
 #Creating a GBIF login
 login <- GBIFLoginManager(user = "wallacetester",
@@ -105,9 +104,12 @@ In addition to doing a simple, single species search, you can also use *occCite*
 Here is an example of a search done using an unpublished phylogeny of billfishes.
 
 ```{r multispecies search with phylogeny}
+library(ape);
+
 #Get tree
 # try
-tree <- read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite'));
+treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite');
+tree <- read.nexus(treeFile);
 
 #Query databases for names
 myOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
@@ -125,4 +127,5 @@ myOccCiteObject <- occQuery(x = myOccCiteObject,
 ```{r getting citations for a multispecies search}
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);
+cat(paste(myOccCitations$Citation, sep = ""), sep = "\n");
 ```

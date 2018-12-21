@@ -1,0 +1,4 @@
+#NEXUS
+begin trees;
+	tree TREE1 = [&R] (((((Istiophorus_platypterus:8.786535,Istiophorus_albicans:8.786535):5.473333,Makaira_nigricans:14.259867):6.635844,(((Kajikia_audax:2.531247,Kajikia_albida:2.531247):10.811946,(Tetrapturus_georgii:8.531332,(Tetrapturus_angustirostris:5.50212,(Tetrapturus_pfluegeri:3.421677,Tetrapturus_belone:3.421677):2.080443):3.029212):4.811862):1.944614,Istiompax_indica:15.287807):5.607904):39.227748,Xiphias_gladius:60.123459):19.976147,Trachurus_trachurus:80.099606);
+end;
