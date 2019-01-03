@@ -2,7 +2,7 @@ library(rgbif)
 
 #' @title Occurrence Citations
 #'
-#' @description Harvests citations from GBIF for occurrence data
+#' @description Harvests citations for occurrence data
 #'
 #' @param x An object of class \code{\link{occCiteData}}
 #'
