@@ -23,11 +23,11 @@ knitr::opts_chunk$set(cache = TRUE)
 
 # Introduction 
 
-*occCite* is an `R`-based application for downloading, managing, and citing biodiversity data. This package is designed to facilitate querying multiple biodiversity database aggregators, tracking sources through the occurrence point cleaning process, and citing primary datasources, as well as database aggregator services.
+`occCite` is an `R`-based application for downloading, managing, and citing biodiversity data. This package is designed to facilitate querying multiple biodiversity database aggregators, tracking sources through the occurrence point cleaning process, and citing primary datasources, as well as database aggregator services.
 
 # Setup
 
-If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below. You will need to provide actual account information.
+If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below. You will need to provide actual account information. This is because you will actually be downloading *all* of the records available for the species using `occ_download()`, instead of getting results from `occ_search()`, which has a hard limit of 200,000 occurrences.
 
 ```{r login}
 library(occCite);
