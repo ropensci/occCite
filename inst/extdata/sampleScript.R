@@ -9,7 +9,7 @@ myOccCiteObject <- studyTaxonList(x = "Protea cynaroides");
 login <- GBIFLoginManager(user = "wallacetester",
                           email = "cmerow@yahoo.com",
                           pwd = "wallacetester");
-myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop");
+myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop", loadLocalGBIFDownload = T);
 
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);
@@ -27,7 +27,7 @@ myOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 login <- GBIFLoginManager(user = "wallacetester",
                           email = "cmerow@yahoo.com",
                           pwd = "wallacetester");
-myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop");
+myOccCiteObject <- occQuery(x = myOccCiteObject, datasources = "gbif", GBIFLogin = login, GBIFDownloadDirectory = "~/Desktop", loadLocalGBIFDownload = T);
 
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);

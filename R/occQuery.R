@@ -10,23 +10,23 @@
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
 #'
-#' @param GBIFOverwrite FEATURE IN DEVELOPMENT. Eventually, if false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).
-#'
 #' @param limit An optional argument that limits the number of records from EACH data aggregator returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
+#'
+#' @param loadLocalGBIFDownload If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.
 #'
 #' @param options A vector of options to pass to \code{\link{occ_download}}.
 #'
 #' @return The object of class \code{\link{occCiteData}} supplied by the user as an argument, with occurrence data search results, as well as metadata on the occurrence sources queried.
 #'
 #' @examples
-#' ## If you have already created a occCite object
+#' ## If you have already created a occCite object, and have not previously downloaded GBIF data.
 #' \dontrun{
 #' occQuery(x = myBridgeTreeObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,
-#'          GBIFOverwrite = T,
-#'          GBIFDownloadDirectory = "./Desktop");
+#'          GBIFDownloadDirectory = "./Desktop"
+#'          loadLocalGBIFDownload = F);
 #'}
 #'
 #'\dontrun{
@@ -36,12 +36,29 @@
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,
 #'          GBIFOverwrite = T,
-#'          GBIFDownloadDirectory = "./Desktop");
+#'          GBIFDownloadDirectory = "./Desktop"
+#'          loadLocalGBIFDownload = F);
 #'}
+#'
+#'\dontrun{
+#' ## If you have previously downloaded occurrence data from GBIF and saved it in a folder called "GBIFDownloads".
+#' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
+#'          datasources = c("gbif", "bien"),
+#'          GBIFLogin = myLogin,
+#'          limit = NULL,
+#'          GBIFOverwrite = T,
+#'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
+#'          loadLocalGBIFDownload = T);
 #'
 #' @export
 
-occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL, GBIFDownloadDirectory = NULL, limit = NULL, GBIFOverwrite = T, options = NULL) {
+occQuery <- function(x = NULL,
+                     datasources = c("gbif", "bien"),
+                     GBIFLogin = NULL,
+                     GBIFDownloadDirectory = NULL,
+                     limit = NULL,
+                     loadLocalGBIFDownload = F,
+                     options = NULL) {
   #Error check input x.
   if (!class(x)=="occCiteData" && !is.vector(x)){
     warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n");
@@ -80,6 +97,11 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
     return(NULL);
   }
 
+  if(!is.logical(loadLocalGBIFDownload)){
+    warning(paste("You have not used a logical operator to specify whether occCite should pull already-downloaded occurrences from ", GBIFDownloadDirectory, ".", sep = ""));
+    return(NULL);
+  }
+
   #Check to see if the sources input are actually ones used by occQuery
   sources <- c("gbif", "bien"); #sources
   if(sum(!datasources %in% sources) > 0){
@@ -94,7 +116,7 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
   }
 
   #If GBIF was selected, check to see if GBIF login information is supplied.
-  if ("gbif" %in% datasources && !class(GBIFLogin)=="GBIFLogin"){
+  if ("gbif" %in% datasources && !class(GBIFLogin) == "GBIFLogin" && !loadLocalGBIFDownload){
     warning("You have chosen GBIF as a datasource, but have not supplied GBIF login information. Please create a GBIFLogin object using GBIFLoginManager().\n");
     return(NULL);
   }
@@ -107,24 +129,40 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
   searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
 
   #For GBIF
-  gbifResults <- NULL;
   if ("gbif" %in% datasources){
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
     names(gbifResults) <- searchTaxa;
-    if("gbif" %in% datasources){
-      for (i in searchTaxa){
-        temp <- getGBIFpoints(taxon = i, GBIFLogin = GBIFLogin,
-                              GBIFDownloadDirectory = GBIFDownloadDirectory, limit = limit);
-        gbifResults[[i]] <- temp;
+    if(loadLocalGBIFDownload){
+        temp <- gbifRetriever(GBIFDownloadDirectory);
+        for(i in 1:length(searchTaxa)){
+          #Gets *all* downloaded records
+          temp2 <- temp[which(searchTaxa[[i]] == names(temp))]
+          numMatch <- length(unlist(regmatches(names(temp), gregexpr(searchTaxa[[i]], names(temp)))))
+          if(numMatch > 1){
+            #Pulls the *most recent* record
+            #and assigns it to gbifResults
+            gbifResults[[i]] <- temp2[unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)) == max(unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)))]
+          }
+          else{
+            gbifResults[[i]] <- temp2;
+          }
+        }
       }
-    }
+    else{
+        for (i in searchTaxa){
+          temp <- getGBIFpoints(taxon = i,
+                                GBIFLogin = GBIFLogin,
+                                GBIFDownloadDirectory = GBIFDownloadDirectory,
+                                limit = limit);
+          gbifResults[[i]] <- temp;
+        }
+      }
     if (is.null(limit)){
       limit = "No limit"
     }
   }
 
   #For BIEN
-  bienResults <- NULL;
   if ("bien" %in% datasources){
     bienResults <- vector(mode = "list", length = length(searchTaxa));
     names(bienResults) <- searchTaxa;
@@ -139,13 +177,17 @@ occQuery <- function(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL
       limit = "No limit"
     }
   }
+  else{
+    bienResults <- NULL;
+  }
 
   #Merge GBIF and BIEN results
   occSearchResults <- vector(mode = "list", length = length(searchTaxa));
+  names(occSearchResults) <- searchTaxa;
   for (i in searchTaxa){
     if ("bien" %in% datasources && "gbif" %in% datasources){
       bien <- bienResults[[i]];
-      gbif <- gbifResults[[i]]
+      gbif <- gbifResults[[i]];
       occSearchResults[[i]] <- list(gbif, bien);
       names(occSearchResults[[i]]) <- c("GBIF", "BIEN");
     }

@@ -50,34 +50,17 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
   #Getting the download from GBIF and loading it into R
   res <- rgbif::occ_download_get(key=occD[1], overwrite=TRUE,
                                  file.path(getwd(), taxon));
-  occFromGBIF <- rgbif::occ_download_import(res);
+  occFromGBIF <- tabGBIF(GBIFresults = res);
 
-  if(nrow(occFromGBIF)==0){
-    print(paste("Note: there are no GBIF points for ", taxon, ".", sep = ""));
-    return(NULL);
-  }
-
-  occFromGBIF <- data.frame(occFromGBIF$gbifID, occFromGBIF$species,
-                            occFromGBIF$decimalLongitude,
-                            occFromGBIF$decimalLatitude,
-                            occFromGBIF$day, occFromGBIF$month,
-                            occFromGBIF$year, occFromGBIF$datasetID,
-                            occFromGBIF$datasetKey)
-  dataService <- rep("GBIF", nrow(occFromGBIF));
-  occFromGBIF <- cbind(occFromGBIF, dataService);
-  occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF),]
   if (is.null(limit)){
     limit <- nrow(occFromGBIF);
   }
 
   occFromGBIF <- as.data.frame(occFromGBIF)[1:min(limit,nrow(occFromGBIF)),];
-  if (nrow(occFromGBIF)<limit){
+
+  if (nrow(occFromGBIF) < limit){
     print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(occFromGBIF), ") than the stipulated limit (", limit, ").", sep = ""))
   }
-  colnames(occFromGBIF) <- c("gbifID", "name", "longitude",
-                             "latitude", "day", "month",
-                             "year", "Dataset",
-                             "DatasetKey", "DataService");
   occMetadata <- rgbif::occ_download_meta(occD[1]);
 
   #Preparing list for return
