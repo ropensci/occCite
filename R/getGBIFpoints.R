@@ -42,15 +42,16 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
   }
 
   #Create folders for each species at the designated location
-  dir.create(file.path(GBIFDownloadDirectory, taxon),
+  fileTax <- gsub(pattern = " ", replacement = "_", x = taxon)
+  dir.create(file.path(GBIFDownloadDirectory, fileTax),
                showWarnings = FALSE);
   presWD <- getwd()
   setwd(GBIFDownloadDirectory);
 
   #Getting the download from GBIF and loading it into R
   res <- rgbif::occ_download_get(key=occD[1], overwrite=TRUE,
-                                 file.path(getwd(), taxon));
-  occFromGBIF <- tabGBIF(GBIFresults = res);
+                                 file.path(getwd(), fileTax));
+  occFromGBIF <- tabGBIF(GBIFresults = res, taxon);
 
   if (is.null(limit)){
     limit <- nrow(occFromGBIF);

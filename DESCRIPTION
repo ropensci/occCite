@@ -8,11 +8,17 @@ Description: occCite facilitates the gathering of biodiversity occurrence data f
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
+Suggests:
+  rmarkdown
 Imports:
     BIEN,
     lubridate,
     methods,
     readr,
     rgbif,
-    taxize
-RoxygenNote: 6.1.0
+    taxize,
+    stringr,
+    stats,
+    knitr
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1

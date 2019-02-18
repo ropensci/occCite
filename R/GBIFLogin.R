@@ -12,7 +12,7 @@ library(methods);
 #'
 #' @export
 
-GBIFLogin <- setClass("GBIFLogin",
+GBIFLogin <- methods::setClass("GBIFLogin",
                            slots = c(username = "vector",
                                      email = "vector",
                                      pwd = "vector"));

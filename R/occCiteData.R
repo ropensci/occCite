@@ -1,3 +1,5 @@
+library(methods);
+
 #' @title occCite Data Class
 #'
 #' @description A class for managing metadata associated with occCite queries and data manipulation.
@@ -18,7 +20,7 @@
 #'
 #' @export
 
-occCiteData <- setClass("occCiteData",
+occCiteData <- methods::setClass("occCiteData",
                            slots = c(userQueryType = "vector",
                                      userSpecTaxonomicSources = "vector",
                                      cleanedTaxonomy = "data.frame",

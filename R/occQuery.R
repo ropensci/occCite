@@ -19,17 +19,15 @@
 #' @return The object of class \code{\link{occCiteData}} supplied by the user as an argument, with occurrence data search results, as well as metadata on the occurrence sources queried.
 #'
 #' @examples
-#' ## If you have already created a occCite object, and have not previously downloaded GBIF data.
 #' \dontrun{
+#' ##If you have already created a occCite object, and have not previously downloaded GBIF data.
 #' occQuery(x = myBridgeTreeObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,
 #'          GBIFDownloadDirectory = "./Desktop"
 #'          loadLocalGBIFDownload = F);
-#'}
 #'
-#'\dontrun{
 #' ## If you don't have a occCite object yet
 #' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
 #'          datasources = c("gbif", "bien"),
@@ -38,10 +36,9 @@
 #'          GBIFOverwrite = T,
 #'          GBIFDownloadDirectory = "./Desktop"
 #'          loadLocalGBIFDownload = F);
-#'}
 #'
-#'\dontrun{
-#' ## If you have previously downloaded occurrence data from GBIF and saved it in a folder called "GBIFDownloads".
+#' ## If you have previously downloaded occurrence data from GBIF
+#' ## and saved it in a folder called "GBIFDownloads".
 #' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
@@ -49,6 +46,7 @@
 #'          GBIFOverwrite = T,
 #'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
 #'          loadLocalGBIFDownload = T);
+#'}
 #'
 #' @export
 
@@ -138,13 +136,18 @@ occQuery <- function(x = NULL,
           #Gets *all* downloaded records
           temp2 <- temp[which(searchTaxa[[i]] == names(temp))]
           numMatch <- length(unlist(regmatches(names(temp), gregexpr(searchTaxa[[i]], names(temp)))))
+          #Then parses them into the appropriate slot
           if(numMatch > 1){
             #Pulls the *most recent* record
             #and assigns it to gbifResults
-            gbifResults[[i]] <- temp2[unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)) == max(unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)))]
+            temp3<- temp2[unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)) == max(unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)))]
+            gbifResults[[i]] <- list(temp3[[1]]$OccurrenceTable, temp3[[1]]$Metadata);
+            names(gbifResults[[i]]) <- c("OccurrenceTable", "Metadata");
           }
           else{
-            gbifResults[[i]] <- temp2;
+            temp3 <- temp2[[1]];
+            gbifResults[[i]] <- list(temp3[[1]]$OccurrenceTable, temp3[[1]]$Metadata);
+            names(gbifResults[[i]]) <- c("OccurrenceTable", "Metadata");
           }
         }
       }

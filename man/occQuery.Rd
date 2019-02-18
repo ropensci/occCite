@@ -5,8 +5,8 @@
 \title{Query from Taxon List}
 \usage{
 occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
-  GBIFDownloadDirectory = NULL, limit = NULL, GBIFOverwrite = T,
-  options = NULL)
+  GBIFDownloadDirectory = NULL, limit = NULL,
+  loadLocalGBIFDownload = F, options = NULL)
 }
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of a \code{\link{studyTaxonList}} search) OR a vector with a list of species names. Note: If the latter, taxonomic rectfication uses EOL and NCBI taxonomies. If you want more control than this, use \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object first.}
@@ -19,7 +19,7 @@ occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
 
 \item{limit}{An optional argument that limits the number of records from EACH data aggregator returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
 
-\item{GBIFOverwrite}{FEATURE IN DEVELOPMENT. Eventually, if false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).}
+\item{loadLocalGBIFDownload}{If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.}
 
 \item{options}{A vector of options to pass to \code{\link{occ_download}}.}
 }
@@ -30,24 +30,33 @@ The object of class \code{\link{occCiteData}} supplied by the user as an argumen
 Takes rectified list of specimens from \code{\link{studyTaxonList}} and returns point data from \code{\link{rgbif}} with metadata.
 }
 \examples{
-## If you have already created a occCite object
 \dontrun{
+##If you have already created a occCite object, and have not previously downloaded GBIF data.
 occQuery(x = myBridgeTreeObject,
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
          limit = NULL,
-         GBIFOverwrite = T,
-         GBIFDownloadDirectory = "./Desktop");
-}
+         GBIFDownloadDirectory = "./Desktop"
+         loadLocalGBIFDownload = F);
 
-\dontrun{
 ## If you don't have a occCite object yet
 occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
          limit = NULL,
          GBIFOverwrite = T,
-         GBIFDownloadDirectory = "./Desktop");
+         GBIFDownloadDirectory = "./Desktop"
+         loadLocalGBIFDownload = F);
+
+## If you have previously downloaded occurrence data from GBIF
+## and saved it in a folder called "GBIFDownloads".
+occQuery(x = c("Buteo buteo", "Protea cynaroides"),
+         datasources = c("gbif", "bien"),
+         GBIFLogin = myLogin,
+         limit = NULL,
+         GBIFOverwrite = T,
+         GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
+         loadLocalGBIFDownload = T);
 }
 
 }
