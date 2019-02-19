@@ -33,7 +33,6 @@
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,
-#'          GBIFOverwrite = T,
 #'          GBIFDownloadDirectory = "./Desktop"
 #'          loadLocalGBIFDownload = F);
 #'
@@ -43,7 +42,6 @@
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,
-#'          GBIFOverwrite = T,
 #'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
 #'          loadLocalGBIFDownload = T);
 #'}
