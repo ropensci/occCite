@@ -12,11 +12,11 @@ library(methods);
 #'
 #' @slot occSources A vector of class "character" containing a list of occurrence data sources, generated when passing a \code{\link{occCiteData}} object through \code{\link{occQuery}}.
 #'
-#' @slot occNLimit The limit of occurrence records to return for each species when executing \code{\link{getGBIFpoints}} through \code{\link{occQuery}}.
-#'
 #' @slot occurrenceSearchDate The date on which the occurrence search query was conducted.
 #'
 #' @slot occResults The results of an \code{\link{occQuery}} search, stored as a named list, each of the items named after a searched taxon and containing a dataframe with occurrence information.
+#'
+#' @importFrom methods new
 #'
 #' @export
 
@@ -25,7 +25,6 @@ occCiteData <- methods::setClass("occCiteData",
                                      userSpecTaxonomicSources = "vector",
                                      cleanedTaxonomy = "data.frame",
                                      occSources = "vector",
-                                     occNLimit = "vector",
                                      occurrenceSearchDate = "vector",
                                      occResults = "list")
                             );

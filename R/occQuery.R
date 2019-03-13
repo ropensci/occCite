@@ -10,8 +10,6 @@
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
 #'
-#' @param limit An optional argument that limits the number of records from EACH data aggregator returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
-#'
 #' @param loadLocalGBIFDownload If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.
 #'
 #' @param options A vector of options to pass to \code{\link{occ_download}}.
@@ -24,7 +22,6 @@
 #' occQuery(x = myBridgeTreeObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
-#'          limit = NULL,
 #'          GBIFDownloadDirectory = "./Desktop"
 #'          loadLocalGBIFDownload = F);
 #'
@@ -32,7 +29,6 @@
 #' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
-#'          limit = NULL,
 #'          GBIFOverwrite = T,
 #'          GBIFDownloadDirectory = "./Desktop"
 #'          loadLocalGBIFDownload = F);
@@ -42,7 +38,6 @@
 #' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
-#'          limit = NULL,
 #'          GBIFOverwrite = T,
 #'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
 #'          loadLocalGBIFDownload = T);
@@ -54,7 +49,6 @@ occQuery <- function(x = NULL,
                      datasources = c("gbif", "bien"),
                      GBIFLogin = NULL,
                      GBIFDownloadDirectory = NULL,
-                     limit = NULL,
                      loadLocalGBIFDownload = F,
                      options = NULL) {
   #Error check input x.
@@ -71,12 +65,6 @@ occQuery <- function(x = NULL,
   #Error check input datasources.
   if (!is.vector(datasources) && class(datasources)=="character"){
     warning("Input datasources is not of class 'vector'. Datasources object must be a vector of class 'character'.\n");
-    return(NULL);
-  }
-
-  #Error check input datasources.
-  if (!is.numeric(limit) && !is.null(limit)){
-    warning("Input limit is not numeric.\n");
     return(NULL);
   }
 
@@ -155,14 +143,10 @@ occQuery <- function(x = NULL,
         for (i in searchTaxa){
           temp <- getGBIFpoints(taxon = i,
                                 GBIFLogin = GBIFLogin,
-                                GBIFDownloadDirectory = GBIFDownloadDirectory,
-                                limit = limit);
+                                GBIFDownloadDirectory = GBIFDownloadDirectory);
           gbifResults[[i]] <- temp;
         }
       }
-    if (is.null(limit)){
-      limit = "No limit"
-    }
   }
 
   #For BIEN
@@ -171,13 +155,9 @@ occQuery <- function(x = NULL,
     names(bienResults) <- searchTaxa;
     if("bien" %in% datasources){
       for (i in searchTaxa){
-        temp <- getBIENpoints(taxon = i, limit = limit);
+        temp <- getBIENpoints(taxon = i);
         bienResults[[i]] <- temp;
       }
-    }
-
-    if (is.null(limit)){
-      limit = "No limit"
     }
   }
   else{
@@ -208,7 +188,6 @@ occQuery <- function(x = NULL,
 
   #Putting results into occCite object
   queryResults@occResults <- occSearchResults;
-  queryResults@occNLimit <- limit;
 
   return(queryResults);
 }

@@ -13,14 +13,15 @@ library(methods);
 #' @examples
 #' ## Inputting a phylogeny
 #' \dontrun{
-#' studyTaxonList(x = phylogeny, datasources = c('NCBI', 'EOL'));
-#'}
-#'
 #' ## Inputting a vector of taxon names
 #' studyTaxonList(x = c("Buteo buteo",
 #'                      "Buteo buteo hartedi",
 #'                      "Buteo japonicus"),
 #'                      datasources = c('NCBI', 'EOL'));
+#'
+#' ## Inputting a phylogeny
+#' studyTaxonList(x = phylogeny, datasources = c('NCBI', 'EOL'));
+#'}
 #'
 #' @export
 

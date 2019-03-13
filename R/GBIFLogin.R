@@ -10,6 +10,8 @@ library(methods);
 #'
 #' @slot pwd A vector of type character containing the user's password for logging in to GBIF.
 #'
+#' @importFrom methods new
+#'
 #' @export
 
 GBIFLogin <- methods::setClass("GBIFLogin",

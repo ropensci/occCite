@@ -1,13 +1,13 @@
+Meta
+doc
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 
 # History files
-.Rhistory
 .Rapp.history
 # Session Data files
-.RData
 # Example code in package build process
 *-Ex.R
 # Output files from R CMD build
@@ -29,4 +29,3 @@ vignettes/*.pdf
 *.knit.md
 .DS_Store
 .Rbuildignore
-.Rproj.user

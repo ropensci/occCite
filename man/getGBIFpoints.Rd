@@ -5,7 +5,7 @@
 \title{Download occurrence points from GBIF}
 \usage{
 getGBIFpoints(taxon, GBIFLogin = GBIFLogin,
-  GBIFDownloadDirectory = GBIFDownloadDirectory, limit = NULL)
+  GBIFDownloadDirectory = GBIFDownloadDirectory)
 }
 \arguments{
 \item{taxon}{A single species}
@@ -13,11 +13,9 @@ getGBIFpoints(taxon, GBIFLogin = GBIFLogin,
 \item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.}
 
 \item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
-
-\item{limit}{An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
 }
 \value{
-A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata
+A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata; (3) a dataframe containing the raw results of a query to `rgbif::occ_download_get()`.
 }
 \description{
 Downloads occurrence points and useful related information for processing within other occCite functions
@@ -26,8 +24,7 @@ Downloads occurrence points and useful related information for processing within
 \dontrun{
 getGBIFpoints(taxon="Gadus morhua",
               GBIFLogin = myGBIFLogin,
-              GBIFDownloadDirectory = NULL,
-              limit = NULL);
+              GBIFDownloadDirectory = NULL);
 }
 
 }

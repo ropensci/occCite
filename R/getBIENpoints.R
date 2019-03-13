@@ -7,15 +7,16 @@ library(lubridate);
 #'
 #' @param taxon A single plant species or vector of plant species
 #'
-#' @param limit An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
-#'
-#' @return A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii aknowledgement information.
+#' @return A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii acknowledgement information; (3) a dataframe containing the raw results of a query to `BIEN::BIEN_occurrence_species()`.
 #'
 #' @examples
+#' \dontrun{
 #' getBIENpoints(taxon="Acer rubrum", limit = NULL);
+#'}
+#' @import lubridate
 #'
 #' @export
-getBIENpoints<-function(taxon, limit = NULL){
+getBIENpoints<-function(taxon){
   occs<-BIEN::BIEN_occurrence_species(species = taxon,cultivated = T,
                                   only.new.world = F, native.status = T,
                                   collection.info = T,natives.only = F);
@@ -25,6 +26,7 @@ getBIENpoints<-function(taxon, limit = NULL){
     return(NULL);
   }
 
+  rawOccs <- occs;
   occs<-occs[which(!is.na(occs$latitude) & !is.na(occs$longitude)),];
 
   #Fixing dates
@@ -42,16 +44,6 @@ getBIENpoints<-function(taxon, limit = NULL){
   dataService <- rep("BIEN", nrow(outdata));
   outdata <- cbind(outdata, dataService);
 
-  if (is.null(limit)){
-    limit <- nrow(outdata);
-  }
-
-  outdata <- as.data.frame(outdata)[1:min(limit,nrow(outdata)),];
-
-  if (nrow(outdata)<limit){
-    print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(outdata), ") than the stipulated limit (", limit, ").", sep = ""))
-  }
-
   colnames(outdata) <- c("name", "longitude",
                          "latitude", "day", "month",
                          "year", "Dataset",
@@ -66,7 +58,8 @@ getBIENpoints<-function(taxon, limit = NULL){
   outlist<-list();
   outlist[[1]]<-outdata;
   outlist[[2]]<-occMetadata;
-  names(outlist) <- c("OccurrenceTable", "Metadata")
+  outlist[[3]]<-rawOccs;
+  names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
 
   return(outlist);
 }

@@ -5,8 +5,8 @@
 \title{Query from Taxon List}
 \usage{
 occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
-  GBIFDownloadDirectory = NULL, limit = NULL,
-  loadLocalGBIFDownload = F, options = NULL)
+  GBIFDownloadDirectory = NULL, loadLocalGBIFDownload = F,
+  options = NULL)
 }
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of a \code{\link{studyTaxonList}} search) OR a vector with a list of species names. Note: If the latter, taxonomic rectfication uses EOL and NCBI taxonomies. If you want more control than this, use \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object first.}
@@ -16,8 +16,6 @@ occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
 \item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.}
 
 \item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
-
-\item{limit}{An optional argument that limits the number of records from EACH data aggregator returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
 
 \item{loadLocalGBIFDownload}{If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.}
 
@@ -35,7 +33,6 @@ Takes rectified list of specimens from \code{\link{studyTaxonList}} and returns 
 occQuery(x = myBridgeTreeObject,
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
-         limit = NULL,
          GBIFDownloadDirectory = "./Desktop"
          loadLocalGBIFDownload = F);
 
@@ -43,7 +40,6 @@ occQuery(x = myBridgeTreeObject,
 occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
-         limit = NULL,
          GBIFOverwrite = T,
          GBIFDownloadDirectory = "./Desktop"
          loadLocalGBIFDownload = F);
@@ -53,7 +49,6 @@ occQuery(x = c("Buteo buteo", "Protea cynaroides"),
 occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
-         limit = NULL,
          GBIFOverwrite = T,
          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
          loadLocalGBIFDownload = T);

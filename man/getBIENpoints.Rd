@@ -4,20 +4,19 @@
 \alias{getBIENpoints}
 \title{Download occurrence points from BIEN}
 \usage{
-getBIENpoints(taxon, limit = NULL)
+getBIENpoints(taxon)
 }
 \arguments{
 \item{taxon}{A single plant species or vector of plant species}
-
-\item{limit}{An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.}
 }
 \value{
-A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii aknowledgement information.
+A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii acknowledgement information; (3) a dataframe containing the raw results of a query to `BIEN::BIEN_occurrence_species()`.
 }
 \description{
 Downloads occurrence points and useful related information for processing within other occCite functions
 }
 \examples{
+\dontrun{
 getBIENpoints(taxon="Acer rubrum", limit = NULL);
-
+}
 }

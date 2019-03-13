@@ -11,21 +11,18 @@ library(stats);
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
 #'
-#' @param limit An optional argument that limits the number of records returned to n. Note: This will return the FIRST n records, and will likely be a very biased sample.
-#'
-#' @return A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata
+#' @return A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata; (3) a dataframe containing the raw results of a query to `rgbif::occ_download_get()`.
 #'
 #' @examples
 #' \dontrun{
 #' getGBIFpoints(taxon="Gadus morhua",
 #'               GBIFLogin = myGBIFLogin,
-#'               GBIFDownloadDirectory = NULL,
-#'               limit = NULL);
+#'               GBIFDownloadDirectory = NULL);
 #'}
 #'
 #' @export
 
-getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GBIFDownloadDirectory, limit = NULL){
+getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GBIFDownloadDirectory){
 
   key <- rgbif::name_suggest(q=taxon, rank='species')$key[1]
 
@@ -51,24 +48,17 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
   #Getting the download from GBIF and loading it into R
   res <- rgbif::occ_download_get(key=occD[1], overwrite=TRUE,
                                  file.path(getwd(), fileTax));
+  rawOccs <- res
   occFromGBIF <- tabGBIF(GBIFresults = res, taxon);
 
-  if (is.null(limit)){
-    limit <- nrow(occFromGBIF);
-  }
-
-  occFromGBIF <- as.data.frame(occFromGBIF)[1:min(limit,nrow(occFromGBIF)),];
-
-  if (nrow(occFromGBIF) < limit){
-    print(paste("Note: For ", taxon, ", there are fewer occurrences (", nrow(occFromGBIF), ") than the stipulated limit (", limit, ").", sep = ""))
-  }
   occMetadata <- rgbif::occ_download_meta(occD[1]);
 
   #Preparing list for return
   outlist<-list();
   outlist[[1]]<-occFromGBIF;
   outlist[[2]]<-occMetadata;
-  names(outlist) <- c("OccurrenceTable", "Metadata")
+  outlist[[3]]<-rawOccs;
+  names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences");
 
   setwd(presWD);
   return(outlist);

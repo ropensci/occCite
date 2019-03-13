@@ -17,8 +17,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 ```
 
 # Introduction 
@@ -46,7 +45,7 @@ At its simplest, *occCite* allows you to search for occurrences for a single spe
 
 ```{r simple_search}
 ##Simple search
-myOccCiteObject <- occQuery(x = "Protea cynaroides",
+mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                             datasources = c("gbif", "bien"),
                             GBIFLogin = login, 
                             GBIFDownloadDirectory = system.file("extdata", package = "occCite"));
@@ -54,12 +53,18 @@ myOccCiteObject <- occQuery(x = "Protea cynaroides",
 
 ```{r simple_search_GBIF_results}
 #GBIF search results
-head(myOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
+head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
 ```
 
 ```{r simple_search_BIEN_results}
-#GBIF search results
-head(myOccCiteObject@occResults$`Protea cynaroides`$BIEN$OccurrenceTable);
+#BIEN search results
+head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$BIEN$OccurrenceTable);
+```
+
+There is also a summary method for `occCite` objects with some basic information about your search.
+
+```{r summary of simple search}
+summary(mySimpleOccCiteObject)
 ```
 
 ## Simple Citations
@@ -69,28 +74,30 @@ After doing a search for occurrence points, you can use `occCitation()` to gener
 
 ```{r simple_citation}
 #Get citations
-myOccCitations <- occCitation(myOccCiteObject);
+mySimpleOccCitations <- occCitation(mySimpleOccCiteObject);
 ```
 ```{r show_simple_citations}
-cat(paste(myOccCitations$Citation, sep = ""), sep = "\n");
+cat(paste(mySimpleOccCitations$Citation, sep = ""), sep = "\n");
 ```
 
 ## Simple Taxonomic Rectification
 
-The taxonomy of your input species name is rectified using `gnr_resolve()` from the `taxize` `R` package. If you would like to change the source of the taxonomy being used to rectify your species names, you can specify as many taxonomic repositories as you like from the Global Names Index (GNI). The complete list of GNI repositories can be found [here](http://gni.globalnames.org/data_sources). `taxonRectification()` is an internal function in `studyTaxonList()` in `occCite` that chooses the taxonomic names closest to those being input and documents which taxonomic repositories agreed with those names.
+In the simplest of searches, such as the one above, the taxonomy of your input species name is automatically rectified through the `occCite` function `studyTaxonList()` using `gnr_resolve()` from the `taxize` `R` package. If you would like to change the source of the taxonomy being used to rectify your species names, you can specify as many taxonomic repositories as you like from the Global Names Index (GNI). The complete list of GNI repositories can be found [here](http://gni.globalnames.org/data_sources). 
+
+`studyTaxonList()` chooses the taxonomic names closest to those being input and documents which taxonomic repositories agreed with those names. `studyTaxonList()` instantiates an `occCiteData` object the same way `occQuery()` does. This object can be passed into `occQuery()` to perform your occurrence data search.
 
 ```{r taxonomic_rectification}
 #Rectify taxonomy
-myOccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
+myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
                                   datasources = c("NCBI", "EOL", "ITIS"));
-myOccCiteObject@cleanedTaxonomy
+myTROccCiteObject@cleanedTaxonomy
 ```
 
 ***
 
 # Performing a Multi-Species Search
 
-In addition to doing a simple, single species search, you can also use *occCite* to search for and manage occurrence datasets for multiple species. You can either submit a vector of species names, or you can submit a *phylogeny!*
+In addition to doing a simple, single species search, you can also use `occCite` to search for and manage occurrence datasets for multiple species. You can either submit a vector of species names, or you can submit a *phylogeny!*
 
 ## occCite with a Phylogeny
 
@@ -105,14 +112,14 @@ treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCi
 tree <- read.nexus(treeFile);
 
 #Query databases for names
-myOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
+myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 
 #Query GBIF for occurrence data
 login <- GBIFLoginManager(user = "wallacetester",
                           email = "cmerow@yahoo.com",
                           pwd = "wallacetester");
 
-myOccCiteObject <- occQuery(x = myOccCiteObject, 
+myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
                             GBIFLogin = login, 
                             datasources = "gbif",
                             GBIFDownloadDirectory = "~/Desktop");
@@ -120,8 +127,8 @@ myOccCiteObject <- occQuery(x = myOccCiteObject,
 
 ```{r getting_citations_for_a_multispecies_search, eval=F, echo=T}
 #Get citations
-myOccCitations <- occCitation(myOccCiteObject);
-cat(paste(myOccCitations$Citation, sep = ""), sep = "\n");
+myPhyOccCitations <- occCitation(myPhyOccCiteObject);
+cat(paste(myPhyOccCitations$Citation, sep = ""), sep = "\n");
 ```
 
 ***
@@ -132,11 +139,11 @@ Querying GBIF can take quite a bit of time, especially for multiple species and/
 
 ```{r search_using_previously-downloaded_GBIF_data}
 #Query databases for names
-myOccCiteObject <- studyTaxonList(x = "Protea cynaroides", datasources = "NCBI");
+myOldOccCiteObject <- studyTaxonList(x = "Protea cynaroides", datasources = "NCBI");
 
 #Access GBIF data from a specified download directory
 ##Note: you do not need a login for this.
-myOccCiteObject <- occQuery(x = myOccCiteObject, 
+myOldOccCiteObject <- occQuery(x = myOldOccCiteObject, 
                             datasources = "gbif",
                             GBIFDownloadDirectory = system.file("extdata/", package = "occCite"),
                             loadLocalGBIFDownload = T);
@@ -146,15 +153,18 @@ Here is the result. Look familiar?
 
 ```{r simple_search_loaded_GBIF_results}
 #GBIF search results
-head(myOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
+head(myOldOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
+
+#The full summary
+summary(myOldOccCiteObject)
 ```
 
-Getting citation works the exact same way with previously-downloaded data as it does from a fresh dataset.
+Getting citation data works the exact same way with previously-downloaded data as it does from a fresh dataset.
 
 ```{r getting_citations_from_already-downloaded_GBIF_data}
 #Get citations
-myOccCitations <- occCitation(myOccCiteObject);
-cat(paste(myOccCitations$Citation, sep = ""), sep = "\n");
+myOldOccCitations <- occCitation(myOldOccCiteObject);
+cat(paste(myOldOccCitations$Citation, sep = ""), sep = "\n");
 ```
 
-Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF datasources in the same query.
+Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF datasources (e.g. BIEN) in the same query.
