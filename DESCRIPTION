@@ -6,6 +6,8 @@ Author: Hannah L. Owens
 Maintainer: Hannah L. Owens <howens@flmnh.ufl.edu>
 Description: occCite facilitates the gathering of biodiversity occurrence data from disparate sources. Metadata is managed througout the process to facilitate reporting and enhanced repeatability of analyses.
 License: GPL (>= 2)
+URL: https://github.com/hannahlowens/occCite
+BugReports: https://github.com/hannahlowens/occCite/issues
 Encoding: UTF-8
 LazyData: true
 Suggests:
