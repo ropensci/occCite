@@ -49,7 +49,7 @@ occQuery(x = c("Buteo buteo", "Protea cynaroides"),
 occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
-         GBIFOverwrite = T,
+         GBIFoverwrite = T,
          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
          loadLocalGBIFDownload = T);
 }

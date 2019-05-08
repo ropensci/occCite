@@ -17,7 +17,7 @@ library(lubridate);
 #'
 #' @export
 getBIENpoints<-function(taxon){
-  occs<-BIEN::BIEN_occurrence_species(species = taxon,cultivated = T,
+  occs<-BIEN::BIEN_occurrence_species(species = taxon, cultivated = T,
                                   only.new.world = F, native.status = T,
                                   collection.info = T,natives.only = F);
 
@@ -29,8 +29,17 @@ getBIENpoints<-function(taxon){
   rawOccs <- occs;
   occs<-occs[which(!is.na(occs$latitude) & !is.na(occs$longitude)),];
 
+  if(nrow(occs)==0){
+    print(paste("There are no BIEN points with coordinates for ", taxon, ".", sep = ""));
+    return(NULL);
+  }
+
   #Fixing dates
   occs <-occs[which(!is.na(occs$date_collected)),];
+  if(nrow(occs)==0){
+    print(paste("There are no BIEN points that contain collection dates for ", taxon, ".", sep = ""));
+    return(NULL);
+  }
   occs$date_collected <- lubridate::ymd(occs$date_collected);
   yearCollected <- as.numeric(format(occs$date_collected, format = "%Y"))
   monthCollected <- as.numeric(format(occs$date_collected, format = "%m"))
