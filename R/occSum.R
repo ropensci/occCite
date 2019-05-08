@@ -39,12 +39,12 @@ summary.occCiteData <- function(object, ...) {
 
   if(!is.null(x@userSpecTaxonomicSources)){
     cat("\t\n",
-        sprintf("Sources for taxonomic recticfication: %s\n", x@userSpecTaxonomicSources))
+        sprintf("Sources for taxonomic recticfication: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
   }
 
   if(!is.null(x@occResults)){
     cat("\t\n",
-        sprintf("Sources for occurrence data: %s\n", x@occSources), "\t\n")
+        sprintf("Sources for occurrence data: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
     #Tabulate search results
     occurrenceCountGBIF <- vector(mode = "numeric",
                                   length = length(x@occResults))
