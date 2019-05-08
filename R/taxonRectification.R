@@ -20,7 +20,7 @@ library(taxize);
 
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
   #Are user-input databases included in the list of data sources for Global Names Resolver?
-  sourceList <- taxize::gnr_datasources(todf = T)$title #Populates the list of datasources
+  sourceList <- taxize::gnr_datasources()$title #Populates the list of datasources
   if(!is.null(datasources)){
     for (db in datasources){
       notInDB <- character()
