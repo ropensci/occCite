@@ -37,7 +37,7 @@ If you plan to query GBIF, you will need to provide them with your user login in
 library(occCite);
 
 #Creating a GBIF login
-login <- GBIFLoginManager(user = "occCiteTester",
+GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
                           email = "****@yahoo.com",
                           pwd = "12345");
 ```
@@ -46,24 +46,26 @@ login <- GBIFLoginManager(user = "occCiteTester",
 
 ## The basics
 
-At its simplest, `occCite` allows you to search for occurrences for a single species. The taxonomy of the user-specified species will be verified using EOL and NCBI taxonomies by default.
+At its simplest, `occCite` allows you to search for occurrences for a single species. The taxonomy of the user-specified species will be verified using EOL and NCBI taxonomies by default. 
 
 ```{r simple_search, eval=FALSE}
 # Simple search
 mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                             datasources = c("gbif", "bien"),
-                            GBIFLogin = login, 
-                            GBIFDownloadDirectory = system.file("extdata", package = "occCite"));
+                            GBIFLogin = GBIFLogin, 
+                            GBIFDownloadDirectory = system.file("extdata", package = "occCite"),
+                            checkPreviousGBIFDownload = T);
 ```
 
-It is also possible to load data from a previously-downloaded GBIF dataset by specifying the location of the `.zip` file. These GBIF data will be appended to a BIEN search the same as if you do the simple real-time search, as shown above.
+It is also possible to load data from a previously-downloaded GBIF dataset by specifying the location of the `.zip` file. These GBIF data will be appended to a BIEN search the same as if you do the simple real-time search, as shown above. Note that `checkPreviousGBIFDownload` is `TRUE` by default, but if `loadLocalGBIFDownload` is `TRUE`, `occQuery` will ignore `checkPreviousDownload`.
 
 ```{r simple_load}
 # Simple load
 mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides", datasources = c("gbif", "bien"), 
                                   GBIFLogin = NULL, 
                                   GBIFDownloadDirectory = system.file("extdata", package = "occCite"),
-                                  loadLocalGBIFDownload = T);
+                                  loadLocalGBIFDownload = T,
+                                  checkPreviousGBIFDownload = F);
 ```
 
 ```{r simple_search_GBIF_results}
@@ -169,11 +171,15 @@ myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
                             datasources = "gbif",
                             GBIFDownloadDirectory = system.file("extdata/", package = 'occCite'), 
-                            loadLocalGBIFDownload = T);
-summary(myPhyOccCiteObject)
+                            loadLocalGBIFDownload = T,
+                            checkPreviousGBIFDownload = F);
+
 ```
 
 ```{r getting_citations_for_a_multispecies_search, echo=T}
+# What does a multispecies query look like?
+summary(myPhyOccCiteObject)
+
 #Get citations
 myPhyOccCitations <- occCitation(myPhyOccCiteObject);
 cat(paste(myPhyOccCitations$Citation, sep = ""), sep = "\n");

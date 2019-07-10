@@ -16,7 +16,7 @@ library(stringr);
 #'
 #' @export
 
-gbifRetriever <- function (GBIFDownloadDirectory = NULL){
+gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
   #Error checking
   startWD <- getwd();
   if(is.null(GBIFDownloadDirectory)){
@@ -36,7 +36,7 @@ gbifRetriever <- function (GBIFDownloadDirectory = NULL){
   gbifDownloads <- vector("list", length = length(paths));
   for (i in 1:length(paths)){
     setwd(paths[[i]])
-    occs <- tabGBIF(rgbif::as.download(key = keys[[i]]));
+    occs <- tabGBIF(rgbif::as.download(key = keys[[i]]), taxon = taxon);
     metadata <- rgbif::occ_download_meta(key = keys[[i]]);
     gbifDownloads[[i]] <- list(occs, metadata);
     names(gbifDownloads[[i]]) <- c("OccurrenceTable", "Metadata");

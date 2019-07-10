@@ -19,7 +19,7 @@ occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
 
 \item{loadLocalGBIFDownload}{If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.}
 
-\item{checkPreviousGBIFDownload}{If \code{loadLocalGBIFDownload = T}, occCite will check for previously-prepared GBIF downloads on the user's GBIF account.}
+\item{checkPreviousGBIFDownload}{If \code{loadLocalGBIFDownload = T}, occCite will check for previously-prepared GBIF downloads on the user's GBIF account. Setting this option to `TRUE` can significantly speed up query time if the user has previously queried GBIF for the same taxa.}
 
 \item{options}{A vector of options to pass to \code{\link{occ_download}}.}
 }

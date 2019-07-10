@@ -29,7 +29,7 @@ summary.occCiteData <- function(object, ...) {
 
   if(!is.null(x@occurrenceSearchDate)){
     cat("\t\n",
-        sprintf("Query occurred on: %s\n", x@occurrenceSearchDate))
+        sprintf("Occite query occurred on: %s\n", x@occurrenceSearchDate))
   }
 
   if(!is.null(x@userQueryType)){
@@ -41,6 +41,12 @@ summary.occCiteData <- function(object, ...) {
     cat("\t\n",
         sprintf("Sources for taxonomic rectification: %s\n",
                 paste0(x@userSpecTaxonomicSources, collapse = ", ")), "\t\n")
+  }
+
+  if(!is.null(x@cleanedTaxonomy)){
+    cat("\t\n",
+        sprintf("Taxonomic cleaning results: %s\n", "\t\n"));
+        print(x@cleanedTaxonomy);
   }
 
   if(!is.null(x@occResults)){
@@ -58,7 +64,7 @@ summary.occCiteData <- function(object, ...) {
 
     for (i in 1:length(x@occResults)){
       #GBIF counts
-      if (is.null(x@occResults[[i]]$GBIF)){
+      if (is.null(x@occResults[[i]]$GBIF$OccurrenceTable)){
         occurrenceCountGBIF[[i]] <- 0
         sourceCountGBIF[[i]] <- 0
       }
@@ -69,7 +75,7 @@ summary.occCiteData <- function(object, ...) {
           unique(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey))
       }
       #BIEN counts
-      if (is.null(x@occResults[[i]]$BIEN)){
+      if (is.null(x@occResults[[i]]$BIEN$OccurrenceTable)){
         occurrenceCountBIEN[[i]] <- 0
         sourceCountBIEN[[i]] <- 0
       }
@@ -88,15 +94,18 @@ summary.occCiteData <- function(object, ...) {
     print(sumTab)
   }
 
-  if("gbif" %in% x@occSources){
+  if("gbif" %in% x@occSources && !is.null(x@occResults[[i]]$GBIF$Metadata$doi)){
+    cat("\t\n",
+        sprintf("GBIF dataset DOIs: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
     cat("\t\n")
+
     #Tabulate DOIs
     GBIFdoi <- vector(mode = "numeric", length = length(x@occResults))
     for (i in 1:length(x@occResults)){
       GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
     }
     doiTab <- as.data.frame(cbind(names(x@occResults),GBIFdoi))
-    colnames(doiTab) <- c("Species", "DOI")
+    colnames(doiTab) <- c("Species", "GBIF DOI")
     print(doiTab)
   }
 }

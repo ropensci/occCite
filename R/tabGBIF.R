@@ -6,7 +6,7 @@ library(rgbif);
 #'
 #' @param GBIFresults The results of a GBIF search that will be tabulated into a common format for an occCite object.
 #'
-#' @param taxon A single species
+#' @param taxon A single species name, for tracing/error checking purposes only.
 #'
 #' @return A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
 #'

@@ -12,7 +12,7 @@
 #'
 #' @param loadLocalGBIFDownload If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.
 #'
-#' @param checkPreviousGBIFDownload If \code{loadLocalGBIFDownload = T}, occCite will check for previously-prepared GBIF downloads on the user's GBIF account.
+#' @param checkPreviousGBIFDownload If \code{loadLocalGBIFDownload = T}, occCite will check for previously-prepared GBIF downloads on the user's GBIF account. Setting this option to `TRUE` can significantly speed up query time if the user has previously queried GBIF for the same taxa.
 #'
 #' @param options A vector of options to pass to \code{\link{occ_download}}.
 #'
@@ -52,7 +52,7 @@ occQuery <- function(x = NULL,
                      GBIFLogin = NULL,
                      GBIFDownloadDirectory = NULL,
                      loadLocalGBIFDownload = F,
-                     checkPreviousGBIFDownload =T,
+                     checkPreviousGBIFDownload = T,
                      options = NULL) {
   #Error check input x.
   if (!class(x)=="occCiteData" && !is.vector(x)){
@@ -127,9 +127,9 @@ occQuery <- function(x = NULL,
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
     names(gbifResults) <- searchTaxa;
     if(loadLocalGBIFDownload){
-        temp <- gbifRetriever(GBIFDownloadDirectory);
         for(i in 1:length(searchTaxa)){
           #Gets *all* downloaded records
+          temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]]);
           temp2 <- temp[which(searchTaxa[[i]] == names(temp))]
           numMatch <- length(unlist(regmatches(names(temp), gregexpr(searchTaxa[[i]], names(temp)))))
           #Then parses them into the appropriate slot
@@ -151,7 +151,8 @@ occQuery <- function(x = NULL,
         for (i in searchTaxa){
           temp <- getGBIFpoints(taxon = i,
                                 GBIFLogin = GBIFLogin,
-                                GBIFDownloadDirectory = GBIFDownloadDirectory);
+                                GBIFDownloadDirectory = GBIFDownloadDirectory,
+                                checkPreviousGBIFDownload = checkPreviousGBIFDownload);
           gbifResults[[i]] <- temp;
         }
       }
