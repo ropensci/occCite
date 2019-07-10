@@ -18,8 +18,8 @@ library(lubridate);
 #' @export
 getBIENpoints<-function(taxon){
   occs<-BIEN::BIEN_occurrence_species(species = taxon, cultivated = T,
-                                  only.new.world = F, native.status = T,
-                                  collection.info = T,natives.only = F);
+                                  only.new.world = F, native.status = F,
+                                  collection.info = T, natives.only = F);
 
   if(nrow(occs)==0){
     print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?", sep = ""));

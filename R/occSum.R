@@ -39,7 +39,8 @@ summary.occCiteData <- function(object, ...) {
 
   if(!is.null(x@userSpecTaxonomicSources)){
     cat("\t\n",
-        sprintf("Sources for taxonomic recticfication: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
+        sprintf("Sources for taxonomic rectification: %s\n",
+                paste0(x@userSpecTaxonomicSources, collapse = ", ")), "\t\n")
   }
 
   if(!is.null(x@occResults)){

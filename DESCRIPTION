@@ -14,6 +14,7 @@ Suggests:
   rmarkdown
 Imports:
     BIEN,
+    ape,
     lubridate,
     methods,
     readr,

@@ -6,7 +6,7 @@
 \usage{
 occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
   GBIFDownloadDirectory = NULL, loadLocalGBIFDownload = F,
-  options = NULL)
+  checkPreviousGBIFDownload = T, options = NULL)
 }
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of a \code{\link{studyTaxonList}} search) OR a vector with a list of species names. Note: If the latter, taxonomic rectfication uses EOL and NCBI taxonomies. If you want more control than this, use \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object first.}
@@ -18,6 +18,8 @@ occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
 \item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
 
 \item{loadLocalGBIFDownload}{If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.}
+
+\item{checkPreviousGBIFDownload}{If \code{loadLocalGBIFDownload = T}, occCite will check for previously-prepared GBIF downloads on the user's GBIF account.}
 
 \item{options}{A vector of options to pass to \code{\link{occ_download}}.}
 }

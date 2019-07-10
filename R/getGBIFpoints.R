@@ -11,6 +11,8 @@ library(stats);
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
 #'
+#' @param checkPreviousGBIFDownload A logical operator specifying whether the user wishes to check their existing prepared downloads on the GBIF website.
+#'
 #' @return A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata; (3) a dataframe containing the raw results of a query to `rgbif::occ_download_get()`.
 #'
 #' @examples
@@ -22,20 +24,28 @@ library(stats);
 #'
 #' @export
 
-getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GBIFDownloadDirectory){
+getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GBIFDownloadDirectory, checkPreviousGBIFDownload = T){
 
-  key <- rgbif::name_suggest(q=taxon, rank='species')$key[1]
+  key <- rgbif::name_suggest(q=taxon, rank='species')$key[1];
 
+  if (checkPreviousGBIFDownload){
+    occD <- prevGBIFdownload(key, GBIFLogin);
+  }
+  if (is.null(occD)){
+    print(paste0("There was no previously-prepared download on GBIF for ", taxon, ". New GBIF download will be prepared."));
+  }
+  if(checkPreviousGBIFDownload == F | (checkPreviousGBIFDownload == T && is.null(occD))) {
+    occD <- rgbif::occ_download(paste("taxonKey = ", key, sep = ""),
+                         "hasCoordinate = true", "hasGeospatialIssue = false",
+                         user = GBIFLogin@username, email = GBIFLogin@email,
+                         pwd = GBIFLogin@pwd);
 
-  occD <- rgbif::occ_download(paste("taxonKey = ", key, sep = ""),
-                       "hasCoordinate = true", "hasGeospatialIssue = false",
-                       user = GBIFLogin@username, email = GBIFLogin@email,
-                       pwd = GBIFLogin@pwd);
-
-  print(paste("Please be patient while GBIF prepares your download for ", taxon, ". This can take some time.", sep = ""));
-  while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED"){
-    Sys.sleep(60);
-    print(paste("Still waiting for", taxon, "download preparation to be completed."))
+    print(paste0("It is: ", format(Sys.time(), format = "%H:%M:%S"), ". Please be patient while GBIF prepares your download for ", taxon, ". This can take some time."));
+    while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED"){
+      Sys.sleep(60);
+      print(paste("Still waiting for", taxon, "download preparation to be completed. Time: ",
+                  format(Sys.time(), format = "%H:%M:%S")))
+    }
   }
 
   #Create folders for each species at the designated location

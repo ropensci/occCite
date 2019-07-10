@@ -20,7 +20,7 @@ Displays a summary of relevant stats about a query
 \examples{
 
 \dontrun{
-myOcciteObject <- occQuery(x = myBridgeTreeObject,
+myOcciteObject <- occQuery(x = myOccCiteObject,
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
          limit = NULL,

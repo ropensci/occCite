@@ -28,3 +28,5 @@ vignettes/*.pdf
 *.knit.md
 .DS_Store
 .Rbuildignore
+# My beta-testing sample script
+inst/extdata/sampleScript.R

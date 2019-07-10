@@ -5,7 +5,8 @@
 \title{Download occurrence points from GBIF}
 \usage{
 getGBIFpoints(taxon, GBIFLogin = GBIFLogin,
-  GBIFDownloadDirectory = GBIFDownloadDirectory)
+  GBIFDownloadDirectory = GBIFDownloadDirectory,
+  checkPreviousGBIFDownload = T)
 }
 \arguments{
 \item{taxon}{A single species}
@@ -13,6 +14,8 @@ getGBIFpoints(taxon, GBIFLogin = GBIFLogin,
 \item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.}
 
 \item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
+
+\item{checkPreviousGBIFDownload}{A logical operator specifying whether the user wishes to check their existing prepared downloads on the GBIF website.}
 }
 \value{
 A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata; (3) a dataframe containing the raw results of a query to `rgbif::occ_download_get()`.
