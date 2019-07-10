@@ -96,7 +96,7 @@ summary.occCiteData <- function(object, ...) {
 
   if("gbif" %in% x@occSources && !is.null(x@occResults[[i]]$GBIF$Metadata$doi)){
     cat("\t\n",
-        sprintf("GBIF dataset DOIs: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
+        sprintf("GBIF dataset DOIs: %s\n"))
     cat("\t\n")
 
     #Tabulate DOIs
