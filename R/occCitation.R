@@ -50,27 +50,28 @@ occCitation <-function(x = NULL){
   }
 
   #BIEN
-  #TempComm:if ("bien" %in% x@occSources){
+  if ("bien" %in% x@occSources){
     ##Pull dataset keys from occurrence table
-  #TempComm:BIENdatasetKeys <- vector(mode = "list");
-  #TempComm:for(i in x@occResults){
-  #TempComm:BIENdatasetKeys <- append(BIENdatasetKeys,unlist(as.character((i$BIEN$OccurrenceTable$DatasetKey))));
-  #TempComm:}
-  #TempComm:BIENDatasetCount <- as.data.frame(table(unlist(BIENdatasetKeys)));
-  #TempComm:BIENdatasetKeys <- unique(unlist(BIENdatasetKeys));
+    BIENdatasetKeys <- vector(mode = "list");
+    for(i in x@occResults){
+      BIENdatasetKeys <- append(BIENdatasetKeys,unlist(as.character((i$BIEN$OccurrenceTable$DatasetKey))));
+    }
+    BIENdatasetCount <- as.data.frame(table(unlist(BIENdatasetKeys)));
+    BIENdatasetKeys <- unique(unlist(BIENdatasetKeys));
 
     #Handle datasets without keys
-  #TempComm:datasetKeyNAs <- sum(is.na(BIENdatasetKeys));
-  #TempComm:BIENdatasetKeys <- BIENdatasetKeys[!is.na(BIENdatasetKeys)];
-  #TempComm:if (datasetKeyNAs > 0){
-  #TempComm:print(paste("NOTE: ", datasetKeyNAs, " BIEN dataset(s) do not have dataset keys to link citations. They are: ", unique(i$BIEN$OccurrenceTable$Dataset[is.na(i$BIEN$OccurrenceTable$DatasetKey)]), sep = ""));
-  #TempComm:}
+    datasetKeyNAs <- sum(is.na(BIENdatasetKeys));
+    BIENdatasetKeys <- BIENdatasetKeys[!is.na(BIENdatasetKeys)];
+    if (datasetKeyNAs > 0){
+      print(paste0("NOTE: ", datasetKeyNAs,
+                  " BIEN dataset(s) do not have dataset keys to link citations. They are: ",
+                  unique(i$BIEN$OccurrenceTable$Dataset[is.na(i$BIEN$OccurrenceTable$DatasetKey)])));
+    }
 
     ##Get data sources
-  #TempComm:query<-paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
-  #TempComm:paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),"))
-  #TempComm:SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
-  #TempComm:BIENsources <- BIEN:::.BIEN_sql(query);
+    query <- paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
+      paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
+    BIENsources <- BIEN:::.BIEN_sql(query);
   #TempComm:}
 
   #Columns: UUID, Citation, Access date, number of records

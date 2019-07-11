@@ -8,7 +8,7 @@ myOccCiteObject <- studyTaxonList(x = "Protea cynaroides");
 #Query GBIF for occurrence data
 GBIFLogin <- GBIFLoginManager(user = "hannah0wens", email = "hannah.owens@gmail.com", pwd = "Llab7a3m!");
 
-myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = "~/Desktop", loadLocalGBIFDownload = T, checkPreviousGBIFDownload = F);
+myOccCiteObject <- occQuery(x = myOccCiteObject, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = "~/Desktop", loadLocalGBIFDownload = F, checkPreviousGBIFDownload = T);
 
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);

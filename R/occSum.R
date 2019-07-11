@@ -27,9 +27,9 @@ summary.occCiteData <- function(object, ...) {
 
   stopifnot(inherits(x, "occCiteData"))
 
-  if(!is.null(x@occurrenceSearchDate)){
+  if(!is.null(x@occCiteSearchDate)){
     cat("\t\n",
-        sprintf("Occite query occurred on: %s\n", x@occurrenceSearchDate))
+        sprintf("OccCite query occurred on: %s\n", x@occurrenceSearchDate))
   }
 
   if(!is.null(x@userQueryType)){
@@ -96,16 +96,20 @@ summary.occCiteData <- function(object, ...) {
 
   if("gbif" %in% x@occSources && !is.null(x@occResults[[i]]$GBIF$Metadata$doi)){
     cat("\t\n",
-        sprintf("GBIF dataset DOIs: %s\n"))
-    cat("\t\n")
+        sprintf("GBIF dataset DOIs: %s\n", "\t\n"))
 
     #Tabulate DOIs
     GBIFdoi <- vector(mode = "numeric", length = length(x@occResults))
     for (i in 1:length(x@occResults)){
       GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
     }
-    doiTab <- as.data.frame(cbind(names(x@occResults),GBIFdoi))
-    colnames(doiTab) <- c("Species", "GBIF DOI")
+    #Tabulate access dates
+    GBIFaccessDate <- vector(mode = "numeric", length = length(x@occResults))
+    for (i in x@occResults){
+      GBIFaccessDate <- strsplit(i$GBIF$Metadata$modified, "T")[[1]][1]
+    }
+    doiTab <- as.data.frame(cbind(names(x@occResults), GBIFaccessDate, GBIFdoi))
+    colnames(doiTab) <- c("Species", "GBIF Access Date", "GBIF DOI")
     print(doiTab)
   }
 }
