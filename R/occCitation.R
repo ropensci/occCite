@@ -1,5 +1,6 @@
 library(rgbif)
 library(stats)
+library(BIEN)
 
 #' @title Occurrence Citations
 #'
@@ -27,8 +28,8 @@ occCitation <-function(x = NULL){
   #Initializing citation lists
   GBIFCitationList <- vector(mode = "list");
   GBIFDatasetCount <- NULL;
-  #TempComm:BIENCitationList <- vector(mode = "list");
-  #TempComm:BIENDatasetCount <- NULL;
+  BIENCitationList <- vector(mode = "list");
+  BIENDatasetCount <- NULL;
 
   #GBIF
   if ("gbif" %in% x@occSources){
@@ -72,28 +73,28 @@ occCitation <-function(x = NULL){
     query <- paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
       paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
     BIENsources <- BIEN:::.BIEN_sql(query);
-  #TempComm:}
+  }
 
   #Columns: UUID, Citation, Access date, number of records
   if("gbif" %in% x@occSources){
-    gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)), GBIFdatasetKeys, unlist(GBIFCitationList), rep(x@occurrenceSearchDate, length(GBIFdatasetKeys)), GBIFDatasetCount[,2]);
+    gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)), GBIFdatasetKeys, unlist(GBIFCitationList), rep(x@occCiteSearchDate, length(GBIFdatasetKeys)), GBIFDatasetCount[,2]);
   colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences");
   }
 
-  #TempComm:if("bien" %in% x@occSources){
-  #TempComm:bienTable <- data.frame(rep("BIEN", length(BIENdatasetKeys)), BIENdatasetKeys, BIENsources$source_citation, rep(x@occurrenceSearchDate, length(BIENdatasetKeys)), BIENDatasetCount[,2]);
-  #TempComm:colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
-  #TempComm:}
+  if("bien" %in% x@occSources){
+    BIENcitations <- BIENsources$source_citation
+    BIENcitations[is.na(BIENcitations)] <- BIENsources$source_fullname[BIENcitations == NA]
+    bienTable <- data.frame(rep("BIEN", length(BIENdatasetKeys)), BIENdatasetKeys, BIENcitations, rep(x@occCiteSearchDate, length(BIENdatasetKeys)), BIENdatasetCount[,2]);
+    colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
+  }
 
   if("bien" %in% x@occSources && "gbif" %in% x@occSources){
-    #TempComm:citationTable <- rbind(gbifTable,bienTable);
+    citationTable <- rbind(gbifTable,bienTable);
     citationTable <- gbifTable
-    print("BIEN citation not yet supported, but is coming soon.")
   }
   else if("bien" %in% x@occSources && length(x@occSources)==1){
-    #TempComm:citationTable <- bienTable
+    citationTable <- bienTable
     citationTable <- NULL;
-    print("BIEN citation not yet supported, but is coming soon.")
   }
   else{
     citationTable <- gbifTable

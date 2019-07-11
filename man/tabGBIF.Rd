@@ -9,7 +9,7 @@ tabGBIF(GBIFresults, taxon)
 \arguments{
 \item{GBIFresults}{The results of a GBIF search that will be tabulated into a common format for an occCite object.}
 
-\item{taxon}{A single species}
+\item{taxon}{A single species name, for tracing/error checking purposes only.}
 }
 \value{
 A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.

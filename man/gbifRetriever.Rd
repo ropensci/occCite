@@ -4,10 +4,12 @@
 \alias{gbifRetriever}
 \title{Retreive downloaded GBIF datasets}
 \usage{
-gbifRetriever(GBIFDownloadDirectory = NULL)
+gbifRetriever(GBIFDownloadDirectory = NULL, taxon = NULL)
 }
 \arguments{
 \item{GBIFDownloadDirectory}{An optional argument that specifies either the local directory where the user would like to save new GBIF datasets, or the directory containing previously-downloaded GBIF datasets. If this is not specified, occCite will use your current working directory.}
+
+\item{taxon}{A single species}
 }
 \value{
 A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.

@@ -7,6 +7,8 @@ library(stringr);
 #'
 #' @param GBIFDownloadDirectory An optional argument that specifies either the local directory where the user would like to save new GBIF datasets, or the directory containing previously-downloaded GBIF datasets. If this is not specified, occCite will use your current working directory.
 #'
+#' @param taxon A single species
+#'
 #' @return A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
 #'
 #' @examples
