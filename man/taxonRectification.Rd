@@ -18,9 +18,7 @@ A string with the closeset match according to \code{\link{gnr_resolve}}, and a l
 An internal helper function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
 }
 \examples{
-\dontrun{
 #Inputting a taxonomic name and specifying what taxonomic sources you want to search
 studyTaxonList(x = "Buteo buteo hartedi", datasources = c('NCBI', 'EOL'));
-}
 
 }

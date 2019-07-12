@@ -11,10 +11,8 @@ library(taxize);
 #' @return A string with the closeset match according to \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain the matching name.
 #'
 #' @examples
-#' \dontrun{
 #' #Inputting a taxonomic name and specifying what taxonomic sources you want to search
 #' studyTaxonList(x = "Buteo buteo hartedi", datasources = c('NCBI', 'EOL'));
-#'}
 #'
 #' @export
 
@@ -38,7 +36,7 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
   #Populating vector of data sources if no valid sources are supplied
   if (length(datasources) == 0){
     warning("No valid taxonomic data sources supplied. Populating default list from all available sources.");
-    datasources = taxize::gnr_datasources(todf = T)$title;
+    datasources = taxize::gnr_datasources()$title;
   }
 
 
