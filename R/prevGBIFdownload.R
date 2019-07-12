@@ -42,6 +42,6 @@ prevGBIFdownload <- function(taxonKey, GBIFLogin){
     return(NULL);
   }
   else{
-    return(retmat[retmat$modified == rev(sort(retmat$modified)[1]),]$key);
+    return(retmat[retmat$modified == rev(sort(retmat$modified))[1],]$key);
   }
 }

@@ -87,7 +87,7 @@ summary(mySimpleOccCiteObject)
 ## Simple citations
 
 After doing a search for occurrence points, you can use `occCitation()` to generate citations for primary biodiversity databases, as well as database aggregators.
-**Note:** Currently, GBIF is the only aggregator for which citations are supported.
+**Note:** Currently, GBIF and BIEN are the only aggregators for which citations are supported.
 
 ```{r simple_citation}
 #Get citations
