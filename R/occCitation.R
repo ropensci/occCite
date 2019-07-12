@@ -77,20 +77,28 @@ occCitation <-function(x = NULL){
 
   #Columns: UUID, Citation, Access date, number of records
   if("gbif" %in% x@occSources){
-    gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)), GBIFdatasetKeys, unlist(GBIFCitationList), rep(x@occCiteSearchDate, length(GBIFdatasetKeys)), GBIFDatasetCount[,2]);
-  colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences");
+    GBIFaccessDate <- strsplit(x@occResults[[1]]$GBIF$Metadata$modified,"T")[[1]][1]# Assumes that all species queries occurred at the same time, which may not necessarily be the case FIX LATER
+    gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
+                            GBIFdatasetKeys, unlist(GBIFCitationList),
+                            rep(GBIFaccessDate, length(GBIFdatasetKeys)),
+                            GBIFDatasetCount[,2], stringsAsFactors = F);
+  colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences");
   }
 
   if("bien" %in% x@occSources){
-    BIENcitations <- BIENsources$source_citation
-    BIENcitations[is.na(BIENcitations)] <- BIENsources$source_fullname[BIENcitations == NA]
-    bienTable <- data.frame(rep("BIEN", length(BIENdatasetKeys)), BIENdatasetKeys, BIENcitations, rep(x@occCiteSearchDate, length(BIENdatasetKeys)), BIENdatasetCount[,2]);
-    colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Search Date", "Number of Occurrences")
+    BIENcitations <- BIENsources$source_citation;
+    # If there is no citation available, replace it with the full name of the primary provider
+    for (i in 1:length(BIENcitations)){
+      if (is.na(BIENcitations[i])){
+        BIENcitations[i] <- BIENsources$source_fullname[i];
+      }
+    }
+    bienTable <- data.frame(as.character(rep("BIEN", length(BIENdatasetKeys))), as.character(BIENdatasetKeys), as.character(BIENcitations), as.character(BIENsources$date_accessed), as.numeric(BIENdatasetCount[,2]), stringsAsFactors = F);
+    colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences")
   }
 
   if("bien" %in% x@occSources && "gbif" %in% x@occSources){
     citationTable <- rbind(gbifTable,bienTable);
-    citationTable <- gbifTable
   }
   else if("bien" %in% x@occSources && length(x@occSources)==1){
     citationTable <- bienTable
