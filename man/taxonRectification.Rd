@@ -15,7 +15,7 @@ taxonRectification(taxName = NULL, datasources = NULL)
 A string with the closeset match according to \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain the matching name.
 }
 \description{
-An internal helper function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
+An function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
 }
 \examples{
 #Inputting a taxonomic name and specifying what taxonomic sources you want to search

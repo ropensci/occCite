@@ -2,7 +2,7 @@ library(taxize);
 
 #' @title Taxon Rectification
 #'
-#' @description An internal helper function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
+#' @description An function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
 #'
 #' @param taxName A string that, ideally, is a taxonomic name
 #'

@@ -30,10 +30,11 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
 
   if (checkPreviousGBIFDownload){
     occD <- prevGBIFdownload(key, GBIFLogin);
+    if (is.null(occD)){
+      print(paste0("There was no previously-prepared download on GBIF for ", taxon, ". New GBIF download will be prepared."));
+    }
   }
-  if (is.null(occD)){
-    print(paste0("There was no previously-prepared download on GBIF for ", taxon, ". New GBIF download will be prepared."));
-  }
+
   if(checkPreviousGBIFDownload == F | (checkPreviousGBIFDownload == T && is.null(occD))) {
     occD <- rgbif::occ_download(paste("taxonKey = ", key, sep = ""),
                          "hasCoordinate = true", "hasGeospatialIssue = false",

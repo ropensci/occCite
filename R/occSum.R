@@ -49,7 +49,7 @@ summary.occCiteData <- function(object, ...) {
         print(x@cleanedTaxonomy);
   }
 
-  if(!is.null(x@occResults)){
+  if(length(x@occResults) > 0){
     cat("\t\n",
         sprintf("Sources for occurrence data: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
     #Tabulate search results
