@@ -44,8 +44,8 @@ occCitation <-function(x = NULL){
     GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys);
 
   ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rGBIF is date citation was sought, not the date the data was accessed)
-    for(i in GBIFdatasetKeys){
-      temp <- gsub(rgbif::gbif_citation(i)$citation$text, pattern = "accessed via GBIF\.org on \d+\-\d+\-\d+\.", replacement = "");
+    for(j in GBIFdatasetKeys){
+      temp <- gsub(rgbif::gbif_citation(j)$citation$text, pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.", replacement = "", useBytes = T);
       GBIFCitationList <- append(GBIFCitationList,temp);
     }
   }
@@ -54,8 +54,8 @@ occCitation <-function(x = NULL){
   if ("bien" %in% x@occSources){
     ##Pull dataset keys from occurrence table
     BIENdatasetKeys <- vector(mode = "list");
-    for(i in x@occResults){
-      BIENdatasetKeys <- append(BIENdatasetKeys,unlist(as.character((i$BIEN$OccurrenceTable$DatasetKey))));
+    for(k in x@occResults){
+      BIENdatasetKeys <- append(BIENdatasetKeys,unlist(as.character((k$BIEN$OccurrenceTable$DatasetKey))));
     }
     BIENdatasetCount <- as.data.frame(table(unlist(BIENdatasetKeys)));
     BIENdatasetKeys <- unique(unlist(BIENdatasetKeys));
