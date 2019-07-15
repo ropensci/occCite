@@ -43,10 +43,10 @@ occCitation <-function(x = NULL){
     GBIFdatasetKeys <- unique(unlist(datasetKeys));
     GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys);
 
-  ##Look up citations on GBIF based on dataset keys
+  ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rGBIF is date citation was sought, not the date the data was accessed)
     for(i in GBIFdatasetKeys){
-      GBIFCitationList <- append(GBIFCitationList,
-                             rgbif::gbif_citation(i)$citation$text);
+      temp <- gsub(rgbif::gbif_citation(i)$citation$text, pattern = "accessed via GBIF\.org on \d+\-\d+\-\d+\.", replacement = "");
+      GBIFCitationList <- append(GBIFCitationList,temp);
     }
   }
 
