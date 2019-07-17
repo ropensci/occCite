@@ -1,5 +1,4 @@
 library(occCite);
-library(ape);
 
 # Simple search -----
 ## Login information for GBIF ----
@@ -61,6 +60,7 @@ taxRectObject <- occQuery(x = taxRectObject,
 
 #===============================================
 # With a tree -----
+library(ape);
 #Get tree
 tree <- read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
                                package='occCite'));

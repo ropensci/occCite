@@ -36,6 +36,9 @@ gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
   }
 
   #Get all GBIF downloads in specified directory
+  if (!stringr::str_sub(GBIFDownloadDirectory, -1) == "/"){
+    GBIFDownloadDirectory <- paste0(GBIFDownloadDirectory, "/")
+  }
   try(setwd(GBIFDownloadDirectory));
   paths <- list.files(GBIFDownloadDirectory, pattern = "\\d{7}-\\d{15}.zip", recursive = T);
   keys <- as.vector(stringr::str_match(paths, pattern = "\\d{7}-\\d{15}"));

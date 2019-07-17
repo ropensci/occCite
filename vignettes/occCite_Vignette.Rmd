@@ -15,7 +15,7 @@ output:
 vignette: >
   %\VignetteIndexEntry{An overview of executing searches and generating citations using occCite}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
