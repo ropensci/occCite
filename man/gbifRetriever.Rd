@@ -15,7 +15,7 @@ gbifRetriever(GBIFDownloadDirectory = NULL, taxon = NULL)
 A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
 }
 \description{
-Imports datasets downloaded from GBIF into occCite
+Searches for the most recent instance of a dataset that has been previously downloaded from GBIF to a local machine and imports it into occCite
 }
 \examples{
 \dontrun{

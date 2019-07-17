@@ -3,6 +3,9 @@ title: "occCite Vignette: Downloading and Citing Biodiversity Data"
 author:
 - Hannah Owens
 - Cory Merow
+- Brian Maitner
+- Vijay Barve
+- Robert Guralnick
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
@@ -47,30 +50,31 @@ GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
 
 At its simplest, `occCite` allows you to search for occurrences for a single species. The taxonomy of the user-specified species will be verified using EOL and NCBI taxonomies by default. 
 
-```{r simple_search, eval=FALSE}
+```{r simple_search, eval=F}
 # Simple search
 mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                             datasources = c("gbif", "bien"),
                             GBIFLogin = GBIFLogin, 
-                            GBIFDownloadDirectory = system.file("extdata", package = "occCite"),
+                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
                             checkPreviousGBIFDownload = T);
 ```
 
-It is also possible to load data from a previously-downloaded GBIF dataset by specifying the location of the `.zip` file. These GBIF data will be appended to a BIEN search the same as if you do the simple real-time search, as shown above. Note that `checkPreviousGBIFDownload` is `TRUE` by default, but if `loadLocalGBIFDownload` is `TRUE`, `occQuery` will ignore `checkPreviousDownload`.
-
-```{r simple_load}
-# Simple load
-mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides", datasources = c("gbif", "bien"), 
-                                  GBIFLogin = NULL, 
-                                  GBIFDownloadDirectory = system.file("extdata", package = "occCite"),
-                                  loadLocalGBIFDownload = T,
-                                  checkPreviousGBIFDownload = F);
+```{r simple_search sssssecret cooking show, eval=T, echo = F}
+# Simple search
+mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
+                            datasources = c("gbif", "bien"),
+                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
+                            loadLocalGBIFDownload = T);
 ```
+
+Here is what the GBIF results look like:
 
 ```{r simple_search_GBIF_results}
 # GBIF search results
 head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
 ```
+
+And here are the BIEN results:
 
 ```{r simple_search_BIEN_results}
 #BIEN search results
@@ -92,8 +96,10 @@ After doing a search for occurrence points, you can use `occCitation()` to gener
 #Get citations
 mySimpleOccCitations <- occCitation(mySimpleOccCiteObject);
 ```
+
+Here is a simple way of generating a formatted citation document from the results of `occCitation()`.
 ```{r show_simple_citations}
-cat(paste(mySimpleOccCitations$Citation, sep = ""), sep = "\n");
+cat(paste0(mySimpleOccCitations$Citation, " Accessed via ", mySimpleOccCitations$occSearch, " on ", mySimpleOccCitations$`Accession Date`, "."), sep = "\n");
 ```
 
 ## Simple Taxonomic Rectification
@@ -112,17 +118,16 @@ myTROccCiteObject@cleanedTaxonomy
 ***
 # Loading data from previous GBIF searches
 
-Querying GBIF can take quite a bit of time, especially for multiple species and/or well-known species. In this case, you may wish to access previously-downloaded datasets from your computer. Here is a simple example of how that is done.
+Querying GBIF can take quite a bit of time, especially for multiple species and/or well-known species. In this case, you may wish to access previously-downloaded datasets from your computer by specifying the general location of your downloaded `.zip` files. `occQuery` will crawl through your specified `GBIFDownloadDirectory` to collect all the `.zip` files contained in that folder and its subfolders. It will then improt the most recent downloads that match your taxon list. These GBIF data will be appended to a BIEN search the same as if you do the simple real-time search (if you chose BIEN as well as GBIF), as was shown above. `checkPreviousGBIFDownload` is `TRUE` by default, but if `loadLocalGBIFDownload` is `TRUE`, `occQuery` will ignore `checkPreviousDownload`. It is also worth noting that `occCite` does not currently support mixed data download sources. That is, you cannot do GBIF queries for some taxa, download previously-prepared datasets for others, and load the rest from local datasets on your computer.
 
-```{r search_using_previously-downloaded_GBIF_data}
-#Query databases for names
-myOldOccCiteObject <- studyTaxonList(x = "Protea cynaroides", datasources = "NCBI");
-#Access GBIF data from a specified download directory
-##Note: you do not need a login for this.
-myOldOccCiteObject <- occQuery(x = myOldOccCiteObject, 
-                            datasources = "gbif",
-                            GBIFDownloadDirectory = system.file("extdata/", package = "occCite"),
-                            loadLocalGBIFDownload = T);
+```{r simple_load}
+# Simple load
+myOldOccCiteObject <- occQuery(x = "Protea cynaroides", 
+                                  datasources = c("gbif", "bien"), 
+                                  GBIFLogin = NULL, 
+                                  GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
+                                  loadLocalGBIFDownload = T,
+                                  checkPreviousGBIFDownload = F);
 ```
 
 Here is the result. Look familiar?
@@ -139,7 +144,7 @@ Getting citation data works the exact same way with previously-downloaded data a
 ```{r getting_citations_from_already-downloaded_GBIF_data}
 #Get citations
 myOldOccCitations <- occCitation(myOldOccCiteObject);
-cat(paste(myOldOccCitations$Citation, sep = ""), sep = "\n");
+cat(paste0(mySimpleOccCitations$Citation, " Accessed via ", mySimpleOccCitations$occSearch, " on ", mySimpleOccCitations$`Accession Date`, "."), sep = "\n");
 ```
 
 Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF datasources (e.g. BIEN) in the same query.
@@ -164,7 +169,7 @@ myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 #Query GBIF for occurrence data
 myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
                             datasources = "gbif",
-                            GBIFDownloadDirectory = system.file("extdata/", package = 'occCite'), 
+                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"), 
                             loadLocalGBIFDownload = T,
                             checkPreviousGBIFDownload = F);
 ```

@@ -130,21 +130,7 @@ occQuery <- function(x = NULL,
         for(i in 1:length(searchTaxa)){
           #Gets *all* downloaded records
           temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]]);
-          temp2 <- temp[which(searchTaxa[[i]] == names(temp))]
-          numMatch <- length(unlist(regmatches(names(temp), gregexpr(searchTaxa[[i]], names(temp)))))
-          #Then parses them into the appropriate slot
-          if(numMatch > 1){
-            #Pulls the *most recent* record
-            #and assigns it to gbifResults
-            temp3<- temp2[unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)) == max(unlist(lapply(lapply(temp2, '[[', 2), '[[', 6)))]
-            gbifResults[[i]] <- list(temp3[[1]]$OccurrenceTable, temp3[[1]]$Metadata);
-            names(gbifResults[[i]]) <- c("OccurrenceTable", "Metadata");
-          }
-          else{
-            temp3 <- temp2[[1]];
-            gbifResults[[i]] <- list(temp3[[1]]$OccurrenceTable, temp3[[1]]$Metadata);
-            names(gbifResults[[i]]) <- c("OccurrenceTable", "Metadata");
-          }
+          gbifResults[[i]] <- temp;
         }
       }
     else{

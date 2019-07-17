@@ -15,7 +15,7 @@ prevGBIFdownload(taxonKey, GBIFLogin)
 A GBIF download key, if one is available
 }
 \description{
-Searches the list of a user's previous downloads on the GBIF website and returns the dataset key for the most recently prepared download.
+Searches the list of a user's previous downloads on the GBIF servers and returns the dataset key for the most recently prepared download.
 }
 \examples{
 \dontrun{
