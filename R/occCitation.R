@@ -66,7 +66,7 @@ occCitation <-function(x = NULL){
     if (datasetKeyNAs > 0){
       print(paste0("NOTE: ", datasetKeyNAs,
                   " BIEN dataset(s) do not have dataset keys to link citations. They are: ",
-                  unique(i$BIEN$OccurrenceTable$Dataset[is.na(i$BIEN$OccurrenceTable$DatasetKey)])));
+                  unique(k$BIEN$OccurrenceTable$Dataset[is.na(k$BIEN$OccurrenceTable$DatasetKey)])));
     }
 
     ##Get data sources
