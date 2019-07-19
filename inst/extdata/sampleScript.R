@@ -47,16 +47,16 @@ summary(myOccCiteObject)
 #===============================================
 ## Taxonomic rectification ------
 #Query databases for names and rectify
-taxRectObj <- studyTaxonList(x = "Protea cynaroides",
+taxRectObj <- studyTaxonList(x = "Prota cynarides",
                              datasources = c("FishBase", "EOL", "ARKive"));
-summary(taxRectObject)
+summary(taxRectObj)
 
 #Pass occCite object to query
-taxRectObject <- occQuery(x = taxRectObject,
-                          GBIFLogin = GBIFLogin,
-                          GBIFDownloadDirectory = "~/Desktop",
-                          loadLocalGBIFDownload = F,
-                          checkPreviousGBIFDownload = T);
+taxRectObj <- occQuery(x = taxRectObj,
+                       GBIFLogin = GBIFLogin,
+                       GBIFDownloadDirectory = "~/Desktop",
+                       loadLocalGBIFDownload = F,
+                       checkPreviousGBIFDownload = T);
 
 #===============================================
 # With a tree -----
