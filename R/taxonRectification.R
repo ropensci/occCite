@@ -1,21 +1,24 @@
-library(taxize);
-
 #' @title Taxon Rectification
 #'
-#' @description An function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
+#' @description An function that takes an input taxonomic name, checks against
+#' taxonomic database, returns vector for use in database queries, as well as
+#' warnings if the name is invalid.
 #'
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
-#' @param datasources A vector of taxonomic datasources implemented in \code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}{Global Names List} for more information.
+#' @param datasources A vector of taxonomic datasources implemented in
+#' \code{\link{gnr_resolve}}. See the
+#' \href{http://gni.globalnames.org/}{Global Names List} for more information.
 #'
-#' @return A string with the closeset match according to \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain the matching name.
+#' @return A string with the closeset match according to
+#' \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain
+#' the matching name.
 #'
 #' @examples
 #' #Inputting a taxonomic name and specifying what taxonomic sources you want to search
 #' studyTaxonList(x = "Buteo buteo hartedi", datasources = c('NCBI', 'EOL'));
 #'
 #' @export
-
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
   #Are user-input databases included in the list of data sources for Global Names Resolver?
   sourceList <- taxize::gnr_datasources()$title #Populates the list of datasources

@@ -10,10 +10,14 @@ getBIENpoints(taxon)
 \item{taxon}{A single plant species or vector of plant species}
 }
 \value{
-A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii acknowledgement information; (3) a dataframe containing the raw results of a query to `BIEN::BIEN_occurrence_species()`.
+A list containing \enumerate{ \item a dataframe of occurrence data;
+\item a list containing: i notes on usage, ii bibtex citations,
+and iii acknowledgement information; \item a dataframe containing
+the raw results of a query to `BIEN::BIEN_occurrence_species()`.}
 }
 \description{
-Downloads occurrence points and useful related information for processing within other occCite functions
+Downloads occurrence points and useful related
+information for processing within other occCite functions
 }
 \examples{
 \dontrun{

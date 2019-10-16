@@ -45,8 +45,8 @@ summary.occCiteData <- function(object, ...) {
 
   if(!is.null(x@cleanedTaxonomy)){
     cat("\t\n",
-        sprintf("Taxonomic cleaning results: %s\n", "\t\n"));
-        print(x@cleanedTaxonomy);
+        sprintf("Taxonomic cleaning results: %s\n", "\t\n"))
+    print(x@cleanedTaxonomy);
   }
 
   if(length(x@occResults) > 0){

@@ -7,15 +7,23 @@
 gbifRetriever(GBIFDownloadDirectory = NULL, taxon = NULL)
 }
 \arguments{
-\item{GBIFDownloadDirectory}{An optional argument that specifies either the local directory where the user would like to save new GBIF datasets, or the directory containing previously-downloaded GBIF datasets. If this is not specified, occCite will use your current working directory.}
+\item{GBIFDownloadDirectory}{An optional argument that specifies
+either the local directory where the user would like to save new
+GBIF datasets, or the directory containing previously-downloaded
+GBIF datasets. If this is not specified, occCite will use your
+current working directory.}
 
 \item{taxon}{A single species}
 }
 \value{
-A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
+A list of lists containing (1) a dataframe of occurrence
+data; (2) GBIF search metadata for every GBIF download in the
+specified directory.
 }
 \description{
-Searches for the most recent instance of a dataset that has been previously downloaded from GBIF to a local machine and imports it into occCite
+Searches for the most recent instance of a dataset
+ that has been previously downloaded from GBIF to a local machine
+  and imports it into occCite
 }
 \examples{
 \dontrun{

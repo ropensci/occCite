@@ -1,19 +1,23 @@
-library(rgbif);
-library(stats);
-
 #' @title Download occurrence points from GBIF
 #'
-#' @description Downloads occurrence points and useful related information for processing within other occCite functions
+#' @description Downloads occurrence points and useful related information
+#' for processing within other occCite functions
 #'
 #' @param taxon A single species
 #'
-#' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.
+#' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to
+#' GBIF to begin the download.
 #'
-#' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
+#' @param GBIFDownloadDirectory An optional argument that specifies the local
+#' directory where GBIF downloads will be saved. If this is not specified, the
+#' downloads will be saved to your current working directory.
 #'
-#' @param checkPreviousGBIFDownload A logical operator specifying whether the user wishes to check their existing prepared downloads on the GBIF website.
+#' @param checkPreviousGBIFDownload A logical operator specifying whether the
+#' user wishes to check their existing prepared downloads on the GBIF website.
 #'
-#' @return A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata; (3) a dataframe containing the raw results of a query to `rgbif::occ_download_get()`.
+#' @return A list containing \enumerate{ \item a dataframe of occurrence data;
+#' \item GBIF search metadata; \item a dataframe containing the raw results of
+#'  a query to `rgbif::occ_download_get()`.}
 #'
 #' @examples
 #' \dontrun{
@@ -23,7 +27,6 @@ library(stats);
 #'}
 #'
 #' @export
-
 getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GBIFDownloadDirectory, checkPreviousGBIFDownload = T){
 
   key <- rgbif::name_suggest(q=taxon, rank='species')$key[1];

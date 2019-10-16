@@ -7,15 +7,20 @@
 tabGBIF(GBIFresults, taxon)
 }
 \arguments{
-\item{GBIFresults}{The results of a GBIF search that will be tabulated into a common format for an occCite object.}
+\item{GBIFresults}{The results of a GBIF search that will be tabulated
+into a common format for an occCite object.}
 
-\item{taxon}{A single species name, for tracing/error checking purposes only.}
+\item{taxon}{A single species name, for tracing/error checking purposes
+only.}
 }
 \value{
-A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
+A list of lists containing \enumerate{ \item a dataframe of
+occurrence data  \item GBIF search metadata for every GBIF download in
+the specified directory.}
 }
 \description{
-Internal function--imports results from `occ_download_get()` and processes them into a table for an `occCiteData` object.
+Internal function--imports results from `occ_download_get()`
+and processes them into a table for an `occCiteData` object.
 }
 \examples{
 \dontrun{

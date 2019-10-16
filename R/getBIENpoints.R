@@ -1,13 +1,14 @@
-library(BIEN);
-library(lubridate);
-
 #' @title Download occurrence points from BIEN
 #'
-#' @description Downloads occurrence points and useful related information for processing within other occCite functions
+#' @description Downloads occurrence points and useful related
+#' information for processing within other occCite functions
 #'
 #' @param taxon A single plant species or vector of plant species
 #'
-#' @return A list containing (1) a dataframe of occurrence data; (2) a list containing: i notes on usage, ii bibtex citations, and iii acknowledgement information; (3) a dataframe containing the raw results of a query to `BIEN::BIEN_occurrence_species()`.
+#' @return A list containing \enumerate{ \item a dataframe of occurrence data;
+#' \item a list containing: i notes on usage, ii bibtex citations,
+#' and iii acknowledgement information; \item a dataframe containing
+#' the raw results of a query to `BIEN::BIEN_occurrence_species()`.}
 #'
 #' @examples
 #' \dontrun{
@@ -18,8 +19,8 @@ library(lubridate);
 #' @export
 getBIENpoints<-function(taxon){
   occs<-BIEN::BIEN_occurrence_species(species = taxon, cultivated = T,
-                                  only.new.world = F, native.status = F,
-                                  collection.info = T, natives.only = F);
+                                      only.new.world = F, native.status = F,
+                                      collection.info = T, natives.only = F);
 
   if(nrow(occs)==0){
     print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?", sep = ""));

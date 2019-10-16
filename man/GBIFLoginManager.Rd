@@ -9,15 +9,20 @@ GBIFLoginManager(user = NULL, email = NULL, pwd = NULL)
 \arguments{
 \item{user}{A vector of type character specifying a GBIF username.}
 
-\item{email}{A vector of type character specifying the email associated with a GBIF username.}
+\item{email}{A vector of type character specifying the email associated
+with a GBIF username.}
 
-\item{pwd}{A vector of type character containing the user's password for logging in to GBIF.}
+\item{pwd}{A vector of type character containing the user's password for
+logging in to GBIF.}
 }
 \value{
-An object of class \code{\link{GBIFLogin}} containing the user's GBIF login data.
+An object of class \code{\link{GBIFLogin}} containing the user's
+ GBIF login data.
 }
 \description{
-Takes users GBIF login particulars and turns it into a \code{\link{GBIFLogin}} for use in downloading data from GBIF. You MUST ALREADY HAVE AN ACCOUNT at \href{http://gbif.org/}{GBIF}.
+Takes users GBIF login particulars and turns it
+into a \code{\link{GBIFLogin}} for use in downloading data from
+GBIF. You MUST ALREADY HAVE AN ACCOUNT at \href{http://gbif.org/}{GBIF}.
 }
 \examples{
 ## Inputting user particulars

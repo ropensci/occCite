@@ -9,13 +9,19 @@ taxonRectification(taxName = NULL, datasources = NULL)
 \arguments{
 \item{taxName}{A string that, ideally, is a taxonomic name}
 
-\item{datasources}{A vector of taxonomic datasources implemented in \code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}{Global Names List} for more information.}
+\item{datasources}{A vector of taxonomic datasources implemented in
+\code{\link{gnr_resolve}}. See the
+\href{http://gni.globalnames.org/}{Global Names List} for more information.}
 }
 \value{
-A string with the closeset match according to \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain the matching name.
+A string with the closeset match according to
+\code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain
+the matching name.
 }
 \description{
-An function that takes an input taxonomic name, checks against taxonomic database, returns vector for use in database queries, as well as warnings if the name is invalid.
+An function that takes an input taxonomic name, checks against
+taxonomic database, returns vector for use in database queries, as well as
+warnings if the name is invalid.
 }
 \examples{
 #Inputting a taxonomic name and specifying what taxonomic sources you want to search

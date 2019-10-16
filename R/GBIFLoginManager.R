@@ -1,18 +1,19 @@
-library(methods);
-library(rgbif);
-library(methods);
-
 #' @title GBIF Login Manager
 #'
-#' @description Takes users GBIF login particulars and turns it into a \code{\link{GBIFLogin}} for use in downloading data from GBIF. You MUST ALREADY HAVE AN ACCOUNT at \href{http://gbif.org/}{GBIF}.
+#' @description Takes users GBIF login particulars and turns it
+#' into a \code{\link{GBIFLogin}} for use in downloading data from
+#' GBIF. You MUST ALREADY HAVE AN ACCOUNT at \href{http://gbif.org/}{GBIF}.
 #'
 #' @param user A vector of type character specifying a GBIF username.
 #'
-#' @param email A vector of type character specifying the email associated with a GBIF username.
+#' @param email A vector of type character specifying the email associated
+#' with a GBIF username.
 #'
-#' @param pwd A vector of type character containing the user's password for logging in to GBIF.
+#' @param pwd A vector of type character containing the user's password for
+#' logging in to GBIF.
 #'
-#' @return An object of class \code{\link{GBIFLogin}} containing the user's GBIF login data.
+#' @return An object of class \code{\link{GBIFLogin}} containing the user's
+#'  GBIF login data.
 #'
 #' @examples
 #' ## Inputting user particulars
@@ -29,7 +30,6 @@ library(methods);
 #'}
 #'
 #' @export
-
 GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   #Error checking inputs
   if (!is.null(user) && class(user)!="character"){
