@@ -1,15 +1,20 @@
-library(rgbif);
-library(stringr);
-
 #' @title Retreive downloaded GBIF datasets
 #'
-#' @description Searches for the most recent instance of a dataset that has been previously downloaded from GBIF to a local machine and imports it into occCite
+#' @description Searches for the most recent instance of a dataset
+#'  that has been previously downloaded from GBIF to a local machine
+#'   and imports it into occCite
 #'
-#' @param GBIFDownloadDirectory An optional argument that specifies either the local directory where the user would like to save new GBIF datasets, or the directory containing previously-downloaded GBIF datasets. If this is not specified, occCite will use your current working directory.
+#' @param GBIFDownloadDirectory An optional argument that specifies
+#'  either the local directory where the user would like to save new
+#'  GBIF datasets, or the directory containing previously-downloaded
+#'  GBIF datasets. If this is not specified, occCite will use your
+#'  current working directory.
 #'
 #' @param taxon A single species
 #'
-#' @return A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
+#' @return A list of lists containing (1) a dataframe of occurrence
+#' data; (2) GBIF search metadata for every GBIF download in the
+#' specified directory.
 #'
 #' @examples
 #' \dontrun{
@@ -55,7 +60,7 @@ gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
     if (metadata$totalRecords > 0){
       for(j in 1:length(metadata$request$predicate$predicates)){
         if(metadata$request$predicate$predicates[[j]]$key=="TAXON_KEY" &
-         metadata$request$predicate$predicates[[j]]$value==taxon_key){
+           metadata$request$predicate$predicates[[j]]$value==taxon_key){
           matchIndex <- append(matchIndex, i);
           matchDate <- append(matchDate, metadata$modified);
         }

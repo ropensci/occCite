@@ -1,26 +1,46 @@
 #' @title Query from Taxon List
 #'
-#' @description Takes rectified list of specimens from \code{\link{studyTaxonList}} and returns point data from \code{\link{rgbif}} with metadata.
+#' @description Takes rectified list of specimens from
+#' \code{\link{studyTaxonList}} and returns point data from
+#' \code{\link{rgbif}} with metadata.
 #'
-#' @param x An object of class \code{\link{occCiteData}} (the results of a \code{\link{studyTaxonList}} search) OR a vector with a list of species names. Note: If the latter, taxonomic rectfication uses EOL and NCBI taxonomies. If you want more control than this, use \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object first.
+#' @param x An object of class \code{\link{occCiteData}} (the results of
+#' a \code{\link{studyTaxonList}} search) OR a vector with a list of species
+#' names. Note: If the latter, taxonomic rectfication uses EOL and NCBI
+#' taxonomies. If you want more control than this, use
+#' \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object
+#' first.
 #'
-#' @param datasources A vector of occurrence datasources to search. This is currently limited to GBIF and BIEN, but may expand in the future.
+#' @param datasources A vector of occurrence datasources to search. This is
+#' currently limited to GBIF and BIEN, but may expand in the future.
 #'
-#' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.
+#' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to
+#' GBIF to begin the download.
 #'
-#' @param GBIFDownloadDirectory An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.
+#' @param GBIFDownloadDirectory An optional argument that specifies the local
+#' directory where GBIF downloads will be saved. If this is not specified,
+#' the downloads will be saved to your current working directory.
 #'
-#' @param loadLocalGBIFDownload If \code{loadLocalGBIFDownload = T}, then occCite will load occurrences for the specified species that have been downloaded by the user and stored in the directory specified by \code{GBIFDownloadDirectory}.
+#' @param loadLocalGBIFDownload If \code{loadLocalGBIFDownload = T}, then
+#' occCite will load occurrences for the specified species that have been
+#' downloaded by the user and stored in the directory specified by
+#' \code{GBIFDownloadDirectory}.
 #'
-#' @param checkPreviousGBIFDownload If \code{loadLocalGBIFDownload = T}, occCite will check for previously-prepared GBIF downloads on the user's GBIF account. Setting this option to `TRUE` can significantly speed up query time if the user has previously queried GBIF for the same taxa.
+#' @param checkPreviousGBIFDownload If \code{loadLocalGBIFDownload = T},
+#' occCite will check for previously-prepared GBIF downloads on the user's
+#' GBIF account. Setting this option to `TRUE` can significantly speed up
+#' query time if the user has previously queried GBIF for the same taxa.
 #'
 #' @param options A vector of options to pass to \code{\link{occ_download}}.
 #'
-#' @return The object of class \code{\link{occCiteData}} supplied by the user as an argument, with occurrence data search results, as well as metadata on the occurrence sources queried.
+#' @return The object of class \code{\link{occCiteData}} supplied by the user
+#' as an argument, with occurrence data search results, as well as metadata
+#' on the occurrence sources queried.
 #'
 #' @examples
 #' \dontrun{
-#' ##If you have already created a occCite object, and have not previously downloaded GBIF data.
+#' ##If you have already created a occCite object, and have not previously
+#' ##downloaded GBIF data.
 #' occQuery(x = myBridgeTreeObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
@@ -127,21 +147,21 @@ occQuery <- function(x = NULL,
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
     names(gbifResults) <- searchTaxa;
     if(loadLocalGBIFDownload){
-        for(i in 1:length(searchTaxa)){
-          #Gets *all* downloaded records
-          temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]]);
-          gbifResults[[i]] <- temp;
-        }
+      for(i in 1:length(searchTaxa)){
+        #Gets *all* downloaded records
+        temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]]);
+        gbifResults[[i]] <- temp;
       }
+    }
     else{
-        for (i in searchTaxa){
-          temp <- getGBIFpoints(taxon = i,
-                                GBIFLogin = GBIFLogin,
-                                GBIFDownloadDirectory = GBIFDownloadDirectory,
-                                checkPreviousGBIFDownload = checkPreviousGBIFDownload);
-          gbifResults[[i]] <- temp;
-        }
+      for (i in searchTaxa){
+        temp <- getGBIFpoints(taxon = i,
+                              GBIFLogin = GBIFLogin,
+                              GBIFDownloadDirectory = GBIFDownloadDirectory,
+                              checkPreviousGBIFDownload = checkPreviousGBIFDownload);
+        gbifResults[[i]] <- temp;
       }
+    }
   }
 
   #For BIEN

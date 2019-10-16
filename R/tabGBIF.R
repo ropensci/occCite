@@ -1,14 +1,17 @@
-library(rgbif);
-
 #' @title GBIF Table
 #'
-#' @description Internal function--imports results from `occ_download_get()` and processes them into a table for an `occCiteData` object.
+#' @description Internal function--imports results from `occ_download_get()`
+#' and processes them into a table for an `occCiteData` object.
 #'
-#' @param GBIFresults The results of a GBIF search that will be tabulated into a common format for an occCite object.
+#' @param GBIFresults The results of a GBIF search that will be tabulated
+#' into a common format for an occCite object.
 #'
-#' @param taxon A single species name, for tracing/error checking purposes only.
+#' @param taxon A single species name, for tracing/error checking purposes
+#' only.
 #'
-#' @return A list of lists containing (1) a dataframe of occurrence data; (2) GBIF search metadata for every GBIF download in the specified directory.
+#' @return A list of lists containing \enumerate{ \item a dataframe of
+#' occurrence data  \item GBIF search metadata for every GBIF download in
+#' the specified directory.}
 #'
 #' @examples
 #' \dontrun{
@@ -18,7 +21,6 @@ library(rgbif);
 #'}
 #'
 #' @export
-
 tabGBIF <- function(GBIFresults, taxon){
   occFromGBIF <- rgbif::occ_download_import(GBIFresults);
 

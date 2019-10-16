@@ -9,13 +9,16 @@ prevGBIFdownload(taxonKey, GBIFLogin)
 \arguments{
 \item{taxonKey}{A taxon key as returned from `rgbif::name_suggest()`.}
 
-\item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.}
+\item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to
+GBIF to begin the download.}
 }
 \value{
 A GBIF download key, if one is available
 }
 \description{
-Searches the list of a user's previous downloads on the GBIF servers and returns the dataset key for the most recently prepared download.
+Searches the list of a user's previous downloads on the
+GBIF servers and returns the dataset key for the most recently prepared
+download.
 }
 \examples{
 \dontrun{

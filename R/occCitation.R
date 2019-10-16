@@ -1,7 +1,3 @@
-library(rgbif)
-library(stats)
-library(BIEN)
-
 #' @title Occurrence Citations
 #'
 #' @description Harvests citations for occurrence data
@@ -17,7 +13,6 @@ library(BIEN)
 #'}
 #'
 #' @export
-
 occCitation <-function(x = NULL){
   #Error check input x.
   if (!class(x)=="occCiteData"){
@@ -33,7 +28,7 @@ occCitation <-function(x = NULL){
 
   #GBIF
   if ("gbif" %in% x@occSources){
-  ##Pull dataset keys from occurrence table
+    ##Pull dataset keys from occurrence table
     datasetKeys <- vector(mode = "list");
     for(i in x@occResults){
       datasetKeys <- append(datasetKeys,
@@ -43,7 +38,7 @@ occCitation <-function(x = NULL){
     GBIFdatasetKeys <- unique(unlist(datasetKeys));
     GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys);
 
-  ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rGBIF is date citation was sought, not the date the data was accessed)
+    ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rGBIF is date citation was sought, not the date the data was accessed)
     for(j in GBIFdatasetKeys){
       temp <- gsub(rgbif::gbif_citation(j)$citation$text, pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.", replacement = "", useBytes = T);
       GBIFCitationList <- append(GBIFCitationList,temp);
@@ -68,13 +63,13 @@ occCitation <-function(x = NULL){
     #Handle datasets without keys
     if (length(BIENKeysNAs) > 0){
       print(paste0("NOTE: ", length(BIENKeysNAs),
-                  " BIEN dataset(s) do not have dataset keys to link citations. They are: ",
-                  unique(unlist(BIENKeysNAs))));
+                   " BIEN dataset(s) do not have dataset keys to link citations. They are: ",
+                   unique(unlist(BIENKeysNAs))));
     }
 
     ##Get data sources
     query <- paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
-      paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
+                   paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
     BIENsources <- BIEN:::.BIEN_sql(query);
   }
 
@@ -85,7 +80,7 @@ occCitation <-function(x = NULL){
                             GBIFdatasetKeys, unlist(GBIFCitationList),
                             rep(GBIFaccessDate, length(GBIFdatasetKeys)),
                             GBIFDatasetCount[,2], stringsAsFactors = F);
-  colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences");
+    colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences");
   }
 
   if("bien" %in% x@occSources){
