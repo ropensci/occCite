@@ -14,8 +14,9 @@ into a common format for an occCite object.}
 only.}
 }
 \value{
-A list of lists containing (1) a dataframe of occurrence data;
-(2) GBIF search metadata for every GBIF download in the specified directory.
+A list of lists containing \enumerate{ \item a dataframe of
+occurrence data  \item GBIF search metadata for every GBIF download in
+the specified directory.}
 }
 \description{
 Internal function--imports results from `occ_download_get()`

@@ -11,8 +11,8 @@ studyTaxonList(x = NULL, datasources = c("NCBI", "EOL"))
 containing the names of taxa of interest}
 
 \item{datasources}{A vector of taxonomic datasources implemented in
-\code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}
-{Global Names List} for more information.}
+\code{\link{gnr_resolve}}. See the
+\href{http://gni.globalnames.org/}{Global Names List} for more information.}
 }
 \value{
 An object of class \code{\link{occCiteData}} containing the type

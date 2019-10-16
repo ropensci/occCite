@@ -10,8 +10,8 @@ taxonRectification(taxName = NULL, datasources = NULL)
 \item{taxName}{A string that, ideally, is a taxonomic name}
 
 \item{datasources}{A vector of taxonomic datasources implemented in
-\code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}
-{Global Names List} for more information.}
+\code{\link{gnr_resolve}}. See the
+\href{http://gni.globalnames.org/}{Global Names List} for more information.}
 }
 \value{
 A string with the closeset match according to

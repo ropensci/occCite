@@ -7,8 +7,8 @@
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
 #' @param datasources A vector of taxonomic datasources implemented in
-#' \code{\link{gnr_resolve}}. See the \href{http://gni.globalnames.org/}
-#' {Global Names List} for more information.
+#' \code{\link{gnr_resolve}}. See the
+#' \href{http://gni.globalnames.org/}{Global Names List} for more information.
 #'
 #' @return A string with the closeset match according to
 #' \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain
