@@ -7,8 +7,8 @@ cycle of data citation from primary data sources to aggregating
 databases to research products and back to primary data sources. The
 citation cycle keeps science transparent, but it is also key to
 supporting primary providers by documenting the use of their data. The
-Global Biodiversity Information Facility and other data aggregators have
-made great strides in harvesting citation data from research products
+Global Biodiversity Information Facility (GBIF) and other data aggregators
+have made great strides in harvesting citation data from research products
 and linking them back to primary data providers. However, this only
 works if those that publish research products cite primary data sources
 in the first place. We developed `occCite`, a set of `R`-based tools for
@@ -22,10 +22,10 @@ The `occCite` work flow follows a three-step process. First, the user
 inputs one or more taxonomic names (or a phylogeny). `occCite` then
 rectifies those names by checking them against one or more taxonomic
 databases, which can be specified by the user (see the [Global Names
-List](http://gni.globalnames.org/%7D)). The results of the taxonomic
+List](http://gni.globalnames.org/)). The results of the taxonomic
 rectification are then kept in an `occCiteData` object in local memory.
 Next, `occCite` takes the `occCiteData` object and user-defined search
-parameters to query BIEN (through `rbien`) and/or GBIF(through `rGBIF`)
+parameters to query BIEN (through `rbien`) and/or GBIF (through `rGBIF`)
 for records. The results are appended to the `occCiteData` object, along
 with metadata on the search. Finally, the user can pass the
 `occCiteData` object to `occCitation`, which compiles citations for the
@@ -55,6 +55,10 @@ for the species using `occ_download()`, instead of getting results from
 `occ_search()`, which has a hard limit of 200,000 occurrences.
 
 ``` r
+# In case you do not have latest version of occcCite installed
+library(devtools)
+install_github("hannahlowens/occCite")
+
 library(occCite);
 #Creating a GBIF login
 GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
