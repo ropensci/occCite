@@ -101,7 +101,7 @@ occQuery <- function(x = NULL,
     GBIFDownloadDirectory <- getwd();
   }
 
-  if(!file.exists(GBIFDownloadDirectory)){
+  if(!dir.exists(GBIFDownloadDirectory)){
     warning("You have specified a non-existant location for your GBIF data downloads.\n");
     return(NULL);
   }

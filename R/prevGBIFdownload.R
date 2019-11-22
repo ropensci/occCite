@@ -31,7 +31,7 @@ prevGBIFdownload <- function(taxonKey, GBIFLogin){
     if(!is.na(dl$results$request.predicate.key[i]) &
        dl$results$request.predicate.key[i]=="TAXON_KEY"){
       recKey <- dl$results$request.predicate.value[i];
-    } else if (any(dl$results$request.predicate.predicates[[i]]$key=="TAXON_KEY")) {
+    } else if (any(na.omit(dl$results$request.predicate.predicates[[i]]$key=="TAXON_KEY"))) {
       recKey <- dl$results$request.predicate.predicates[[i]][
         dl$results$request.predicate.predicates[[i]]$key=="TAXON_KEY",]$value;
     }
