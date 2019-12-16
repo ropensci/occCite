@@ -4,9 +4,15 @@
 \alias{occQuery}
 \title{Query from Taxon List}
 \usage{
-occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
-  GBIFDownloadDirectory = NULL, loadLocalGBIFDownload = F,
-  checkPreviousGBIFDownload = T, options = NULL)
+occQuery(
+  x = NULL,
+  datasources = c("gbif", "bien"),
+  GBIFLogin = NULL,
+  GBIFDownloadDirectory = NULL,
+  loadLocalGBIFDownload = F,
+  checkPreviousGBIFDownload = T,
+  options = NULL
+)
 }
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of
