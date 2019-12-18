@@ -25,14 +25,14 @@
 #' studyTaxonList(x = c("Buteo buteo",
 #'                      "Buteo buteo hartedi",
 #'                      "Buteo japonicus"),
-#'                      datasources = c('NCBI', 'EOL'));
+#'                      datasources = c('NCBI'));
 #'
 #' ## Inputting a phylogeny
-#' studyTaxonList(x = phylogeny, datasources = c('NCBI', 'EOL'));
+#' studyTaxonList(x = phylogeny, datasources = c('NCBI'));
 #'}
 #'
 #' @export
-studyTaxonList <- function(x = NULL, datasources = c('NCBI', 'EOL')) {
+studyTaxonList <- function(x = NULL, datasources = c('NCBI')) {
   #Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x))&&class(x)=="character")){
     warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n");

@@ -11,9 +11,8 @@
 #' the raw results of a query to `BIEN::BIEN_occurrence_species()`.}
 #'
 #' @examples
-#' \dontrun{
-#' getBIENpoints(taxon="Acer rubrum", limit = NULL);
-#'}
+#' getBIENpoints(taxon="Protea cynaroides")
+#'
 #' @import lubridate
 #'
 #' @export
