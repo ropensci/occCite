@@ -4,14 +4,20 @@
 \alias{occQuery}
 \title{Query from Taxon List}
 \usage{
-occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
-  GBIFDownloadDirectory = NULL, loadLocalGBIFDownload = F,
-  checkPreviousGBIFDownload = T, options = NULL)
+occQuery(
+  x = NULL,
+  datasources = c("gbif", "bien"),
+  GBIFLogin = NULL,
+  GBIFDownloadDirectory = NULL,
+  loadLocalGBIFDownload = F,
+  checkPreviousGBIFDownload = T,
+  options = NULL
+)
 }
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of
 a \code{\link{studyTaxonList}} search) OR a vector with a list of species
-names. Note: If the latter, taxonomic rectfication uses EOL and NCBI
+names. Note: If the latter, taxonomic rectfication uses NCBI
 taxonomies. If you want more control than this, use
 \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object
 first.}

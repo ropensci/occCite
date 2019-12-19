@@ -6,7 +6,7 @@
 #'
 #' @param x An object of class \code{\link{occCiteData}} (the results of
 #' a \code{\link{studyTaxonList}} search) OR a vector with a list of species
-#' names. Note: If the latter, taxonomic rectfication uses EOL and NCBI
+#' names. Note: If the latter, taxonomic rectfication uses NCBI
 #' taxonomies. If you want more control than this, use
 #' \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object
 #' first.
@@ -149,8 +149,9 @@ occQuery <- function(x = NULL,
     if(loadLocalGBIFDownload){
       for(i in 1:length(searchTaxa)){
         #Gets *all* downloaded records
-        temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]]);
-        gbifResults[[i]] <- temp;
+        temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]])
+        temp[[1]] <- GBIFtableCleanup(temp[[1]])
+        gbifResults[[i]] <- temp
       }
     }
     else{
@@ -158,8 +159,9 @@ occQuery <- function(x = NULL,
         temp <- getGBIFpoints(taxon = i,
                               GBIFLogin = GBIFLogin,
                               GBIFDownloadDirectory = GBIFDownloadDirectory,
-                              checkPreviousGBIFDownload = checkPreviousGBIFDownload);
-        gbifResults[[i]] <- temp;
+                              checkPreviousGBIFDownload = checkPreviousGBIFDownload)
+        temp[[1]] <- GBIFtableCleanup(temp[[1]])
+        gbifResults[[i]] <- temp
       }
     }
   }
@@ -171,7 +173,8 @@ occQuery <- function(x = NULL,
     if("bien" %in% datasources){
       for (i in searchTaxa){
         temp <- getBIENpoints(taxon = i);
-        bienResults[[i]] <- temp;
+        temp[[1]] <- BIENtableCleanup(temp[[1]])
+        bienResults[[i]] <- temp
       }
     }
   }

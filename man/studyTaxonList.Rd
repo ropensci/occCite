@@ -4,7 +4,7 @@
 \alias{studyTaxonList}
 \title{Study Taxon List}
 \usage{
-studyTaxonList(x = NULL, datasources = c("NCBI", "EOL"))
+studyTaxonList(x = NULL, datasources = c("NCBI"))
 }
 \arguments{
 \item{x}{A phylogeny of class 'phylo' or a vector of class 'character'
@@ -34,10 +34,10 @@ well as warnings if there are invalid names.
 studyTaxonList(x = c("Buteo buteo",
                      "Buteo buteo hartedi",
                      "Buteo japonicus"),
-                     datasources = c('NCBI', 'EOL'));
+                     datasources = c('NCBI'));
 
 ## Inputting a phylogeny
-studyTaxonList(x = phylogeny, datasources = c('NCBI', 'EOL'));
+studyTaxonList(x = phylogeny, datasources = c('NCBI'));
 }
 
 }

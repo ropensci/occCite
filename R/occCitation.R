@@ -6,6 +6,8 @@
 #'
 #' @return A dataframe with citations information for occurrences
 #'
+#' @importFrom stats na.omit
+#'
 #' @examples
 #'
 #' \dontrun{

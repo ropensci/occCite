@@ -32,6 +32,7 @@ Imports:
     taxize,
     stringr,
     stats,
-    knitr
+    knitr,
+    bit64
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0

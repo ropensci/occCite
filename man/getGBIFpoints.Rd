@@ -4,9 +4,12 @@
 \alias{getGBIFpoints}
 \title{Download occurrence points from GBIF}
 \usage{
-getGBIFpoints(taxon, GBIFLogin = GBIFLogin,
+getGBIFpoints(
+  taxon,
+  GBIFLogin = GBIFLogin,
   GBIFDownloadDirectory = GBIFDownloadDirectory,
-  checkPreviousGBIFDownload = T)
+  checkPreviousGBIFDownload = T
+)
 }
 \arguments{
 \item{taxon}{A single species}

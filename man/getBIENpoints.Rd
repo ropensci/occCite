@@ -20,7 +20,6 @@ Downloads occurrence points and useful related
 information for processing within other occCite functions
 }
 \examples{
-\dontrun{
-getBIENpoints(taxon="Acer rubrum", limit = NULL);
-}
+getBIENpoints(taxon="Protea cynaroides")
+
 }
