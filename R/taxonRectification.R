@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' #Inputting a taxonomic name and specifying what taxonomic sources you want to search
-#' studyTaxonList(x = "Buteo buteo hartedi", datasources = c('NCBI', 'EOL'));
+#' studyTaxonList(x = "Buteo buteo hartedi", datasources = 'NCBI');
 #'
 #' @export
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
