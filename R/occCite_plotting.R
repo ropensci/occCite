@@ -14,6 +14,7 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
   d.res <- occCiteData@occResults
   d.tbl <- lapply(1:length(d.res), function(x) mapTbl(d.res[[x]], names(d.res)[x]))
   d <- dplyr::bind_rows(d.tbl)
+  d$DataService <- factor(d$DataService)
 
   world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sp")
 
@@ -27,7 +28,9 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
 
 
   sp.names <- unique(d$name)
-  cols <- RColorBrewer::brewer.pal(9, "Set1")
+  cols <- c("red", "darkred", "lightred", "orange", "beige", "green", "darkgreen",
+            "lightgreen", "blue", "darkblue", "lightblue", "purple", "darkpurple",
+            "pink", "cadetblue", "white", "gray", "lightgray", "black")
 
   sp.cols <- as.list(sample(cols, length(sp.names)))
   names(sp.cols) <- sp.names
@@ -39,9 +42,27 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
     clusterOpts <- NULL
   }
 
-  leaflet::leaflet(world) %>%
-    addProviderTiles(leaflet::providers$Esri.WorldPhysical) %>%
-    leaflet::addCircleMarkers(data = d, ~longitude, ~latitude, label = ~label, color = ~col, radius = 2, clusterOptions = clusterOpts)
+  sp.icons <- lapply(sp.names, makeIconList)
+  names(sp.icons) <- sp.names
+
+  makeIconList <- function(sp) {
+    leaflet::awesomeIconList(
+      GBIF = leaflet::makeAwesomeIcon(icon = "globe", library = "fa", markerColor = sp.cols[[sp]]),
+      BIEN = leaflet::makeAwesomeIcon(icon = "leaf", library = "fa", markerColor = sp.cols[[sp]])
+    )
+  }
+
+
+  d2 <- d[c(1:50,900:925, 2000:2100),]
+
+
+  m <- leaflet::leaflet(world) %>%
+    addProviderTiles(leaflet::providers$Esri.WorldPhysical)
+  for(i in sp.names) {
+    sp.icons.i <- sp.icons[[i]]
+    m <- m %>% leaflet::addAwesomeMarkers(data = d2 %>% dplyr::filter(name == i), ~longitude, ~latitude, label = ~label, icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
+  }
+m
 }
 
 
