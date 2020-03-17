@@ -10,7 +10,6 @@ GBIFLogin <- GBIFLoginManager(user = "userName",
 myOccCiteObject <- occQuery(x = "Protea cynaroides",
                             GBIFLogin = GBIFLogin,
                             datasources = c("gbif", "bien"),
-                            GBIFDownloadDirectory = "~/Desktop",
                             loadLocalGBIFDownload = F,
                             checkPreviousGBIFDownload = F);
 

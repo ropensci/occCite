@@ -53,7 +53,8 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   pwd <- check_pwd(pwd)
 
   #Test login
-  test <- try(rgbif::occ_download(user=user, email = email, pwd = pwd, "catalogNumber = Bird.27847588"), silent = T);
+  test <- try(rgbif::occ_download(user=user, email = email, pwd = pwd,
+                                  rgbif::pred("catalogNumber", "Bird.27847588")), silent = T);
   if(class(test) != 'occ_download'){
     warning("GBIF user login data incorrect.\n");
     return(NULL);

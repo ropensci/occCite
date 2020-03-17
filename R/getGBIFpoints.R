@@ -39,10 +39,12 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
   }
 
   if(checkPreviousGBIFDownload == F | (checkPreviousGBIFDownload == T && is.null(occD))) {
-    occD <- rgbif::occ_download(paste("taxonKey = ", key, sep = ""),
-                         "hasCoordinate = true", "hasGeospatialIssue = false",
-                         user = GBIFLogin@username, email = GBIFLogin@email,
-                         pwd = GBIFLogin@pwd);
+    occD <- rgbif::occ_download(rgbif::pred("taxonKey", key),
+                                rgbif::pred("hasCoordinate", TRUE),
+                                rgbif::pred("hasGeospatialIssue", FALSE),
+                                user = GBIFLogin@username,
+                                email = GBIFLogin@email,
+                                pwd = GBIFLogin@pwd);
 
     print(paste0("It is: ", format(Sys.time(), format = "%H:%M:%S"), ". Please be patient while GBIF prepares your download for ", taxon, ". This can take some time."));
     while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED"){

@@ -34,14 +34,23 @@ tabGBIF <- function(GBIFresults, taxon){
                             occFromGBIF$decimalLatitude,
                             occFromGBIF$day, occFromGBIF$month,
                             occFromGBIF$year, occFromGBIF$datasetID,
-                            as.character(occFromGBIF$datasetKey))
+                            as.character(occFromGBIF$datasetKey),
+                            occFromGBIF$countryCode,
+                            occFromGBIF$stateProvince,
+                            occFromGBIF$locality,
+                            occFromGBIF$basisOfRecord,
+                            occFromGBIF$catalogNumber,
+                            occFromGBIF$institutionCode,
+                            occFromGBIF$elevation,
+                            occFromGBIF$coordinateUncertaintyInMeters)
   dataService <- rep("GBIF", nrow(occFromGBIF));
   occFromGBIF <- cbind(occFromGBIF, dataService);
   occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF[,-8]),]# "Dataset" column excluded because it is not always filled out, but is useful for quick human checks
 
-  colnames(occFromGBIF) <- c("gbifID", "name", "longitude",
-                             "latitude", "day", "month",
-                             "year", "Dataset",
-                             "DatasetKey", "DataService");
+  colnames(occFromGBIF) <- c("gbifID", "name", "longitude", "latitude", "day",
+                             "month", "year", "Dataset", "DatasetKey", "DataService",
+                             "country", "stateProvince", "locality", "basisOfRecord",
+                             "catalogNumber", "institutionCode", "elevation",
+                             "coordinateUncertaintyInMeters")
   return(occFromGBIF)
 }
