@@ -48,9 +48,9 @@ tabGBIF <- function(GBIFresults, taxon){
   occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF[,-8]),]# "Dataset" column excluded because it is not always filled out, but is useful for quick human checks
 
   colnames(occFromGBIF) <- c("gbifID", "name", "longitude", "latitude", "day",
-                             "month", "year", "Dataset", "DatasetKey", "DataService",
-                             "country", "stateProvince", "locality", "basisOfRecord",
+                             "month", "year", "Dataset", "DatasetKey", "country",
+                             "stateProvince", "locality", "basisOfRecord",
                              "catalogNumber", "institutionCode", "elevation",
-                             "coordinateUncertaintyInMeters")
+                             "coordinateUncertaintyInMeters", "DataService")
   return(occFromGBIF)
 }
