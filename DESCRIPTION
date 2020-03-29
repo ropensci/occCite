@@ -33,6 +33,7 @@ Imports:
     stringr,
     stats,
     knitr,
-    bit64
+    bit64,
+    rnaturalearth
 VignetteBuilder: knitr
 RoxygenNote: 7.0.0
