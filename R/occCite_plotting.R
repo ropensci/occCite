@@ -1,5 +1,24 @@
-library(rnaturalearth)
-library(leaflet)
+#' @title Generating a map of downloaded points
+#'
+#' @description Makes maps for each individual species in an occCite
+#' data object.
+#'
+#' @param occCiteData An object of class \code{\link{occCiteData}} to
+#' map.
+#'
+#' @param cluster Logical; setting to `TRUE` turns on marker clustering.
+#'
+#' @return A GBIF download key, if one is available
+#'
+#' @examples
+#' \dontrun{
+#' map.occCite(occCiteData, cluster = FALSE)
+#'}
+#'
+#' @importFrom magrittr "%>%"
+#'
+#' @export
+#'
 
 map.occCite <- function(occCiteData, cluster = FALSE) {
 
@@ -34,13 +53,13 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
   d$col <- sapply(d$name, function(x) sp.cols[[x]])
 
   if(cluster == TRUE) {
-    clusterOpts <- markerClusterOptions()
+    clusterOpts <- leaflet::markerClusterOptions()
   }else{
     clusterOpts <- NULL
   }
 
   leaflet::leaflet(world) %>%
-    addProviderTiles(leaflet::providers$Esri.WorldPhysical) %>%
+    leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical) %>%
     leaflet::addCircleMarkers(data = d, ~longitude, ~latitude, label = ~label, color = ~col, radius = 2, clusterOptions = clusterOpts)
 }
 

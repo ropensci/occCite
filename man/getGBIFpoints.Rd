@@ -7,7 +7,7 @@
 getGBIFpoints(
   taxon,
   GBIFLogin = GBIFLogin,
-  GBIFDownloadDirectory = GBIFDownloadDirectory,
+  GBIFDownloadDirectory = NULL,
   checkPreviousGBIFDownload = T
 )
 }

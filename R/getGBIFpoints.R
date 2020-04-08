@@ -27,7 +27,7 @@
 #'}
 #'
 #' @export
-getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GBIFDownloadDirectory, checkPreviousGBIFDownload = T){
+getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = NULL, checkPreviousGBIFDownload = T){
 
   key <- rgbif::name_suggest(q=taxon, rank='species')$key[1];
 
@@ -39,8 +39,8 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
   }
 
   if(checkPreviousGBIFDownload == F | (checkPreviousGBIFDownload == T && is.null(occD))) {
-    occD <- rgbif::occ_download(paste("taxonKey = ", key, sep = ""),
-                         "hasCoordinate = true", "hasGeospatialIssue = false",
+    occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
+                         rgbif::pred("hasCoordinate", TRUE), rgbif::pred("hasGeospatialIssue", FALSE),
                          user = GBIFLogin@username, email = GBIFLogin@email,
                          pwd = GBIFLogin@pwd);
 
@@ -50,6 +50,10 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = GB
       print(paste("Still waiting for", taxon, "download preparation to be completed. Time: ",
                   format(Sys.time(), format = "%H:%M:%S")))
     }
+  }
+
+  if(is.null(GBIFDownloadDirectory)) {
+    GBIFDownloadDirectory <- getwd()
   }
 
   #Create folders for each species at the designated location

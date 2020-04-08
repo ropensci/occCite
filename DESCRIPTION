@@ -21,9 +21,11 @@ BugReports: https://github.com/hannahlowens/occCite/issues
 Encoding: UTF-8
 LazyData: true
 Suggests:
-  rmarkdown
+  rmarkdown,
+  RColorBrewer
 Imports:
     BIEN,
+    dplyr,
     ape,
     lubridate,
     methods,
@@ -33,6 +35,10 @@ Imports:
     stringr,
     stats,
     knitr,
-    bit64
+    bit64,
+    leaflet,
+    rnaturalearth,
+    htmltools,
+    magrittr
 VignetteBuilder: knitr
-RoxygenNote: 7.0.0
+RoxygenNote: 7.1.0
