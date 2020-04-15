@@ -187,3 +187,10 @@ cat(paste(myPhyOccCitations$Citation,
            " Accessed via ", myPhyOccCitations$occSearch, 
            " on ", myPhyOccCitations$`Accession Date`, "."), sep = "\n");
 ```
+
+## Plotting occCite search results
+
+occCite also contains tools to plot search results. We can pass a single-species search occCite object to be mapped using `leaflet`.
+```{r mapping search results, eval = T, echo = T}
+map.occCite(mySimpleOccCiteObject, cluster = T)
+```
