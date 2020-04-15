@@ -142,6 +142,12 @@ occQuery <- function(x = NULL,
   queryResults <- x;
   searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
 
+  #Check to make sure there was a taxon match
+  if(searchTaxa == "No match" | is.null(searchTaxa)){
+    warning("There was no taxonomic match. Search cancelled.\n");
+    return(NULL);
+  }
+
   #For GBIF
   if ("gbif" %in% datasources){
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
