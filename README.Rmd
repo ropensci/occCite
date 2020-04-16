@@ -7,6 +7,7 @@ author:
 - Vijay Barve
 - Robert Guralnick
 date: "`r Sys.Date()`"
+always_allow_html: true
 output:
   md_document:
     variant: markdown_github
