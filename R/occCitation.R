@@ -108,5 +108,7 @@ occCitation <-function(x = NULL){
     citationTable <- gbifTable
   }
 
+  citationTable <- citationTable[order(citationTable$Citation),]
+
   return(citationTable);
 }
