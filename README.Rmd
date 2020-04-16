@@ -4,10 +4,10 @@ author:
 - Hannah Owens
 - Cory Merow
 - Brian Maitner
+- Jamie Kass
 - Vijay Barve
 - Robert Guralnick
 date: "`r Sys.Date()`"
-always_allow_html: true
 output:
   md_document:
     variant: markdown_github
@@ -191,7 +191,7 @@ cat(paste(myPhyOccCitations$Citation,
 
 ## Plotting occCite search results
 
-occCite also contains tools to plot search results. We can pass a single-species search occCite object to be mapped using `leaflet`.
-```{r mapping search results, eval = T, echo = T}
+occCite also contains tools to plot search results. We can pass a single-species search occCite object to be mapped as an interactive html widget using `leaflet`.
+```{r mapping search results, eval = F, echo = T}
 map.occCite(mySimpleOccCiteObject, cluster = T)
 ```

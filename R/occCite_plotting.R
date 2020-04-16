@@ -32,11 +32,12 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
 
   d.res <- occCiteData@occResults
   d.tbl <- lapply(1:length(d.res), function(x) mapTbl(d.res[[x]], names(d.res)[x]))
+
   d <- dplyr::bind_rows(d.tbl)
 
   world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sp")
 
-  d$label <- paste(paste("name:", d$name), paste("gbifID:", d$gbifID),
+  d$label <- paste(paste("name:", d$name),
                    paste("longitude:", d$longitude), paste("latitude:", d$latitude),
                    paste0("day: ", d$day, ", month: ", d$month, ", year: ", d$year),
                    paste("dataset:", d$Dataset), paste("data service:", d$DataService), sep = "<br/>")
@@ -44,9 +45,8 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
 
   # leaflet::setView(mean(d$longitude), mean(d$latitude), zoom = 1) %>%
 
-
   sp.names <- unique(d$name)
-  cols <- RColorBrewer::brewer.pal(9, "Set1")
+  cols <- viridis::viridis(length(sp.names))
 
   sp.cols <- as.list(sample(cols, length(sp.names)))
   names(sp.cols) <- sp.names
@@ -62,6 +62,3 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
     leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical) %>%
     leaflet::addCircleMarkers(data = d, ~longitude, ~latitude, label = ~label, color = ~col, radius = 2, clusterOptions = clusterOpts)
 }
-
-
-

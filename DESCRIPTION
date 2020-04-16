@@ -22,7 +22,7 @@ Encoding: UTF-8
 LazyData: true
 Suggests:
   rmarkdown,
-  RColorBrewer
+  viridis
 Imports:
     BIEN,
     dplyr,
