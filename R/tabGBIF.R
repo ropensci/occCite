@@ -33,7 +33,7 @@ tabGBIF <- function(GBIFresults, taxon){
                             occFromGBIF$decimalLongitude,
                             occFromGBIF$decimalLatitude,
                             occFromGBIF$day, occFromGBIF$month,
-                            occFromGBIF$year, occFromGBIF$datasetID,
+                            occFromGBIF$year, occFromGBIF$datasetName,
                             as.character(occFromGBIF$datasetKey))
   dataService <- rep("GBIF", nrow(occFromGBIF));
   occFromGBIF <- cbind(occFromGBIF, dataService);
