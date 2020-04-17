@@ -645,7 +645,7 @@ sumFig.occCite(myPhyOccCiteObject,
                plotTypes = c("yearHistogram", "source", "aggregator"))
 ```
 
-<img src="README_files/figure-markdown_github/summary figures overall-1.png" width="32%" /><img src="README_files/figure-markdown_github/summary figures overall-2.png" width="32%" /><img src="README_files/figure-markdown_github/summary figures overall-3.png" width="32%" />
+<img src="README_files/figure-markdown_github/summary figures overall-1.png" width="33%" /><img src="README_files/figure-markdown_github/summary figures overall-2.png" width="33%" /><img src="README_files/figure-markdown_github/summary figures overall-3.png" width="33%" />
 
 We can also generate plots for each species in the `occCiteData` object
 individually. Since GBIF is the only aggregator we used for the query,

@@ -196,7 +196,7 @@ cat(paste(myPhyOccCitations$Citation,
 
 occCite includes a function called `sumFig.occCite()` which is capable of generating three types of plots from an `occCiteData` object. First, let's see how the results of our multispecies query looks.
 
-```{r summary figures overall, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="32%"}
+```{r summary figures overall, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
 sumFig.occCite(myPhyOccCiteObject, 
                bySpecies = F, 
                plotTypes = c("yearHistogram", "source", "aggregator"))
