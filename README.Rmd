@@ -196,20 +196,18 @@ cat(paste(myPhyOccCitations$Citation,
 
 occCite includes a function called `sumFig.occCite()` which is capable of generating three types of plots from an `occCiteData` object. First, let's see how the results of our multispecies query looks.
 
-```{r summary figures overall, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE}
-par(mfrow = c(1,3))
+```{r summary figures overall, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="32%"}
 sumFig.occCite(myPhyOccCiteObject, 
                bySpecies = F, 
                plotTypes = c("yearHistogram", "source", "aggregator"))
 ```
 
-We can also generate plots for each species in the `occCiteData` object individually.
+We can also generate plots for each species in the `occCiteData` object individually. Since GBIF is the only aggregator we used for the query, I'll skip generating the aggregator plot.
 
-```{r summary figures by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE}
-par(mfrow = c(2,3))
+```{r summary figures by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="50%"}
 sumFig.occCite(myPhyOccCiteObject, 
                bySpecies = T, 
-               plotTypes = c("yearHistogram", "source", "aggregator"))
+               plotTypes = c("yearHistogram", "source"))
 ```
 
 ## Mapping occCite search results
