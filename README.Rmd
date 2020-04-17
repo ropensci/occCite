@@ -189,9 +189,33 @@ cat(paste(myPhyOccCitations$Citation,
            " on ", myPhyOccCitations$`Accession Date`, "."), sep = "\n");
 ```
 
-## Plotting occCite search results
+***
+# Visualization features
 
-occCite also contains tools to plot search results. We can pass a single-species search occCite object to be mapped as an interactive html widget using `leaflet`.
+## Search result summary figures
+
+occCite includes a function called `sumFig.occCite()` which is capable of generating three types of plots from an `occCiteData` object. First, let's see how the results of our multispecies query looks.
+
+```{r summary figures overall, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE}
+par(mfrow = c(1,3))
+sumFig.occCite(myPhyOccCiteObject, 
+               bySpecies = F, 
+               plotTypes = c("yearHistogram", "source", "aggregator"))
+```
+
+We can also generate plots for each species in the `occCiteData` object individually.
+
+```{r summary figures by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE}
+par(mfrow = c(2,3))
+sumFig.occCite(myPhyOccCiteObject, 
+               bySpecies = T, 
+               plotTypes = c("yearHistogram", "source", "aggregator"))
+```
+
+## Mapping occCite search results
+
+occCite also contains tools to map search results. We can pass occCite objects to be mapped as an interactive html widget using `leaflet`. If there are multiple species in a single occCite object, occurrences will be color-coded by species. If you click on a single occurrence, you will be able to see the species, the coordinates, the date on which it was collected, the dataset to which it belongs, and the dataservice that provided the record.
+
 ```{r mapping search results, eval = F, echo = T}
 map.occCite(mySimpleOccCiteObject, cluster = T)
 ```

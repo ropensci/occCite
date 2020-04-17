@@ -20,7 +20,7 @@ Makes maps for each individual species in an occCite
 data object.
 }
 \examples{
-\dontrun{
+\donttest{
 map.occCite(occCiteData, cluster = FALSE)
 }
 

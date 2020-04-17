@@ -19,6 +19,7 @@
 #'}
 #'
 #' @export
+
 GBIFtableCleanup <- function(GBIFtable){
   GBIFtable <- GBIFtable[,-1]
   GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))

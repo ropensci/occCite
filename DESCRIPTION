@@ -22,7 +22,8 @@ Encoding: UTF-8
 LazyData: true
 Suggests:
   rmarkdown,
-  viridis
+  viridis,
+  waffle
 Imports:
     BIEN,
     dplyr,
@@ -39,6 +40,7 @@ Imports:
     leaflet,
     rnaturalearth,
     htmltools,
+    ggplot2,
     magrittr
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
