@@ -9,8 +9,8 @@
 #' containing the names of taxa of interest
 #'
 #' @param datasources A vector of taxonomic datasources implemented in
-#' \code{\link{gnr_resolve}}. See the
-#' \href{http://gni.globalnames.org/}{Global Names List} for more information.
+#' \code{\link{gnr_resolve}}. You can see the list using
+#' \code{taxize::gnr_datasources()}.
 #'
 #' @return An object of class \code{\link{occCiteData}} containing the type
 #' of inquiry the user has made --a phylogeny or a vector of names-- and a
