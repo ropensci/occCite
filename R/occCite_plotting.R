@@ -83,11 +83,12 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
 
   d.nest <- tidyr::nest(d, data = -c("longitude", "latitude"))
   labs.lst <- lapply(d.nest$data, function(x) htmltools::HTML(unlist(x$label)))
-  multiDS.inds <- which(sapply(d.nest$data, nrow) > 1)
+  # multiDS.inds <- which(sapply(d.nest$data, nrow) > 1)
+  bien.inds <- which(unlist(sapply(d.nest$data, function(x) x$DataService)) == "BIEN")
   cols.lst <- as.character(sapply(d.nest$data, function(x) x$col[1]))
 
-  bienFills <- rep("", nrow(d.nest))
-  bienFills[multiDS.inds] <- "black"
+  # bienFills <- rep("", nrow(d.nest))
+  # bienFills[bien.inds] <- "black"
 
   if(cluster == TRUE) {
     clusterOpts <- leaflet::markerClusterOptions()
@@ -98,8 +99,8 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
   leaflet::leaflet(world) %>%
     leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical) %>%
     leaflet::addCircleMarkers(data = d.nest, ~longitude, ~latitude, label = labs.lst,
-                              color = cols.lst, radius = 3, fillColor = bienFills,
-                              fillOpacity = 1, clusterOptions = clusterOpts)
+                              color = "black", fillColor = cols.lst, weight = 2, radius = 5,
+                              fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
 }
 
 #' @title Generating summary figures for occCite search results
