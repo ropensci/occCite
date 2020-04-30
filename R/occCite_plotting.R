@@ -61,10 +61,13 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
+  # remove coordinate duplicates with same DataService
+  d <- distinct(d, longitude, latitude, DataService, .keep_all = TRUE)
+
   d$label <- paste(paste("name:", d$name),
                    paste("longitude:", d$longitude), paste("latitude:", d$latitude),
                    paste0("day: ", d$day, ", month: ", d$month, ", year: ", d$year),
-                   paste("dataset:", d$Dataset), paste("data service:", d$DataService), sep = "<br/>")
+                   paste("dataset:", d$Dataset), paste("data service:", d$DataService, "<br/><br/>"), sep = "<br/>")
   d$label <- lapply(d$label, htmltools::HTML)
 
   # leaflet::setView(mean(d$longitude), mean(d$latitude), zoom = 1) %>%
@@ -72,11 +75,19 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
   world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sp")
 
   sp.names <- unique(d$name)
-  cols <- viridis::viridis(length(sp.names))
+  cols <- RColorBrewer::brewer.pal(ifelse(length(sp.names) > 2, length(sp.names), 3), "Set1")
 
   sp.cols <- as.list(sample(cols, length(sp.names)))
   names(sp.cols) <- sp.names
   d$col <- sapply(d$name, function(x) sp.cols[[x]])
+
+  d.nest <- tidyr::nest(d, data = -c("longitude", "latitude"))
+  labs.lst <- lapply(d.nest$data, function(x) htmltools::HTML(unlist(x$label)))
+  multiDS.inds <- which(sapply(d.nest$data, nrow) > 1)
+  cols.lst <- as.character(sapply(d.nest$data, function(x) x$col[1]))
+
+  bienFills <- rep("", nrow(d.nest))
+  bienFills[multiDS.inds] <- "black"
 
   if(cluster == TRUE) {
     clusterOpts <- leaflet::markerClusterOptions()
@@ -86,7 +97,9 @@ map.occCite <- function(occCiteData, cluster = FALSE) {
 
   leaflet::leaflet(world) %>%
     leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical) %>%
-    leaflet::addCircleMarkers(data = d, ~longitude, ~latitude, label = ~label, color = ~col, radius = 2, clusterOptions = clusterOpts)
+    leaflet::addCircleMarkers(data = d.nest, ~longitude, ~latitude, label = labs.lst,
+                              color = cols.lst, radius = 3, fillColor = bienFills,
+                              fillOpacity = 1, clusterOptions = clusterOpts)
 }
 
 #' @title Generating summary figures for occCite search results
