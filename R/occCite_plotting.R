@@ -19,8 +19,8 @@ tabulate.occResults <- function(x, sp.name) {
   occTbls <- lapply(x, function(db) db$OccurrenceTable)
   occTbls.nulls <- sapply(occTbls, is.null)
   occTbls.char <- lapply(occTbls[!occTbls.nulls], function(tbl)
-    tbl %>% dplyr::mutate_if(is.factor, as.character)
-    %>% dplyr::mutate(name = sp.name))
+    tbl %>% dplyr::mutate_if(is.factor, as.character) %>%
+      dplyr::mutate(name = sp.name))
   occTbls.bind <- dplyr::bind_rows(occTbls.char)
   return(occTbls.bind)
 }
