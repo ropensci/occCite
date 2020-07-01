@@ -13,9 +13,12 @@ occCitation(x = NULL)
 A dataframe with citations information for occurrences
 }
 \description{
-Harvests citations from GBIF for occurrence data
+Harvests citations for occurrence data
 }
 \examples{
+
+\dontrun{
 myCitations <- occCitation(x = myoccCiteObject);
+}
 
 }

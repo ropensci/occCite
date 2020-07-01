@@ -4,33 +4,82 @@
 \alias{occQuery}
 \title{Query from Taxon List}
 \usage{
-occQuery(x = NULL, datasources = c("gbif", "bien"), GBIFLogin = NULL,
-  GBIFDownloadDirectory = NULL, options = NULL)
+occQuery(
+  x = NULL,
+  datasources = c("gbif", "bien"),
+  GBIFLogin = NULL,
+  GBIFDownloadDirectory = NULL,
+  loadLocalGBIFDownload = F,
+  checkPreviousGBIFDownload = T,
+  options = NULL
+)
 }
 \arguments{
-\item{x}{An object of class \code{\link{occCiteData}} (the results of a \code{\link{studyTaxonList}} search) OR a vector with a list of species names. Note: If the latter, taxonomic rectfication uses EOL and NCBI taxonomies. If you want more control than this, use \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object first.}
+\item{x}{An object of class \code{\link{occCiteData}} (the results of
+a \code{\link{studyTaxonList}} search) OR a vector with a list of species
+names. Note: If the latter, taxonomic rectfication uses NCBI
+taxonomies. If you want more control than this, use
+\code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object
+first.}
 
-\item{datasources}{A vector of occurrence datasources to search. This is currently limited to GBIF and BIEN, but may expand in the future.}
+\item{datasources}{A vector of occurrence datasources to search. This is
+currently limited to GBIF and BIEN, but may expand in the future.}
 
-\item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.}
+\item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to
+GBIF to begin the download.}
 
-\item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
+\item{GBIFDownloadDirectory}{An optional argument that specifies the local
+directory where GBIF downloads will be saved. If this is not specified,
+the downloads will be saved to your current working directory.}
+
+\item{loadLocalGBIFDownload}{If \code{loadLocalGBIFDownload = T}, then
+occCite will load occurrences for the specified species that have been
+downloaded by the user and stored in the directory specified by
+\code{GBIFDownloadDirectory}.}
+
+\item{checkPreviousGBIFDownload}{If \code{loadLocalGBIFDownload = T},
+occCite will check for previously-prepared GBIF downloads on the user's
+GBIF account. Setting this option to `TRUE` can significantly speed up
+query time if the user has previously queried GBIF for the same taxa.}
 
 \item{options}{A vector of options to pass to \code{\link{occ_download}}.}
-
-\item{GBIFOverwrite}{If false, retrieves previously-downloaded data from the GBIFDownloadDirectory specified (note that directory names must match species names for this to work).}
 }
 \value{
-The object of class \code{\link{occCiteData}} supplied by the user as an argument, with occurrence data search results, as well as metadata on the occurrence sources queried.
+The object of class \code{\link{occCiteData}} supplied by the user
+as an argument, with occurrence data search results, as well as metadata
+on the occurrence sources queried.
 }
 \description{
-Takes rectified list of specimens from \code{\link{studyTaxonList}} and returns point data from \code{\link{rgbif}} with metadata.
+Takes rectified list of specimens from
+\code{\link{studyTaxonList}} and returns point data from
+\code{\link{rgbif}} with metadata.
 }
 \examples{
-## If you have already created a occCite object
-occQuery(x = myBridgTreeObject, datasources = c("gbif", "bien"), GBIFLogin = myLogin, GBIFDownloadDirectory = "./Desktop");
+\dontrun{
+##If you have already created a occCite object, and have not previously
+##downloaded GBIF data.
+occQuery(x = myBridgeTreeObject,
+         datasources = c("gbif", "bien"),
+         GBIFLogin = myLogin,
+         GBIFDownloadDirectory = "./Desktop"
+         loadLocalGBIFDownload = F);
 
 ## If you don't have a occCite object yet
-occQuery(x = c("Buteo buteo", "Protea cynaroides"), datasources = c("gbif", "bien"), GBIFLogin = myLogin, GBIFDownloadDirectory = "./Desktop");
+occQuery(x = c("Buteo buteo", "Protea cynaroides"),
+         datasources = c("gbif", "bien"),
+         GBIFLogin = myLogin,
+         GBIFOverwrite = T,
+         GBIFDownloadDirectory = "./Desktop"
+         loadLocalGBIFDownload = F);
+
+## If you have previously downloaded occurrence data from GBIF
+## and saved it in a folder called "GBIFDownloads".
+occQuery(x = c("Buteo buteo", "Protea cynaroides"),
+         datasources = c("gbif", "bien"),
+         GBIFLogin = myLogin,
+         GBIFoverwrite = T,
+         GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
+         loadLocalGBIFDownload = T);
+}
 
 }

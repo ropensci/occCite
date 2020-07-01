@@ -13,8 +13,10 @@ A class for managing GBIF login data.
 \describe{
 \item{\code{username}}{A vector of type character specifying a GBIF username.}
 
-\item{\code{email}}{A vector of type character specifying the email associated with a GBIF username.}
+\item{\code{email}}{A vector of type character specifying the email associated with
+a GBIF username.}
 
-\item{\code{pwd}}{A vector of type character containing the user's password for logging in to GBIF.}
+\item{\code{pwd}}{A vector of type character containing the user's password for
+logging in to GBIF.}
 }}
 

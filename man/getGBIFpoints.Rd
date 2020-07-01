@@ -4,23 +4,40 @@
 \alias{getGBIFpoints}
 \title{Download occurrence points from GBIF}
 \usage{
-getGBIFpoints(taxon, GBIFLogin = GBIFLogin,
-  GBIFDownloadDirectory = GBIFDownloadDirectory, limit = NULL)
+getGBIFpoints(
+  taxon,
+  GBIFLogin = GBIFLogin,
+  GBIFDownloadDirectory = NULL,
+  checkPreviousGBIFDownload = T
+)
 }
 \arguments{
 \item{taxon}{A single species}
 
-\item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to GBIF to begin the download.}
+\item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to
+GBIF to begin the download.}
 
-\item{GBIFDownloadDirectory}{An optional argument that specifies the local directory where GBIF downloads will be saved. If this is not specified, the downloads will be saved to your current working directory.}
+\item{GBIFDownloadDirectory}{An optional argument that specifies the local
+directory where GBIF downloads will be saved. If this is not specified, the
+downloads will be saved to your current working directory.}
+
+\item{checkPreviousGBIFDownload}{A logical operator specifying whether the
+user wishes to check their existing prepared downloads on the GBIF website.}
 }
 \value{
-A list containing (1) a dataframe of occurrence data; (2) GBIF search metadata
+A list containing \enumerate{ \item a dataframe of occurrence data;
+\item GBIF search metadata; \item a dataframe containing the raw results of
+ a query to `rgbif::occ_download_get()`.}
 }
 \description{
-Downloads occurrence points and useful related information for processing within other occCite functions
+Downloads occurrence points and useful related information
+for processing within other occCite functions
 }
 \examples{
-getGBIFpoints(taxon="Gadus morhua", GBIFLogin = myGBIFLogin, GBIFDownloadDirectory = NULL);
+\dontrun{
+getGBIFpoints(taxon="Gadus morhua",
+              GBIFLogin = myGBIFLogin,
+              GBIFDownloadDirectory = NULL);
+}
 
 }
