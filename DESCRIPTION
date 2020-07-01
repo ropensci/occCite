@@ -42,7 +42,13 @@ Imports:
     rnaturalearth,
     htmltools,
     ggplot2,
+<<<<<<< HEAD
     magrittr,
     tidyr
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
+=======
+    magrittr
+VignetteBuilder: knitr
+RoxygenNote: 7.1.0
+>>>>>>> d82ed82a59398dd5dd39b7a9f44adbd3c25a3fdb
