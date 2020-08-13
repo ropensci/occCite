@@ -32,7 +32,7 @@ Imports:
     lubridate,
     methods,
     readr,
-    rgbif,
+    rgbif (>= 3.1),
     taxize,
     stringr,
     stats,
