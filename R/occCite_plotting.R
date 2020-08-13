@@ -67,6 +67,7 @@ tabulate.occResults <- function(x, sp.name) {
 #'
 #' @importFrom magrittr "%>%"
 #' @importFrom stats filter
+#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -157,7 +158,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     clusterOpts <- NULL
   }
 
-  m <- leaflet::leaflet() %>% addProviderTiles(leaflet::providers$Esri.WorldPhysical)
+  m <- leaflet::leaflet() %>% leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical)
 
   if(awesomeMarkers == TRUE) {
     makeIconList <- function(sp) {
@@ -174,16 +175,16 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
       if(nrow(d.nest.i) == 0) next
       sp.icons.i <- sp.icons[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addAwesomeMarkers(data = d.nest %>% filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
+      m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
                                             icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
     }
   }else{
     for(i in sp.names) {
       sp.cols.i <- sp.cols[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addCircleMarkers(data = d.nest %>% filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
-                                           color = "black", fillColor = ~sp.cols.i, weight = 2, radius = 5,
-                                           fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
+      m <- m %>% leaflet::addCircleMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(name == i), ~longitude, ~latitude,
+                                           label = ~labs.lst.i, color = "black", fillColor = ~sp.cols.i, weight = 2,
+                                           radius = 5, fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
     }
   }
   m
