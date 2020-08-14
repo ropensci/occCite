@@ -67,7 +67,6 @@ tabulate.occResults <- function(x, sp.name) {
 #'
 #' @importFrom magrittr "%>%"
 #' @importFrom stats filter
-#' @importFrom rlang .data
 #'
 #' @export
 #'

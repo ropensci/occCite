@@ -39,6 +39,7 @@ Imports:
     rgbif (>= 3.1),
     taxize,
     stringr,
+    knitr,
     stats,
     leaflet,
     htmltools,
