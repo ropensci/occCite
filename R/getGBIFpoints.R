@@ -29,7 +29,9 @@
 #' @export
 getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = NULL, checkPreviousGBIFDownload = T){
 
-  key <- rgbif::name_suggest(q=taxon, rank='species')$data$key[1];
+  cleanTaxon <- stringr::str_extract(string = taxon,
+                                     pattern = "(\\w+\\s\\w+)")# Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
+  key <- rgbif::name_suggest(q=cleanTaxon, rank='species')$data$key[1];
 
   if (checkPreviousGBIFDownload){
     occD <- prevGBIFdownload(key, GBIFLogin);
