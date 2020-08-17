@@ -23,7 +23,7 @@
 #'
 #' @export
 #'
-prevGBIFdownload <- function(taxonKey, GBIFLogin){
+prevGBIFdownload <- function(taxonKey = "No key", GBIFLogin){
   dl <- rgbif::occ_download_list(user= GBIFLogin@username, pwd = GBIFLogin@pwd, limit = 1000);
   recKey <- NULL;
   retmat <- NULL;
@@ -35,7 +35,7 @@ prevGBIFdownload <- function(taxonKey, GBIFLogin){
       recKey <- dl$results$request.predicate.predicates[[i]][
         dl$results$request.predicate.predicates[[i]]$key=="TAXON_KEY",]$value;
     }
-    if(taxonKey %in% recKey){
+    if(any(grepl(pattern = taxonKey, recKey))){
       retmat <- rbind(retmat,dl$results[i,]);
     }
   }
