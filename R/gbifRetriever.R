@@ -25,9 +25,9 @@
 
 gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
   #Error checking
-  taxon_key <- rgbif::name_suggest(q= taxon)$key[1]
+  taxon_key <- as.numeric(rgbif::name_suggest(q= taxon, fields = "key", rank = "species")$data[1])
   if(is.null(taxon_key)){
-    warning(paste0(" Taxon",taxon," could not be resolved."))
+    warning(paste0(" Taxon ", taxon," could not be resolved."))
     return(NULL)
   }
 
@@ -58,12 +58,10 @@ gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
     }
     metadata <- rgbif::occ_download_meta(key = keys[[i]]);
     if (metadata$totalRecords > 0){
-      for(j in 1:length(metadata$request$predicate$predicates)){
-        if(metadata$request$predicate$predicates[[j]]$key=="TAXON_KEY" &
-           metadata$request$predicate$predicates[[j]]$value==taxon_key){
-          matchIndex <- append(matchIndex, i);
-          matchDate <- append(matchDate, metadata$modified);
-        }
+      if(metadata$request$predicate$key=="TAXON_KEY" &
+         metadata$request$predicate$value==taxon_key){
+        matchIndex <- append(matchIndex, i);
+        matchDate <- append(matchDate, metadata$modified);
       }
     }
   }
