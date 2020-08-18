@@ -22,6 +22,7 @@
 #'
 #' @export
 tabGBIF <- function(GBIFresults, taxon){
+
   occFromGBIF <- rgbif::occ_download_import(GBIFresults);
 
   if(nrow(occFromGBIF)==0){

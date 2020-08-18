@@ -4,12 +4,6 @@
 #'  that has been previously downloaded from GBIF to a local machine
 #'   and imports it into occCite
 #'
-#' @param GBIFDownloadDirectory An optional argument that specifies
-#'  either the local directory where the user would like to save new
-#'  GBIF datasets, or the directory containing previously-downloaded
-#'  GBIF datasets. If this is not specified, occCite will use your
-#'  current working directory.
-#'
 #' @param taxon A single species
 #'
 #' @return A list of lists containing (1) a dataframe of occurrence
@@ -23,43 +17,29 @@
 #'
 #' @export
 
-gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
+gbifRetriever <- function (taxon = NULL){
   #Error checking
-  taxon_key <- as.numeric(rgbif::name_suggest(q= taxon, fields = "key", rank = "species")$data[1])
+  cleanTaxon <- stringr::str_extract(string = taxon,
+                                     pattern = "(\\w+\\s\\w+)")# Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
+
+  taxon_key <- as.numeric(rgbif::name_suggest(q= cleanTaxon, fields = "key", rank = "species")$data[1])
   if(is.null(taxon_key)){
     warning(paste0(" Taxon ", taxon," could not be resolved."))
     return(NULL)
   }
 
-  startWD <- getwd();
-  if(is.null(GBIFDownloadDirectory)){
-    GBIFDownloadDirectory <- startWD;
-  }
-  if (!dir.exists(GBIFDownloadDirectory)){
-    warning(paste("Input directory, '", GBIFDownloadDirectory, "', does not exist. Your current working directory is being searched instead.", sep = ""));
-    GBIFDownloadDirectory <- startWD;
-  }
-
-  #Get all GBIF downloads in specified directory
-  if (!stringr::str_sub(GBIFDownloadDirectory, -1) == "/"){
-    GBIFDownloadDirectory <- paste0(GBIFDownloadDirectory, "/")
-  }
-  try(setwd(GBIFDownloadDirectory));
-  paths <- list.files(GBIFDownloadDirectory, pattern = "\\d{7}-\\d{15}.zip", recursive = T);
+  paths <- list.files(getwd(), pattern = "\\d{7}-\\d{15}.zip", recursive = T);
   keys <- as.vector(stringr::str_match(paths, pattern = "\\d{7}-\\d{15}"));
   paths <- stringr::str_remove(paths, pattern = "\\d{7}-\\d{15}.zip")
 
   #Sort through downloads to find taxon matches
   matchIndex <- NULL;
   matchDate <- NULL;
-  for (i in 1:length(paths)){
-    if(paths[[i]]!=""){
-      setwd(paste0(GBIFDownloadDirectory, paths[[i]]))
-    }
+  for (i in 1:length(keys)){
     metadata <- rgbif::occ_download_meta(key = keys[[i]]);
     if (metadata$totalRecords > 0){
-      if(metadata$request$predicate$key=="TAXON_KEY" &
-         metadata$request$predicate$value==taxon_key){
+      if(!is.na(match(table = unlist(metadata$request), "TAXON_KEY")) &
+         taxon_key %in% unlist(metadata$request)){
         matchIndex <- append(matchIndex, i);
         matchDate <- append(matchDate, metadata$modified);
       }
@@ -67,21 +47,16 @@ gbifRetriever <- function (GBIFDownloadDirectory = NULL, taxon = NULL){
   }
   if(length(matchIndex) == 0){
     print(paste0("There are no local drive downloads for ", taxon, "in ", GBIFDownloadDirectory, "."));
-    setwd(startWD)
     return(NULL);
   }
   else{
     #Gets the downloaded data for the most recent match and returns it
     newestTaxonomicMatch <- matchIndex[order(matchDate,
                                              decreasing = T)][1]
-    setwd(paste0(GBIFDownloadDirectory, paths[[newestTaxonomicMatch]]))
-    res <- rgbif::as.download(key = keys[[newestTaxonomicMatch]]);
+    res <- rgbif::as.download(paths[[newestTaxonomicMatch]], key = keys[[newestTaxonomicMatch]]);
     rawOccs <- res;
     occFromGBIF <- tabGBIF(res, taxon = taxon);
     occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]]);
-
-    #Reset working directory to starting state.
-    setwd(startWD)
 
     #Preparing list for return
     outlist<-list();

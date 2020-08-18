@@ -154,12 +154,15 @@ occQuery <- function(x = NULL,
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
     names(gbifResults) <- searchTaxa;
     if(loadLocalGBIFDownload){
+      currentWD <- getwd()
+      setwd(GBIFDownloadDirectory)
       for(i in 1:length(searchTaxa)){
         #Gets *all* downloaded records
-        temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]])
+        temp <- gbifRetriever(searchTaxa[[i]])
         temp[[1]] <- GBIFtableCleanup(temp[[1]])
         gbifResults[[i]] <- temp
       }
+      setwd(currentWD)
     }
     else{
       for (i in searchTaxa){
