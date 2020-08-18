@@ -46,7 +46,7 @@ gbifRetriever <- function (taxon = NULL){
     }
   }
   if(length(matchIndex) == 0){
-    print(paste0("There are no local drive downloads for ", taxon, "in ", GBIFDownloadDirectory, "."));
+    print(paste0("There are no local drive downloads for ", taxon, "in ", getwd(), "."));
     return(NULL);
   }
   else{

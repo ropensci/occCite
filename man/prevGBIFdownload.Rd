@@ -4,7 +4,7 @@
 \alias{prevGBIFdownload}
 \title{Download previously-prepared GBIF datasets}
 \usage{
-prevGBIFdownload(taxonKey, GBIFLogin)
+prevGBIFdownload(taxonKey = "No key", GBIFLogin)
 }
 \arguments{
 \item{taxonKey}{A taxon key as returned from `rgbif::name_suggest()`.}
