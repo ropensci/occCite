@@ -29,36 +29,36 @@ tabulate.occResults <- function(x, sp.name) {
 
 #' @title Generating a map of downloaded points
 #'
-#' @description Makes maps for each individual species in an occCite
-#' data object.
+#' @description Makes maps for each individual species in an \code{\link{occCiteData}}
+#'  object.
 #'
 #' @param occCiteData An object of class \code{\link{occCiteData}} to map
 #'
 #' @param species_map Character; either the default "all" to map all species
-#' in occCiteData, or a subset of these specified as a character or character vector
+#' in \code{\link{occCiteData}}, or a subset of these specified as a character or character vector
 #'
 #' @param species_colors Character; the default NULL will choose random colors from
 #' those available (see Details), or those specified by the user as
 #' a character or character vector (the number of colors must match the number of species mapped)
 #'
-#' @param ds_map Character; specifies which DataService records will be mapped, with the default
+#' @param ds_map Character; specifies which data service records will be mapped, with the default
 #' being GBIF, BIEN, and GBIF_BIEN (records with the same coordinates in both databases)
 #'
 #' @param map_limit Numeric; the number of points to map per species, set at a default of 1000
 #' randomly selected records; users can specify a higher number, but be aware that leaflet can
 #' lag or crash when too many points are plotted
 #'
-#' @param awesomeMarkers Logical; if `TRUE` (default), mapped points will be awesomeMarkers
+#' @param awesomeMarkers Logical; if `TRUE` (default), mapped points will be `awesomeMarkers`
 #' attributed with an icon for a globe for GBIF, a leaf for BIEN, or a database if records
-#' from both databases have the same coordinates; if `FALSE`, mapped points will be leaflet circleMarkers
+#' from both databases have the same coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`
 #'
 #' @param cluster Logical; if `TRUE` (default is `FALSE`) turns on marker clustering, which does not
 #' preserve color differences between species
 #'
-#' @details When mapping awesomeMarkers (default), the parameter species_colors must match those in
+#' @details When mapping using `awesomeMarkers` (default), the parameter species_colors must match those in
 #' a specified color library, currently: c("red", "lightred", "orange", "beige", "green", "lightgreen",
-#' "blue", "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray"). When awesomeMarkers
-#' if `FALSE` and species_colors are not specified, random colors from the RColorBrewer Set1 palette are used.
+#' "blue", "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray"). When `awesomeMarkers`
+#' is `FALSE` and species_colors are not specified, random colors from the `RColorBrewer` Set1 palette are used.
 #'
 #' @return A leaflet map
 #'
