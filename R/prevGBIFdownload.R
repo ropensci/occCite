@@ -1,7 +1,7 @@
-#' @title Download previously-prepared GBIF datasets
+#' @title Download previously-prepared GBIF data sets
 #'
 #' @description Searches the list of a user's previous downloads on the
-#' GBIF servers and returns the dataset key for the most recently prepared
+#' GBIF servers and returns the data set key for the most recently prepared
 #' download.
 #'
 #' @param taxonKey A taxon key as returned from `rgbif::name_suggest()`.

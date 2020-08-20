@@ -4,7 +4,7 @@
 #'
 #' @param x An object of class \code{\link{occCiteData}}
 #'
-#' @return A dataframe with citations information for occurrences
+#' @return A data frame with citations information for occurrences
 #'
 #' @importFrom stats na.omit
 #'

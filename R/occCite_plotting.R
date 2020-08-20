@@ -205,7 +205,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 #' plots for each species.
 #'
 #' @param plotTypes The type of plot to be generated; "yearHistogram",
-#' "sourcePie", and/or "aggregatorPie".
+#' "source", and/or "aggregator".
 #'
 #' @return A list containing the desired plots.
 #'
@@ -213,7 +213,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 #' \donttest{
 #' sumFig.occCite(occCiteData,
 #' bySpecies = FALSE,
-#' plotType = c("yearHistogram", "sourcePie", "aggregatorPie"))
+#' plotType = c("yearHistogram", "source", "aggregator"))
 #'}
 #'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle theme xlab ylab theme_classic scale_y_continuous ggplot_build element_text

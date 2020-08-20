@@ -15,8 +15,8 @@
 #' @param checkPreviousGBIFDownload A logical operator specifying whether the
 #' user wishes to check their existing prepared downloads on the GBIF website.
 #'
-#' @return A list containing \enumerate{ \item a dataframe of occurrence data;
-#' \item GBIF search metadata; \item a dataframe containing the raw results of
+#' @return A list containing \enumerate{ \item a data frame of occurrence data;
+#' \item GBIF search metadata; \item a data frame containing the raw results of
 #'  a query to `rgbif::occ_download_get()`.}
 #'
 #' @examples

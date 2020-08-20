@@ -6,12 +6,12 @@
 #'
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
-#' @param datasources A vector of taxonomic datasources implemented in
+#' @param datasources A vector of taxonomic data sources implemented in
 #' \code{\link{gnr_resolve}}. See the
 #' \href{http://gni.globalnames.org/}{Global Names List} for more information.
 #'
-#' @return A string with the closeset match according to
-#' \code{\link{gnr_resolve}}, and a list of taxonomic datasources that contain
+#' @return A string with the closest match according to
+#' \code{\link{gnr_resolve}}, and a list of taxonomic data sources that contain
 #' the matching name.
 #'
 #' @examples
@@ -20,7 +20,7 @@
 #'
 #' @export
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
-  sources <- taxize::gnr_datasources();#Populates the list of datasources
+  sources <- taxize::gnr_datasources();#Populates the list of data sources
   #Are user-input databases included in the list of data sources for Global Names Resolver?
   if(!is.null(datasources)){
     for (db in datasources){

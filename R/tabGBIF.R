@@ -9,7 +9,7 @@
 #' @param taxon A single species name, for tracing/error checking purposes
 #' only.
 #'
-#' @return A list of lists containing \enumerate{ \item a dataframe of
+#' @return A list of lists containing \enumerate{ \item a data frame of
 #' occurrence data  \item GBIF search metadata for every GBIF download in
 #' the specified directory.}
 #'

@@ -11,9 +11,9 @@
 #' list of taxonomic sources for cleaning taxonomy of queries. This can be
 #' user-specified or default.
 #'
-#' @slot cleanedTaxonomy A dataframe with containing input taxon names, the
-#' closeset match according to \code{\link{gnr_resolve}}, and a list of
-#' taxonomic datasources that contain the matching name, generated
+#' @slot cleanedTaxonomy A data frame with containing input taxon names, the
+#' closest match according to \code{\link{gnr_resolve}}, and a list of
+#' taxonomic data sources that contain the matching name, generated
 #' by \code{\link{studyTaxonList}}.
 #'
 #' @slot occSources A vector of class "character" containing a list of
@@ -25,7 +25,7 @@
 #'
 #' @slot occResults The results of an \code{\link{occQuery}} search, stored
 #' as a named list, each of the items named after a searched taxon and
-#' containing a dataframe with occurrence information.
+#' containing a data frame with occurrence information.
 #'
 #' @importFrom methods new
 #'

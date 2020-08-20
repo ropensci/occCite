@@ -6,7 +6,7 @@
 #'
 #' @param ... Additional arguments affecting the summary produced
 #'
-#' @return A dataframe with citations information for occurrences
+#' @return A data frame with citations information for occurrences
 #'
 #' @examples
 #'

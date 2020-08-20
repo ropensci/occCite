@@ -1,4 +1,4 @@
-#' @title Retreive downloaded GBIF datasets
+#' @title Retrieve downloaded GBIF datasets
 #'
 #' @description Searches for the most recent instance of a dataset
 #'  that has been previously downloaded from GBIF to a local machine
