@@ -17,8 +17,8 @@ containing the names of taxa of interest}
 \value{
 An object of class \code{\link{occCiteData}} containing the type
 of inquiry the user has made --a phylogeny or a vector of names-- and a
-dataframe containing input taxa names, the closeset match according to
-\code{\link{gnr_resolve}}, and a list of taxonomic datasources that
+data frame containing input taxa names, the closest match according to
+\code{\link{gnr_resolve}}, and a list of taxonomic data sources that
 contain the matching name.
 }
 \description{

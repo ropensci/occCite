@@ -2,7 +2,7 @@
 % Please edit documentation in R/gbifRetriever.R
 \name{gbifRetriever}
 \alias{gbifRetriever}
-\title{Retreive downloaded GBIF datasets}
+\title{Retrieve downloaded GBIF datasets}
 \usage{
 gbifRetriever(taxon = NULL)
 }

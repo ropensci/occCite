@@ -17,12 +17,12 @@ occQuery(
 \arguments{
 \item{x}{An object of class \code{\link{occCiteData}} (the results of
 a \code{\link{studyTaxonList}} search) OR a vector with a list of species
-names. Note: If the latter, taxonomic rectfication uses NCBI
+names. Note: If the latter, taxonomic rectification uses NCBI
 taxonomies. If you want more control than this, use
 \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object
 first.}
 
-\item{datasources}{A vector of occurrence datasources to search. This is
+\item{datasources}{A vector of occurrence data sources to search. This is
 currently limited to GBIF and BIEN, but may expand in the future.}
 
 \item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to

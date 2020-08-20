@@ -2,7 +2,7 @@
 % Please edit documentation in R/prevGBIFdownload.R
 \name{prevGBIFdownload}
 \alias{prevGBIFdownload}
-\title{Download previously-prepared GBIF datasets}
+\title{Download previously-prepared GBIF data sets}
 \usage{
 prevGBIFdownload(taxonKey = "No key", GBIFLogin)
 }
@@ -17,7 +17,7 @@ A GBIF download key, if one is available
 }
 \description{
 Searches the list of a user's previous downloads on the
-GBIF servers and returns the dataset key for the most recently prepared
+GBIF servers and returns the data set key for the most recently prepared
 download.
 }
 \examples{

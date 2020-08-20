@@ -14,7 +14,7 @@ into a common format for an occCite object.}
 only.}
 }
 \value{
-A list of lists containing \enumerate{ \item a dataframe of
+A list of lists containing \enumerate{ \item a data frame of
 occurrence data  \item GBIF search metadata for every GBIF download in
 the specified directory.}
 }

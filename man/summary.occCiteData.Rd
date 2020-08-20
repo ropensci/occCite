@@ -12,7 +12,7 @@
 \item{...}{Additional arguments affecting the summary produced}
 }
 \value{
-A dataframe with citations information for occurrences
+A data frame with citations information for occurrences
 }
 \description{
 Displays a summary of relevant stats about a query

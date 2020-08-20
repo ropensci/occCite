@@ -18,7 +18,7 @@ map.}
 plots for each species.}
 
 \item{plotTypes}{The type of plot to be generated; "yearHistogram",
-"sourcePie", and/or "aggregatorPie".}
+"source", and/or "aggregator".}
 }
 \value{
 A list containing the desired plots.
@@ -34,7 +34,7 @@ data sources, waffle::waffle plot of data aggregators.
 \donttest{
 sumFig.occCite(occCiteData,
 bySpecies = FALSE,
-plotType = c("yearHistogram", "sourcePie", "aggregatorPie"))
+plotType = c("yearHistogram", "source", "aggregator"))
 }
 
 }
