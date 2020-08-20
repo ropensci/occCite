@@ -18,7 +18,7 @@ Authors@R: c(
   )
 Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
 Description: occCite facilitates the gathering of biodiversity occurrence data 
-  from disparate sources. Metadata is managed througout the process to facilitate 
+  from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced repeatability of analyses.
 License: GPL (>= 2)
 URL: https://github.com/hannahlowens/occCite
@@ -45,6 +45,7 @@ Imports:
     leaflet,
     htmltools,
     ggplot2,
+    rlang,
     magrittr,
     tidyr
 VignetteBuilder: knitr

@@ -68,6 +68,7 @@ tabulate.occResults <- function(x, sp.name) {
 #'}
 #'
 #' @importFrom dplyr "%>%" filter
+#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -116,7 +117,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
   # remove coordinate duplicates with same DataService
-  d <- dplyr::distinct(d, longitude, latitude, DataService, .keep_all = TRUE)
+  d <- dplyr::distinct(d, .data$longitude, .data$latitude, .data$DataService, .keep_all = TRUE)
 
   d$label <- paste(paste("name:", d$name),
                    paste("longitude:", d$longitude), paste("latitude:", d$latitude),
@@ -145,11 +146,12 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     d.nest.ds[d.nest.dsBoth] <- "GBIF_BIEN"
   }
   d.nest$DataService <- d.nest.ds
-  d.nest <- d.nest %>% tidyr::unnest(DataService) %>% dplyr::mutate(DataService = factor(DataService))
+  d.nest <- d.nest %>% tidyr::unnest(.data$DataService) %>% dplyr::mutate(DataService = factor(DataService))
   if(length(ds_map) == 1) {
     d.nest <- d.nest[d.nest$DataService %in% ds_map,]
   }
-  labs.lst <- lapply(sp.names, function(x) lapply(d.nest[d.nest$name == x,]$data, function(y) htmltools::HTML(unlist(y$label))))
+  labs.lst <- lapply(sp.names, function(x) lapply(d.nest[d.nest$name == x,]$data,
+                                                  function(y) htmltools::HTML(unlist(y$label))))
   names(labs.lst) <- sp.names
 
   if(cluster == TRUE) {
@@ -175,14 +177,16 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
       if(nrow(d.nest.i) == 0) next
       sp.icons.i <- sp.icons[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
-                                            icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
+      m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
+                                            ~longitude, ~latitude, label = ~labs.lst.i,
+                                            icon = ~sp.icons.i[.data$DataService], clusterOptions = clusterOpts)
     }
   }else{
     for(i in sp.names) {
       sp.cols.i <- sp.cols[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addCircleMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(name == i), ~longitude, ~latitude,
+      m <- m %>% leaflet::addCircleMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
+                                           ~longitude, ~latitude,
                                            label = ~labs.lst.i, color = "black", fillColor = ~sp.cols.i, weight = 2,
                                            radius = 5, fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
     }

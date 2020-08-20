@@ -150,7 +150,7 @@ myOldOccCitations <- occCitation(myOldOccCiteObject);
 cat(paste0(mySimpleOccCitations$Citation, " Accessed via ", mySimpleOccCitations$occSearch, " on ", mySimpleOccCitations$`Accession Date`, "."), sep = "\n");
 ```
 
-Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF datasources (e.g. BIEN) in the same query.
+Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF data sources (e.g. BIEN) in the same query.
 
 ***
 
