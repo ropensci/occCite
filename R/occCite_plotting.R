@@ -179,7 +179,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
       labs.lst.i <- labs.lst[[i]]
       m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
                                             ~longitude, ~latitude, label = ~labs.lst.i,
-                                            icon = ~sp.icons.i[.data$DataService], clusterOptions = clusterOpts)
+                                            icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
     }
   }else{
     for(i in sp.names) {
