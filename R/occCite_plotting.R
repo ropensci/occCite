@@ -16,6 +16,8 @@
 #'}
 #'
 tabulate.occResults <- function(x, sp.name) {
+  sp.name <- stringr::str_extract(string = sp.name,
+                                     pattern = "(\\w+\\s\\w+)")
   occTbls <- lapply(x, function(db) db$OccurrenceTable)
   occTbls.nulls <- sapply(occTbls, is.null)
   occTbls.char <- lapply(occTbls[!occTbls.nulls], function(tbl)
@@ -65,8 +67,7 @@ tabulate.occResults <- function(x, sp.name) {
 #' map.occCite(occCiteData, cluster = FALSE)
 #'}
 #'
-#' @importFrom magrittr "%>%"
-#' @importFrom stats filter
+#' @importFrom dplyr "%>%" filter
 #'
 #' @export
 #'
@@ -91,7 +92,8 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 
   d.res <- occCiteData@occResults
   if(species_map != "all") d.res <- d.res[names(d.res) == species_map]
-  sp.names <- names(d.res)
+  sp.names <- stringr::str_extract(string = names(d.res),
+                                   pattern = "(\\w+\\s\\w+)")
 
   if(!is.null(species_colors)) {
     if(length(species_colors) != length(sp.names)) {
@@ -110,7 +112,6 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
       d.tbl[[i]] <- d.tbl[[i]][sample(1:d.tbl.n, map_limit),]
     }
   }
-
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
@@ -170,11 +171,11 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     sp.icons <- lapply(sp.names, makeIconList)
     names(sp.icons) <- sp.names
     for(i in sp.names) {
-      d.nest.i <- d.nest %>% filter(name == i)
+      d.nest.i <- d.nest %>% dplyr::filter(name == i)
       if(nrow(d.nest.i) == 0) next
       sp.icons.i <- sp.icons[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
+      m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
                                             icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
     }
   }else{
