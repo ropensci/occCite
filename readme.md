@@ -387,6 +387,12 @@ myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject,
                             checkPreviousGBIFDownload = F);
 ```
 
+    ## [1] "There are no local drive downloads for Istiophorus albicansin /Users/Hannah/Library/R/4.0/library/occCite/extdata."
+    ## [1] "There are no local drive downloads for Istiophorus platypterusin /Users/Hannah/Library/R/4.0/library/occCite/extdata."
+    ## [1] "There are no local drive downloads for Makaira nigricansin /Users/Hannah/Library/R/4.0/library/occCite/extdata."
+    ## [1] "There are no local drive downloads for Trachurus trachurusin /Users/Hannah/Library/R/4.0/library/occCite/extdata."
+    ## [1] "There are no local drive downloads for Xiphias gladiusin /Users/Hannah/Library/R/4.0/library/occCite/extdata."
+
 ``` r
 # What does a multispecies query look like?
 summary(myPhyOccCiteObject)
@@ -433,33 +439,21 @@ summary(myPhyOccCiteObject)
     ##      
     ##                       Species Occurrences Sources
     ## 1            Istiompax indica         468      23
-    ## 2        Istiophorus albicans         723      10
-    ## 3     Istiophorus platypterus       16368      66
-    ## 4              Kajikia albida         167      16
-    ## 5               Kajikia audax        6721      22
-    ## 6           Makaira nigricans         402      24
-    ## 7  Tetrapturus angustirostris         174      22
-    ## 8          Tetrapturus belone           9       6
-    ## 9         Tetrapturus georgii          62       4
-    ## 10      Tetrapturus pfluegeri         409       7
-    ## 11        Trachurus trachurus        9916      76
-    ## 12            Xiphias gladius        1408      60
+    ## 2        Istiophorus albicans           0       0
+    ## 3     Istiophorus platypterus           0       0
+    ## 4              Kajikia albida           0       0
+    ## 5               Kajikia audax           0       0
+    ## 6           Makaira nigricans         167      16
+    ## 7  Tetrapturus angustirostris        6721      22
+    ## 8          Tetrapturus belone           0       0
+    ## 9         Tetrapturus georgii           0       0
+    ## 10      Tetrapturus pfluegeri         174      22
+    ## 11        Trachurus trachurus           9       6
+    ## 12            Xiphias gladius          62       4
     ##  
     ##  GBIF dataset DOIs:  
-    ## 
-    ##                       Species GBIF Access Date           GBIF DOI
-    ## 1            Istiompax indica       2019-07-04 10.15468/dl.crapuf
-    ## 2        Istiophorus albicans       2019-07-04 10.15468/dl.qvapht
-    ## 3     Istiophorus platypterus       2019-07-04 10.15468/dl.ps4axk
-    ## 4              Kajikia albida       2019-07-04 10.15468/dl.lnwf6a
-    ## 5               Kajikia audax       2019-07-04 10.15468/dl.txromp
-    ## 6           Makaira nigricans       2019-07-04 10.15468/dl.lpwjh4
-    ## 7  Tetrapturus angustirostris       2019-07-04 10.15468/dl.mumi5e
-    ## 8          Tetrapturus belone       2019-07-04 10.15468/dl.q2nxb1
-    ## 9         Tetrapturus georgii       2019-07-04 10.15468/dl.h860up
-    ## 10      Tetrapturus pfluegeri       2019-07-04 10.15468/dl.qjidbs
-    ## 11        Trachurus trachurus       2019-07-04 10.15468/dl.eabzvg
-    ## 12            Xiphias gladius       2019-07-04 10.15468/dl.blqftz
+
+    ## Error in GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi: replacement has length zero
 
 ``` r
 #Get citations
@@ -471,164 +465,47 @@ cat(paste(myPhyOccCitations$Citation,
            " on ", myPhyOccCitations$`Accession Date`, "."), sep = "\n");
 ```
 
-    ## Atkinson L, Ranwashe F (2017). FBIP:SAEON: Historical Research Survey Database (1897-1949). Version 1.2. South African National Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/sfwehq  Accessed via  GBIF  on  2019-07-04 .
-    ## Atlas of Life in the Coastal Wilderness (2020). Atlas of Life in the Coastal Wilderness. Occurrence dataset https://doi.org/10.15468/rtxjkt  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 1999. Version 1.5. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/g8q8ey  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 2004. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/jlkkrw  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 2006. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/rexjmu  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 2008. Version 1.1. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/oomxex  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 2010. Version 1.5. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/7dnpl0  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 2012. Version 1.4. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/adis7b  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Dry Tortugas Reef Visual Census 2014. Version 1.5. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/nawlft  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 1994. Version 1.1. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/rdkfyf  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 1995. Version 1.5. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/uzpt9m  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 1996. Version 1.1. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/gaekez  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 1997. Version 1.4. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/419say  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 1998. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/kfnaep  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 1999. Version 1.1. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/dwxlan  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2000. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/1pyhh5  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2001. Version 1.4. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/t0r3vt  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2002. Version 1.2. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/pcikkj  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2003. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/es1iso  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2004. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/nuqkih  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2005. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/zq1ep2  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2006. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/dple14  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2007. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/dfyb57  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2008. Version 1.3. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/7zofww  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2009. Version 1.2. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/tnn5ra  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2010. Version 1.4. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/6chrsz  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2011. Version 1.4. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/06aqle  Accessed via  GBIF  on  2019-07-04 .
-    ## Ault J, Bohnsack J, Benson A (2019). Florida Keys Reef Visual Census 2012. Version 1.4. United States Geological Survey. Sampling event dataset https://doi.org/10.15468/vnvtmr  Accessed via  GBIF  on  2019-07-04 .
     ## Australian Museum (2020). Australian Museum provider for OZCAM. Occurrence dataset https://doi.org/10.15468/e7susi  Accessed via  GBIF  on  2019-07-04 .
     ## Barde J (2011). ecoscope_observation_database. IRD - Institute of Research for Development. Occurrence dataset https://doi.org/10.15468/dz1kk0  Accessed via  GBIF  on  2019-07-04 .
     ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités (Réunion). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/elttrd  Accessed via  GBIF  on  2019-07-04 .
     ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/gdrknh  Accessed via  GBIF  on  2019-07-04 .
     ## Bentley A (2020). KUBI Ichthyology Collection. Version 17.66. University of Kansas Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/mgjasg  Accessed via  GBIF  on  2019-07-04 .
     ## Bentley A (2020). KUBI Ichthyology Tissue Collection. Version 18.54. University of Kansas Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/jmsnwg  Accessed via  GBIF  on  2019-07-04 .
-    ## Blindheim T (2020). BioFokus. Version 1.1482. BioFokus. Occurrence dataset https://doi.org/10.15468/jxbhqx  Accessed via  GBIF  on  2019-07-04 .
-    ## Boon T, Zühlke R (2011). Abundance of benthic infauna in surface sediments from the North Sea sampled during cruise Cirolana00/5. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.756782  Accessed via  GBIF  on  2019-07-04 .
-    ## Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2016). VIS - Fishes in estuarine waters in Flanders, Belgium. Version 9.4. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.15468/estwpt  Accessed via  GBIF  on  2019-07-04 .
-    ## Canadian node of the Ocean Biogeographic Information System (OBIS Canada). Canada Maritimes Regional Cetacean Sightings (OBIS Canada). Occurrence dataset https://doi.org/10.15468/orwtwi  Accessed via  GBIF  on  2019-07-04 .
     ## Casassovici A, Brosens D (2020). Diveboard - Scuba diving citizen science observations. Version 54.28. Diveboard. Occurrence dataset https://doi.org/10.15468/tnjrgy  Accessed via  GBIF  on  2019-07-04 .
     ## Catania D, Fong J (2020). CAS Ichthyology (ICH). Version 150.236. California Academy of Sciences. Occurrence dataset https://doi.org/10.15468/efh2ib  Accessed via  GBIF  on  2019-07-04 .
     ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. Occurrence dataset https://doi.org/10.15468/23m361  Accessed via  GBIF  on  2019-07-04 .
     ## Chiang W (2014). Taiwan Fisheries Research Institute – Digital archives of coastal and offshore specimens. TELDAP. Occurrence dataset https://doi.org/10.15468/xvxngy  Accessed via  GBIF  on  2019-07-04 .
-    ## Chic Giménez Ò, Lombarte Carrera A (2018). Colección de referencia de otolitos, Instituto de Ciencias del Mar-CSIC. Institute of Marine Sciences (ICM-CSIC). Occurrence dataset https://doi.org/10.15468/wdwxid  Accessed via  GBIF  on  2019-07-04 .
-    ## Citizen Science - ALA Website (2020). ALA species sightings and OzAtlas. Occurrence dataset https://doi.org/10.15468/jayxmn  Accessed via  GBIF  on  2019-07-04 .
-    ## Clark D, Hayden H, Fanning P, Smith S (2017). DFO Maritimes Research Vessel Trawl Surveys Fish Observations. Canadian node of the Ocean Biogeographic Information System (OBIS Canada). Occurrence dataset https://doi.org/10.15468/hlhopd  Accessed via  GBIF  on  2019-07-04 .
-    ## Coetzer W (2020). Occurrence records of southern African aquatic biodiversity. Version 1.11. The South African Institute for Aquatic Biodiversity. Occurrence dataset https://doi.org/10.15468/pv7vds  Accessed via  GBIF  on  2019-07-04 .
     ## Commonwealth Scientific and Industrial Research Organisation (2020). CSIRO Ichthyology provider for OZCAM. Occurrence dataset https://doi.org/10.15468/azp1pf  Accessed via  GBIF  on  2019-07-04 .
-    ## Craeymeersch J A, Duineveld G C A (2011). Abundance of benthic infauna in surface sediments from the North Sea sampled during cruise Tridens00/5. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.756784  Accessed via  GBIF  on  2019-07-04 .
     ## CSIRO Oceans and Atmosphere (2020). CSIRO, Rachel Cruises, Shark Data, Arafura Sea, North Australia, 1984. Version 6.2. Occurrence dataset https://doi.org/10.15468/yickr6  Accessed via  GBIF  on  2019-07-04 .
-    ## de Vries H, Lemmens M. Observation.org, Nature data from around the World. Observation.org. Occurrence dataset https://doi.org/10.15468/5nilie  Accessed via  GBIF  on  2019-07-04 .
-    ## Declan T. Quigley. Rare marine fishes taken in Irish waters from 1786 to 2008. National Biodiversity Data Centre. Occurrence dataset https://doi.org/10.15468/yvsxdp  Accessed via  GBIF  on  2019-07-04 .
-    ## Dillman C (2018). CUMV Fish Collection. Version 28.16. Cornell University Museum of Vertebrates. Occurrence dataset https://doi.org/10.15468/jornbc  Accessed via  GBIF  on  2019-07-04 .
-    ## DIMEGLIO Tristan N, VONG Lilita N, Inventaire National du Patrimoine Naturel (2020). Programme national de science participative sur la Biodiversité Littorale (BioLit). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/xmv4ik  Accessed via  GBIF  on  2019-07-04 .
-    ## Dondorp E, Creuwels J (2020). Naturalis Biodiversity Center (NL) - Pisces. Naturalis Biodiversity Center. Occurrence dataset https://doi.org/10.15468/evijly  Accessed via  GBIF  on  2019-07-04 .
-    ## Dr. Mark Costello. Marine sites, habitats and species data collected during the BioMar survey of Ireland.. National Biodiversity Data Centre. Occurrence dataset https://doi.org/10.15468/cr7gvs  Accessed via  GBIF  on  2019-07-04 .
-    ## Dr. Mark Costello. Marine sites, habitats and species data collected during the BioMar survey of Ireland.. National Biodiversity Data Centre. Occurrence dataset https://doi.org/10.15468/nwlt7a  Accessed via  GBIF  on  2019-07-04 .
-    ## Edgar G J, Stuart-Smith R D (2016). Reef Life Survey: Global reef fish dataset. Version 2.1. Reef Life Survey. Sampling event dataset https://doi.org/10.15468/qjgwba  Accessed via  GBIF  on  2019-07-04 .
-    ## Ehrich S, Kröncke I (2011). Abundance of benthic infauna in surface sediments from the North Sea sampled during Walther Herwig cruise WH220. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.756783  Accessed via  GBIF  on  2019-07-04 .
     ## Elías Gutiérrez M, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Códigos de barras de la vida en peces y zooplancton de México. Version 1.7. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/xmbkgo  Accessed via  GBIF  on  2019-07-04 .
-    ## Emery P (2019). DFO Maritimes Region Cetacean Sightings. Version 8.2. Canadian node of the Ocean Biogeographic Information System (OBIS Canada). Occurrence dataset https://doi.org/10.15468/2khlz1  Accessed via  GBIF  on  2019-07-04 .
-    ## Environment Agency (2019). Environment Agency Rare and Protected Species Records. Occurrence dataset https://doi.org/10.15468/awfvnp  Accessed via  GBIF  on  2019-07-04 .
-    ## European Molecular Biology Laboratory Australia (2019). European Molecular Biology Laboratory Australian Mirror. Occurrence dataset https://doi.org/10.15468/ypsvix  Accessed via  GBIF  on  2019-07-04 .
     ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. Occurrence dataset https://doi.org/10.15468/cndomv  Accessed via  GBIF  on  2019-07-04 .
-    ## Fahy K (2016). SBMNH Vertebrate Zoology. Version 5.1. Santa Barbara Museum of Natural History. Occurrence dataset https://doi.org/10.15468/amfnkq  Accessed via  GBIF  on  2019-07-04 .
     ## Feeney R (2019). LACM Vertebrate Collection. Version 18.7. Natural History Museum of Los Angeles County. Occurrence dataset https://doi.org/10.15468/77rmwd  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Marine Institute (2020). Data collected during the expeditions of the e-learning projects Expedition Zeeleeuw and Planet Ocean. Version 1.1. Occurrence dataset https://doi.org/10.14284/4  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Marine Institute (2020). Trawl survey data from the Jabuka Pit area (central-eastern Adriatic Sea, Mediterranean) collected between 1956 and 1971. Version 1.1. Occurrence dataset https://doi.org/10.14284/287  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Marine Institute (2020). Trawl-survey data from the “expedition Hvar” in the Adriatic Sea (Mediterranean) collected in 1948-1949. Version 1.1. Occurrence dataset https://doi.org/10.14284/285  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Marine Institute (2020). Trawl-survey data in the central-eastern Adriatic Sea (Mediterranean) collected in 1957 and 1958. Version 1.1. Occurrence dataset https://doi.org/10.14284/286  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Research Institute for Agriculture, Fisheries and Food (ILVO) (2020). Epibenthos and demersal fish monitoring at long-term monitoring stations in the Belgian part of the North Sea. Version 1.1. Sampling event dataset https://doi.org/10.14284/54  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Research Institute for Agriculture, Fisheries and Food (ILVO) (2020). Epibenthos and demersal fish monitoring data in function of wind energy development in the Belgian part of the North Sea. Version 1.1. Sampling event dataset https://doi.org/10.14284/53  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Research Institute for Agriculture, Fisheries and Food (ILVO) (2020). Epibenthos and demersal fish monitoring in function of aggregate extraction in the Belgian part of the North Sea. Version 1.1. Sampling event dataset https://doi.org/10.14284/197  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Research Institute for Agriculture, Fisheries and Food (ILVO) (2020). Epibenthos and demersal fish monitoring in function of dredge disposal monitoring in the Belgian part of the North Sea. Version 1.1. Sampling event dataset https://doi.org/10.14284/198  Accessed via  GBIF  on  2019-07-04 .
-    ## Flanders Research Institute for Agriculture, Fisheries and Food (ILVO) (2020). Zooplankton monitoring in the Belgian Part of the North Sea between 2009 and 2010. Version 1.1. Occurrence dataset https://doi.org/10.14284/55  Accessed via  GBIF  on  2019-07-04 .
     ## Frable B (2019). SIO Marine Vertebrate Collection. Version 1.7. Scripps Institution of Oceanography. Occurrence dataset https://doi.org/10.15468/ad1ovc  Accessed via  GBIF  on  2019-07-04 .
-    ## Gall L (2020). Vertebrate Zoology Division - Ichthyology, Yale Peabody Museum. Yale University Peabody Museum. Occurrence dataset https://doi.org/10.15468/mgyhok  Accessed via  GBIF  on  2019-07-04 .
     ## González Acosta A F, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Ampliación de la base de datos de la ictiofauna insular del Golfo de California. Version 1.7. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/p5ovq7  Accessed via  GBIF  on  2019-07-04 .
     ## Grant S, McMahan C (2020). Field Museum of Natural History (Zoology) Fish Collection. Version 13.12. Field Museum. Occurrence dataset https://doi.org/10.15468/alz7wu  Accessed via  GBIF  on  2019-07-04 .
-    ## Guerrero E, Abelló P, Lombarte A, Villanueva R, Ramón M, Sabatés A, Santos R (2020). Biological Reference Collections ICM-CSIC. Version 1.28. Institute of Marine Sciences (ICM-CSIC). Occurrence dataset https://doi.org/10.15470/qlqqdx  Accessed via  GBIF  on  2019-07-04 .
-    ## Hårsaker K, Daverdin M (2020). Fish collection NTNU University Museum. Version 1.388. NTNU University Museum. Occurrence dataset https://doi.org/10.15468/q909ac  Accessed via  GBIF  on  2019-07-04 .
     ## Harvard University M, Morris P J (2020). Museum of Comparative Zoology, Harvard University. Version 162.223. Museum of Comparative Zoology, Harvard University. Occurrence dataset https://doi.org/10.15468/p5rupv  Accessed via  GBIF  on  2019-07-04 .
-    ## Joint Nature Conservation Committee (2018). Marine Nature Conservation Review (MNCR) and associated benthic marine data held and managed by JNCC. Occurrence dataset https://doi.org/10.15468/kcx3ca  Accessed via  GBIF  on  2019-07-04 .
-    ## Kent & Medway Biological Records Centre (2019). Fish:  Records for Kent.. Occurrence dataset https://doi.org/10.15468/kd1utk  Accessed via  GBIF  on  2019-07-04 .
-    ## Khidas K, Shorthouse D (2020). Canadian Museum of Nature Fish Collection. Version 1.87. Canadian Museum of Nature. Occurrence dataset https://doi.org/10.15468/bm8amw  Accessed via  GBIF  on  2019-07-04 .
-    ## Kiki P, Ganglo J (2017). Census of the threatened species of Benin.. Version 1.5. GBIF Benin. Occurrence dataset https://doi.org/10.15468/fbbbfl  Accessed via  GBIF  on  2019-07-04 .
-    ## Laurent Colombet N, COLOMBET Laurent N, Inventaire National du Patrimoine Naturel (2019). Données BioObs - Base pour l’Inventaire des Observations Subaquatiques de la FFESSM. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/ldch7a  Accessed via  GBIF  on  2019-07-04 .
-    ## Machete M (2020). POPA- Fisheries Observer Program of the Azores: Accessory species caught in the Azores tuna fishery between 2000 and 2013. Version 1.1. Institute of Marine Research. Occurrence dataset https://doi.org/10.14284/211  Accessed via  GBIF  on  2019-07-04 .
-    ## Machete M (2020). POPA- Fisheries Observer Program of the Azores: Discards in the Azores tuna fishery from 1998 to 2013. Version 1.1. Institute of Marine Research. Occurrence dataset https://doi.org/10.14284/20  Accessed via  GBIF  on  2019-07-04 .
     ## Mackay K (2018). New Zealand research tagging database. Version 1.5. Southwestern Pacific Ocean Biogeographic Information System (OBIS) Node. Occurrence dataset https://doi.org/10.15468/i66xdm  Accessed via  GBIF  on  2019-07-04 .
     ## Mackay K (2019). Marine biological observation data from coastal and offshore surveys around New Zealand. Version 1.8. The National Institute of Water and Atmospheric Research (NIWA). Occurrence dataset https://doi.org/10.15468/pzpgop  Accessed via  GBIF  on  2019-07-04 .
-    ## Mackay K (2020). New Zealand fish and squid distributions from research bottom trawls 1964-2008. Version 1.2. The National Institute of Water and Atmospheric Research (NIWA). Occurrence dataset https://doi.org/10.15468/ti5yah  Accessed via  GBIF  on  2019-07-04 .
-    ## Mackay K (2020). Soviet Trawl Fishery Data (New Zealand Waters) 1964-1987. Version 1.6. Southwestern Pacific Ocean Biogeographic Information System (OBIS) Node. Occurrence dataset https://doi.org/10.15468/yqk5jg  Accessed via  GBIF  on  2019-07-04 .
-    ## Malzahn A M (2006). Larval fish at time series station Helgoland Roads, North Sea, in 2003. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.733539  Accessed via  GBIF  on  2019-07-04 .
-    ## Malzahn A M (2006). Larval fish at time series station Helgoland Roads, North Sea, in 2004. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.733540  Accessed via  GBIF  on  2019-07-04 .
-    ## Malzahn A M (2006). Larval fish at time series station Helgoland Roads, North Sea, in 2005. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.733541  Accessed via  GBIF  on  2019-07-04 .
-    ## Marine Biological Association (2017). DASSH Data Archive Centre volunteer survey data. Occurrence dataset https://doi.org/10.15468/pjowth  Accessed via  GBIF  on  2019-07-04 .
-    ## Marine Biological Association (2017). Verified Marine records from Indicia-based surveys. Occurrence dataset https://doi.org/10.15468/yfyeyg  Accessed via  GBIF  on  2019-07-04 .
     ## Maslenikov K (2019). UWFC Ichthyology Collection. University of Washington Burke Museum. Occurrence dataset https://doi.org/10.15468/vvp7gr  Accessed via  GBIF  on  2019-07-04 .
-    ## Menezes G (2020). Demersais survey in the Azores between 1996 and 2013. Version 1.1. Institute of Marine Research. Occurrence dataset https://doi.org/10.14284/22  Accessed via  GBIF  on  2019-07-04 .
-    ## Merseyside BioBank (2018). Merseyside BioBank (unverified). Occurrence dataset https://doi.org/10.15468/iou2ld  Accessed via  GBIF  on  2019-07-04 .
     ## Millen B (2019). Ichthyology Collection - Royal Ontario Museum. Version 18.7. Royal Ontario Museum. Occurrence dataset https://doi.org/10.15468/syisbx  Accessed via  GBIF  on  2019-07-04 .
-    ## Miya M (2020). Fish Collection of Natural History Museum and Institute, Chiba. National Museum of Nature and Science, Japan. Occurrence dataset https://doi.org/10.15468/p2eb5z  Accessed via  GBIF  on  2019-07-04 .
-    ## MNHN, Chagnoux S (2020). The fishes collection (IC) of the Muséum national d'Histoire naturelle (MNHN - Paris). Version 57.179. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/tm7whu  Accessed via  GBIF  on  2019-07-04 .
     ## Museum and Art Gallery of the Northern Territory (2019). Northern Territory Museum and Art Gallery provider for OZCAM. Occurrence dataset https://doi.org/10.15468/giro3a  Accessed via  GBIF  on  2019-07-04 .
     ## Museums Victoria (2020). Museums Victoria provider for OZCAM. Occurrence dataset https://doi.org/10.15468/lp1ctu  Accessed via  GBIF  on  2019-07-04 .
-    ## n/a N, Inventaire National du Patrimoine Naturel (2019). Parc_National_des_Calanques_2017_12_18. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/g0ds6l  Accessed via  GBIF  on  2019-07-04 .
     ## National Museum of Nature and Science, Japan (2020). Fish specimens of Kagoshima University Museum. Occurrence dataset https://doi.org/10.15468/vcj3j8  Accessed via  GBIF  on  2019-07-04 .
-    ## Natural History Museum (2020). Natural History Museum (London) Collection Specimens. Occurrence dataset https://doi.org/10.5519/0002965  Accessed via  GBIF  on  2019-07-04 .
-    ## Natural History Museum, University of Oslo (2019). Fish collection, Natural History Museum, University of Oslo. Version 1.179. Occurrence dataset https://doi.org/10.15468/4vqytb  Accessed via  GBIF  on  2019-07-04 .
-    ## Natural Resources Wales (2018). Marine Records from Pembrokeshire Marine Species Atlas. Occurrence dataset https://doi.org/10.15468/42yudm  Accessed via  GBIF  on  2019-07-04 .
-    ## naturgucker.de. naturgucker. Occurrence dataset https://doi.org/10.15468/uc1apo  Accessed via  GBIF  on  2019-07-04 .
-    ## Norén M, Shah M (2017). Fishbase. FishBase. Occurrence dataset https://doi.org/10.15468/wk3zk7  Accessed via  GBIF  on  2019-07-04 .
-    ## Norton B (2019). NCSM Ichthyology Collection. Version 22.4. North Carolina State Museum of Natural Sciences. Occurrence dataset https://doi.org/10.15468/7et8cq  Accessed via  GBIF  on  2019-07-04 .
     ## Orrell T (2020). NMNH Extant Specimen Records. Version 1.34. National Museum of Natural History, Smithsonian Institution. Occurrence dataset https://doi.org/10.15468/hnhrg3  Accessed via  GBIF  on  2019-07-04 .
-    ## Pierre NOEL N, Inventaire National du Patrimoine Naturel (2020). Données naturalistes de Pierre NOEL (stage). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/if4ism  Accessed via  GBIF  on  2019-07-04 .
-    ## Pinheiro H (2017). Fish biodiversity of the Vitória-Trindade Seamount Chain, Southwestern Atlantic: an updated database. Version 2.11. Brazilian Marine Biodiversity Database. Occurrence dataset https://doi.org/10.15468/o5jdnr  Accessed via  GBIF  on  2019-07-04 .
     ## Pozo de la Tijera M D C, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Fortalecimiento de las colecciones de ECOSUR. Primera fase (Ictioplancton Chetumal). Version 1.3. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/orx3mk  Accessed via  GBIF  on  2019-07-04 .
-    ## Prestridge H (2019). Biodiversity Research and Teaching Collections - TCWC Vertebrates. Version 9.3. Texas A&M University Biodiversity Research and Teaching Collections. Occurrence dataset https://doi.org/10.15468/szomia  Accessed via  GBIF  on  2019-07-04 .
-    ## Prince P (2011). Abundance of benthic infauna in surface sediments from the North Sea sampled during cruise Dana00/5. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.756781  Accessed via  GBIF  on  2019-07-04 .
-    ## Pugh W (2017). UAIC Ichthyological Collection. Version 3.2. University of Alabama Biodiversity and Systematics. Occurrence dataset https://doi.org/10.15468/a2laag  Accessed via  GBIF  on  2019-07-04 .
-    ## Pyle R (2016). Bernice P. Bishop Museum. Version 8.1. Bernice Pauahi Bishop Museum. Occurrence dataset https://doi.org/10.15468/s6ctus  Accessed via  GBIF  on  2019-07-04 .
     ## Queensland Museum (2020). Queensland Museum provider for OZCAM. Occurrence dataset https://doi.org/10.15468/lotsye  Accessed via  GBIF  on  2019-07-04 .
-    ## Quesada Lara J, Agulló Villaronga J (2019). Museu de Ciències Naturals de Barcelona: MCNB-Cord. Museu de Ciències Naturals de Barcelona. Occurrence dataset https://doi.org/10.15468/yta7zj  Accessed via  GBIF  on  2019-07-04 .
     ## Raiva R, Santana P (2019). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.4. National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/4fj2tq  Accessed via  GBIF  on  2019-07-04 .
     ## Raiva R, Viador R, Santana P (2019). Diversidade e ocorrência de peixes na Zambézia (2003-2016). National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/mrz36h  Accessed via  GBIF  on  2019-07-04 .
     ## Ranz J (2017). Banco de Datos de la Biodiversidad de la Comunitat Valenciana. Biodiversity data bank of Generalitat Valenciana. Occurrence dataset https://doi.org/10.15468/b4yqdy  Accessed via  GBIF  on  2019-07-04 .
-    ## Riutort Jean-Jacques N, Inventaire National du Patrimoine Naturel (2020). Données naturalistes de Jean-Jacques RIUTORT. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/97bvs0  Accessed via  GBIF  on  2019-07-04 .
     ## ROBERT Solène N, Inventaire National du Patrimoine Naturel (2020). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/ikshke  Accessed via  GBIF  on  2019-07-04 .
     ## Robins R (2020). UF FLMNH Ichthyology. Version 117.275. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel  Accessed via  GBIF  on  2019-07-04 .
     ## Sánchez González S, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Taxonomía y sistemática de la Ictiofauna de la Bahía de Banderas del Estado de Nayarit, México. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/uhrwsl  Accessed via  GBIF  on  2019-07-04 .
-    ## Schiphouwer M (2018). RAVON (NL) - Fish observations extracted from Redeke (1907). Reptile, Amphibian and Fish Conservation Netherlands (RAVON). Occurrence dataset https://doi.org/10.15468/edt24y  Accessed via  GBIF  on  2019-07-04 .
-    ## Scottish Natural Heritage (2017). Species data for Scottish waters held and managed by Scottish Natural Heritage,  derived from benthic surveys 1993 to 2014. Occurrence dataset https://doi.org/10.15468/faxvgd  Accessed via  GBIF  on  2019-07-04 .
-    ## Seasearch (2019). Seasearch Marine Surveys in England. Occurrence dataset https://doi.org/10.15468/kywx6m  Accessed via  GBIF  on  2019-07-04 .
-    ## Senckenberg. Collection Pisces SMF. Occurrence dataset https://doi.org/10.15468/xaofbe  Accessed via  GBIF  on  2019-07-04 .
-    ## Shah M, Coulson S (2020). Artportalen (Swedish Species Observation System). Version 92.199. SLU Artdatabanken. Occurrence dataset https://doi.org/10.15468/kllkyl  Accessed via  GBIF  on  2019-07-04 .
-    ## Shah M, Ericson Y (2020). SLU Aqua Institute of Coastal Research Database for Coastal Fish - KUL. GBIF-Sweden. Occurrence dataset https://doi.org/10.15468/bp9w9y  Accessed via  GBIF  on  2019-07-04 .
     ## Shane G (2018). Pelagic fish food web linkages, Queensland, Australia (2003-2005). CSIRO Oceans and Atmosphere. Occurrence dataset https://doi.org/10.15468/yy5wdp  Accessed via  GBIF  on  2019-07-04 .
-    ## Shao K, Lin H (2014). The Fish Database of Taiwan. TELDAP. Occurrence dataset https://doi.org/10.15468/zavxg7  Accessed via  GBIF  on  2019-07-04 .
-    ## Sidlauskas B (2017). Oregon State Ichthyology Collection. Oregon State University. Occurrence dataset https://doi.org/10.15468/b7htot  Accessed via  GBIF  on  2019-07-04 .
-    ## Silva A S (2018). Ichthyological Collection of the Museu Oceanográfico D. Carlos I. Version 1.7. Aquário Vasco da Gama. Occurrence dataset https://doi.org/10.15468/dkxpqt  Accessed via  GBIF  on  2019-07-04 .
     ## South Australian Museum (2020). South Australian Museum Australia provider for OZCAM. Occurrence dataset https://doi.org/10.15468/wz4rrh  Accessed via  GBIF  on  2019-07-04 .
-    ## South East Wales Biodiversity Records Centre (2018). SEWBReC Fish (South East Wales). Occurrence dataset https://doi.org/10.15468/htsfiy  Accessed via  GBIF  on  2019-07-04 .
-    ## Staatliche Naturwissenschaftliche Sammlungen Bayerns. The Fish Collection at the Zoologische Staatssammlung München. Occurrence dataset https://doi.org/10.15468/fzn9sv  Accessed via  GBIF  on  2019-07-04 .
-    ## Staatliche Naturwissenschaftliche Sammlungen Bayerns. The Pisces Collection at the Staatssammlung für Anthropologie und Paläoanatomie München. Occurrence dataset https://doi.org/10.15468/uxag7k  Accessed via  GBIF  on  2019-07-04 .
-    ## Telenius A, Ekström J (2020). Lund Museum of Zoology (MZLU). GBIF-Sweden. Occurrence dataset https://doi.org/10.15468/mw39rb  Accessed via  GBIF  on  2019-07-04 .
     ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). Occurrence dataset https://doi.org/10.15468/inygc6  Accessed via  GBIF  on  2019-07-04 .
-    ## The Norwegian Biodiversity Information Centre ., Hoem S (2020). Norwegian Species Observation Service. Version 1.95. The Norwegian Biodiversity Information Centre (NBIC). Occurrence dataset https://doi.org/10.15468/zjbzel  Accessed via  GBIF  on  2019-07-04 .
-    ## The Wildlife Trusts (2018). Marine Data from The Wildlife Trusts (TWT) Dive Team; 2014-2018. Occurrence dataset https://doi.org/10.15468/aqr7zv  Accessed via  GBIF  on  2019-07-04 .
     ## Uchifune Y, Yamamoto H (2020). Asia-Pacific Dataset. Version 1.33. National Museum of Nature and Science, Japan. Occurrence dataset https://doi.org/10.15468/vjeh1p  Accessed via  GBIF  on  2019-07-04 .
     ## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. Occurrence dataset https://doi.org/10.15468/ab3s5x  Accessed via  GBIF  on  2019-07-04 .
-    ## UMMZ Fish Division Data Group, LSA IT A (2020). University of Michigan Museum of Zoology, Division of Fishes. Version 1.26. University of Michigan Museum of Zoology. Occurrence dataset https://doi.org/10.15468/8cxijb  Accessed via  GBIF  on  2019-07-04 .
-    ## van der Es H (2020). Natural History Museum Rotterdam (NL) - Chordata collection. Version 13.21. Natural History Museum Rotterdam. Occurrence dataset https://doi.org/10.15468/5rtmkg  Accessed via  GBIF  on  2019-07-04 .
-    ## Van der Veer H W, De Bruin T (2019). Royal Netherlands Institute for Sea Research (NIOZ) - Kom Fyke Mokbaai. Version 3.2. NIOZ Royal Netherlands Institute for Sea Research. Occurrence dataset https://doi.org/10.15468/ztbuho  Accessed via  GBIF  on  2019-07-04 .
-    ## Van Guelpen L, OBIS Canada (2016). Atlantic Reference Centre Museum of Canadian Atlantic Organisms - Invertebrates and Fishes Data. Canadian node of the Ocean Biogeographic Information System (OBIS Canada). Occurrence dataset https://doi.org/10.15468/wsxvo6  Accessed via  GBIF  on  2019-07-04 .
-    ## Vanreusel W, Gielen K, Van den Neucker T, Jooris R, Desmet P (2019). Waarnemingen.be - Fish occurrences in Flanders and the Brussels Capital Region, Belgium. Version 1.6. Natuurpunt. Occurrence dataset https://doi.org/10.15468/7reil0  Accessed via  GBIF  on  2019-07-04 .
     ## Western Australian Museum (2019). Western Australian Museum provider for OZCAM. Occurrence dataset https://doi.org/10.15468/5qt0dm  Accessed via  GBIF  on  2019-07-04 .
-    ## Williams A (2020). CSIRO, Soviet Fishery Data, Australia, 1965-1978. Version 6.2. CSIRO Oceans and Atmosphere. Occurrence dataset https://doi.org/10.15468/ttcx7v  Accessed via  GBIF  on  2019-07-04 .
-    ## Wimer M, Benson A (2016). USGS Patuxent Wildlife Research Center Seabirds Compendium. Version 1.1. United States Geological Survey. Occurrence dataset https://doi.org/10.15468/w2vk7x  Accessed via  GBIF  on  2019-07-04 .
 
 ------------------------------------------------------------------------
 
@@ -660,7 +537,7 @@ sumFig.occCite(myPhyOccCiteObject,
                plotTypes = c("yearHistogram", "source"))
 ```
 
-<img src="README_files/figure-markdown_github/summary figures by species-1.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-2.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-3.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-4.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-5.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-6.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-7.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-8.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-9.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-10.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-11.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-12.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-13.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-14.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-15.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-16.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-17.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-18.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-19.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-20.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-21.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-22.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-23.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-24.png" width="50%" />
+<img src="README_files/figure-markdown_github/summary figures by species-1.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-2.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-3.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-4.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-5.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-6.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-7.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-8.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-9.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-10.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-11.png" width="50%" /><img src="README_files/figure-markdown_github/summary figures by species-12.png" width="50%" />
 
 Mapping occCite search results
 ------------------------------
