@@ -1,17 +1,22 @@
-#' @title Retrieve downloaded GBIF datasets
+#' @title Retrieve downloaded GBIF data sets
 #'
-#' @description Searches for the most recent instance of a dataset
+#' @description Searches for the most recent instance of a data set
 #'  that has been previously downloaded from GBIF to a local machine
-#'   and imports it into occCite
+#'  and imports it into `occCite`. This is designed to be an internal
+#'  function. It is usable on its own, but you must have already
+#'  navigated to the folder that contains the download zip files
+#'  from GBIF.
 #'
 #' @param taxon A single species
 #'
-#' @return A list of lists containing (1) a dataframe of occurrence
+#' @return A list of lists containing (1) a data frame of occurrence
 #' data; (2) GBIF search metadata for every GBIF download in the
 #' specified directory.
 #'
 #' @examples
+#' \dontrun{
 #' gbifRetriever("Protea cynaroides")
+#' }
 #' @export
 
 gbifRetriever <- function (taxon = NULL){

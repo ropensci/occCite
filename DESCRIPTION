@@ -3,7 +3,7 @@ Type: Package
 Title: Tools for Querying and Managing Large Biodiversity Occurrence Datasets
 Version: 0.2.0
 Authors@R: c(
-  person("Hannah L.","Owens", ,"hannah.owens@gmail.com ", role=c("aut","cre"),
+  person("Hannah L.","Owens", ,"hannah.owens@gmail.com", role=c("aut","cre"),
     comment = c(ORCID = "0000-0003-0071-1745")),
   person("Cory", "Merow",,,role="aut",
     comment = c(ORCID = "0000-0003-0561-053X")),
@@ -16,6 +16,8 @@ Authors@R: c(
   person("Robert P.", "Guralnick",,,role="aut",
     comment = c(ORCID = "0000-0001-6682-1504"))
   )
+Author: Hannah L. Owens [aut, cre], Cory Merow [aut], Brian Maitner [aut], Jamie Kass [aut], Vijay Barve [aut], Robert P. Guralnick [aut]
+Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
 Description: Facilitates the gathering of biodiversity occurrence data 
   from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced repeatability of analyses.
