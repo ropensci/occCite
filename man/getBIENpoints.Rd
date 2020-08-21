@@ -20,6 +20,8 @@ Downloads occurrence points and useful related
 information for processing within other occCite functions
 }
 \examples{
+\dontrun{
 getBIENpoints(taxon="Protea cynaroides")
+}
 
 }

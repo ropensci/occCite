@@ -11,7 +11,9 @@
 #' the raw results of a query to `BIEN::BIEN_occurrence_species()`.}
 #'
 #' @examples
+#' \dontrun{
 #' getBIENpoints(taxon="Protea cynaroides")
+#' }
 #'
 #' @import lubridate
 #'
