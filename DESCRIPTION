@@ -17,7 +17,7 @@ Authors@R: c(
     comment = c(ORCID = "0000-0001-6682-1504"))
   )
 Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
-Description: occCite facilitates the gathering of biodiversity occurrence data 
+Description: Facilitates the gathering of biodiversity occurrence data 
   from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced repeatability of analyses.
 License: GPL (>= 2)
