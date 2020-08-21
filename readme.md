@@ -140,7 +140,7 @@ summary(mySimpleOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 18 August, 2020
+    ##  OccCite query occurred on: 21 August, 2020
     ##  
     ##  User query type: User-supplied list of taxa.
     ##  
@@ -191,7 +191,7 @@ cat(paste(mySimpleOccCitations$Citation,
     ## Magill B, Solomon J, Stimmel H (2020). Tropicos Specimen Data. Missouri Botanical Garden. Occurrence dataset https://doi.org/10.15468/hja69f  Accessed via  GBIF  on  2019-07-15 .
     ## Missouri Botanical Garden,Herbarium  Accessed via  BIEN  on  NA .
     ## MNHN  Accessed via  BIEN  on  2018-08-14 .
-    ## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.177. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/nc6rxy  Accessed via  GBIF  on  2019-07-15 .
+    ## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.178. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/nc6rxy  Accessed via  GBIF  on  2019-07-15 .
     ## naturgucker.de. naturgucker. Occurrence dataset https://doi.org/10.15468/uc1apo  Accessed via  GBIF  on  2019-07-15 .
     ## NSW  Accessed via  BIEN  on  2018-08-14 .
     ## Ranwashe F (2019). BODATSA: Botanical Collections. Version 1.4. South African National Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/2aki0q  Accessed via  GBIF  on  2019-07-15 .
@@ -239,10 +239,10 @@ Loading data from previous GBIF searches
 
 Querying GBIF can take quite a bit of time, especially for multiple
 species and/or well-known species. In this case, you may wish to access
-previously-downloaded datasets from your computer by specifying the
+previously-downloaded data sets from your computer by specifying the
 general location of your downloaded `.zip` files. `occQuery` will crawl
 through your specified `GBIFDownloadDirectory` to collect all the `.zip`
-files contained in that folder and its subfolders. It will then improt
+files contained in that folder and its subfolders. It will then import
 the most recent downloads that match your taxon list. These GBIF data
 will be appended to a BIEN search the same as if you do the simple
 real-time search (if you chose BIEN as well as GBIF), as was shown
@@ -250,8 +250,8 @@ above. `checkPreviousGBIFDownload` is `TRUE` by default, but if
 `loadLocalGBIFDownload` is `TRUE`, `occQuery` will ignore
 `checkPreviousDownload`. It is also worth noting that `occCite` does not
 currently support mixed data download sources. That is, you cannot do
-GBIF queries for some taxa, download previously-prepared datasets for
-others, and load the rest from local datasets on your computer.
+GBIF queries for some taxa, download previously-prepared data sets for
+others, and load the rest from local data sets on your computer.
 
 ``` r
 # Simple load
@@ -298,7 +298,7 @@ summary(myOldOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 18 August, 2020
+    ##  OccCite query occurred on: 21 August, 2020
     ##  
     ##  User query type: User-supplied list of taxa.
     ##  
@@ -335,7 +335,7 @@ cat(paste0(mySimpleOccCitations$Citation, " Accessed via ", mySimpleOccCitations
     ## Magill B, Solomon J, Stimmel H (2020). Tropicos Specimen Data. Missouri Botanical Garden. Occurrence dataset https://doi.org/10.15468/hja69f Accessed via GBIF on 2019-07-15.
     ## Missouri Botanical Garden,Herbarium Accessed via BIEN on NA.
     ## MNHN Accessed via BIEN on 2018-08-14.
-    ## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.177. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/nc6rxy Accessed via GBIF on 2019-07-15.
+    ## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.178. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/nc6rxy Accessed via GBIF on 2019-07-15.
     ## naturgucker.de. naturgucker. Occurrence dataset https://doi.org/10.15468/uc1apo Accessed via GBIF on 2019-07-15.
     ## NSW Accessed via BIEN on 2018-08-14.
     ## Ranwashe F (2019). BODATSA: Botanical Collections. Version 1.4. South African National Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/2aki0q Accessed via GBIF on 2019-07-15.
@@ -348,7 +348,7 @@ cat(paste0(mySimpleOccCitations$Citation, " Accessed via ", mySimpleOccCitations
 Note that you can also load multiple species using either a vector of
 species names or a phylogeny (provided you have previously downloaded
 data for all of the species of interest), and you can load occurrences
-from non-GBIF datasources (e.g. BIEN) in the same query.
+from non-GBIF data sources (e.g. BIEN) in the same query.
 
 ------------------------------------------------------------------------
 
@@ -371,6 +371,12 @@ library(ape);
 #Get tree
 treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite');
 tree <- ape::read.nexus(treeFile);
+tree <- ape::extract.clade(phylogeny, 18)
+```
+
+    ## Error in ape::extract.clade(phylogeny, 18): object 'phylogeny' not found
+
+``` r
 #Query databases for names
 myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
 #Query GBIF for occurrence data
@@ -387,7 +393,7 @@ summary(myPhyOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 18 August, 2020
+    ##  OccCite query occurred on: 21 August, 2020
     ##  
     ##  User query type: User-supplied phylogeny.
     ##  
@@ -499,26 +505,26 @@ cat(paste(myPhyOccCitations$Citation,
     ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/gdrknh  Accessed via  GBIF  on  2019-07-04 .
     ## Bentley A (2020). KUBI Ichthyology Collection. Version 17.66. University of Kansas Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/mgjasg  Accessed via  GBIF  on  2019-07-04 .
     ## Bentley A (2020). KUBI Ichthyology Tissue Collection. Version 18.54. University of Kansas Biodiversity Institute. Occurrence dataset https://doi.org/10.15468/jmsnwg  Accessed via  GBIF  on  2019-07-04 .
-    ## Blindheim T (2020). BioFokus. Version 1.1479. BioFokus. Occurrence dataset https://doi.org/10.15468/jxbhqx  Accessed via  GBIF  on  2019-07-04 .
+    ## Blindheim T (2020). BioFokus. Version 1.1482. BioFokus. Occurrence dataset https://doi.org/10.15468/jxbhqx  Accessed via  GBIF  on  2019-07-04 .
     ## Boon T, Zühlke R (2011). Abundance of benthic infauna in surface sediments from the North Sea sampled during cruise Cirolana00/5. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.756782  Accessed via  GBIF  on  2019-07-04 .
     ## Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2016). VIS - Fishes in estuarine waters in Flanders, Belgium. Version 9.4. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.15468/estwpt  Accessed via  GBIF  on  2019-07-04 .
     ## Canadian node of the Ocean Biogeographic Information System (OBIS Canada). Canada Maritimes Regional Cetacean Sightings (OBIS Canada). Occurrence dataset https://doi.org/10.15468/orwtwi  Accessed via  GBIF  on  2019-07-04 .
     ## Casassovici A, Brosens D (2020). Diveboard - Scuba diving citizen science observations. Version 54.28. Diveboard. Occurrence dataset https://doi.org/10.15468/tnjrgy  Accessed via  GBIF  on  2019-07-04 .
-    ## Catania D, Fong J (2020). CAS Ichthyology (ICH). Version 150.235. California Academy of Sciences. Occurrence dataset https://doi.org/10.15468/efh2ib  Accessed via  GBIF  on  2019-07-04 .
+    ## Catania D, Fong J (2020). CAS Ichthyology (ICH). Version 150.236. California Academy of Sciences. Occurrence dataset https://doi.org/10.15468/efh2ib  Accessed via  GBIF  on  2019-07-04 .
     ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. Occurrence dataset https://doi.org/10.15468/23m361  Accessed via  GBIF  on  2019-07-04 .
     ## Chiang W (2014). Taiwan Fisheries Research Institute – Digital archives of coastal and offshore specimens. TELDAP. Occurrence dataset https://doi.org/10.15468/xvxngy  Accessed via  GBIF  on  2019-07-04 .
     ## Chic Giménez Ò, Lombarte Carrera A (2018). Colección de referencia de otolitos, Instituto de Ciencias del Mar-CSIC. Institute of Marine Sciences (ICM-CSIC). Occurrence dataset https://doi.org/10.15468/wdwxid  Accessed via  GBIF  on  2019-07-04 .
     ## Citizen Science - ALA Website (2020). ALA species sightings and OzAtlas. Occurrence dataset https://doi.org/10.15468/jayxmn  Accessed via  GBIF  on  2019-07-04 .
     ## Clark D, Hayden H, Fanning P, Smith S (2017). DFO Maritimes Research Vessel Trawl Surveys Fish Observations. Canadian node of the Ocean Biogeographic Information System (OBIS Canada). Occurrence dataset https://doi.org/10.15468/hlhopd  Accessed via  GBIF  on  2019-07-04 .
-    ## Coetzer W (2017). Occurrence records of southern African aquatic biodiversity. Version 1.10. The South African Institute for Aquatic Biodiversity. Occurrence dataset https://doi.org/10.15468/pv7vds  Accessed via  GBIF  on  2019-07-04 .
+    ## Coetzer W (2020). Occurrence records of southern African aquatic biodiversity. Version 1.11. The South African Institute for Aquatic Biodiversity. Occurrence dataset https://doi.org/10.15468/pv7vds  Accessed via  GBIF  on  2019-07-04 .
     ## Commonwealth Scientific and Industrial Research Organisation (2020). CSIRO Ichthyology provider for OZCAM. Occurrence dataset https://doi.org/10.15468/azp1pf  Accessed via  GBIF  on  2019-07-04 .
     ## Craeymeersch J A, Duineveld G C A (2011). Abundance of benthic infauna in surface sediments from the North Sea sampled during cruise Tridens00/5. PANGAEA - Publishing Network for Geoscientific and Environmental Data. Occurrence dataset https://doi.org/10.1594/pangaea.756784  Accessed via  GBIF  on  2019-07-04 .
-    ## Creuwels J (2020). Naturalis Biodiversity Center (NL) - Pisces. Naturalis Biodiversity Center. Occurrence dataset https://doi.org/10.15468/evijly  Accessed via  GBIF  on  2019-07-04 .
     ## CSIRO Oceans and Atmosphere (2020). CSIRO, Rachel Cruises, Shark Data, Arafura Sea, North Australia, 1984. Version 6.2. Occurrence dataset https://doi.org/10.15468/yickr6  Accessed via  GBIF  on  2019-07-04 .
-    ## de Vries H (2018). Observation.org, Nature data from the Netherlands. Observation.org. Occurrence dataset https://doi.org/10.15468/5nilie  Accessed via  GBIF  on  2019-07-04 .
+    ## de Vries H, Lemmens M. Observation.org, Nature data from around the World. Observation.org. Occurrence dataset https://doi.org/10.15468/5nilie  Accessed via  GBIF  on  2019-07-04 .
     ## Declan T. Quigley. Rare marine fishes taken in Irish waters from 1786 to 2008. National Biodiversity Data Centre. Occurrence dataset https://doi.org/10.15468/yvsxdp  Accessed via  GBIF  on  2019-07-04 .
     ## Dillman C (2018). CUMV Fish Collection. Version 28.16. Cornell University Museum of Vertebrates. Occurrence dataset https://doi.org/10.15468/jornbc  Accessed via  GBIF  on  2019-07-04 .
     ## DIMEGLIO Tristan N, VONG Lilita N, Inventaire National du Patrimoine Naturel (2020). Programme national de science participative sur la Biodiversité Littorale (BioLit). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/xmv4ik  Accessed via  GBIF  on  2019-07-04 .
+    ## Dondorp E, Creuwels J (2020). Naturalis Biodiversity Center (NL) - Pisces. Naturalis Biodiversity Center. Occurrence dataset https://doi.org/10.15468/evijly  Accessed via  GBIF  on  2019-07-04 .
     ## Dr. Mark Costello. Marine sites, habitats and species data collected during the BioMar survey of Ireland.. National Biodiversity Data Centre. Occurrence dataset https://doi.org/10.15468/cr7gvs  Accessed via  GBIF  on  2019-07-04 .
     ## Dr. Mark Costello. Marine sites, habitats and species data collected during the BioMar survey of Ireland.. National Biodiversity Data Centre. Occurrence dataset https://doi.org/10.15468/nwlt7a  Accessed via  GBIF  on  2019-07-04 .
     ## Edgar G J, Stuart-Smith R D (2016). Reef Life Survey: Global reef fish dataset. Version 2.1. Reef Life Survey. Sampling event dataset https://doi.org/10.15468/qjgwba  Accessed via  GBIF  on  2019-07-04 .
@@ -545,10 +551,10 @@ cat(paste(myPhyOccCitations$Citation,
     ## Grant S, McMahan C (2020). Field Museum of Natural History (Zoology) Fish Collection. Version 13.12. Field Museum. Occurrence dataset https://doi.org/10.15468/alz7wu  Accessed via  GBIF  on  2019-07-04 .
     ## Guerrero E, Abelló P, Lombarte A, Villanueva R, Ramón M, Sabatés A, Santos R (2020). Biological Reference Collections ICM-CSIC. Version 1.28. Institute of Marine Sciences (ICM-CSIC). Occurrence dataset https://doi.org/10.15470/qlqqdx  Accessed via  GBIF  on  2019-07-04 .
     ## Hårsaker K, Daverdin M (2020). Fish collection NTNU University Museum. Version 1.388. NTNU University Museum. Occurrence dataset https://doi.org/10.15468/q909ac  Accessed via  GBIF  on  2019-07-04 .
-    ## Harvard University M, Morris P J (2020). Museum of Comparative Zoology, Harvard University. Version 162.222. Museum of Comparative Zoology, Harvard University. Occurrence dataset https://doi.org/10.15468/p5rupv  Accessed via  GBIF  on  2019-07-04 .
+    ## Harvard University M, Morris P J (2020). Museum of Comparative Zoology, Harvard University. Version 162.223. Museum of Comparative Zoology, Harvard University. Occurrence dataset https://doi.org/10.15468/p5rupv  Accessed via  GBIF  on  2019-07-04 .
     ## Joint Nature Conservation Committee (2018). Marine Nature Conservation Review (MNCR) and associated benthic marine data held and managed by JNCC. Occurrence dataset https://doi.org/10.15468/kcx3ca  Accessed via  GBIF  on  2019-07-04 .
     ## Kent & Medway Biological Records Centre (2019). Fish:  Records for Kent.. Occurrence dataset https://doi.org/10.15468/kd1utk  Accessed via  GBIF  on  2019-07-04 .
-    ## Khidas K, Shorthouse D (2020). Canadian Museum of Nature Fish Collection. Version 1.86. Canadian Museum of Nature. Occurrence dataset https://doi.org/10.15468/bm8amw  Accessed via  GBIF  on  2019-07-04 .
+    ## Khidas K, Shorthouse D (2020). Canadian Museum of Nature Fish Collection. Version 1.87. Canadian Museum of Nature. Occurrence dataset https://doi.org/10.15468/bm8amw  Accessed via  GBIF  on  2019-07-04 .
     ## Kiki P, Ganglo J (2017). Census of the threatened species of Benin.. Version 1.5. GBIF Benin. Occurrence dataset https://doi.org/10.15468/fbbbfl  Accessed via  GBIF  on  2019-07-04 .
     ## Laurent Colombet N, COLOMBET Laurent N, Inventaire National du Patrimoine Naturel (2019). Données BioObs - Base pour l’Inventaire des Observations Subaquatiques de la FFESSM. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/ldch7a  Accessed via  GBIF  on  2019-07-04 .
     ## Machete M (2020). POPA- Fisheries Observer Program of the Azores: Accessory species caught in the Azores tuna fishery between 2000 and 2013. Version 1.1. Institute of Marine Research. Occurrence dataset https://doi.org/10.14284/211  Accessed via  GBIF  on  2019-07-04 .
@@ -567,7 +573,7 @@ cat(paste(myPhyOccCitations$Citation,
     ## Merseyside BioBank (2018). Merseyside BioBank (unverified). Occurrence dataset https://doi.org/10.15468/iou2ld  Accessed via  GBIF  on  2019-07-04 .
     ## Millen B (2019). Ichthyology Collection - Royal Ontario Museum. Version 18.7. Royal Ontario Museum. Occurrence dataset https://doi.org/10.15468/syisbx  Accessed via  GBIF  on  2019-07-04 .
     ## Miya M (2020). Fish Collection of Natural History Museum and Institute, Chiba. National Museum of Nature and Science, Japan. Occurrence dataset https://doi.org/10.15468/p2eb5z  Accessed via  GBIF  on  2019-07-04 .
-    ## MNHN, Chagnoux S (2020). The fishes collection (IC) of the Muséum national d'Histoire naturelle (MNHN - Paris). Version 57.178. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/tm7whu  Accessed via  GBIF  on  2019-07-04 .
+    ## MNHN, Chagnoux S (2020). The fishes collection (IC) of the Muséum national d'Histoire naturelle (MNHN - Paris). Version 57.179. MNHN - Museum national d'Histoire naturelle. Occurrence dataset https://doi.org/10.15468/tm7whu  Accessed via  GBIF  on  2019-07-04 .
     ## Museum and Art Gallery of the Northern Territory (2019). Northern Territory Museum and Art Gallery provider for OZCAM. Occurrence dataset https://doi.org/10.15468/giro3a  Accessed via  GBIF  on  2019-07-04 .
     ## Museums Victoria (2020). Museums Victoria provider for OZCAM. Occurrence dataset https://doi.org/10.15468/lp1ctu  Accessed via  GBIF  on  2019-07-04 .
     ## n/a N, Inventaire National du Patrimoine Naturel (2019). Parc_National_des_Calanques_2017_12_18. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/g0ds6l  Accessed via  GBIF  on  2019-07-04 .

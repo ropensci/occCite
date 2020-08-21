@@ -11,7 +11,7 @@
 #' @examples
 #'
 #' \dontrun{
-#' myOcciteObject <- occQuery(x = myOccCiteObject,
+#' myOccCiteObject <- occQuery(x = myOccCiteObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,

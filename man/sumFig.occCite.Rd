@@ -31,10 +31,8 @@ by year of occurrence records, waffle::waffle plot of primary
 data sources, waffle::waffle plot of data aggregators.
 }
 \examples{
-\donttest{
-sumFig.occCite(occCiteData,
-bySpecies = FALSE,
-plotType = c("yearHistogram", "source", "aggregator"))
-}
+data(myOccCiteObject)
+sumFig.occCite(myOccCiteObject, bySpecies = FALSE,
+               plotType = c("yearHistogram", "source", "aggregator"))
 
 }

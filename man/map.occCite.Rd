@@ -52,8 +52,7 @@ a specified color library, currently: c("red", "lightred", "orange", "beige", "g
 is `FALSE` and species_colors are not specified, random colors from the `RColorBrewer` Set1 palette are used.
 }
 \examples{
-\donttest{
-map.occCite(occCiteData, cluster = FALSE)
-}
+data(myOccCiteObject)
+map.occCite(myOccCiteObject, cluster = FALSE)
 
 }

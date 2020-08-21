@@ -20,8 +20,5 @@ Searches for the most recent instance of a dataset
   and imports it into occCite
 }
 \examples{
-\dontrun{
-gbifRetriever(GBIFDownloadDirectory = NULL);
-}
-
+gbifRetriever("Protea cynaroides")
 }

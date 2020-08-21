@@ -11,9 +11,10 @@
 #' for summary plots.
 #'
 #' @examples
-#' \donttest{
-#' tableForPlot <- tabulate.occResults(occCiteDataResults, "Protea cynaroides")
-#'}
+#' data(myOccCiteObject)
+#' tableForPlot <- tabulate.occResults(myOccCiteObject@occResults$`Protea cynaroides`,
+#'                                     "Protea cynaroides")
+#' @export
 #'
 tabulate.occResults <- function(x, sp.name) {
   sp.name <- stringr::str_extract(string = sp.name,
@@ -63,9 +64,8 @@ tabulate.occResults <- function(x, sp.name) {
 #' @return A leaflet map
 #'
 #' @examples
-#' \donttest{
-#' map.occCite(occCiteData, cluster = FALSE)
-#'}
+#' data(myOccCiteObject)
+#' map.occCite(myOccCiteObject, cluster = FALSE)
 #'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
@@ -116,7 +116,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
-  # remove coordinate duplicates with same DataService
+  # remove coordinate duplicates with same data service
   d <- dplyr::distinct(d, .data$longitude, .data$latitude, .data$DataService, .keep_all = TRUE)
 
   d$label <- paste(paste("name:", d$name),
@@ -146,7 +146,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     d.nest.ds[d.nest.dsBoth] <- "GBIF_BIEN"
   }
   d.nest$DataService <- d.nest.ds
-  d.nest <- d.nest %>% tidyr::unnest(.data$DataService) %>% dplyr::mutate(DataService = factor(DataService))
+  d.nest <- d.nest %>% tidyr::unnest(.data$DataService) %>% dplyr::mutate(DataService = factor(.data$DataService))
   if(length(ds_map) == 1) {
     d.nest <- d.nest[d.nest$DataService %in% ds_map,]
   }
@@ -173,7 +173,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     sp.icons <- lapply(sp.names, makeIconList)
     names(sp.icons) <- sp.names
     for(i in sp.names) {
-      d.nest.i <- d.nest %>% dplyr::filter(name == i)
+      d.nest.i <- d.nest %>% dplyr::filter(.data$name == i)
       if(nrow(d.nest.i) == 0) next
       sp.icons.i <- sp.icons[[i]]
       labs.lst.i <- labs.lst[[i]]
@@ -214,11 +214,9 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 #' @return A list containing the desired plots.
 #'
 #' @examples
-#' \donttest{
-#' sumFig.occCite(occCiteData,
-#' bySpecies = FALSE,
-#' plotType = c("yearHistogram", "source", "aggregator"))
-#'}
+#' data(myOccCiteObject)
+#' sumFig.occCite(myOccCiteObject, bySpecies = FALSE,
+#'                plotType = c("yearHistogram", "source", "aggregator"))
 #'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle theme xlab ylab theme_classic scale_y_continuous ggplot_build element_text
 #'

@@ -12,6 +12,13 @@
 #'
 #' @importFrom methods new
 #'
+#' @examples
+#' \dontrun{
+#' GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
+#'      email = "****@yahoo.com",
+#'      pwd = "12345");
+#'}
+#'
 #' @export
 GBIFLogin <- methods::setClass("GBIFLogin",
                                slots = c(username = "vector",

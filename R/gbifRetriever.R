@@ -11,10 +11,7 @@
 #' specified directory.
 #'
 #' @examples
-#' \dontrun{
-#' gbifRetriever(GBIFDownloadDirectory = NULL);
-#'}
-#'
+#' gbifRetriever("Protea cynaroides")
 #' @export
 
 gbifRetriever <- function (taxon = NULL){

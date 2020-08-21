@@ -28,16 +28,16 @@ against taxonomic database, returns vector of cleaned taxonomic names
 well as warnings if there are invalid names.
 }
 \examples{
-## Inputting a phylogeny
-\dontrun{
 ## Inputting a vector of taxon names
 studyTaxonList(x = c("Buteo buteo",
                      "Buteo buteo hartedi",
                      "Buteo japonicus"),
-                     datasources = c('NCBI'));
+                     datasources = c('NCBI'))
 
 ## Inputting a phylogeny
-studyTaxonList(x = phylogeny, datasources = c('NCBI'));
-}
+phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
+     package = "occCite"))
+phylogeny <- ape::extract.clade(phylogeny, 18)
+studyTaxonList(x = phylogeny, datasources = c('NCBI'))
 
 }
