@@ -9,6 +9,6 @@ There were 0 NOTES.
 
 ## Downstream dependencies
 I have also run a devtools::revdep() check on downstream dependencies of 
-climateStability. 
+occCite. 
 
 All packages that I could install passed with no ERRORs or WARNINGs.
