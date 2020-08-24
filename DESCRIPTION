@@ -20,7 +20,7 @@ Author: Hannah L. Owens [aut, cre] (<https://orcid.org/0000-0003-0071-1745>), Co
 Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
 Description: Facilitates the gathering of biodiversity occurrence data 
   from disparate sources. Metadata is managed throughout the process to facilitate 
-  reporting and enhanced repeatability of analyses.
+  reporting and enhanced ability to repeat analyses.
 License: GPL (>= 2)
 URL: https://github.com/hannahlowens/occCite
 BugReports: https://github.com/hannahlowens/occCite/issues
