@@ -33,7 +33,8 @@ Suggests:
   RColorBrewer,
   viridis,
   bit64,
-  waffle
+  waffle,
+  remotes
 Imports:
     BIEN,
     dplyr,
