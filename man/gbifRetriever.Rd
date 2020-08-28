@@ -27,3 +27,4 @@ Searches for the most recent instance of a data set
 gbifRetriever("Protea cynaroides")
 }
 }
+\keyword{internal}

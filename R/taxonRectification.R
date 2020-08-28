@@ -19,6 +19,7 @@
 #' taxonRectification(taxName = "Buteo buteo hartedi", datasources = 'NCBI');
 #'
 #' @export
+#'
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
   sources <- taxize::gnr_datasources();#Populates the list of data sources
   #Are user-input databases included in the list of data sources for Global Names Resolver?

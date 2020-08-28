@@ -11,10 +11,13 @@
 #' for summary plots.
 #'
 #' @examples
+#' \dontrun{
 #' data(myOccCiteObject)
 #' tableForPlot <- tabulate.occResults(myOccCiteObject@occResults$`Protea cynaroides`,
 #'                                     "Protea cynaroides")
-#' @export
+#' }
+#'
+#' @keywords internal
 #'
 tabulate.occResults <- function(x, sp.name) {
   sp.name <- stringr::str_extract(string = sp.name,

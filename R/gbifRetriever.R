@@ -17,7 +17,7 @@
 #' \dontrun{
 #' gbifRetriever("Protea cynaroides")
 #' }
-#' @export
+#' @keywords internal
 
 gbifRetriever <- function (taxon = NULL){
   #Error checking

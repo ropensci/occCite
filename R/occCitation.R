@@ -9,13 +9,15 @@
 #' @importFrom stats na.omit
 #'
 #' @examples
+#' \dontrun{
 #' data(myOccCiteObject)
 #' myCitations <- occCitation(x = myOccCiteObject)
 #' cat(paste(myCitations$Citation, " Accessed via ",
 #'      myCitations$occSearch, " on ", myCitations$`Accession Date`, "."),
 #'      sep = "\n")
-#'
+#' }
 #' @export
+
 occCitation <-function(x = NULL){
   #Error check input x.
   if (!class(x)=="occCiteData"){

@@ -20,7 +20,11 @@ This is a helper function that tabulates `occCiteData`
 objects for use by map.occCite and `sumFig.occCite`.
 }
 \examples{
+\dontrun{
 data(myOccCiteObject)
 tableForPlot <- tabulate.occResults(myOccCiteObject@occResults$`Protea cynaroides`,
                                     "Protea cynaroides")
 }
+
+}
+\keyword{internal}

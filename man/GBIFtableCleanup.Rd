@@ -28,3 +28,4 @@ fitForUseTable <- GBIFtableCleanup(temp$OccurrenceTable)
 }
 
 }
+\keyword{internal}

@@ -16,10 +16,11 @@ A data frame with citations information for occurrences
 Harvests citations for occurrence data
 }
 \examples{
+\dontrun{
 data(myOccCiteObject)
 myCitations <- occCitation(x = myOccCiteObject)
 cat(paste(myCitations$Citation, " Accessed via ",
      myCitations$occSearch, " on ", myCitations$`Accession Date`, "."),
      sep = "\n")
-
+}
 }

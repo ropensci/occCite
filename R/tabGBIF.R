@@ -14,12 +14,14 @@
 #' the specified directory.}
 #'
 #' @examples
+#' \dontrun{
 #' res <- rgbif::as.download(system.file("extdata/Protea_cynaroides",
 #'                  "0012335-190621201848488.zip",
 #'             package = "occCite"))
-#' tabGBIF(res, taxon = "Protea cynaroides")
-#'
-#' @export
+#' tabGBIF(GBIFresults = res, taxon = "Protea cynaroides")
+#' }
+#' @keywords internal
+
 tabGBIF <- function(GBIFresults, taxon){
 
   occFromGBIF <- rgbif::occ_download_import(GBIFresults);
