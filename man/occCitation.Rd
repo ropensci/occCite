@@ -10,7 +10,10 @@ occCitation(x = NULL)
 \item{x}{An object of class \code{\link{occCiteData}}}
 }
 \value{
-A data frame with citations information for occurrences
+An object of class \code{\link{occCiteCitation}}. It is
+a named list of the same length as the number of species
+included in your \code{\link{occCiteData}} object. Each item
+in the list has citation information for occurrences.
 }
 \description{
 Harvests citations for occurrence data
@@ -19,8 +22,5 @@ Harvests citations for occurrence data
 \dontrun{
 data(myOccCiteObject)
 myCitations <- occCitation(x = myOccCiteObject)
-cat(paste(myCitations$Citation, " Accessed via ",
-     myCitations$occSearch, " on ", myCitations$`Accession Date`, "."),
-     sep = "\n")
 }
 }

@@ -16,18 +16,18 @@ GBIF to begin the download.}
 A GBIF download key, if one is available
 }
 \description{
-Searches the list of a user's previous downloads on the
-GBIF servers and returns the data set key for the most recently prepared
-download.
+Searches the list of a user's most recent 1000 downloads
+on the GBIF servers and returns the data set key for the most recently
+prepared download.
 }
 \examples{
 \dontrun{
 GBIFLogin <- GBIFLoginManager(user = "theWoman",
                email = "ireneAdler@laScala.org",
-               pwd = "sh3r");
+               pwd = "sh3r")
 taxKey <- rgbif::name_suggest(q= "Protea cynaroides", rank='species')$key[1]
 prevGBIFdownload(taxonKey = taxKey,
-              GBIFLogin = myGBIFLogin);
+              GBIFLogin = myGBIFLogin)
 }
 
 }

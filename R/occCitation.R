@@ -4,7 +4,10 @@
 #'
 #' @param x An object of class \code{\link{occCiteData}}
 #'
-#' @return A data frame with citations information for occurrences
+#' @return An object of class \code{\link{occCiteCitation}}. It is
+#' a named list of the same length as the number of species
+#' included in your \code{\link{occCiteData}} object. Each item
+#' in the list has citation information for occurrences.
 #'
 #' @importFrom stats na.omit
 #'
@@ -12,9 +15,6 @@
 #' \dontrun{
 #' data(myOccCiteObject)
 #' myCitations <- occCitation(x = myOccCiteObject)
-#' cat(paste(myCitations$Citation, " Accessed via ",
-#'      myCitations$occSearch, " on ", myCitations$`Accession Date`, "."),
-#'      sep = "\n")
 #' }
 #' @export
 
@@ -117,5 +117,7 @@ occCitation <-function(x = NULL){
     citationTables[[sp]] <- citationTable[order(citationTable$Citation),]
   }
 
-  return(citationTables)
+  occCiteCitationInstance <- methods::new("occCiteCitation", occResults = citationTables)
+
+  return(occCiteCitationInstance)
 }

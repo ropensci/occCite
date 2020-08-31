@@ -11,22 +11,12 @@
 
 \item{...}{Additional arguments affecting the summary produced}
 }
-\value{
-A data frame with citations information for occurrences
-}
 \description{
 Displays a summary of relevant stats about a query
 }
 \examples{
 
-\dontrun{
-myOccCiteObject <- occQuery(x = myOccCiteObject,
-         datasources = c("gbif", "bien"),
-         GBIFLogin = myLogin,
-         limit = NULL,
-         GBIFDownloadDirectory = "./Desktop"
-         loadLocalGBIFDownload = F);
-summary(myOcciteObject);
-}
+data(myOccCiteObject)
+summary(myOccCiteObject)
 
 }

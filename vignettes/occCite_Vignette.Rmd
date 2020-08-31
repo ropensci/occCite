@@ -1,9 +1,10 @@
 ---
 title: "occCite Vignette: Downloading and Citing Biodiversity Data"
 author:
-- Hannah Owens
+- Hannah L. Owens
 - Cory Merow
 - Brian Maitner
+- Jamie M. Kass
 - Vijay Barve
 - Robert Guralnick
 date: "`r Sys.Date()`"
@@ -96,15 +97,12 @@ After doing a search for occurrence points, you can use `occCitation()` to gener
 
 ```{r simple_citation}
 #Get citations
-mySimpleOccCitations <- occCitation(mySimpleOccCiteObject);
+mySimpleOccCitations <- occCitation(mySimpleOccCiteObject)
 ```
 
 Here is a simple way of generating a formatted citation document from the results of `occCitation()`.
 ```{r show_simple_citations}
-cat(paste(mySimpleOccCitations$Citation, 
-          " Accessed via ", mySimpleOccCitations$occSearch, 
-          " on ", mySimpleOccCitations$`Accession Date`, "."), 
-    sep = "\n");
+print(mySimpleOccCitations)
 ```
 
 ## Simple Taxonomic Rectification
@@ -149,8 +147,8 @@ Getting citation data works the exact same way with previously-downloaded data a
 
 ```{r getting_citations_from_already-downloaded_GBIF_data}
 #Get citations
-myOldOccCitations <- occCitation(myOldOccCiteObject);
-cat(paste0(mySimpleOccCitations$Citation, " Accessed via ", mySimpleOccCitations$occSearch, " on ", mySimpleOccCitations$`Accession Date`, "."), sep = "\n");
+myOldOccCitations <- occCitation(myOldOccCiteObject)
+print(myOldOccCitations)
 ```
 
 Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF datasources (e.g. BIEN) in the same query.
@@ -166,29 +164,29 @@ In addition to doing a simple, single species search, you can also use `occCite`
 Here is an example of how such a search is structured, using an unpublished phylogeny of billfishes.
 
 ```{r multispecies_search_with_phylogeny, eval=T, echo=T}
-library(ape);
+library(ape)
 #Get tree
-treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite');
-phylogeny <- ape::read.nexus(treeFile);
+treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite')
+phylogeny <- ape::read.nexus(treeFile)
 tree <- ape::extract.clade(phylogeny, 18)
 #Query databases for names
-myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
+myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI")
 #Query GBIF for occurrence data
 myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
                             datasources = "gbif",
                             GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"), 
                             loadLocalGBIFDownload = T,
-                            checkPreviousGBIFDownload = F);
-```
-
-```{r getting_citations_for_a_multispecies_search, echo=T}
+                            checkPreviousGBIFDownload = F)
 # What does a multispecies query look like?
 summary(myPhyOccCiteObject)
+```
+
+And then you can print out the citations, separated by species (or not, but in this example, they're separate).
+
+```{r getting_citations_for_a_multispecies_search, echo=T}
 #Get citations
-myPhyOccCitations <- occCitation(myPhyOccCiteObject);
+myPhyOccCitations <- occCitation(myPhyOccCiteObject)
 
 #Print citations as text with accession dates.
-cat(paste(myPhyOccCitations$Citation, 
-           " Accessed via ", myPhyOccCitations$occSearch, 
-           " on ", myPhyOccCitations$`Accession Date`, "."), sep = "\n");
+print(myPhyOccCitations, bySpecies = T)
 ```

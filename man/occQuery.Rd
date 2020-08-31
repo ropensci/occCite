@@ -62,7 +62,7 @@ occQuery(x = myOccCiteObject,
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
          GBIFDownloadDirectory = "./Desktop"
-         loadLocalGBIFDownload = F);
+         loadLocalGBIFDownload = F)
 
 ## If you don't have a occCite object yet
 occQuery(x = c("Buteo buteo", "Protea cynaroides"),
@@ -70,7 +70,7 @@ occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          GBIFLogin = myLogin,
          GBIFOverwrite = T,
          GBIFDownloadDirectory = "./Desktop"
-         loadLocalGBIFDownload = F);
+         loadLocalGBIFDownload = F)
 
 ## If you have previously downloaded occurrence data from GBIF
 ## and saved it in a folder called "GBIFDownloads".
@@ -79,7 +79,7 @@ occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          GBIFLogin = myLogin,
          GBIFoverwrite = T,
          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
-         loadLocalGBIFDownload = T);
+         loadLocalGBIFDownload = T)
 }
 
 }

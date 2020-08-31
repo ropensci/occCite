@@ -6,12 +6,10 @@
 #'
 #' @param ... Additional arguments affecting the summary produced
 #'
-#' @return A data frame with citations information for occurrences
-#'
 #' @examples
 #'
 #' data(myOccCiteObject)
-#' summary(myOcciteObject)
+#' summary(myOccCiteObject)
 #'
 #' @export
 #'

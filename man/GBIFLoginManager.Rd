@@ -29,13 +29,13 @@ GBIF. You MUST ALREADY HAVE AN ACCOUNT at \href{http://gbif.org/}{GBIF}.
 \dontrun{
 myLogin <- GBIFLoginManager(user = "theWoman",
                             email = "ireneAdler@laScala.org",
-                            pwd = "sh3r");
+                            pwd = "sh3r")
 }
 
 \dontrun{
 ## Can also be mined from your system environment
 myLogin <- GBIFLoginManager(user = NULL,
-                            email = NULL, pwd = NULL);
+                            email = NULL, pwd = NULL)
 }
 
 }

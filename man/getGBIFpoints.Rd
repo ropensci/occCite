@@ -37,7 +37,7 @@ for processing within other occCite functions
 \dontrun{
 getGBIFpoints(taxon="Gadus morhua",
               GBIFLogin = myGBIFLogin,
-              GBIFDownloadDirectory = NULL);
+              GBIFDownloadDirectory = NULL)
 }
 
 }
