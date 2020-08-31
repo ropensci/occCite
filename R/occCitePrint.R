@@ -25,8 +25,15 @@
 #'
 #' @export
 #'
-print.occCiteCitation <- function(object, bySpecies = F, ...) {
+print.occCiteCitation <- function(object, ...) {
   x <- object
+  args <- list(...)
+  if ("bySpecies" %in% names(args)){
+    bySpecies <- args$bySpecies
+  } else {
+    bySpecies <- FALSE
+  }
+
 
   stopifnot(inherits(x, "occCiteCitation"))
 

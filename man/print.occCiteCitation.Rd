@@ -4,17 +4,17 @@
 \alias{print.occCiteCitation}
 \title{Print occCite citation object}
 \usage{
-\method{print}{occCiteCitation}(object, bySpecies = F, ...)
+\method{print}{occCiteCitation}(object, ...)
 }
 \arguments{
 \item{object}{An object of class \code{\link{occCiteCitation}}}
 
+\item{...}{Additional arguments affecting how the formatted
+citation document is produced}
+
 \item{bySpecies}{Logical; If `TRUE`, formatted citations will
 be returned in chunks headed by the species name. If `FALSE`,
 a single citation string for all species is returned.}
-
-\item{...}{Additional arguments affecting how the formatted
-citation document is produced}
 }
 \value{
 A text string with formatted citatations
