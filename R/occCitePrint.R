@@ -31,21 +31,23 @@ print.occCiteCitation <- function(object, bySpecies = F, ...) {
   stopifnot(inherits(x, "occCiteCitation"))
 
   if(bySpecies){
-    for (i in 1:length(length(x@occResults))){
+    for (i in 1:length(x@occResults)){
       cat(paste("Species:", names(x@occResults)[[i]], "\n\n"))
       singleSpRecord <- x@occResults[[i]]
       singleSpRecord <- singleSpRecord[order(singleSpRecord$Citation),]
-      cat(paste(singleSpRecord$Citation,
-                "Accessed via", singleSpRecord$occSearch,
-                "on", singleSpRecord$`Accession Date`, "."),
+      cat(paste0(singleSpRecord$Citation,
+                " Accessed via ", singleSpRecord$occSearch,
+                " on ", singleSpRecord$`Accession Date`, "."),
           sep = "\n")
+      cat(paste("\n"))
     }
   } else {
     allCitations <- do.call(rbind, x@occResults)
     allCitations <- allCitations[order(allCitations$Citation),]
-    cat(paste(allCitations$Citation,
-              "Accessed via", allCitations$occSearch,
-              "on", allCitations$`Accession Date`, "."),
+    allCitations <- unique(allCitations[,c("occSearch", "Citation", "Accession Date")])
+    cat(paste0(allCitations$Citation,
+              " Accessed via ", allCitations$occSearch,
+              " on ", allCitations$`Accession Date`, "."),
         sep = "\n")
   }
 }
