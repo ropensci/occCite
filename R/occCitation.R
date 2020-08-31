@@ -117,7 +117,7 @@ occCitation <-function(x = NULL){
     citationTables[[sp]] <- citationTable[order(citationTable$Citation),]
   }
 
-  occCiteCitationInstance <- methods::new("occCiteCitation", occResults = citationTables)
+  occCiteCitationInstance <- methods::new("occCiteCitation", occCitationResults = citationTables)
 
   return(occCiteCitationInstance)
 }
