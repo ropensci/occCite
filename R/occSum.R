@@ -10,15 +10,8 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' myOccCiteObject <- occQuery(x = myOccCiteObject,
-#'          datasources = c("gbif", "bien"),
-#'          GBIFLogin = myLogin,
-#'          limit = NULL,
-#'          GBIFDownloadDirectory = "./Desktop"
-#'          loadLocalGBIFDownload = F);
-#' summary(myOcciteObject);
-#'}
+#' data(myOccCiteObject)
+#' summary(myOcciteObject)
 #'
 #' @export
 #'

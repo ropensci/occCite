@@ -21,28 +21,28 @@
 getBIENpoints<-function(taxon){
   occs<-BIEN::BIEN_occurrence_species(species = taxon, cultivated = T,
                                       only.new.world = F, native.status = F,
-                                      collection.info = T, natives.only = F);
+                                      collection.info = T, natives.only = F)
 
   if(nrow(occs)==0){
-    print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?", sep = ""));
-    return(NULL);
+    print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?", sep = ""))
+    return(NULL)
   }
 
-  rawOccs <- occs;
-  occs<-occs[which(!is.na(occs$latitude) & !is.na(occs$longitude)),];
+  rawOccs <- occs
+  occs<-occs[which(!is.na(occs$latitude) & !is.na(occs$longitude)),]
 
   if(nrow(occs)==0){
-    print(paste("There are no BIEN points with coordinates for ", taxon, ".", sep = ""));
-    return(NULL);
+    print(paste("There are no BIEN points with coordinates for ", taxon, ".", sep = ""))
+    return(NULL)
   }
 
   #Fixing dates
-  occs <-occs[which(!is.na(occs$date_collected)),];
+  occs <-occs[which(!is.na(occs$date_collected)),]
   if(nrow(occs)==0){
-    print(paste("There are no BIEN points that contain collection dates for ", taxon, ".", sep = ""));
-    return(NULL);
+    print(paste("There are no BIEN points that contain collection dates for ", taxon, ".", sep = ""))
+    return(NULL)
   }
-  occs$date_collected <- lubridate::ymd(occs$date_collected);
+  occs$date_collected <- lubridate::ymd(occs$date_collected)
   yearCollected <- as.numeric(format(occs$date_collected, format = "%Y"))
   monthCollected <- as.numeric(format(occs$date_collected, format = "%m"))
   dayCollected <- as.numeric(format(occs$date_collected, format = "%d"))
@@ -51,26 +51,25 @@ getBIENpoints<-function(taxon){
   #Tidying up data table
   outdata<-occs[c('scrubbed_species_binomial',
                   'longitude','latitude','dayCollected', 'monthCollected',
-                  'yearCollected', 'dataset','datasource_id')];
-  dataService <- rep("BIEN", nrow(outdata));
-  outdata <- cbind(outdata, dataService);
+                  'yearCollected', 'dataset','datasource_id')]
+  dataService <- rep("BIEN", nrow(outdata))
+  outdata <- cbind(outdata, dataService)
 
   colnames(outdata) <- c("name", "longitude",
                          "latitude", "day", "month",
                          "year", "Dataset",
-                         "DatasetKey", "DataService");
+                         "DatasetKey", "DataService")
 
   #Get metadata
-  occMetadata <- BIEN::BIEN_metadata_citation(occs);
-  occMetadata$license<-"CC BY-NC-ND";
-  occMetadata$warnings <-
+  occMetadata <- BIEN::BIEN_metadata_citation(occs)
+  occMetadata$license <- "CC BY-NC-ND"
 
   #Package it all up
-  outlist<-list();
-  outlist[[1]]<-outdata;
-  outlist[[2]]<-occMetadata;
-  outlist[[3]]<-rawOccs;
+  outlist<-list()
+  outlist[[1]]<-outdata
+  outlist[[2]]<-occMetadata
+  outlist[[3]]<-rawOccs
   names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
 
-  return(outlist);
+  return(outlist)
 }

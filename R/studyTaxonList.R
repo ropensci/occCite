@@ -35,30 +35,33 @@
 studyTaxonList <- function(x = NULL, datasources = c('NCBI')) {
   #Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x))&&class(x)=="character")){
-    warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n");
-    return(NULL);
+    warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n")
+    return(NULL)
   }
   else if(is.vector(class(x))&&class(x)=="character"){
-    targets <- x;
+    targets <- x
     dataFrom <- "User-supplied list of taxa." #Keeping track of metadata
   }
   else if(class(x) == "phylo"){
-    targets <- x$tip.label;
+    targets <- x$tip.label
     dataFrom <- "User-supplied phylogeny." #Keeping track of metadata
   }
 
   #Building the results table
-  resolvedNames <- data.frame();
-  count <- 1;
+  resolvedNames <- data.frame()
+  count <- 1
   while(count <= length(targets)){
-    resolvedNames <- rbind(resolvedNames, taxonRectification(taxName = targets[[count]], datasources = datasources));
-    count <- count + 1;
+    resolvedNames <- rbind(resolvedNames, taxonRectification(taxName = targets[[count]],
+                                                             datasources = datasources))
+    count <- count + 1
   }
 
-  colnames(resolvedNames) <- c("Input Name", "Best Match", "Taxonomic Databases w/ Matches");
-  resolvedNames <- as.data.frame(resolvedNames);
+  colnames(resolvedNames) <- c("Input Name", "Best Match", "Taxonomic Databases w/ Matches")
+  resolvedNames <- as.data.frame(resolvedNames)
 
   #Populating an instance of class occCiteData
-  occCiteInstance <- methods::new("occCiteData", userQueryType = dataFrom, userSpecTaxonomicSources = datasources, cleanedTaxonomy = resolvedNames);
-  return(occCiteInstance);
+  occCiteInstance <- methods::new("occCiteData", userQueryType = dataFrom,
+                                  userSpecTaxonomicSources = datasources,
+                                  cleanedTaxonomy = resolvedNames)
+  return(occCiteInstance)
 }

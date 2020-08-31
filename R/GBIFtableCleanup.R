@@ -14,7 +14,7 @@
 #' ##If you have already created a occCite object, and have not previously
 #' temp <- getGBIFpoints(taxon = "Protea cynaroides", GBIFLogin = GBIFLogin,
 #'                       GBIFDownloadDirectory = GBIFDownloadDirectory,
-#'                       checkPreviousGBIFDownload = checkPreviousGBIFDownload);
+#'                       checkPreviousGBIFDownload = checkPreviousGBIFDownload)
 #' fitForUseTable <- GBIFtableCleanup(temp$OccurrenceTable)
 #'}
 #'

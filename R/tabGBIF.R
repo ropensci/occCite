@@ -24,10 +24,10 @@
 
 tabGBIF <- function(GBIFresults, taxon){
 
-  occFromGBIF <- rgbif::occ_download_import(GBIFresults);
+  occFromGBIF <- rgbif::occ_download_import(GBIFresults)
 
   if(nrow(occFromGBIF)==0){
-    print(paste("Note: there are no GBIF points for ", taxon, ".", sep = ""));
+    print(paste("Note: there are no GBIF points for ", taxon, ".", sep = ""))
     return(NULL);
   }
 
@@ -37,13 +37,13 @@ tabGBIF <- function(GBIFresults, taxon){
                             occFromGBIF$day, occFromGBIF$month,
                             occFromGBIF$year, occFromGBIF$datasetName,
                             as.character(occFromGBIF$datasetKey))
-  dataService <- rep("GBIF", nrow(occFromGBIF));
-  occFromGBIF <- cbind(occFromGBIF, dataService);
+  dataService <- rep("GBIF", nrow(occFromGBIF))
+  occFromGBIF <- cbind(occFromGBIF, dataService)
   occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF[,-8]),]# "Dataset" column excluded because it is not always filled out, but is useful for quick human checks
 
   colnames(occFromGBIF) <- c("gbifID", "name", "longitude",
                              "latitude", "day", "month",
                              "year", "Dataset",
-                             "DatasetKey", "DataService");
+                             "DatasetKey", "DataService")
   return(occFromGBIF)
 }

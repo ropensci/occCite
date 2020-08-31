@@ -16,7 +16,7 @@
 #' \dontrun{
 #' GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
 #'      email = "****@yahoo.com",
-#'      pwd = "12345");
+#'      pwd = "12345")
 #'}
 #'
 #' @export

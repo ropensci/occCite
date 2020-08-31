@@ -86,8 +86,8 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 
   #Error check input.
   if(!class(occCiteData)=="occCiteData"){
-    warning("Input is not of class 'occCiteData'.\n");
-    return(NULL);
+    warning("Input is not of class 'occCiteData'.\n")
+    return(NULL)
   }
 
   if(!(all(ds_map %in% c("GBIF", "BIEN", "GBIF_BIEN")))) {
@@ -112,7 +112,8 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
   for(i in 1:length(d.tbl)) {
     d.tbl.n <- nrow(d.tbl[[i]])
     if(d.tbl.n > map_limit) {
-      message(paste0("Number of occurrences for ", sp.names[i], " exceeds limit of ", map_limit, ", so mapping a random sample of ", map_limit, " occurrences..."))
+      message(paste0("Number of occurrences for ", sp.names[i], " exceeds limit of ",
+                     map_limit, ", so mapping a random sample of ", map_limit, " occurrences..."))
       d.tbl[[i]] <- d.tbl[[i]][sample(1:d.tbl.n, map_limit),]
     }
   }
@@ -125,7 +126,8 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
   d$label <- paste(paste("name:", d$name),
                    paste("longitude:", d$longitude), paste("latitude:", d$latitude),
                    paste0("day: ", d$day, ", month: ", d$month, ", year: ", d$year),
-                   paste("dataset:", d$Dataset), paste("data service:", d$DataService, "<br/><br/>"), sep = "<br/>")
+                   paste("dataset:", d$Dataset), paste("data service:", d$DataService,
+                                                       "<br/><br/>"), sep = "<br/>")
   d$label <- lapply(d$label, htmltools::HTML)
   d$DataService <- factor(d$DataService)
 
@@ -228,7 +230,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearHistogram", "source", "aggregator")){
   #Error check input.
   if (!class(occCiteData)=="occCiteData"){
-    warning("Input is not of class 'occCiteData'.\n");
+    warning("Input is not of class 'occCiteData'.\n")
     return(NULL);
   }
 
@@ -244,7 +246,7 @@ sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearH
     return(NULL)
   }
   else if(is.null(plotTypes)){#Fills in NULL
-    plotTypes <- plots;
+    plotTypes <- plots
   }
 
   d.res <- occCiteData@occResults

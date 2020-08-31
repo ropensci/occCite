@@ -30,42 +30,42 @@ gbifRetriever <- function (taxon = NULL){
     return(NULL)
   }
 
-  paths <- list.files(getwd(), pattern = "\\d{7}-\\d{15}.zip", recursive = T);
-  keys <- as.vector(stringr::str_match(paths, pattern = "\\d{7}-\\d{15}"));
+  paths <- list.files(getwd(), pattern = "\\d{7}-\\d{15}.zip", recursive = T)
+  keys <- as.vector(stringr::str_match(paths, pattern = "\\d{7}-\\d{15}"))
   paths <- stringr::str_remove(paths, pattern = "\\d{7}-\\d{15}.zip")
 
   #Sort through downloads to find taxon matches
-  matchIndex <- NULL;
-  matchDate <- NULL;
+  matchIndex <- NULL
+  matchDate <- NULL
   for (i in 1:length(keys)){
-    metadata <- rgbif::occ_download_meta(key = keys[[i]]);
+    metadata <- rgbif::occ_download_meta(key = keys[[i]])
     if (metadata$totalRecords > 0){
       if(!is.na(match(table = unlist(metadata$request), "TAXON_KEY")) &
          taxon_key %in% unlist(metadata$request)){
-        matchIndex <- append(matchIndex, i);
-        matchDate <- append(matchDate, metadata$modified);
+        matchIndex <- append(matchIndex, i)
+        matchDate <- append(matchDate, metadata$modified)
       }
     }
   }
   if(length(matchIndex) == 0){
-    print(paste0("There are no local drive downloads for ", taxon, "in ", getwd(), "."));
-    return(NULL);
+    print(paste0("There are no local drive downloads for ", taxon, "in ", getwd(), "."))
+    return(NULL)
   }
   else{
     #Gets the downloaded data for the most recent match and returns it
     newestTaxonomicMatch <- matchIndex[order(matchDate,
                                              decreasing = T)][1]
-    res <- rgbif::as.download(paths[[newestTaxonomicMatch]], key = keys[[newestTaxonomicMatch]]);
-    rawOccs <- res;
-    occFromGBIF <- tabGBIF(res, taxon = taxon);
-    occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]]);
+    res <- rgbif::as.download(paths[[newestTaxonomicMatch]], key = keys[[newestTaxonomicMatch]])
+    rawOccs <- res
+    occFromGBIF <- tabGBIF(res, taxon = taxon)
+    occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]])
 
     #Preparing list for return
-    outlist<-list();
-    outlist[[1]]<-occFromGBIF;
-    outlist[[2]]<-occMetadata;
-    outlist[[3]]<-rawOccs;
-    names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences");
+    outlist<-list()
+    outlist[[1]]<-occFromGBIF
+    outlist[[2]]<-occMetadata
+    outlist[[3]]<-rawOccs
+    names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
 
     return(outlist)
   }
