@@ -143,7 +143,7 @@ head(myOldOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
 summary(myOldOccCiteObject)
 ```
 
-Getting citation data works the exact same way with previously-downloaded data as it does from a fresh dataset.
+Getting citation data works the exact same way with previously-downloaded data as it does from a fresh data set.
 
 ```{r getting_citations_from_already-downloaded_GBIF_data}
 #Get citations
@@ -151,7 +151,7 @@ myOldOccCitations <- occCitation(myOldOccCiteObject)
 print(myOldOccCitations)
 ```
 
-Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF datasources (e.g. BIEN) in the same query.
+Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF data sources (e.g. BIEN) in the same query.
 
 ***
 

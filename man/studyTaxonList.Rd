@@ -10,7 +10,7 @@ studyTaxonList(x = NULL, datasources = c("NCBI"))
 \item{x}{A phylogeny of class 'phylo' or a vector of class 'character'
 containing the names of taxa of interest}
 
-\item{datasources}{A vector of taxonomic datasources implemented in
+\item{datasources}{A vector of taxonomic data sources implemented in
 \code{\link{gnr_resolve}}. You can see the list using
 \code{taxize::gnr_datasources()}.}
 }

@@ -2,31 +2,26 @@
 #'
 #' @description Prints formatted citations for occurrences
 #'
-#' @param object An object of class \code{\link{occCiteCitation}}
-#'
-#' @param bySpecies Logical; If `TRUE`, formatted citations will
-#' be returned in chunks headed by the species name. If `FALSE`,
-#' a single citation string for all species is returned.
+#' @param x An object of class \code{\link{occCiteCitation}}
 #'
 #' @param ... Additional arguments affecting how the formatted
 #' citation document is produced
 #'
-#' @return A text string with formatted citatations
+#' @return A text string with formatted citations
 #'
 #' @examples
 #'
 #' # Print citations for all species together
 #' data(myOccCiteObject)
-#' print(myOccCiteObject, bySpecies = F)
+#' print(myOccCiteObject)
 #'
 #' # Print citations for each species individually
 #' data(myOccCiteObject)
-#' print(myOccCiteObject, bySpecies = T)
+#' print(myOccCiteObject, bySpecies = TRUE)
 #'
 #' @export
 #'
-print.occCiteCitation <- function(object, ...) {
-  x <- object
+print.occCiteCitation <- function(x, ...) {
   args <- list(...)
   if ("bySpecies" %in% names(args)){
     bySpecies <- args$bySpecies

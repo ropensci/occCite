@@ -8,7 +8,7 @@
 #' @param x A phylogeny of class 'phylo' or a vector of class 'character'
 #' containing the names of taxa of interest
 #'
-#' @param datasources A vector of taxonomic datasources implemented in
+#' @param datasources A vector of taxonomic data sources implemented in
 #' \code{\link{gnr_resolve}}. You can see the list using
 #' \code{taxize::gnr_datasources()}.
 #'

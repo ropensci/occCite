@@ -4,20 +4,16 @@
 \alias{print.occCiteCitation}
 \title{Print occCite citation object}
 \usage{
-\method{print}{occCiteCitation}(object, ...)
+\method{print}{occCiteCitation}(x, ...)
 }
 \arguments{
-\item{object}{An object of class \code{\link{occCiteCitation}}}
+\item{x}{An object of class \code{\link{occCiteCitation}}}
 
 \item{...}{Additional arguments affecting how the formatted
 citation document is produced}
-
-\item{bySpecies}{Logical; If `TRUE`, formatted citations will
-be returned in chunks headed by the species name. If `FALSE`,
-a single citation string for all species is returned.}
 }
 \value{
-A text string with formatted citatations
+A text string with formatted citations
 }
 \description{
 Prints formatted citations for occurrences
@@ -26,10 +22,10 @@ Prints formatted citations for occurrences
 
 # Print citations for all species together
 data(myOccCiteObject)
-print(myOccCiteObject, bySpecies = F)
+print(myOccCiteObject)
 
 # Print citations for each species individually
 data(myOccCiteObject)
-print(myOccCiteObject, bySpecies = T)
+print(myOccCiteObject, bySpecies = TRUE)
 
 }
