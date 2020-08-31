@@ -14,8 +14,10 @@ output:
     toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{An overview of executing searches and generating citations using occCite}
-  %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -26,9 +28,9 @@ library(ape)
 
 # Introduction 
 
-We have entered the age of data-intensive scientific discovery. As datasets increase in complexity and heterogeneity, we must preserve the cycle of data citation from primary data sources to aggregating databases to research products and back to primary data sources. The citation cycle keeps science transparent, but it is also key to supporting primary providers by documenting the use of their data. The Global Biodiversity Information Facility and other data aggregators have made great strides in harvesting citation data from research products and linking them back to primary data providers. However, this only works if those that publish research products cite primary data sources in the first place. We developed `occCite`, a set of `R`-based tools for downloading, managing, and citing biodiversity data, to advance toward the goal of closing the data provenance cycle. These tools preserve links between occurrence data and primary providers once researchers download aggregated data, and facilitate the citation of primary data providers in research papers.
+We have entered the age of data-intensive scientific discovery. As datasets increase in complexity and heterogeneity, we must preserve the cycle of data citation from primary data sources to aggregating databases to research products and back to primary data sources. The citation cycle keeps science transparent, but it is also key to supporting primary providers by documenting the use of their data. The Global Biodiversity Information Facility (GBIF), Botanical Information and Ecology Network (BIEN), and other data aggregators have made great strides in harvesting citation data from research products and linking them back to primary data providers. However, this only works if those that publish research products cite primary data sources in the first place. We developed `occCite`, a set of `R`-based tools for downloading, managing, and citing biodiversity data, to advance toward the goal of closing the data provenance cycle. These tools preserve links between occurrence data and primary providers once researchers download aggregated data, and facilitate the citation of primary data providers in research papers.
 
-The `occCite` work flow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). `occCite` then rectifies those names by checking them against one or more taxonomic databases, which can be specified by the user (see the \href{http://gni.globalnames.org/}{Global Names List}). The results of the taxonomic rectification are then kept in an `occCiteData` object in local memory. Next, `occCite` takes the `occCiteData` object and user-defined search parameters to query BIEN (through `rbien`) and/or GBIF(through `rGBIF`) for records. The results are appended to the `occCiteData` object, along with metadata on the search. Finally, the user can pass the `occCiteData` object to `occCitation`, which compiles citations for the primary providers, database aggregators, and `R` packages used to build the dataset.
+The `occCite` workflow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). `occCite` then rectifies these names by checking them against one or more taxonomic databases, which can be specified by the user (see the \href{http://gni.globalnames.org/}{Global Names List}). The results of the taxonomic rectification are then kept in an `occCiteData` object in local memory. Next, `occCite` takes the `occCiteData` object and user-defined search parameters to query BIEN (through `rbien`) and/or GBIF(through `rGBIF`) for records. The results are appended to the `occCiteData` object, along with metadata on the search. Finally, the user can pass the `occCiteData` object to `occCitation`, which compiles citations for the primary providers, database aggregators, and `R` packages used to build the dataset.
 
 Future iterations of `occCite` will track citation data through the data cleaning process and provide a series of visualizations on raw query results and final datasets. It will also provide data citations in a format congruent with best-practice recommendations for large biodiversity datasets. Based on these data citation tools, we will also propose a new set of standards for citing primary biodiversity data in published research articles that provides due credit to contributors and allows them to track the use of their work. Keep checking back!
 
@@ -157,7 +159,7 @@ Note that you can also load multiple species using either a vector of species na
 
 ## Performing a Multi-Species Search
 
-In addition to doing a simple, single species search, you can also use `occCite` to search for and manage occurrence datasets for multiple species. You can either submit a vector of species names, or you can submit a *phylogeny*!
+In addition to doing a simple, single species search, you can also use `occCite` to search for and manage occurrence datasets for multiple species. You can either submit a vector of species names, or you can submit a *phylogeny*! The occCitation function will return a named list of citation tables in the case of multiple species.
 
 ## occCite with a Phylogeny
 
@@ -167,7 +169,7 @@ Here is an example of how such a search is structured, using an unpublished phyl
 library(ape);
 #Get tree
 treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite');
-tree <- ape::read.nexus(treeFile);
+phylogeny <- ape::read.nexus(treeFile);
 tree <- ape::extract.clade(phylogeny, 18)
 #Query databases for names
 myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI");
