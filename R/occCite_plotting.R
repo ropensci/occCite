@@ -11,11 +11,17 @@
 #' for summary plots.
 #'
 #' @examples
-#' \donttest{
-#' tableForPlot <- tabulate.occResults(occCiteDataResults, "Protea cynaroides")
-#'}
+#' \dontrun{
+#' data(myOccCiteObject)
+#' tableForPlot <- tabulate.occResults(myOccCiteObject@occResults$`Protea cynaroides`,
+#'                                     "Protea cynaroides")
+#' }
+#'
+#' @keywords internal
 #'
 tabulate.occResults <- function(x, sp.name) {
+  sp.name <- stringr::str_extract(string = sp.name,
+                                     pattern = "(\\w+\\s\\w+)")
   occTbls <- lapply(x, function(db) db$OccurrenceTable)
   occTbls.nulls <- sapply(occTbls, is.null)
   occTbls.char <- lapply(occTbls[!occTbls.nulls], function(tbl)
@@ -27,45 +33,45 @@ tabulate.occResults <- function(x, sp.name) {
 
 #' @title Generating a map of downloaded points
 #'
-#' @description Makes maps for each individual species in an occCite
-#' data object.
+#' @description Makes maps for each individual species in an \code{\link{occCiteData}}
+#'  object.
 #'
 #' @param occCiteData An object of class \code{\link{occCiteData}} to map
 #'
 #' @param species_map Character; either the default "all" to map all species
-#' in occCiteData, or a subset of these specified as a character or character vector
+#' in \code{\link{occCiteData}}, or a subset of these specified as a character or character vector
 #'
 #' @param species_colors Character; the default NULL will choose random colors from
 #' those available (see Details), or those specified by the user as
 #' a character or character vector (the number of colors must match the number of species mapped)
 #'
-#' @param ds_map Character; specifies which DataService records will be mapped, with the default
+#' @param ds_map Character; specifies which data service records will be mapped, with the default
 #' being GBIF, BIEN, and GBIF_BIEN (records with the same coordinates in both databases)
 #'
 #' @param map_limit Numeric; the number of points to map per species, set at a default of 1000
 #' randomly selected records; users can specify a higher number, but be aware that leaflet can
 #' lag or crash when too many points are plotted
 #'
-#' @param awesomeMarkers Logical; if `TRUE` (default), mapped points will be awesomeMarkers
+#' @param awesomeMarkers Logical; if `TRUE` (default), mapped points will be `awesomeMarkers`
 #' attributed with an icon for a globe for GBIF, a leaf for BIEN, or a database if records
-#' from both databases have the same coordinates; if `FALSE`, mapped points will be leaflet circleMarkers
+#' from both databases have the same coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`
 #'
 #' @param cluster Logical; if `TRUE` (default is `FALSE`) turns on marker clustering, which does not
 #' preserve color differences between species
 #'
-#' @details When mapping awesomeMarkers (default), the parameter species_colors must match those in
+#' @details When mapping using `awesomeMarkers` (default), the parameter species_colors must match those in
 #' a specified color library, currently: c("red", "lightred", "orange", "beige", "green", "lightgreen",
-#' "blue", "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray"). When awesomeMarkers
-#' if `FALSE` and species_colors are not specified, random colors from the RColorBrewer Set1 palette are used.
+#' "blue", "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray"). When `awesomeMarkers`
+#' is `FALSE` and species_colors are not specified, random colors from the `RColorBrewer` Set1 palette are used.
 #'
 #' @return A leaflet map
 #'
 #' @examples
-#' \donttest{
-#' map.occCite(occCiteData, cluster = FALSE)
-#'}
+#' data(myOccCiteObject)
+#' map.occCite(myOccCiteObject, cluster = FALSE)
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%" filter
+#' @importFrom rlang .data
 #'
 #' @export
 #'
@@ -90,7 +96,8 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 
   d.res <- occCiteData@occResults
   if(species_map != "all") d.res <- d.res[names(d.res) == species_map]
-  sp.names <- names(d.res)
+  sp.names <- stringr::str_extract(string = names(d.res),
+                                   pattern = "(\\w+\\s\\w+)")
 
   if(!is.null(species_colors)) {
     if(length(species_colors) != length(sp.names)) {
@@ -109,12 +116,11 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
       d.tbl[[i]] <- d.tbl[[i]][sample(1:d.tbl.n, map_limit),]
     }
   }
-
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
-  # remove coordinate duplicates with same DataService
-  d <- distinct(d, longitude, latitude, DataService, .keep_all = TRUE)
+  # remove coordinate duplicates with same data service
+  d <- dplyr::distinct(d, .data$longitude, .data$latitude, .data$DataService, .keep_all = TRUE)
 
   d$label <- paste(paste("name:", d$name),
                    paste("longitude:", d$longitude), paste("latitude:", d$latitude),
@@ -143,11 +149,12 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     d.nest.ds[d.nest.dsBoth] <- "GBIF_BIEN"
   }
   d.nest$DataService <- d.nest.ds
-  d.nest <- d.nest %>% tidyr::unnest(DataService) %>% mutate(DataService = factor(DataService))
+  d.nest <- d.nest %>% tidyr::unnest(.data$DataService) %>% dplyr::mutate(DataService = factor(.data$DataService))
   if(length(ds_map) == 1) {
     d.nest <- d.nest[d.nest$DataService %in% ds_map,]
   }
-  labs.lst <- lapply(sp.names, function(x) lapply(d.nest[d.nest$name == x,]$data, function(y) htmltools::HTML(unlist(y$label))))
+  labs.lst <- lapply(sp.names, function(x) lapply(d.nest[d.nest$name == x,]$data,
+                                                  function(y) htmltools::HTML(unlist(y$label))))
   names(labs.lst) <- sp.names
 
   if(cluster == TRUE) {
@@ -156,7 +163,7 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     clusterOpts <- NULL
   }
 
-  m <- leaflet::leaflet() %>% addProviderTiles(leaflet::providers$Esri.WorldPhysical)
+  m <- leaflet::leaflet() %>% leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical)
 
   if(awesomeMarkers == TRUE) {
     makeIconList <- function(sp) {
@@ -169,20 +176,22 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
     sp.icons <- lapply(sp.names, makeIconList)
     names(sp.icons) <- sp.names
     for(i in sp.names) {
-      d.nest.i <- d.nest %>% filter(name == i)
+      d.nest.i <- d.nest %>% dplyr::filter(.data$name == i)
       if(nrow(d.nest.i) == 0) next
       sp.icons.i <- sp.icons[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addAwesomeMarkers(data = d.nest %>% filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
+      m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
+                                            ~longitude, ~latitude, label = ~labs.lst.i,
                                             icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
     }
   }else{
     for(i in sp.names) {
       sp.cols.i <- sp.cols[[i]]
       labs.lst.i <- labs.lst[[i]]
-      m <- m %>% leaflet::addCircleMarkers(data = d.nest %>% filter(name == i), ~longitude, ~latitude, label = ~labs.lst.i,
-                                           color = "black", fillColor = ~sp.cols.i, weight = 2, radius = 5,
-                                           fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
+      m <- m %>% leaflet::addCircleMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
+                                           ~longitude, ~latitude,
+                                           label = ~labs.lst.i, color = "black", fillColor = ~sp.cols.i, weight = 2,
+                                           radius = 5, fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
     }
   }
   m
@@ -203,16 +212,14 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
 #' plots for each species.
 #'
 #' @param plotTypes The type of plot to be generated; "yearHistogram",
-#' "sourcePie", and/or "aggregatorPie".
+#' "source", and/or "aggregator".
 #'
 #' @return A list containing the desired plots.
 #'
 #' @examples
-#' \donttest{
-#' sumFig.occCite(occCiteData,
-#' bySpecies = FALSE,
-#' plotType = c("yearHistogram", "sourcePie", "aggregatorPie"))
-#'}
+#' data(myOccCiteObject)
+#' sumFig.occCite(myOccCiteObject, bySpecies = FALSE,
+#'                plotType = c("yearHistogram", "source", "aggregator"))
 #'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle theme xlab ylab theme_classic scale_y_continuous ggplot_build element_text
 #'

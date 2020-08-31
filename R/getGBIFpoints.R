@@ -15,8 +15,8 @@
 #' @param checkPreviousGBIFDownload A logical operator specifying whether the
 #' user wishes to check their existing prepared downloads on the GBIF website.
 #'
-#' @return A list containing \enumerate{ \item a dataframe of occurrence data;
-#' \item GBIF search metadata; \item a dataframe containing the raw results of
+#' @return A list containing \enumerate{ \item a data frame of occurrence data;
+#' \item GBIF search metadata; \item a data frame containing the raw results of
 #'  a query to `rgbif::occ_download_get()`.}
 #'
 #' @examples
@@ -29,7 +29,9 @@
 #' @export
 getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = NULL, checkPreviousGBIFDownload = T){
 
-  key <- rgbif::name_suggest(q=taxon, rank='species')$key[1];
+  cleanTaxon <- stringr::str_extract(string = taxon,
+                                     pattern = "(\\w+\\s\\w+)")# Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
+  key <- rgbif::name_suggest(q=cleanTaxon, rank='species')$data$key[1];
 
   if (checkPreviousGBIFDownload){
     occD <- prevGBIFdownload(key, GBIFLogin);

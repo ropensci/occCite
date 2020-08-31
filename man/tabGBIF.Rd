@@ -14,7 +14,7 @@ into a common format for an occCite object.}
 only.}
 }
 \value{
-A list of lists containing \enumerate{ \item a dataframe of
+A list of lists containing \enumerate{ \item a data frame of
 occurrence data  \item GBIF search metadata for every GBIF download in
 the specified directory.}
 }
@@ -24,9 +24,10 @@ and processes them into a table for an `occCiteData` object.
 }
 \examples{
 \dontrun{
-res <- rgbif::occ_download_get(key=downloadKey, overwrite=TRUE, file.path(getwd(), taxon));
-tG <- rgbif::occ_download_import(res);
-tabGBIF(GBIFresults = tG);
+res <- rgbif::as.download(system.file("extdata/Protea_cynaroides",
+                 "0012335-190621201848488.zip",
+            package = "occCite"))
+tabGBIF(GBIFresults = res, taxon = "Protea cynaroides")
 }
-
 }
+\keyword{internal}

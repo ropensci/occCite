@@ -18,7 +18,7 @@ map.}
 plots for each species.}
 
 \item{plotTypes}{The type of plot to be generated; "yearHistogram",
-"sourcePie", and/or "aggregatorPie".}
+"source", and/or "aggregator".}
 }
 \value{
 A list containing the desired plots.
@@ -31,10 +31,8 @@ by year of occurrence records, waffle::waffle plot of primary
 data sources, waffle::waffle plot of data aggregators.
 }
 \examples{
-\donttest{
-sumFig.occCite(occCiteData,
-bySpecies = FALSE,
-plotType = c("yearHistogram", "sourcePie", "aggregatorPie"))
-}
+data(myOccCiteObject)
+sumFig.occCite(myOccCiteObject, bySpecies = FALSE,
+               plotType = c("yearHistogram", "source", "aggregator"))
 
 }

@@ -17,8 +17,8 @@ containing the names of taxa of interest}
 \value{
 An object of class \code{\link{occCiteData}} containing the type
 of inquiry the user has made --a phylogeny or a vector of names-- and a
-dataframe containing input taxa names, the closeset match according to
-\code{\link{gnr_resolve}}, and a list of taxonomic datasources that
+data frame containing input taxa names, the closest match according to
+\code{\link{gnr_resolve}}, and a list of taxonomic data sources that
 contain the matching name.
 }
 \description{
@@ -28,16 +28,16 @@ against taxonomic database, returns vector of cleaned taxonomic names
 well as warnings if there are invalid names.
 }
 \examples{
-## Inputting a phylogeny
-\dontrun{
 ## Inputting a vector of taxon names
 studyTaxonList(x = c("Buteo buteo",
                      "Buteo buteo hartedi",
                      "Buteo japonicus"),
-                     datasources = c('NCBI'));
+                     datasources = c('NCBI'))
 
 ## Inputting a phylogeny
-studyTaxonList(x = phylogeny, datasources = c('NCBI'));
-}
+phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
+     package = "occCite"))
+phylogeny <- ape::extract.clade(phylogeny, 18)
+studyTaxonList(x = phylogeny, datasources = c('NCBI'))
 
 }

@@ -1,46 +1,56 @@
 Package: occCite
 Type: Package
 Title: Tools for Querying and Managing Large Biodiversity Occurrence Datasets
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
-  person("Hannah L.","Owens", ,"hannah.owens@gmail.com ",role=c("aut","cre"),
+  person("Hannah L.","Owens", ,"hannah.owens@gmail.com", role=c("aut","cre"),
     comment = c(ORCID = "0000-0003-0071-1745")),
-  person("Cory", "Merow",,,role="aut"),
-  person("Brian", "Maitner", ,,,role="aut"),
+  person("Cory", "Merow",,,role="aut",
+    comment = c(ORCID = "0000-0003-0561-053X")),
+  person("Brian", "Maitner", ,,,role="aut",
+    comment = c(ORCID = "0000-0002-2118-9880")),
+  person("Jamie", "Kass", ,,,role="aut",
+    comment = c(ORCID = "0000-0002-9432-895X")),
   person("Vijay", "Barve",,"vijay.barve@gmail.com ",role="aut",
     comment = c(ORCID = "0000-0002-4852-2567")),
-  person("Robert P.", "Guralnick",,,role="aut")
+  person("Robert P.", "Guralnick",,,role="aut",
+    comment = c(ORCID = "0000-0001-6682-1504"))
   )
+Author: Hannah L. Owens [aut, cre] (<https://orcid.org/0000-0003-0071-1745>), Cory Merow [aut] (<https://orcid.org/0000-0003-0561-053X>), Brian Maitner [aut] (<https://orcid.org/0000-0002-2118-9880>), Jamie Kass [aut] (<https://orcid.org/0000-0002-9432-895X>), Vijay Barve [aut] (<https://orcid.org/0000-0002-4852-2567>), Robert P. Guralnick [aut] (<https://orcid.org/0000-0001-6682-1504>)
 Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
-Description: occCite facilitates the gathering of biodiversity occurrence data 
-  from disparate sources. Metadata is managed througout the process to facilitate 
-  reporting and enhanced repeatability of analyses.
+Description: Facilitates the gathering of biodiversity occurrence data 
+  from disparate sources. Metadata is managed throughout the process to facilitate 
+  reporting and enhanced ability to repeat analyses.
 License: GPL (>= 2)
 URL: https://github.com/hannahlowens/occCite
 BugReports: https://github.com/hannahlowens/occCite/issues
 Encoding: UTF-8
 LazyData: true
+Language: en-US
+Depends: R (>= 3.5.0)
 Suggests:
   rmarkdown,
+  RColorBrewer,
   viridis,
-  waffle
+  bit64,
+  waffle,
+  remotes
 Imports:
     BIEN,
     dplyr,
     ape,
     lubridate,
     methods,
-    readr,
-    rgbif,
+    rgbif (>= 3.1),
     taxize,
     stringr,
-    stats,
     knitr,
-    bit64,
+    stats,
     leaflet,
-    rnaturalearth,
     htmltools,
     ggplot2,
-    magrittr
+    rlang,
+    magrittr,
+    tidyr
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

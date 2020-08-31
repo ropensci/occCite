@@ -9,19 +9,21 @@
 #' @param taxon A single species name, for tracing/error checking purposes
 #' only.
 #'
-#' @return A list of lists containing \enumerate{ \item a dataframe of
+#' @return A list of lists containing \enumerate{ \item a data frame of
 #' occurrence data  \item GBIF search metadata for every GBIF download in
 #' the specified directory.}
 #'
 #' @examples
 #' \dontrun{
-#' res <- rgbif::occ_download_get(key=downloadKey, overwrite=TRUE, file.path(getwd(), taxon));
-#' tG <- rgbif::occ_download_import(res);
-#' tabGBIF(GBIFresults = tG);
-#'}
-#'
-#' @export
+#' res <- rgbif::as.download(system.file("extdata/Protea_cynaroides",
+#'                  "0012335-190621201848488.zip",
+#'             package = "occCite"))
+#' tabGBIF(GBIFresults = res, taxon = "Protea cynaroides")
+#' }
+#' @keywords internal
+
 tabGBIF <- function(GBIFresults, taxon){
+
   occFromGBIF <- rgbif::occ_download_import(GBIFresults);
 
   if(nrow(occFromGBIF)==0){

@@ -2,9 +2,9 @@
 % Please edit documentation in R/prevGBIFdownload.R
 \name{prevGBIFdownload}
 \alias{prevGBIFdownload}
-\title{Download previously-prepared GBIF datasets}
+\title{Download previously-prepared GBIF data sets}
 \usage{
-prevGBIFdownload(taxonKey, GBIFLogin)
+prevGBIFdownload(taxonKey = "No key", GBIFLogin)
 }
 \arguments{
 \item{taxonKey}{A taxon key as returned from `rgbif::name_suggest()`.}
@@ -17,7 +17,7 @@ A GBIF download key, if one is available
 }
 \description{
 Searches the list of a user's previous downloads on the
-GBIF servers and returns the dataset key for the most recently prepared
+GBIF servers and returns the data set key for the most recently prepared
 download.
 }
 \examples{

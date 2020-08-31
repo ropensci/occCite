@@ -2,32 +2,29 @@
 % Please edit documentation in R/gbifRetriever.R
 \name{gbifRetriever}
 \alias{gbifRetriever}
-\title{Retreive downloaded GBIF datasets}
+\title{Retrieve downloaded GBIF data sets}
 \usage{
-gbifRetriever(GBIFDownloadDirectory = NULL, taxon = NULL)
+gbifRetriever(taxon = NULL)
 }
 \arguments{
-\item{GBIFDownloadDirectory}{An optional argument that specifies
-either the local directory where the user would like to save new
-GBIF datasets, or the directory containing previously-downloaded
-GBIF datasets. If this is not specified, occCite will use your
-current working directory.}
-
 \item{taxon}{A single species}
 }
 \value{
-A list of lists containing (1) a dataframe of occurrence
+A list of lists containing (1) a data frame of occurrence
 data; (2) GBIF search metadata for every GBIF download in the
 specified directory.
 }
 \description{
-Searches for the most recent instance of a dataset
+Searches for the most recent instance of a data set
  that has been previously downloaded from GBIF to a local machine
-  and imports it into occCite
+ and imports it into `occCite`. This is designed to be an internal
+ function. It is usable on its own, but you must have already
+ navigated to the folder that contains the download zip files
+ from GBIF.
 }
 \examples{
 \dontrun{
-gbifRetriever(GBIFDownloadDirectory = NULL);
+gbifRetriever("Protea cynaroides")
 }
-
 }
+\keyword{internal}

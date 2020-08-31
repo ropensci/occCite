@@ -6,12 +6,12 @@
 #'
 #' @param x An object of class \code{\link{occCiteData}} (the results of
 #' a \code{\link{studyTaxonList}} search) OR a vector with a list of species
-#' names. Note: If the latter, taxonomic rectfication uses NCBI
+#' names. Note: If the latter, taxonomic rectification uses NCBI
 #' taxonomies. If you want more control than this, use
 #' \code{\link{studyTaxonList}} to create a \code{\link{occCiteData}} object
 #' first.
 #'
-#' @param datasources A vector of occurrence datasources to search. This is
+#' @param datasources A vector of occurrence data sources to search. This is
 #' currently limited to GBIF and BIEN, but may expand in the future.
 #'
 #' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to
@@ -41,7 +41,7 @@
 #' \dontrun{
 #' ##If you have already created a occCite object, and have not previously
 #' ##downloaded GBIF data.
-#' occQuery(x = myBridgeTreeObject,
+#' occQuery(x = myOccCiteObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          GBIFDownloadDirectory = "./Desktop"
@@ -77,12 +77,12 @@ occQuery <- function(x = NULL,
   #Error check input x.
   if (!class(x)=="occCiteData" && !is.vector(x)){
     warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n");
-    return(NULL);
+    return(NULL)
   }
 
   #Instantiate a occCite data object if one was not supplied
   if(class(x) != "occCiteData"){
-    x <- studyTaxonList(x);
+    x <- studyTaxonList(x)
   }
 
   #Error check input datasources.
@@ -118,6 +118,7 @@ occQuery <- function(x = NULL,
 
   #Check to see if the sources input are actually ones used by occQuery
   sources <- c("gbif", "bien"); #sources
+  datasources <- tolower(datasources)
   if(sum(!datasources %in% sources) > 0){
     warning(paste("The following datasources are not implemented in occQuery(): ", datasources[!datasources %in% sources], sep = ""));
     return(NULL);
@@ -143,7 +144,7 @@ occQuery <- function(x = NULL,
   searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`);
 
   #Check to make sure there was a taxon match
-  if(searchTaxa == "No match" | is.null(searchTaxa)){
+  if(grepl(pattern = "No match", x = paste0(searchTaxa, collapse = "")) | is.null(searchTaxa)){
     warning("There was no taxonomic match. Search cancelled.\n");
     return(NULL);
   }
@@ -153,12 +154,15 @@ occQuery <- function(x = NULL,
     gbifResults <- vector(mode = "list", length = length(searchTaxa));
     names(gbifResults) <- searchTaxa;
     if(loadLocalGBIFDownload){
+      currentWD <- getwd()
+      setwd(GBIFDownloadDirectory)
       for(i in 1:length(searchTaxa)){
         #Gets *all* downloaded records
-        temp <- gbifRetriever(GBIFDownloadDirectory, searchTaxa[[i]])
+        temp <- gbifRetriever(searchTaxa[[i]])
         temp[[1]] <- GBIFtableCleanup(temp[[1]])
         gbifResults[[i]] <- temp
       }
+      setwd(currentWD)
     }
     else{
       for (i in searchTaxa){

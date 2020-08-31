@@ -20,3 +20,11 @@ a GBIF username.}
 logging in to GBIF.}
 }}
 
+\examples{
+\dontrun{
+GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
+     email = "****@yahoo.com",
+     pwd = "12345");
+}
+
+}

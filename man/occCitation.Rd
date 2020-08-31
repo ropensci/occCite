@@ -10,15 +10,17 @@ occCitation(x = NULL)
 \item{x}{An object of class \code{\link{occCiteData}}}
 }
 \value{
-A dataframe with citations information for occurrences
+A data frame with citations information for occurrences
 }
 \description{
 Harvests citations for occurrence data
 }
 \examples{
-
 \dontrun{
-myCitations <- occCitation(x = myoccCiteObject);
+data(myOccCiteObject)
+myCitations <- occCitation(x = myOccCiteObject)
+cat(paste(myCitations$Citation, " Accessed via ",
+     myCitations$occSearch, " on ", myCitations$`Accession Date`, "."),
+     sep = "\n")
 }
-
 }

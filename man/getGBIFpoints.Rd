@@ -25,8 +25,8 @@ downloads will be saved to your current working directory.}
 user wishes to check their existing prepared downloads on the GBIF website.}
 }
 \value{
-A list containing \enumerate{ \item a dataframe of occurrence data;
-\item GBIF search metadata; \item a dataframe containing the raw results of
+A list containing \enumerate{ \item a data frame of occurrence data;
+\item GBIF search metadata; \item a data frame containing the raw results of
  a query to `rgbif::occ_download_get()`.}
 }
 \description{

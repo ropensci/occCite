@@ -5,13 +5,15 @@
 #'
 #' @param taxon A single plant species or vector of plant species
 #'
-#' @return A list containing \enumerate{ \item a dataframe of occurrence data;
+#' @return A list containing \enumerate{ \item a data frame of occurrence data;
 #' \item a list containing: i notes on usage, ii bibtex citations,
-#' and iii acknowledgement information; \item a dataframe containing
+#' and iii acknowledgment information; \item a data frame containing
 #' the raw results of a query to `BIEN::BIEN_occurrence_species()`.}
 #'
 #' @examples
+#' \dontrun{
 #' getBIENpoints(taxon="Protea cynaroides")
+#' }
 #'
 #' @import lubridate
 #'

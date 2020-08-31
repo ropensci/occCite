@@ -18,7 +18,7 @@
 #' fitForUseTable <- GBIFtableCleanup(temp$OccurrenceTable)
 #'}
 #'
-#' @export
+#' @keywords internal
 
 GBIFtableCleanup <- function(GBIFtable){
   GBIFtable <- GBIFtable[,-1]

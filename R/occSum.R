@@ -6,12 +6,12 @@
 #'
 #' @param ... Additional arguments affecting the summary produced
 #'
-#' @return A dataframe with citations information for occurrences
+#' @return A data frame with citations information for occurrences
 #'
 #' @examples
 #'
 #' \dontrun{
-#' myOcciteObject <- occQuery(x = myOccCiteObject,
+#' myOccCiteObject <- occQuery(x = myOccCiteObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          limit = NULL,
