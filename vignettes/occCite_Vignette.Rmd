@@ -1,5 +1,5 @@
 ---
-title: "occCite Vignette: Downloading and Citing Biodiversity Data"
+title: "An overview of executing searches and generating citations using occCite"
 author:
 - Hannah L. Owens
 - Cory Merow
