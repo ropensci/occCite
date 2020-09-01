@@ -17,14 +17,16 @@ vignette: >
   %\VignetteIndexEntry{An overview of executing searches and generating citations using occCite}
   \usepackage[utf8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 editor_options: 
   chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = TRUE)
-library(occCite)
 library(ape)
+library(occCite)
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+knitr::opts_knit$set(root.dir = paste0(path.package("occCite"), "/extdata/"))
 ```
 
 # Introduction 
@@ -44,7 +46,7 @@ library(occCite);
 #Creating a GBIF login
 GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
                               email = "****@yahoo.com",
-                              pwd = "12345");
+                              pwd = "12345")
 ```
 
 # Performing a simple search
@@ -60,10 +62,8 @@ mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                                   GBIFLogin = GBIFLogin, 
                                   GBIFDownloadDirectory = 
                                     paste0(path.package("occCite"), "/extdata/"),
-                                  checkPreviousGBIFDownload = T);
+                                  checkPreviousGBIFDownload = T)
 ```
-
-<!-- CM: Concerning to get a warning on the first call. i am pretty sure that cynaroides should have no name issues -->
 
 ```{r simple_search sssssecret cooking show, eval=T, echo = F}
 # Simple search
@@ -71,24 +71,21 @@ mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                                   datasources = c("gbif", "bien"),
                                   GBIFDownloadDirectory = 
                                     paste0(path.package("occCite"), "/extdata/"),
-                                  loadLocalGBIFDownload = T);
+                                  loadLocalGBIFDownload = T)
 ```
 
 Here is what the GBIF results look like:
 
 ```{r simple_search_GBIF_results}
 # GBIF search results
-head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
+head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable)
 ```
-
-<!-- CM: When I compiled this, it got no results from GBIF. pretty sure that's an error -->
-
 
 And here are the BIEN results:
 
 ```{r simple_search_BIEN_results}
 #BIEN search results
-head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$BIEN$OccurrenceTable);
+head(mySimpleOccCiteObject@occResults$`Protea cynaroides`$BIEN$OccurrenceTable)
 ```
 
 There is also a summary method for `occCite` objects with some basic information about your search.
@@ -96,8 +93,6 @@ There is also a summary method for `occCite` objects with some basic information
 ```{r summary of simple search}
 summary(mySimpleOccCiteObject)
 ```
-<!-- CM: I got this error, but it still compiled. presumably figuring out why gbif has no king protea would fix this. think there's a chance its hidden because people would pick it? its not that rare... Protea repens would not have that issue, if you want to stay south african.: -->
-<!-- ## Error in occurrenceCountGBIF[[i]] <- nrow(x@occResults[[i]]$GBIF$OccurrenceTable): replacement has length zero -->
 
 ## Simple citations
 
@@ -123,7 +118,7 @@ In the simplest of searches, such as the one above, the taxonomy of your input s
 ```{r taxonomic_rectification}
 #Rectify taxonomy
 myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
-                                  datasources = c("NCBI", "EOL", "ITIS"));
+                                  datasources = c("NCBI", "EOL", "ITIS"))
 myTROccCiteObject@cleanedTaxonomy
 ```
 
@@ -140,7 +135,7 @@ myOldOccCiteObject <- occQuery(x = "Protea cynaroides",
                                   GBIFLogin = NULL, 
                                   GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
                                   loadLocalGBIFDownload = T,
-                                  checkPreviousGBIFDownload = F);
+                                  checkPreviousGBIFDownload = F)
 ```
 
 Here is the result. Look familiar?

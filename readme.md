@@ -140,7 +140,7 @@ summary(mySimpleOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 31 August, 2020
+    ##  OccCite query occurred on: 01 September, 2020
     ##  
     ##  User query type: User-supplied list of taxa.
     ##  
@@ -295,7 +295,7 @@ summary(myOldOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 31 August, 2020
+    ##  OccCite query occurred on: 01 September, 2020
     ##  
     ##  User query type: User-supplied list of taxa.
     ##  
@@ -385,7 +385,7 @@ summary(myPhyOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 31 August, 2020
+    ##  OccCite query occurred on: 01 September, 2020
     ##  
     ##  User query type: User-supplied phylogeny.
     ##  
@@ -474,7 +474,7 @@ print(myPhyOccCitations)
     ## Raiva R, Viador R, Santana P (2019). Diversidade e ocorrência de peixes na Zambézia (2003-2016). National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/mrz36h Accessed via GBIF on 2019-07-04.
     ## Ranz J (2017). Banco de Datos de la Biodiversidad de la Comunitat Valenciana. Biodiversity data bank of Generalitat Valenciana. Occurrence dataset https://doi.org/10.15468/b4yqdy Accessed via GBIF on 2019-07-04.
     ## ROBERT Solène N, Inventaire National du Patrimoine Naturel (2020). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/ikshke Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## Sánchez González S, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Taxonomía y sistemática de la Ictiofauna de la Bahía de Banderas del Estado de Nayarit, México. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/uhrwsl Accessed via GBIF on 2019-07-04.
     ## Shane G (2018). Pelagic fish food web linkages, Queensland, Australia (2003-2005). CSIRO Oceans and Atmosphere. Occurrence dataset https://doi.org/10.15468/yy5wdp Accessed via GBIF on 2019-07-04.
     ## South Australian Museum (2020). South Australian Museum Australia provider for OZCAM. Occurrence dataset https://doi.org/10.15468/wz4rrh Accessed via GBIF on 2019-07-04.
@@ -507,7 +507,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Queensland Museum (2020). Queensland Museum provider for OZCAM. Occurrence dataset https://doi.org/10.15468/lotsye Accessed via GBIF on 2019-07-04.
     ## Raiva R, Santana P (2019). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.4. National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/4fj2tq Accessed via GBIF on 2019-07-04.
     ## Raiva R, Viador R, Santana P (2019). Diversidade e ocorrência de peixes na Zambézia (2003-2016). National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/mrz36h Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## Sánchez González S, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Taxonomía y sistemática de la Ictiofauna de la Bahía de Banderas del Estado de Nayarit, México. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/uhrwsl Accessed via GBIF on 2019-07-04.
     ## Shane G (2018). Pelagic fish food web linkages, Queensland, Australia (2003-2005). CSIRO Oceans and Atmosphere. Occurrence dataset https://doi.org/10.15468/yy5wdp Accessed via GBIF on 2019-07-04.
     ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). Occurrence dataset https://doi.org/10.15468/inygc6 Accessed via GBIF on 2019-07-04.
@@ -531,7 +531,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Millen B (2019). Ichthyology Collection - Royal Ontario Museum. Version 18.7. Royal Ontario Museum. Occurrence dataset https://doi.org/10.15468/syisbx Accessed via GBIF on 2019-07-04.
     ## Orrell T (2020). NMNH Extant Specimen Records. Version 1.35. National Museum of Natural History, Smithsonian Institution. Occurrence dataset https://doi.org/10.15468/hnhrg3 Accessed via GBIF on 2019-07-04.
     ## Pozo de la Tijera M D C, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Fortalecimiento de las colecciones de ECOSUR. Primera fase (Ictioplancton Chetumal). Version 1.3. Comisión nacional para el conocimiento y uso de la biodiversidad. Occurrence dataset https://doi.org/10.15468/orx3mk Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). Occurrence dataset https://doi.org/10.15468/inygc6 Accessed via GBIF on 2019-07-04.
     ## 
     ## Species: Kajikia audax 
@@ -554,7 +554,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Museum and Art Gallery of the Northern Territory (2019). Northern Territory Museum and Art Gallery provider for OZCAM. Occurrence dataset https://doi.org/10.15468/giro3a Accessed via GBIF on 2019-07-04.
     ## Orrell T (2020). NMNH Extant Specimen Records. Version 1.35. National Museum of Natural History, Smithsonian Institution. Occurrence dataset https://doi.org/10.15468/hnhrg3 Accessed via GBIF on 2019-07-04.
     ## Queensland Museum (2020). Queensland Museum provider for OZCAM. Occurrence dataset https://doi.org/10.15468/lotsye Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). Occurrence dataset https://doi.org/10.15468/inygc6 Accessed via GBIF on 2019-07-04.
     ## Uchifune Y, Yamamoto H (2020). Asia-Pacific Dataset. Version 1.33. National Museum of Nature and Science, Japan. Occurrence dataset https://doi.org/10.15468/vjeh1p Accessed via GBIF on 2019-07-04.
     ## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. Occurrence dataset https://doi.org/10.15468/ab3s5x Accessed via GBIF on 2019-07-04.
@@ -577,7 +577,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Queensland Museum (2020). Queensland Museum provider for OZCAM. Occurrence dataset https://doi.org/10.15468/lotsye Accessed via GBIF on 2019-07-04.
     ## Raiva R, Santana P (2019). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.4. National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/4fj2tq Accessed via GBIF on 2019-07-04.
     ## Raiva R, Viador R, Santana P (2019). Diversidade e ocorrência de peixes na Zambézia (2003-2016). National Institute of Fisheries Research (IIP) – Mozambique. Occurrence dataset https://doi.org/10.15468/mrz36h Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## South Australian Museum (2020). South Australian Museum Australia provider for OZCAM. Occurrence dataset https://doi.org/10.15468/wz4rrh Accessed via GBIF on 2019-07-04.
     ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). Occurrence dataset https://doi.org/10.15468/inygc6 Accessed via GBIF on 2019-07-04.
     ## Uchifune Y, Yamamoto H (2020). Asia-Pacific Dataset. Version 1.33. National Museum of Nature and Science, Japan. Occurrence dataset https://doi.org/10.15468/vjeh1p Accessed via GBIF on 2019-07-04.
@@ -591,7 +591,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Harvard University M, Morris P J (2020). Museum of Comparative Zoology, Harvard University. Version 162.224. Museum of Comparative Zoology, Harvard University. Occurrence dataset https://doi.org/10.15468/p5rupv Accessed via GBIF on 2019-07-04.
     ## Ranz J (2017). Banco de Datos de la Biodiversidad de la Comunitat Valenciana. Biodiversity data bank of Generalitat Valenciana. Occurrence dataset https://doi.org/10.15468/b4yqdy Accessed via GBIF on 2019-07-04.
     ## ROBERT Solène N, Inventaire National du Patrimoine Naturel (2020). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/ikshke Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## 
     ## Species: Tetrapturus georgii 
     ## 
@@ -607,7 +607,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. Occurrence dataset https://doi.org/10.15468/gdrknh Accessed via GBIF on 2019-07-04.
     ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. Occurrence dataset https://doi.org/10.15468/23m361 Accessed via GBIF on 2019-07-04.
     ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. Occurrence dataset https://doi.org/10.15468/cndomv Accessed via GBIF on 2019-07-04.
-    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.276. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
+    ## Robins R (2020). UF FLMNH Ichthyology. Version 117.277. Florida Museum of Natural History. Occurrence dataset https://doi.org/10.15468/8mjsel Accessed via GBIF on 2019-07-04.
     ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). Occurrence dataset https://doi.org/10.15468/inygc6 Accessed via GBIF on 2019-07-04.
 
 ------------------------------------------------------------------------

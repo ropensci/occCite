@@ -14,7 +14,6 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(occCite)
 library(ape)
 library(occCite)
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
