@@ -32,11 +32,11 @@ Suggests:
   rmarkdown,
   RColorBrewer,
   viridis,
-  bit64,
   waffle,
   remotes
 Imports:
     BIEN,
+    bit64,
     dplyr,
     ape,
     lubridate,
