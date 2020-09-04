@@ -67,11 +67,8 @@ mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
 
 ```{r simple_search sssssecret cooking show, eval=T, echo = F}
 # Simple search
-mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
-                                  datasources = c("gbif", "bien"),
-                                  GBIFDownloadDirectory = 
-                                    paste0(path.package("occCite"), "/extdata/"),
-                                  loadLocalGBIFDownload = T)
+data(mySimpleOccCiteObject)
+mySimpleOccCiteObject <- mySimpleOccCiteObject
 ```
 
 Here is what the GBIF results look like:
