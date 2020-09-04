@@ -51,6 +51,8 @@ Imports:
     ggplot2,
     rlang,
     magrittr,
-    tidyr
+    tidyr,
+    RPostgreSQL,
+    DBI
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1

@@ -75,8 +75,25 @@ occCitation <-function(x = NULL){
 
       ##Get data sources
       query <- paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
-                     paste(shQuote(BIENdatasetKeys, type = "sh"),collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);");
-      BIENsources <- BIEN:::.BIEN_sql(query)
+                     paste(shQuote(BIENdatasetKeys, type = "sh"),
+                           collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);")
+
+      host='vegbiendev.nceas.ucsb.edu'
+      dbname='public_vegbien'
+      user='public_bien'
+      password='bien_public'
+      # Name the database type that will be used
+      drv <- DBI::dbDriver('PostgreSQL')
+      # establish connection with database
+      con <- dbConnect(drv, host=host, dbname=dbname, user=user, password = password)
+
+
+      BIENsources <- dbGetQuery(con, statement = query);
+
+      dbDisconnect(con)
+
+      #bien sql replacement
+
     }
 
     #Columns: UUID, Citation, Access date, number of records
