@@ -9,14 +9,14 @@ There were no ERRORs or WARNINGs.
 There were 2 NOTEs.
 
 * checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
+Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
 
-This is correct, and an email that is permanent.
+This is accurate, and a permanent email address.
 
-* checking dependencies in R code ... NOTE
-  Unexported object imported by a ':::' call: 'BIEN:::.BIEN_sql'
-
-BIEN:::.BIEN_sql is a function that was designed to be internal for the BIEN package, but is necessary in order for the occCite package to access the BIEN database.
+* checking for future file timestamps ... NOTE
+  unable to verify current time
+  
+This appears to be a check function issue and only results from running checks using Mac OS X 10.5.5 install.
 
 ## Downstream dependencies
 I also ran tools::check_packages_in_dir check on downstream dependencies of 

@@ -85,12 +85,12 @@ occCitation <-function(x = NULL){
       # Name the database type that will be used
       drv <- DBI::dbDriver('PostgreSQL')
       # establish connection with database
-      con <- dbConnect(drv, host=host, dbname=dbname, user=user, password = password)
+      con <- DBI::dbConnect(drv, host=host, dbname=dbname, user=user, password = password)
 
 
-      BIENsources <- dbGetQuery(con, statement = query);
+      BIENsources <- DBI::dbGetQuery(con, statement = query);
 
-      dbDisconnect(con)
+      DBI::dbDisconnect(con)
 
       #bien sql replacement
 
