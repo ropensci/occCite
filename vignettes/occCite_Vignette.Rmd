@@ -16,8 +16,8 @@ output:
 vignette: >
   %\VignetteIndexEntry{An overview of executing searches and generating citations using occCite}
   \usepackage[utf8]{inputenc}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
 ---
@@ -67,8 +67,8 @@ mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
 
 ```{r simple_search sssssecret cooking show, eval=T, echo = F}
 # Simple search
-data(mySimpleOccCiteObject)
-mySimpleOccCiteObject <- mySimpleOccCiteObject
+data(myOccCiteObject)
+mySimpleOccCiteObject <- myOccCiteObject
 ```
 
 Here is what the GBIF results look like:
