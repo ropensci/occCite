@@ -133,7 +133,7 @@ occCitation <-function(x = NULL){
 
       for (i in 1:length(BIENcitations)){
         if (grepl("\\.\\s$", BIENcitations[[i]])){
-          BIENcitations[[i]] <- gsub(BIENcitations[[i]], pattern = "\\.\\s", replace = ".")
+          BIENcitations[[i]] <- gsub(BIENcitations[[i]], pattern = "\\.\\s", replacement = ".")
         } else{
           BIENcitations[[i]] <- paste0(BIENcitations[[i]], ".")
         }
