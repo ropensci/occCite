@@ -58,7 +58,8 @@ occCitation <-function(x = NULL){
       BIENdatasetKeys <- vector(mode = "list")
       BIENKeysNAs <- vector(mode = "list")
       if (anyNA(occResults$BIEN$OccurrenceTable$DatasetKey)){
-        BIENKeysNAs <- append(occResults$BIEN$OccurrenceTable$Dataset[is.na(occResults$BIEN$OccurrenceTable$DatasetKey)])
+        BIENKeysNAs <- occResults$BIEN$OccurrenceTable$Dataset[is.na(occResults$BIEN$OccurrenceTable$DatasetKey)]
+        BIENKeysNAs <- unique(BIENKeysNAs)
       }
       BIENdatasetKeys <- append(BIENdatasetKeys,unlist(as.character((occResults$BIEN$OccurrenceTable$DatasetKey))))
       BIENdatasetKeys <- BIENdatasetKeys[!is.na(BIENdatasetKeys)]
@@ -70,7 +71,7 @@ occCitation <-function(x = NULL){
       if (length(BIENKeysNAs) > 0){
         print(paste0("NOTE: ", length(BIENKeysNAs),
                      " BIEN dataset(s) for ", sp, " do not have dataset keys to link citations. They are: ",
-                     unique(unlist(BIENKeysNAs))))
+                     paste(as.character(unlist(BIENKeysNAs)), collapse = ", ")))
       }
 
       ##Get data sources
