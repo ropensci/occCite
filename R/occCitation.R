@@ -48,6 +48,8 @@ occCitation <-function(x = NULL){
         temp <- gsub(rgbif::gbif_citation(j)$citation$text,
                      pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.", replacement = "",
                      useBytes = T)
+        temp <- gsub(temp, pattern = "Occurrence dataset ", replacement = "")
+        temp <- paste0(temp, ".")
         GBIFCitationList <- append(GBIFCitationList,temp)
       }
     }
@@ -115,8 +117,31 @@ occCitation <-function(x = NULL){
           BIENcitations[i] <- BIENsources$source_fullname[i]
         }
       }
+      # Failing that, replace it with the shortened name of the primary provider
+      for (i in 1:length(BIENcitations)){
+        if (is.na(BIENcitations[i])){
+          BIENcitations[i] <- BIENsources$source_name[i]
+        }
+      }
+      # Replacing NA values for doi with "" for formatting purposes
+      for (i in 1:length(BIENsources$doi)){
+        if (is.na(BIENsources$doi[i])){
+          BIENsources$doi[i] <- ""
+        }
+      }
+      BIENcitations <- paste(as.character(BIENcitations), as.character(BIENsources$doi), sep = ". ")
+
+      for (i in 1:length(BIENcitations)){
+        if (grepl("\\.\\s$", BIENcitations[[i]])){
+          BIENcitations[[i]] <- gsub(BIENcitations[[i]], pattern = "\\.\\s", replace = ".")
+        } else{
+          BIENcitations[[i]] <- paste0(BIENcitations[[i]], ".")
+        }
+      }
+
       bienTable <- data.frame(as.character(rep("BIEN", length(BIENdatasetKeys))),
-                              as.character(BIENdatasetKeys), as.character(BIENcitations),
+                              as.character(BIENdatasetKeys),
+                              BIENcitations,
                               as.character(BIENsources$date_accessed), as.numeric(BIENdatasetCount[,2]),
                               stringsAsFactors = F)
       colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences")
