@@ -82,7 +82,4 @@ myOccCiteObject <- occQuery(x = myOccCiteObject,
 
 #Get citations
 myOccCitations <- occCitation(myOccCiteObject);
-cat(paste0(myOccCitations$Citation,
-           " Accessed via ", myOccCitations$occSearch,
-           " on ", myOccCitations$`Accession Date`, "."),
-    sep = "\n");
+print(myOccCitations)

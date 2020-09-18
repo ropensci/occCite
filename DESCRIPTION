@@ -32,7 +32,6 @@ Suggests:
   rmarkdown,
   RColorBrewer,
   viridis,
-  waffle,
   remotes
 Imports:
     BIEN,
@@ -53,6 +52,7 @@ Imports:
     magrittr,
     tidyr,
     RPostgreSQL,
-    DBI
+    DBI,
+    waffle
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
