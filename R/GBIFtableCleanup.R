@@ -9,15 +9,6 @@
 #' @return A data.frame tidied for compatibility with
 #' \code{\link{getBIENpoints}} results.
 #'
-#' @examples
-#' \dontrun{
-#' ##If you have already created a occCite object, and have not previously
-#' temp <- getGBIFpoints(taxon = "Protea cynaroides", GBIFLogin = GBIFLogin,
-#'                       GBIFDownloadDirectory = GBIFDownloadDirectory,
-#'                       checkPreviousGBIFDownload = checkPreviousGBIFDownload)
-#' fitForUseTable <- GBIFtableCleanup(temp$OccurrenceTable)
-#'}
-#'
 #' @keywords internal
 
 GBIFtableCleanup <- function(GBIFtable){

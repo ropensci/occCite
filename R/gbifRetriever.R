@@ -13,10 +13,6 @@
 #' data; (2) GBIF search metadata for every GBIF download in the
 #' specified directory.
 #'
-#' @examples
-#' \dontrun{
-#' gbifRetriever("Protea cynaroides")
-#' }
 #' @keywords internal
 
 gbifRetriever <- function (taxon = NULL){

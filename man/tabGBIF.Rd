@@ -22,12 +22,4 @@ the specified directory.}
 Internal function--imports results from `occ_download_get()`
 and processes them into a table for an `occCiteData` object.
 }
-\examples{
-\dontrun{
-res <- rgbif::as.download(system.file("extdata/Protea_cynaroides",
-                 "0012335-190621201848488.zip",
-            package = "occCite"))
-tabGBIF(GBIFresults = res, taxon = "Protea cynaroides")
-}
-}
 \keyword{internal}

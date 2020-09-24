@@ -10,13 +10,6 @@
 #' @return A table that can be more easily mapped and used
 #' for summary plots.
 #'
-#' @examples
-#' \dontrun{
-#' data(myOccCiteObject)
-#' tableForPlot <- tabulate.occResults(myOccCiteObject@occResults$`Protea cynaroides`,
-#'                                     "Protea cynaroides")
-#' }
-#'
 #' @keywords internal
 #'
 tabulate.occResults <- function(x, sp.name) {

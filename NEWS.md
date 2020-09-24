@@ -1,3 +1,8 @@
+# occCite 0.3.0
+
+*Updated to meet CRAN reviewer guidelines
+*Citations now include packages used.
+
 # occCite 0.2.0
 
 * Updated to reflect new object structures returned by searches with update `rgbif`, version 3.1.

@@ -22,9 +22,4 @@ Searches for the most recent instance of a data set
  navigated to the folder that contains the download zip files
  from GBIF.
 }
-\examples{
-\dontrun{
-gbifRetriever("Protea cynaroides")
-}
-}
 \keyword{internal}
