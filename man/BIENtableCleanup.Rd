@@ -18,7 +18,7 @@ Forces occurrence table columns to a uniform
 format. This is an internal function for use by \code{\link{occQuery}}.
 }
 \examples{
-\dontrun{
+\donttest{
 temp <- getBIENpoints(taxon="Protea cynaroides", limit = NULL)
 fitForUseTable <- BIENtableCleanup(temp$OccurrenceTable)
 }

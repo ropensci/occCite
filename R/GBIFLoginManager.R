@@ -17,13 +17,13 @@
 #'
 #' @examples
 #' ## Inputting user particulars
-#'\dontrun{
+#'\donttest{
 #' myLogin <- GBIFLoginManager(user = "theWoman",
 #'                             email = "ireneAdler@@laScala.org",
 #'                             pwd = "sh3r")
 #'}
 #'
-#'\dontrun{
+#'\donttest{
 #' ## Can also be mined from your system environment
 #' myLogin <- GBIFLoginManager(user = NULL,
 #'                             email = NULL, pwd = NULL)

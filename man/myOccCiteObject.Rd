@@ -28,7 +28,7 @@ myOccCiteObject
 Results of an occCite search for *Protea cynaroides*
 }
 \examples{
-\dontrun{
+\donttest{
  myOccCiteObject
 }
 }

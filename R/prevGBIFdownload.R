@@ -12,7 +12,7 @@
 #' @return A GBIF download key, if one is available
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' GBIFLogin <- GBIFLoginManager(user = "theWoman",
 #'                email = "ireneAdler@@laScala.org",
 #'                pwd = "sh3r")

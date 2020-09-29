@@ -13,7 +13,7 @@
 #' @importFrom methods new
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
 #'      email = "****@yahoo.com",
 #'      pwd = "12345")

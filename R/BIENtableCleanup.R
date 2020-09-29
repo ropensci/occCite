@@ -9,7 +9,7 @@
 #' \code{\link{getGBIFpoints}} results.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' temp <- getBIENpoints(taxon="Protea cynaroides", limit = NULL)
 #' fitForUseTable <- BIENtableCleanup(temp$OccurrenceTable)
 #'}

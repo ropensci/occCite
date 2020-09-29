@@ -21,7 +21,7 @@ on the GBIF servers and returns the data set key for the most recently
 prepared download.
 }
 \examples{
-\dontrun{
+\donttest{
 GBIFLogin <- GBIFLoginManager(user = "theWoman",
                email = "ireneAdler@laScala.org",
                pwd = "sh3r")

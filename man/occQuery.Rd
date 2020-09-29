@@ -55,13 +55,13 @@ Takes rectified list of specimens from
 \code{\link{rgbif}} with metadata.
 }
 \examples{
-\dontrun{
+\donttest{
 ##If you have already created a occCite object, and have not previously
 ##downloaded GBIF data.
 occQuery(x = myOccCiteObject,
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
-         GBIFDownloadDirectory = "./Desktop"
+         GBIFDownloadDirectory = "./Desktop",
          loadLocalGBIFDownload = F)
 
 ## If you don't have a occCite object yet
@@ -69,7 +69,7 @@ occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
          GBIFOverwrite = T,
-         GBIFDownloadDirectory = "./Desktop"
+         GBIFDownloadDirectory = "./Desktop",
          loadLocalGBIFDownload = F)
 
 ## If you have previously downloaded occurrence data from GBIF
@@ -78,7 +78,7 @@ occQuery(x = c("Buteo buteo", "Protea cynaroides"),
          datasources = c("gbif", "bien"),
          GBIFLogin = myLogin,
          GBIFoverwrite = T,
-         GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
+         GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
          loadLocalGBIFDownload = T)
 }
 

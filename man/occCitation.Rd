@@ -19,7 +19,7 @@ in the list has citation information for occurrences.
 Harvests citations for occurrence data
 }
 \examples{
-\dontrun{
+\donttest{
 data(myOccCiteObject)
 myCitations <- occCitation(x = myOccCiteObject)
 }

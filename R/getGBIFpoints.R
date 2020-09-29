@@ -20,7 +20,7 @@
 #'  a query to `rgbif::occ_download_get()`.}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' getGBIFpoints(taxon="Gadus morhua",
 #'               GBIFLogin = myGBIFLogin,
 #'               GBIFDownloadDirectory = NULL)
@@ -29,8 +29,13 @@
 #' @export
 getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = NULL, checkPreviousGBIFDownload = T){
 
+  #File hygene
+  oldwd <- getwd()
+  on.exit(setwd(oldwd))
+
+  # Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
   cleanTaxon <- stringr::str_extract(string = taxon,
-                                     pattern = "(\\w+\\s\\w+)")# Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
+                                     pattern = "(\\w+\\s\\w+)")
   key <- rgbif::name_suggest(q=cleanTaxon, rank='species')$data$key[1]
 
   if (checkPreviousGBIFDownload){

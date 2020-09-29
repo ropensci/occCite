@@ -38,13 +38,13 @@
 #' on the occurrence sources queried.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ##If you have already created a occCite object, and have not previously
 #' ##downloaded GBIF data.
 #' occQuery(x = myOccCiteObject,
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
-#'          GBIFDownloadDirectory = "./Desktop"
+#'          GBIFDownloadDirectory = "./Desktop",
 #'          loadLocalGBIFDownload = F)
 #'
 #' ## If you don't have a occCite object yet
@@ -52,7 +52,7 @@
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          GBIFOverwrite = T,
-#'          GBIFDownloadDirectory = "./Desktop"
+#'          GBIFDownloadDirectory = "./Desktop",
 #'          loadLocalGBIFDownload = F)
 #'
 #' ## If you have previously downloaded occurrence data from GBIF
@@ -61,7 +61,7 @@
 #'          datasources = c("gbif", "bien"),
 #'          GBIFLogin = myLogin,
 #'          GBIFoverwrite = T,
-#'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads"
+#'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
 #'          loadLocalGBIFDownload = T)
 #'}
 #'
@@ -74,9 +74,14 @@ occQuery <- function(x = NULL,
                      loadLocalGBIFDownload = F,
                      checkPreviousGBIFDownload = T,
                      options = NULL) {
+
+  #File hygene
+  oldwd <- getwd()
+  on.exit(setwd(oldwd))
+
   #Error check input x.
   if (!class(x)=="occCiteData" && !is.vector(x)){
-    warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n");
+    warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n")
     return(NULL)
   }
 

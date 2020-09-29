@@ -12,7 +12,7 @@
 #' @importFrom stats na.omit
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data(myOccCiteObject)
 #' myCitations <- occCitation(x = myOccCiteObject)
 #' }

@@ -21,7 +21,7 @@ logging in to GBIF.}
 }}
 
 \examples{
-\dontrun{
+\donttest{
 GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
      email = "****@yahoo.com",
      pwd = "12345")

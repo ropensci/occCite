@@ -14,7 +14,7 @@
 #'  2 with results from each database, GBIF and BIEN}
 #' }
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  myOccCiteObject
 #' }
 "myOccCiteObject"

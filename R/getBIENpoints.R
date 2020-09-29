@@ -11,7 +11,7 @@
 #' the raw results of a query to `BIEN::BIEN_occurrence_species()`.}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' getBIENpoints(taxon="Protea cynaroides")
 #' }
 #'
