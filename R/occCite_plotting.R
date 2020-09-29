@@ -10,8 +10,17 @@
 #' @return A table that can be more easily mapped and used
 #' for summary plots.
 #'
-#' @keywords internal
+#' @keywords Internal
 #'
+#' @examples
+#' data(myOccCiteObject)
+#' tabulate.occResults(myOccCiteObject@occResults,
+#'                     sp.name = "Protea cynaroides")
+#'
+#' @importFrom dplyr "%>%" filter
+#'
+#' @export
+
 tabulate.occResults <- function(x, sp.name) {
   sp.name <- stringr::str_extract(string = sp.name,
                                      pattern = "(\\w+\\s\\w+)")
@@ -69,8 +78,13 @@ tabulate.occResults <- function(x, sp.name) {
 #' @export
 #'
 
-map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL, ds_map = c("GBIF", "BIEN"),
-                        map_limit = 1000, awesomeMarkers = TRUE, cluster = FALSE) {
+map.occCite <- function(occCiteData,
+                        species_map = "all",
+                        species_colors = NULL,
+                        ds_map = c("GBIF", "BIEN"),
+                        map_limit = 1000,
+                        awesomeMarkers = TRUE,
+                        cluster = FALSE) {
 
   # color library
   awesomeMarkers.cols <- c("red", "lightred", "orange", "beige", "green",
@@ -88,7 +102,8 @@ map.occCite <- function(occCiteData, species_map = "all", species_colors = NULL,
   }
 
   d.res <- occCiteData@occResults
-  if(species_map != "all") d.res <- d.res[names(d.res) == species_map]
+  if(!"all" %in% species_map) d.res <- d.res[match(species_map, names(d.res))]
+
   sp.names <- stringr::str_extract(string = names(d.res),
                                    pattern = "(\\w+\\s\\w+)")
 

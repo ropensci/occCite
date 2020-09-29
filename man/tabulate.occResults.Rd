@@ -19,4 +19,10 @@ for summary plots.
 This is a helper function that tabulates `occCiteData`
 objects for use by map.occCite and `sumFig.occCite`.
 }
-\keyword{internal}
+\examples{
+data(myOccCiteObject)
+tabulate.occResults(myOccCiteObject@occResults,
+                    sp.name = "Protea cynaroides")
+
+}
+\keyword{Internal}
