@@ -11,7 +11,7 @@
 #' data(myOccCiteObject)
 #' summary(myOccCiteObject)
 #'
-#' @export
+#' @exportMethod summary
 #'
 summary.occCiteData <- function(object, ...) {
   x <- object

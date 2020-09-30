@@ -10,6 +10,7 @@
 #' in the list has citation information for occurrences.
 #'
 #' @importFrom stats na.omit
+#' @import RPostgreSQL
 #'
 #' @examples
 #' \donttest{

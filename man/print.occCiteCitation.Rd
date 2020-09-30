@@ -16,7 +16,8 @@ citation document is produced}
 A text string with formatted citations
 }
 \description{
-Prints formatted citations for occurrences
+Prints formatted citations for occurrences and main
+packages used (i.e. base, occCite, rgbif, and/or BIEN).
 }
 \examples{
 

@@ -4,7 +4,7 @@
 \alias{summary.occCiteData}
 \title{Summary for occCite data objects}
 \usage{
-\method{summary}{occCiteData}(object, ...)
+summary.occCiteData(object, ...)
 }
 \arguments{
 \item{object}{An object of class \code{\link{occCiteData}}}
