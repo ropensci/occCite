@@ -10,7 +10,7 @@
 #'
 #' @return A text string with formatted citations
 #'
-#' @import bibtex
+#' @import RefManageR
 #' @import bib2df
 #'
 #' @examples
@@ -35,9 +35,28 @@ print.occCiteCitation <- function(x, ...) {
 
   stopifnot(inherits(x, "occCiteCitation"))
 
+  #Utility function for making a citation list
+  refManMCL <- function(x) {
+    rval <- list()
+    for (i in seq_along(x)) {
+      if (!is.null(x[[i]]))
+        rval <- c(rval, unclass(x[[i]]))
+    }
+    class(rval) <- c("BibEntry", "bibentry")
+    rval
+  }
   # Function to generate package citations
   packageCitations <- function(packagesUsed){
-    bibtex::write.bib(packagesUsed, "temp.bib", verbose = F)
+    #bibtex::write.bib(packagesUsed, "temp.bib", verbose = F)
+    pkg.bib<- lapply(packagesUsed, function(pkg){
+      refs<- as.BibEntry(utils::citation(pkg))
+      if(length(refs))
+        names(refs) <- make.unique(rep(pkg,length(refs)))
+      refs})
+    pkg.bib <- refManMCL(pkg.bib)
+    WriteBib(pkg.bib, "temp.bib")
+
+    #this works
     temp <- bib2df::bib2df("temp.bib", separate_names = T)
 
     packageCitations <- vector(mode = "character", length = nrow(temp))
@@ -95,6 +114,7 @@ print.occCiteCitation <- function(x, ...) {
     packageCitations <- sort(packageCitations)
     return(packageCitations)
   }
+
 
   # Combine citations
   if(bySpecies){
