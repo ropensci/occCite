@@ -4,7 +4,7 @@ library(occCite);
 ## Login information for GBIF ----
 GBIFLogin <- GBIFLoginManager(user = "userName",
                               email = "userName@awesome.pizza",
-                              pwd = "12345");
+                              pwd = "12345")
 
 #From the beginning
 myOccCiteObject <- occQuery(x = "Protea cynaroides",
@@ -12,7 +12,7 @@ myOccCiteObject <- occQuery(x = "Protea cynaroides",
                             datasources = c("gbif", "bien"),
                             GBIFDownloadDirectory = "~/Desktop",
                             loadLocalGBIFDownload = F,
-                            checkPreviousGBIFDownload = F);
+                            checkPreviousGBIFDownload = F)
 
 #What does it look like?
 summary(myOccCiteObject)

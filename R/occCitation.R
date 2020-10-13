@@ -41,17 +41,21 @@ occCitation <-function(x = NULL){
     if(!is.null(occResults$GBIF)){
       ##Pull dataset keys from occurrence table
       datasetKeys <- unlist(as.character(occResults$GBIF$OccurrenceTable$DatasetKey))
-      GBIFDatasetCount <- as.data.frame(table(unlist(datasetKeys)))
-      GBIFdatasetKeys <- unique(unlist(datasetKeys))
-      GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys)
-      ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rgbif is date citation was sought, not the date the data was accessed)
-      for(j in GBIFdatasetKeys){
-        temp <- gsub(rgbif::gbif_citation(j)$citation$text,
-                     pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.", replacement = "",
-                     useBytes = T)
-        temp <- gsub(temp, pattern = "Occurrence dataset ", replacement = "")
-        temp <- paste0(temp, ".")
-        GBIFCitationList <- append(GBIFCitationList,temp)
+      if (!is.na(datasetKeys)){
+        GBIFDatasetCount <- as.data.frame(table(unlist(datasetKeys)))
+        GBIFdatasetKeys <- unique(unlist(datasetKeys))
+        GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys)
+        ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rgbif is date citation was sought, not the date the data was accessed)
+        for(j in GBIFdatasetKeys){
+          temp <- gsub(rgbif::gbif_citation(j)$citation$text,
+                       pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.", replacement = "",
+                       useBytes = T)
+          temp <- gsub(temp, pattern = "Occurrence dataset ", replacement = "")
+          temp <- paste0(temp, ".")
+          GBIFCitationList <- append(GBIFCitationList,temp)
+        }
+      } else {
+        GBIFCitationList <- NA
       }
     }
 
@@ -103,10 +107,15 @@ occCitation <-function(x = NULL){
     #Columns: UUID, Citation, Access date, number of records
     if(!is.null(occResults$GBIF)){
       GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified,"T")[[1]][1]# Assumes that all species queries occurred at the same time, which may not necessarily be the case FIX LATER
-      gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
-                              GBIFdatasetKeys, unlist(GBIFCitationList),
-                              rep(GBIFaccessDate, length(GBIFdatasetKeys)),
-                              GBIFDatasetCount[,2], stringsAsFactors = F)
+      if(!is.na(GBIFCitationList)){
+        gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
+                                GBIFdatasetKeys, unlist(GBIFCitationList),
+                                rep(GBIFaccessDate, length(GBIFdatasetKeys)),
+                                GBIFDatasetCount[,2], stringsAsFactors = F)
+      } else {
+        gbifTable <- data.frame(as.list(c("GBIF", rep(NA, times = 4))))
+      }
+
       colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences");
     }
 

@@ -115,7 +115,6 @@ print.occCiteCitation <- function(x, ...) {
     return(packageCitations)
   }
 
-
   # Combine citations
   if(bySpecies){
     for (i in 1:length(x$occCitationResults)){
