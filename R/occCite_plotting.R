@@ -107,6 +107,7 @@ map.occCite <- function(occCiteData,
   sp.names <- stringr::str_extract(string = names(d.res),
                                    pattern = "(\\w+\\s\\w+)")
 
+
   if(!is.null(species_colors)) {
     if(length(species_colors) != length(sp.names)) {
       stop("Number of species colors provided must match number of species mapped.")
@@ -118,14 +119,25 @@ map.occCite <- function(occCiteData,
 
   d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
+    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
     d.tbl.n <- nrow(d.tbl[[i]])
     if(d.tbl.n > map_limit) {
       message(paste0("Number of occurrences for ", sp.names[i], " exceeds limit of ",
                      map_limit, ", so mapping a random sample of ", map_limit, " occurrences..."))
       d.tbl[[i]] <- d.tbl[[i]][sample(1:d.tbl.n, map_limit),]
     }
+    if (d.tbl.n == 0){
+      d.tbl[[i]] <- NULL
+    }
   }
+  d.tbl <- d.tbl[lengths(d.tbl) != 0]
+  if(length(d.tbl)==0) {
+    warning('No occurrences exist in this occCite object.')
+    return(NULL)
+  }
+
   d <- dplyr::bind_rows(d.tbl)
+
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
   # remove coordinate duplicates with same data service
@@ -196,6 +208,7 @@ map.occCite <- function(occCiteData,
     }
   }else{
     for(i in sp.names) {
+      if(nrow(d.nest.i) == 0) next
       sp.cols.i <- sp.cols[[i]]
       labs.lst.i <- labs.lst[[i]]
       m <- m %>% leaflet::addCircleMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
@@ -259,6 +272,18 @@ sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearH
 
   d.res <- occCiteData@occResults
   d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
+  for(i in 1:length(d.tbl)) {
+    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
+    d.tbl.n <- nrow(d.tbl[[i]])
+    if (d.tbl.n == 0){
+      d.tbl[[i]] <- NULL
+    }
+  }
+  d.tbl <- d.tbl[lengths(d.tbl) != 0]
+  if(length(d.tbl)==0) {
+    warning('No occurrences exist in this occCite object.')
+    return(NULL)
+  }
 
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
