@@ -19,7 +19,7 @@ format. This is an internal function for use by \code{\link{occQuery}}.
 }
 \examples{
 \donttest{
-temp <- getBIENpoints(taxon="Protea cynaroides", limit = NULL)
+temp <- getBIENpoints(taxon="Protea cynaroides")
 fitForUseTable <- BIENtableCleanup(temp$OccurrenceTable)
 }
 

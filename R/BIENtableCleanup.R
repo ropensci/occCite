@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \donttest{
-#' temp <- getBIENpoints(taxon="Protea cynaroides", limit = NULL)
+#' temp <- getBIENpoints(taxon="Protea cynaroides")
 #' fitForUseTable <- BIENtableCleanup(temp$OccurrenceTable)
 #'}
 #'
