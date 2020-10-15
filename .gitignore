@@ -31,4 +31,3 @@ vignettes/*.pdf
 .Rbuildignore
 # My beta-testing sample script
 inst/extdata/sampleScript.R
-docs
