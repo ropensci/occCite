@@ -1,0 +1,14 @@
+home:
+  title: Querying and Managing Large Biodiversity Occurrence Datasets
+  description: Facilitates the gathering of biodiversity occurrence data from disparate sources. Metadata is managed throughout the process to facilitate reporting and enhanced ability to repeat analyses.
+
+template:
+  bootswatch:
+    params: litera
+  opengraph:
+    image:
+      src: man/figures/occTag.png
+      alt: "Gray specimen tag that says 'occCite: Tools for querying and citing large occurrence datasets'"
+    twitter:
+      creator: "@hannahOish"
+      card: summary_large_image

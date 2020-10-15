@@ -74,6 +74,7 @@ tabulate.occResults <- function(x, sp.name) {
 #'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
+#' @importFrom stats complete.cases
 #'
 #' @export
 #'
@@ -245,6 +246,7 @@ map.occCite <- function(occCiteData,
 #'                plotType = c("yearHistogram", "source", "aggregator"))
 #'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle theme xlab ylab theme_classic scale_y_continuous ggplot_build element_text
+#' @importFrom stats complete.cases
 #'
 #' @export
 #'

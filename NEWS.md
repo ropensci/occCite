@@ -1,7 +1,7 @@
 # occCite 0.3.0
 
-*Updated to meet CRAN reviewer guidelines
-*Citations now include packages used.
+* Updated to meet CRAN reviewer guidelines
+* Citations now include packages used.
 
 # occCite 0.2.0
 
