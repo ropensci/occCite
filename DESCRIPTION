@@ -34,7 +34,6 @@ Suggests:
   viridis,
   remotes
 Imports:
-    RefManageR,
     bib2df,
     BIEN,
     bit64,

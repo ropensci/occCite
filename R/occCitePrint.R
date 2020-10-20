@@ -10,7 +10,6 @@
 #'
 #' @return A text string with formatted citations
 #'
-#' @import RefManageR
 #' @import bib2df
 #'
 #' @examples
@@ -47,7 +46,6 @@ print.occCiteCitation <- function(x, ...) {
   }
   # Function to generate package citations
   packageCitations <- function(packagesUsed){
-    #bibtex::write.bib(packagesUsed, "temp.bib", verbose = F)
     pkg.bib<- lapply(packagesUsed, function(pkg){
       refs<- as.BibEntry(utils::citation(pkg))
       if(length(refs))
