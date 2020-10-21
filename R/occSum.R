@@ -11,7 +11,8 @@
 #' data(myOccCiteObject)
 #' summary(myOccCiteObject)
 #'
-#' @exportMethod summary
+#' @method summary occCiteData
+#' @export
 #'
 summary.occCiteData <- function(object, ...) {
   x <- object
@@ -55,7 +56,7 @@ summary.occCiteData <- function(object, ...) {
 
     for (i in 1:length(x@occResults)){
       #GBIF counts
-      if (is.null(x@occResults[[i]]$GBIF$OccurrenceTable)){
+      if (is.null(x@occResults[[i]]$GBIF$OccurrenceTable) | nrow(x@occResults[[i]]$GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey),]) == 0){
         occurrenceCountGBIF[[i]] <- 0
         sourceCountGBIF[[i]] <- 0
       }
@@ -85,19 +86,21 @@ summary.occCiteData <- function(object, ...) {
     print(sumTab)
   }
 
-  if("gbif" %in% x@occSources && !is.null(x@occResults[[i]]$GBIF$Metadata$doi)){
+  if("gbif" %in% x@occSources){
     cat("\t\n",
         sprintf("GBIF dataset DOIs: %s\n", "\t\n"))
 
     #Tabulate DOIs
     GBIFdoi <- vector(mode = "numeric", length = length(x@occResults))
-    for (i in 1:length(x@occResults)){
-      GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
-    }
-    #Tabulate access dates
     GBIFaccessDate <- vector(mode = "numeric", length = length(x@occResults))
-    for (i in x@occResults){
-      GBIFaccessDate <- strsplit(i$GBIF$Metadata$modified, "T")[[1]][1]
+    for (i in 1:length(x@occResults)){
+      if(as.numeric(sumTab$Occurrences[[i]]) > 0){
+        GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
+        GBIFaccessDate[[i]] <- strsplit(x@occResults[[i]]$GBIF$Metadata$modified, "T")[[1]][1]
+      } else {
+        GBIFdoi[[i]] <- NA
+        GBIFaccessDate[[i]] <- NA
+      }
     }
     doiTab <- as.data.frame(cbind(names(x@occResults), GBIFaccessDate, GBIFdoi))
     colnames(doiTab) <- c("Species", "GBIF Access Date", "GBIF DOI")

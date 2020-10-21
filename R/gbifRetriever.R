@@ -45,7 +45,22 @@ gbifRetriever <- function (taxon = NULL){
   }
   if(length(matchIndex) == 0){
     print(paste0("There are no local drive downloads for ", taxon, "in ", getwd(), "."))
-    return(NULL)
+    dataService <- "GBIF"
+    occFromGBIF <- c(rep(NA,9), dataService)
+    names(occFromGBIF) <- c("gbifID", "name", "longitude",
+                            "latitude", "day", "month",
+                            "year", "Dataset",
+                            "DatasetKey", "DataService")
+    occFromGBIF <- t(data.frame(occFromGBIF, stringsAsFactors = F))
+    row.names(occFromGBIF) <- NULL
+    occFromGBIF <- data.frame(occFromGBIF)
+
+    outlist <- list()
+    outlist[[1]]<- occFromGBIF
+    outlist[[2]]<-paste0("There are no local drive downloads for ", taxon, "in ", getwd(), ".")
+    outlist[[3]]<-NA
+    names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
+    return(outlist)
   }
   else{
     #Gets the downloaded data for the most recent match and returns it

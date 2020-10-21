@@ -11,7 +11,7 @@
 #' @return A text string with formatted citations
 #'
 #' @import bib2df
-#' @import RefManageR
+#' @importFrom stats na.omit
 #'
 #' @examples
 #'
@@ -34,6 +34,11 @@ print.occCiteCitation <- function(x, ...) {
   }
 
   stopifnot(inherits(x, "occCiteCitation"))
+
+  if (!requireNamespace("RefManageR", quietly = TRUE)) {
+    stop("Package \"RefManageR\" needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
 
   #Utility function for making a citation list
   refManMCL <- function(x) {
