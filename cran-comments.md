@@ -1,22 +1,23 @@
+## Update
+This is a package update. In this version, I have:
+
+* Removed a package dependency that was causing warnings on some systems.
+* Adjusted function behaviors to more gracefully handle species with no occurrences returned from a search.
+
 ## Test environments
 * local OS X 10.15.5 install, R 4.0.2
 * win-builder (devel and release)
 * r-hub
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
+There were no WARNINGs or NOTEs. 
 
-There were 2 NOTEs.
+There was 1 ERROR when using r-hub.
 
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
+* checking examples with --run-donttest ... ERROR
+  Running examples in 'occCite-Ex.R' failed
 
-This is accurate, and a permanent email address.
-
-* checking for future file timestamps ... NOTE
-  unable to verify current time
-  
-This appears to be a check function issue and only results from running checks using Mac OS X 10.5.5 install.
+This example should not be tested, as it requires confidential user information to proceed.
 
 ## Downstream dependencies
 I also ran tools::check_packages_in_dir check on downstream dependencies of 
