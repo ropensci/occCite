@@ -11,6 +11,7 @@
 #' @return A text string with formatted citations
 #'
 #' @import bib2df
+#' @import RefManageR
 #'
 #' @examples
 #'
@@ -47,12 +48,12 @@ print.occCiteCitation <- function(x, ...) {
   # Function to generate package citations
   packageCitations <- function(packagesUsed){
     pkg.bib<- lapply(packagesUsed, function(pkg){
-      refs<- as.BibEntry(utils::citation(pkg))
+      refs<- RefManageR::as.BibEntry(utils::citation(pkg))
       if(length(refs))
         names(refs) <- make.unique(rep(pkg,length(refs)))
       refs})
     pkg.bib <- refManMCL(pkg.bib)
-    WriteBib(pkg.bib, "temp.bib")
+    RefManageR::WriteBib(pkg.bib, "temp.bib")
 
     #this works
     temp <- bib2df::bib2df("temp.bib", separate_names = T)
@@ -117,7 +118,7 @@ print.occCiteCitation <- function(x, ...) {
   if(bySpecies){
     for (i in 1:length(x$occCitationResults)){
       # Get list of packages used and get citations
-      packCit <- c("base", "occCite")
+      packCit <- c("base", "occCite", "RefManageR")
       packages <- unique(x$occCitationResults[[i]]$occSearch)
       if("GBIF" %in% packages) packCit <- c(packCit, "rgbif")
       if("BIEN" %in% packages) packCit <- c(packCit, "BIEN")
@@ -127,15 +128,21 @@ print.occCiteCitation <- function(x, ...) {
       cat(paste("Species:", names(x$occCitationResults)[[i]], "\n\n"))
       singleSpRecord <- x$occCitationResults[[i]]
       singleSpRecord <- singleSpRecord[order(singleSpRecord$Citation),]
-      recordCitations <- paste0(singleSpRecord$Citation,
-             " Accessed via ", singleSpRecord$occSearch,
-             " on ", singleSpRecord$`Accession Date`, ".")
-      allCitations <- sort(c(packCit, recordCitations))
-      cat(allCitations, sep = "\n")
+      if(nrow(singleSpRecord[!is.na(singleSpRecord$Citation),]) > 0){
+        recordCitations <- paste0(singleSpRecord$Citation,
+               " Accessed via ", singleSpRecord$occSearch,
+               " on ", singleSpRecord$`Accession Date`, ".")
+        allCitations <- sort(c(packCit, recordCitations))
+        cat(allCitations, sep = "\n")
+      } else {
+        cat("NOTE: No occurrences to cite.\n\n")
+        cat(packCit, sep = "\n")
+      }
       cat(paste("\n"))
     }
   } else {
     recordCitations <- do.call(rbind, x$occCitationResults)
+    recordCitations <- recordCitations[!is.na(recordCitations$Citation),]
 
     # Get list of packages used and get citations
     packCit <- c("base", "occCite")

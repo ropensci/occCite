@@ -32,7 +32,8 @@ Suggests:
   rmarkdown,
   RColorBrewer,
   viridis,
-  remotes
+  remotes,
+  RefManageR
 Imports:
     bib2df,
     BIEN,

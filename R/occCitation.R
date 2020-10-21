@@ -40,8 +40,8 @@ occCitation <-function(x = NULL){
     #GBIF
     if(!is.null(occResults$GBIF)){
       ##Pull dataset keys from occurrence table
-      datasetKeys <- unlist(as.character(occResults$GBIF$OccurrenceTable$DatasetKey))
-      if (!is.na(datasetKeys)){
+      datasetKeys <- stats::na.exclude(unlist(as.character(occResults$GBIF$OccurrenceTable$DatasetKey)))
+      if (length(datasetKeys)>0){
         GBIFDatasetCount <- as.data.frame(table(unlist(datasetKeys)))
         GBIFdatasetKeys <- unique(unlist(datasetKeys))
         GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys)
@@ -107,7 +107,7 @@ occCitation <-function(x = NULL){
     #Columns: UUID, Citation, Access date, number of records
     if(!is.null(occResults$GBIF)){
       GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified,"T")[[1]][1]# Assumes that all species queries occurred at the same time, which may not necessarily be the case FIX LATER
-      if(!is.na(GBIFCitationList)){
+      if(length(stats::na.exclude(GBIFCitationList))>0){
         gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
                                 GBIFdatasetKeys, unlist(GBIFCitationList),
                                 rep(GBIFaccessDate, length(GBIFdatasetKeys)),

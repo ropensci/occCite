@@ -1,3 +1,8 @@
+# occCite 0.4.0
+
+* Removed a package dependency that was causing warnings on some systems.
+* Adjusted function behaviors to more gracefully handle species with no occurrences returned from a search.
+
 # occCite 0.3.0
 
 * Updated to meet CRAN reviewer guidelines
