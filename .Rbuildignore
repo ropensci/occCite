@@ -1,0 +1,16 @@
+^Meta$
+^doc$
+^.*\.Rproj$
+^\.Rproj\.user$
+^_config.yml$
+^README_files/$
+^README.Rmd
+^readme.md
+^cran-comments.md$
+^revdep$
+^CRAN-RELEASE$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^LICENSE\.md$
