@@ -1,3 +1,7 @@
+# occCite v0.5-alpha
+
+* Ongoing development
+
 # occCite 0.4.0
 
 * Removed a package dependency that was causing warnings on some systems.
