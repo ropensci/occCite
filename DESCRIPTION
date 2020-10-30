@@ -21,7 +21,7 @@ Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
 Description: Facilitates the gathering of biodiversity occurrence data 
   from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced ability to repeat analyses.
-License: GPL (>= 2)
+License: GPL-3
 URL: https://github.com/hannahlowens/occCite
 BugReports: https://github.com/hannahlowens/occCite/issues
 Encoding: UTF-8

@@ -218,3 +218,6 @@ occCite also contains tools to map search results. We can pass occCite objects t
 ```{r mapping search results, eval = F, echo = T}
 map.occCite(mySimpleOccCiteObject, cluster = T)
 ```
+<!-- badges: start -->
+[![R build status](https://github.com/hannahlowens/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/hannahlowens/occCite/actions)
+<!-- badges: end -->
