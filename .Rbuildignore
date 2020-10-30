@@ -3,7 +3,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^_config.yml$
-^README_files/$
+^README_files$
 ^README.Rmd
 ^readme.md
 ^cran-comments.md$
