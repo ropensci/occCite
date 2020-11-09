@@ -29,11 +29,12 @@ LazyData: true
 Language: en-US
 Depends: R (>= 3.5.0)
 Suggests:
-  rmarkdown,
-  RColorBrewer,
-  viridis,
-  remotes,
-  RefManageR
+    rmarkdown,
+    RColorBrewer,
+    viridis,
+    remotes,
+    RefManageR,
+    testthat
 Imports:
     bib2df,
     BIEN,

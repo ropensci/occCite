@@ -189,9 +189,7 @@ occQuery <- function(x = NULL,
     names(bienResults) <- searchTaxa
     if("bien" %in% datasources){
       for (i in searchTaxa){
-        temp <- getBIENpoints(taxon = i)
-        temp[[1]] <- BIENtableCleanup(temp[[1]])
-        bienResults[[i]] <- temp
+        bienResults[[i]] <- getBIENpoints(taxon = i)
       }
     }
   }

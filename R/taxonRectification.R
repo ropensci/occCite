@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' #Inputting a taxonomic name and specifying what taxonomic sources you want to search
-#' taxonRectification(taxName = "Buteo buteo hartedi", datasources = 'NCBI');
+#' taxonRectification(taxName = "Buteo buteo hartedi", datasources = 'NCBI')
 #'
 #' @export
 #'
