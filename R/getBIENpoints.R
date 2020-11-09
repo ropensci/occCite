@@ -69,7 +69,7 @@ getBIENpoints<-function(taxon){
   outdata["DataService"] <- as.factor(unlist(outdata["DataService"]))
 
   #Get metadata
-  occMetadata <- BIEN::BIEN_metadata_citation(occs)
+  occMetadata <- BIEN::BIEN_metadata_citation()
   occMetadata$license <- "CC BY-NC-ND"
 
   #Package it all up
