@@ -20,6 +20,10 @@ knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 knitr::opts_knit$set(root.dir = paste0(path.package("occCite"), "/extdata/"))
 ```
 
+<!-- badges: start -->
+[![R build status](https://github.com/hannahlowens/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/hannahlowens/occCite/actions)
+<!-- badges: end -->
+
 # Introduction 
 
 We have entered the age of data-intensive scientific discovery. As datasets increase in complexity and heterogeneity, we must preserve the cycle of data citation from primary data sources to aggregating databases to research products and back to primary data sources. The citation cycle keeps science transparent, but it is also key to supporting primary providers by documenting the use of their data. The Global Biodiversity Information Facility and other data aggregators have made great strides in harvesting citation data from research products and linking them back to primary data providers. However, this only works if those that publish research products cite primary data sources in the first place. We developed `occCite`, a set of `R`-based tools for downloading, managing, and citing biodiversity data, to advance toward the goal of closing the data provenance cycle. These tools preserve links between occurrence data and primary providers once researchers download aggregated data, and facilitate the citation of primary data providers in research papers.
@@ -218,6 +222,4 @@ occCite also contains tools to map search results. We can pass occCite objects t
 ```{r mapping search results, eval = F, echo = T}
 map.occCite(mySimpleOccCiteObject, cluster = T)
 ```
-<!-- badges: start -->
-[![R build status](https://github.com/hannahlowens/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/hannahlowens/occCite/actions)
-<!-- badges: end -->
+
