@@ -11,7 +11,7 @@
 #'
 #' @return A list of lists containing (1) a data frame of occurrence
 #' data; (2) GBIF search metadata for every GBIF download in the
-#' specified directory.
+#' specified directory. (3) the raw occurrence data from GBIF.
 #'
 #' @keywords internal
 
