@@ -218,7 +218,7 @@ map.occCite <- function(occCiteData,
                                            radius = 5, fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
     }
   }
-  m
+  return(m)
 }
 
 #' @title Generating summary figures for occCite search results
