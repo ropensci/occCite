@@ -209,6 +209,7 @@ map.occCite <- function(occCiteData,
     }
   }else{
     for(i in sp.names) {
+      d.nest.i <- d.nest %>% dplyr::filter(.data$name == i)
       if(nrow(d.nest.i) == 0) next
       sp.cols.i <- sp.cols[[i]]
       labs.lst.i <- labs.lst[[i]]
