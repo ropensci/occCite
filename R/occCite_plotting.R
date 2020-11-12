@@ -14,14 +14,14 @@
 #'
 #' @examples
 #' data(myOccCiteObject)
-#' tabulate.occResults(myOccCiteObject@occResults)
+#' tabulate.occResults(myOccCiteObject@occResults,
+#'                     sp.name = "Protea cynaroides")
 #'
 #' @importFrom dplyr "%>%" filter
 #'
 #' @export
 
-tabulate.occResults <- function(x) {
-  sp.name <- names(x)
+tabulate.occResults <- function(x, sp.name) {
   sp.name <- stringr::str_extract(string = sp.name,
                                      pattern = "(\\w+\\s\\w+)")
   occTbls <- lapply(x, function(db) db$OccurrenceTable)
@@ -118,7 +118,7 @@ map.occCite <- function(occCiteData,
     }
   }
 
-  d.tbl <- lapply(d.res, function(x) tabulate.occResults(x)
+  d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
     d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
     d.tbl.n <- nrow(d.tbl[[i]])
@@ -273,7 +273,7 @@ sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearH
   }
 
   d.res <- occCiteData@occResults
-  d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]]))
+  d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
     d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
     d.tbl.n <- nrow(d.tbl[[i]])
