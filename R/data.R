@@ -6,7 +6,7 @@
 #' @format An `occCiteData` object with the following slots:
 #' \describe{
 #'  \item{userQueryType}{What kind of query was made}
-#'  \item{userSpecTaxonomicSources}{A vector of taxonomic sources specified}
+#'  \item{userSpecTaxonomy}{A vector of taxonomic sources specified}
 #'  \item{cleanedTaxonomy}{A data frame with results of taxonomic cleanup}
 #'  \item{occSources}{A vector of which databases were queried (i.e. GBIF and BIEN)}
 #'  \item{occCiteSearchDate}{When the search was made}

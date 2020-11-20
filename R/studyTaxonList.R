@@ -61,7 +61,7 @@ studyTaxonList <- function(x = NULL, datasources = c('NCBI')) {
 
   #Populating an instance of class occCiteData
   occCiteInstance <- methods::new("occCiteData", userQueryType = dataFrom,
-                                  userSpecTaxonomicSources = datasources,
+                                  userSpecTaxonomy = datasources,
                                   cleanedTaxonomy = resolvedNames)
   return(occCiteInstance)
 }

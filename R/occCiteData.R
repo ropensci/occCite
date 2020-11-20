@@ -7,7 +7,7 @@
 #' user made their original taxonomic query based on a vector of taxon names
 #' or a phylogeny.
 #'
-#' @slot userSpecTaxonomicSources A vector of type character that presents a
+#' @slot userSpecTaxonomy A vector of type character that presents a
 #' list of taxonomic sources for cleaning taxonomy of queries. This can be
 #' user-specified or default.
 #'
@@ -32,7 +32,7 @@
 #' @export
 occCiteData <- methods::setClass("occCiteData",
                                  slots = c(userQueryType = "vector",
-                                           userSpecTaxonomicSources = "vector",
+                                           userSpecTaxonomy = "vector",
                                            cleanedTaxonomy = "data.frame",
                                            occSources = "vector",
                                            occCiteSearchDate = "vector",
