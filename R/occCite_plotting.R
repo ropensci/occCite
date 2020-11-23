@@ -120,7 +120,7 @@ map.occCite <- function(occCiteData,
 
   d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
-    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
+    if(nrow(d.tbl[[i]]) > 0) d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
     d.tbl.n <- nrow(d.tbl[[i]])
     if(d.tbl.n > map_limit) {
       message(paste0("Number of occurrences for ", sp.names[i], " exceeds limit of ",
