@@ -143,12 +143,12 @@
 <code class="sourceCode R"><span class="co"># GBIF search results</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mySimpleOccCiteObject</span><span class="op">@</span><span class="va">occResults</span><span class="op">$</span><span class="va">`Protea cynaroides`</span><span class="op">$</span><span class="va">GBIF</span><span class="op">$</span><span class="va">OccurrenceTable</span><span class="op">)</span></code></pre></div>
 <pre><code>##                name longitude  latitude day month year
-## 1 Protea cynaroides  18.40540 -33.95891   4     1 2015
-## 2 Protea cynaroides  18.42350 -33.96619  20     6 2019
-## 3 Protea cynaroides  22.99340 -34.05478  16     6 2019
-## 4 Protea cynaroides  18.40232 -34.08405   9     6 2019
-## 5 Protea cynaroides  19.44807 -34.52123  13     6 2019
-## 6 Protea cynaroides  18.39757 -34.07418   9     6 2019
+## 1 Protea cynaroides  26.51756 -33.34703  22    10 2020
+## 2 Protea cynaroides  19.45966 -34.52285   7    11 2020
+## 3 Protea cynaroides  19.13672 -33.76127   1    11 2020
+## 4 Protea cynaroides  18.42365 -33.96614  28     3 2019
+## 5 Protea cynaroides  18.42872 -33.99052   6     9 2020
+## 6 Protea cynaroides  25.23694 -33.88793   4    11 2020
 ##                                   Dataset                           DatasetKey
 ## 1 iNaturalist research-grade observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 ## 2 iNaturalist research-grade observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7
@@ -185,7 +185,7 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mySimpleOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code>##  
-##  OccCite query occurred on: 21 August, 2020
+##  OccCite query occurred on: 2020-11-24
 ##  
 ##  User query type: User-supplied list of taxa.
 ##  
@@ -200,12 +200,12 @@
 ##  Sources for occurrence data: gbif, bien
 ##      
 ##             Species Occurrences Sources
-## 1 Protea cynaroides         828      15
+## 1 Protea cynaroides        1293      17
 ##  
 ##  GBIF dataset DOIs:  
 ## 
 ##             Species GBIF Access Date           GBIF DOI
-## 1 Protea cynaroides       2019-07-15 10.15468/dl.iqnra2</code></pre>
+## 1 Protea cynaroides       2020-11-23 10.15468/dl.2449qy</code></pre>
 </div>
 <div id="simple-citations" class="section level2">
 <h2 class="hasAnchor">
@@ -229,25 +229,27 @@
 ## The signature and semantics have changed, see `?as_tibble`.
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
-<pre><code>## Cameron E, Auckland Museum A M (2020). Auckland Museum Botany Collection. Version 1.54. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2019-07-15.
-## Capers R (2014). CONN. University of Connecticut. https://doi.org/10.15468/w35jmd. Accessed via GBIF on 2019-07-15.
+<pre><code>## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet automatically identified occurrences. Version 1.2. Pl@ntNet. https://doi.org/10.15468/mma2ec. Accessed via GBIF on 2020-11-23.
+## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet observations. Version 1.2. Pl@ntNet. https://doi.org/10.15468/gtebaa. Accessed via GBIF on 2020-11-23.
+## Cameron E, Auckland Museum A M (2020). Auckland Museum Botany Collection. Version 1.54. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2020-11-23.
+## Capers R (2014). CONN. University of Connecticut. https://doi.org/10.15468/w35jmd. Accessed via GBIF on 2020-11-23.
 ## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2020). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.3.0. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
-## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2019-07-15.
-## Magill B, Solomon J, Stimmel H (2020). Tropicos Specimen Data. Missouri Botanical Garden. https://doi.org/10.15468/hja69f. Accessed via GBIF on 2019-07-15.
+## de Vries H, Lemmens M. Observation.org, Nature data from around the World. Observation.org. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2020-11-23.
+## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2020-11-23.
+## Magill B, Solomon J, Stimmel H (2020). Tropicos Specimen Data. Missouri Botanical Garden. https://doi.org/10.15468/hja69f. Accessed via GBIF on 2020-11-23.
 ## Maitner, B. (2020). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.4. https://CRAN.R-project.org/package=BIEN.
 ## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.
-## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.188. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2019-07-15.
+## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.188. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2020-11-23.
 ## MNHN. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2019-07-15.
+## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2020-11-23.
 ## NSW. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
-## Ranwashe F (2019). BODATSA: Botanical Collections. Version 1.4. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2019-07-15.
 ## SANBI. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2019-07-15.
-## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2019-07-15.
+## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2020-11-23.
+## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2020-11-23.
 ## UConn. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-15.</code></pre>
+## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2020-11-23.</code></pre>
 </div>
 <div id="simple-taxonomic-rectification" class="section level2">
 <h2 class="hasAnchor">
