@@ -21,7 +21,7 @@ summary.occCiteData <- function(object, ...) {
 
   if(!is.null(x@occCiteSearchDate)){
     cat("\t\n",
-        sprintf("OccCite query occurred on: %s\n", x@occCiteSearchDate))
+        sprintf("OccCite query occurred on: %s\n", as.character(as.Date(x@occCiteSearchDate), format = "%d %B, %Y")))
   }
 
   if(!is.null(x@userQueryType)){
