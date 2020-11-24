@@ -1,7 +1,7 @@
 #' @title Tabulate occurrence results
 #'
 #' @description This is a helper function that tabulates `occCiteData`
-#' objects for use by map.occCite and `sumFig.occCite`.
+#' objects for use by occCiteMap and `sumFig.occCite`.
 #'
 #' @param x One species' worth of results from an `occCiteData` object
 #'
@@ -70,7 +70,7 @@ tabulate.occResults <- function(x, sp.name) {
 #'
 #' @examples
 #' data(myOccCiteObject)
-#' map.occCite(myOccCiteObject, cluster = FALSE)
+#' occCiteMap(myOccCiteObject, cluster = FALSE)
 #'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
@@ -79,7 +79,7 @@ tabulate.occResults <- function(x, sp.name) {
 #' @export
 #'
 
-map.occCite <- function(occCiteData,
+occCiteMap <- function(occCiteData,
                         species_map = "all",
                         species_colors = NULL,
                         ds_map = c("GBIF", "BIEN"),
@@ -114,7 +114,7 @@ map.occCite <- function(occCiteData,
       stop("Number of species colors provided must match number of species mapped.")
     }
     if(awesomeMarkers == TRUE & !all(species_colors %in% awesomeMarkers.cols)) {
-      stop("If mapping awesomeMarkers, please specify species colors from those available (see Details in ?map.occCite)")
+      stop("If mapping awesomeMarkers, please specify species colors from those available (see Details in ?occCiteMap)")
     }
   }
 
