@@ -3,7 +3,7 @@ context("GBIF tabulation")
 library(occCite)
 
 test_that("data entered into tabGBIF is as expected", {
-  skip_on_cran()
+  skip_on_cran() # Requires GBIF login information
   key <- rgbif::name_suggest(q="Protea cynaroides", rank='species')$data$key[1]
   GBIFLogin <- GBIFLoginManager()
   occD <- prevGBIFdownload(key, GBIFLogin)
@@ -14,7 +14,7 @@ test_that("data entered into tabGBIF is as expected", {
 })
 
 test_that("verify occ_download_import results have expected columns", {
-  skip_on_cran()
+  skip_on_cran() # Requires GBIF login information
   key <- rgbif::name_suggest(q="Protea cynaroides", rank='species')$data$key
   GBIFLogin <- GBIFLoginManager()
   occD <- prevGBIFdownload(key, GBIFLogin)
@@ -34,6 +34,7 @@ test_that("verify occ_download_import results have expected columns", {
 })
 
 test_that("tabGBIF results as expected", {
+  skip_on_cran() # Requires GBIF login information
   key <- rgbif::name_suggest(q="Protea cynaroides", rank='species')$data$key
   GBIFLogin <- GBIFLoginManager()
   occD <- prevGBIFdownload(key, GBIFLogin)
