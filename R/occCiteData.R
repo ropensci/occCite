@@ -35,6 +35,6 @@ occCiteData <- methods::setClass("occCiteData",
                                            userSpecTaxonomy = "vector",
                                            cleanedTaxonomy = "data.frame",
                                            occSources = "vector",
-                                           occCiteSearchDate = "vector",
+                                           occCiteSearchDate = "character",
                                            occResults = "list")
                                  )

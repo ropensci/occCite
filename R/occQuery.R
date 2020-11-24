@@ -144,7 +144,7 @@ occQuery <- function(x = NULL,
   }
 
   #Get time stamp for search
-  x@occCiteSearchDate <- as.character(Sys.Date(), format = "%d %B, %Y")
+  x@occCiteSearchDate <- as.character(Sys.Date(), format = "%Y-%m-%d")
 
   #Occurrence queries for each species
   queryResults <- x
