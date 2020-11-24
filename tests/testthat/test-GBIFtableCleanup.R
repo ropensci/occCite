@@ -16,6 +16,13 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
 
 test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   skip_on_cran()
+
+  test <- try(rgbif::occ_download(user=GBIFLogin@username,
+                                  email = GBIFLogin@email,
+                                  pwd = GBIFLogin@pwd,
+                                  rgbif::pred("catalogNumber", 217880)), silent = T)
+  skip_if(class(test) != 'occ_download', "GBIF login unsuccessful")
+
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
@@ -56,6 +63,14 @@ test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table",
 
 test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF table", {
   skip_on_cran()
+  skip_if(nchar(Sys.getenv("GBIF_EMAIL")) < 1, "GBIF Login information not available")
+
+  test <- try(rgbif::occ_download(user=GBIFLogin@username,
+                                  email = GBIFLogin@email,
+                                  pwd = GBIFLogin@pwd,
+                                  rgbif::pred("catalogNumber", 217880)), silent = T)
+  skip_if(class(test) != 'occ_download', "GBIF login unsuccessful")
+
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
