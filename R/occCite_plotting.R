@@ -310,7 +310,7 @@ plot.occCiteData <- function (x, ...){
 
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
-  d <- d %>% dplyr::select(name, year, Dataset, DataService)
+  d <- d[,c("name", "year", "Dataset", "DataService")]
   d <- d[complete.cases(d),]
 
   if(!bySpecies){

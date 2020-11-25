@@ -12,7 +12,12 @@
 #' @keywords internal
 
 GBIFtableCleanup <- function(GBIFtable){
-  if (!is.null(GBIFtable) && !is.na(GBIFtable)){
+
+  isnothing = function(x) {
+    any(is.null(x))  || any(is.na(x))  || any(is.nan(x))
+  }
+
+  if (!isnothing(GBIFtable)){
     GBIFtable <- GBIFtable[,-1]
     GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
     GBIFtable["longitude"] <- as.numeric(unlist(GBIFtable["longitude"]))
