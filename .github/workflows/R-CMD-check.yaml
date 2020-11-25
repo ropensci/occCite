@@ -31,8 +31,6 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       _R_CHECK_FORCE_SUGGESTS_: false
       RSPM: ${{ matrix.config.rspm }}
-      global:
-        R_CHECK_DONTTEST_EXAMPLES: false
 
     steps:
       - uses: actions/checkout@v2
@@ -78,8 +76,6 @@ jobs:
           _R_CHECK_FORCE_SUGGESTS_: false
         run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--no-tests"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
-        global:
-          R_CHECK_DONTTEST_EXAMPLES: false
 
       - name: Upload check results
         if: failure()
