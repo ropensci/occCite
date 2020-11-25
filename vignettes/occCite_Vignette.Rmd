@@ -61,7 +61,7 @@ mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                                   datasources = c("gbif", "bien"),
                                   GBIFLogin = GBIFLogin, 
                                   GBIFDownloadDirectory = 
-                                    paste0(path.package("occCite"), "/extdata/"),
+                                    system.file('extdata/', package='occCite'),
                                   checkPreviousGBIFDownload = T)
 ```
 
@@ -136,7 +136,7 @@ Querying GBIF can take quite a bit of time, especially for multiple species and/
 myOldOccCiteObject <- occQuery(x = "Protea cynaroides", 
                                   datasources = c("gbif", "bien"), 
                                   GBIFLogin = NULL, 
-                                  GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
+                                  GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
                                   loadLocalGBIFDownload = T,
                                   checkPreviousGBIFDownload = F)
 ```
