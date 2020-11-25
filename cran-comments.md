@@ -1,11 +1,11 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Removed a package dependency that was causing warnings on some systems.
-* Adjusted function behaviors to more gracefully handle species with no occurrences returned from a search.
+* Renamed several functions to be more in line with naming conventions for methods.
+* Custom plot method defined for `occCiteData` class.
 
 ## Test environments
-* local OS X 10.15.5 install, R 4.0.2
+* local OS X 10.15.7 install, R 4.0.2
 * win-builder (devel and release)
 * r-hub
 
