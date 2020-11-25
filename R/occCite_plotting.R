@@ -1,7 +1,7 @@
 #' @title Tabulate occurrence results
 #'
 #' @description This is a helper function that tabulates `occCiteData`
-#' objects for use by occCiteMap and `sumFig.occCite`.
+#' objects for use by occCiteMap and `plot`.
 #'
 #' @param x One species' worth of results from an `occCiteData` object
 #'
@@ -222,7 +222,7 @@ occCiteMap <- function(occCiteData,
   return(m)
 }
 
-#' @title Generating summary figures for occCite search results
+#' @title Plotting summary figures for occCite search results
 #'
 #' @description Generates up to three different kinds of plots,
 #' with toggles determining whether plots should be done for
@@ -230,30 +230,50 @@ occCiteMap <- function(occCiteData,
 #' by year of occurrence records, waffle::waffle plot of primary
 #' data sources, waffle::waffle plot of data aggregators.
 #'
-#' @param occCiteData An object of class \code{\link{occCiteData}} to
+#' @param x An object of class \code{\link{occCiteData}} to
 #' map.
 #'
-#' @param bySpecies Logical; setting to `TRUE` generates the desired
+#' @param ... Additional arguments affecting how the formatted
+#' citation document is produced.
+#' `bySpecies`: Logical; setting to `TRUE` generates the desired
 #' plots for each species.
-#'
-#' @param plotTypes The type of plot to be generated; "yearHistogram",
+#' `plotTypes`: The type of plot to be generated; "yearHistogram",
 #' "source", and/or "aggregator".
 #'
 #' @return A list containing the desired plots.
 #'
 #' @examples
 #' data(myOccCiteObject)
-#' sumFig.occCite(myOccCiteObject, bySpecies = FALSE,
-#'                plotType = c("yearHistogram", "source", "aggregator"))
+#' plot(x = myOccCiteObject, bySpecies = FALSE,
+#'                plotTypes = c("yearHistogram", "source", "aggregator"))
 #'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle theme xlab ylab theme_classic scale_y_continuous ggplot_build element_text
 #' @importFrom stats complete.cases
+#' @importFrom methods is
 #'
+#' @method plot occCiteData
 #' @export
 #'
-sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearHistogram", "source", "aggregator")){
+plot.occCiteData <- function (x, ...){
+
+  args <- list(...)
+
+  if ("bySpecies" %in% names(args)){
+    bySpecies <- args$bySpecies
+  } else {
+    bySpecies <- FALSE
+  }
+
+  if ("plotTypes" %in% names(args)){
+    plotTypes <- args$plotType
+  } else {
+    plotTypes <- c("yearHistogram", "source", "aggregator")
+  }
+
+  stopifnot(is(x, "occCiteData"))
+
   #Error check input.
-  if (!class(occCiteData)=="occCiteData"){
+  if (!is(x, "occCiteData")){
     warning("Input is not of class 'occCiteData'.\n")
     return(NULL);
   }
@@ -273,7 +293,7 @@ sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearH
     plotTypes <- plots
   }
 
-  d.res <- occCiteData@occResults
+  d.res <- x@occResults
   d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
     d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
@@ -400,8 +420,10 @@ sumFig.occCite <- function (occCiteData, bySpecies = FALSE, plotTypes = c("yearH
         lbls <- paste(lbls, pct) # add percents to labels
         lbls <- paste(lbls,"%",sep="") # ad % to labels
         names(pct) <- lbls
-        aggregator <- waffle::waffle(pct, rows = 10, colors = viridis::viridis(length(datasetTab)),
-                                     title = paste0(sp, " Occurrences by Data Aggregator"))
+        aggregator <- waffle::waffle(pct, rows = 10,
+                                     colors = viridis::viridis(length(datasetTab)),
+                                     title = paste0(sp,
+                                                    " Occurrences by Data Aggregator"))
         aggregator <- ggplot_build(aggregator)
         allPlots[[length(allPlots)]] <- aggregator
       }

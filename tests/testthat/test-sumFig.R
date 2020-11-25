@@ -21,7 +21,7 @@ test_that("inputs to sumFig are as expected", {
 
 test_that("default sumFig settings work", {
   data("myOccCiteObject")
-  test <- sumFig.occCite(myOccCiteObject)
+  test <- plot(myOccCiteObject)
   expect_true("yearHistogram" %in% names(test))
   expect_equal(class(test[[1]]), "ggplot_built")
   expect_true("source" %in% names(test))
@@ -32,7 +32,7 @@ test_that("default sumFig settings work", {
 
 test_that("sumFig works when plotting by species", {
   data("myOccCiteObject")
-  test <- sumFig.occCite(myOccCiteObject, bySpecies = T)
+  test <- plot(myOccCiteObject, bySpecies = T)
   expect_true(names(test)=="Protea cynaroides")
   expect_true("yearHistogram" %in% names(test[[1]]))
   expect_equal(class(test[[1]][[1]]), "ggplot_built")
@@ -44,7 +44,7 @@ test_that("sumFig works when plotting by species", {
 
 test_that("sumFig works when plotting only year histogram by species", {
   data("myOccCiteObject")
-  test <- sumFig.occCite(myOccCiteObject, bySpecies = T, plotTypes = "yearHistogram")
+  test <- plot(myOccCiteObject, bySpecies = T, plotTypes = "yearHistogram")
   expect_true(names(test)=="Protea cynaroides")
   expect_true("yearHistogram" %in% names(test[[1]]))
   expect_equal(class(test[[1]][[1]]), "ggplot_built")
@@ -52,7 +52,7 @@ test_that("sumFig works when plotting only year histogram by species", {
 
 test_that("sumFig works when plotting only source by species", {
   data("myOccCiteObject")
-  test <- sumFig.occCite(myOccCiteObject, bySpecies = T, plotTypes = "source")
+  test <- plot(myOccCiteObject, bySpecies = T, plotTypes = "source")
   expect_true(names(test)=="Protea cynaroides")
   expect_true("source" %in% names(test[[1]]))
   expect_equal(class(test[[1]][[1]]), "ggplot_built")
@@ -60,7 +60,7 @@ test_that("sumFig works when plotting only source by species", {
 
 test_that("sumFig works when plotting only aggregator by species", {
   data("myOccCiteObject")
-  test <- sumFig.occCite(myOccCiteObject, bySpecies = T, plotTypes = "aggregator")
+  test <- plot(x = myOccCiteObject, bySpecies = T, plotTypes = "aggregator")
   expect_true(names(test)=="Protea cynaroides")
   expect_true("aggregator" %in% names(test[[1]]))
   expect_equal(class(test[[1]][[1]]), "ggplot_built")

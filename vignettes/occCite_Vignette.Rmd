@@ -91,6 +91,12 @@ There is also a summary method for `occCite` objects with some basic information
 summary(mySimpleOccCiteObject)
 ```
 
+If you want to visualize the results of your search, you can use the `plot` method on `occCite` objects to generate several kinds of summary plots.
+
+```{r plotting a simple search, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+plot(mySimpleOccCiteObject)
+```
+
 ## Simple citations
 
 After doing a search for occurrence points, you can use `occCitation()` to generate citations for primary biodiversity databases, as well as database aggregators.
@@ -175,11 +181,23 @@ myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "NCBI")
 #Query GBIF for occurrence data
 myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
                             datasources = "gbif",
-                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"), 
+                            GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
                             loadLocalGBIFDownload = T,
                             checkPreviousGBIFDownload = F)
 # What does a multispecies query look like?
 summary(myPhyOccCiteObject)
+```
+
+When you have results for multiple species, as in this case, you can also plot the summary figures either for the whole search...
+
+```{r plotting all species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+plot(myPhyOccCiteObject)
+```
+
+*or* you can plot the results by species!
+
+```{r plotting phylogenetic search by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+plot(myPhyOccCiteObject, bySpecies = T)
 ```
 
 And then you can print out the citations, separated by species (or not, but in this example, they're separate).

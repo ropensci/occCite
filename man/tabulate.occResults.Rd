@@ -17,7 +17,7 @@ for summary plots.
 }
 \description{
 This is a helper function that tabulates `occCiteData`
-objects for use by map.occCite and `sumFig.occCite`.
+objects for use by occCiteMap and `plot`.
 }
 \examples{
 data(myOccCiteObject)

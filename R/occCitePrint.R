@@ -27,13 +27,14 @@
 #'
 print.occCiteCitation <- function(x, ...) {
   args <- list(...)
+
   if ("bySpecies" %in% names(args)){
     bySpecies <- args$bySpecies
   } else {
     bySpecies <- FALSE
   }
 
-  stopifnot(inherits(x, "occCiteCitation"))
+  stopifnot(is(x, "occCiteCitation"))
 
   if (!requireNamespace("RefManageR", quietly = TRUE)) {
     stop("Package \"RefManageR\" needed for this function to work. Please install it.",

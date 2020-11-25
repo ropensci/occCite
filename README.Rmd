@@ -199,10 +199,10 @@ print(myPhyOccCitations, bySpecies = T)
 
 ## Search result summary figures
 
-occCite includes a function called `sumFig.occCite()` which is capable of generating three types of plots from an `occCiteData` object. First, let's see how the results of our multiple species query looks.
+occCite includes a `plot` method for `occCiteData` objects, which is capable of generating three types of plots. First, let's see how the results of our multiple species query looks.
 
 ```{r summary figures overall, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
-sumFig.occCite(myPhyOccCiteObject, 
+plot(myPhyOccCiteObject, 
                bySpecies = F, 
                plotTypes = c("yearHistogram", "source", "aggregator"))
 ```
@@ -210,7 +210,7 @@ sumFig.occCite(myPhyOccCiteObject,
 We can also generate plots for each species in the `occCiteData` object individually. Since GBIF is the only aggregator we used for the query, I'll skip generating the aggregator plot.
 
 ```{r summary figures by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="50%"}
-sumFig.occCite(myPhyOccCiteObject, 
+plot(myPhyOccCiteObject, 
                bySpecies = T, 
                plotTypes = c("yearHistogram", "source"))
 ```
