@@ -56,7 +56,6 @@ Imports:
     tidyr,
     RPostgreSQL,
     DBI,
-    waffle,
-    testthat
+    waffle
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
