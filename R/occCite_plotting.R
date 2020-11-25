@@ -310,6 +310,8 @@ plot.occCiteData <- function (x, ...){
 
   d <- dplyr::bind_rows(d.tbl)
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
+  d <- d %>% dplyr::select(name, year, Dataset, DataService)
+  d <- d[complete.cases(d),]
 
   if(!bySpecies){
     allPlots <- vector(mode = "list", length = length(plotTypes))
@@ -377,6 +379,7 @@ plot.occCiteData <- function (x, ...){
     for (sp in spList){
       allPlots <- vector(mode = "list", length = length(plotTypes))
       sub.d <- d[d$name == sp,]
+      sub.d <- sub.d[complete.cases(sub.d),]
       if("yearHistogram" %in% plotTypes){
         yearHistogram <- sub.d %>%
           ggplot(aes(x=year)) +
