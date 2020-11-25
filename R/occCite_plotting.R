@@ -334,7 +334,7 @@ plot.occCiteData <- function (x, ...){
       pct <- round(datasetTab/sum(datasetTab)*100)
       lbls <- names(datasetTab)
       lbls <- paste(lbls, pct) # add percents to labels
-      lbls <- paste(lbls,"%",sep="") # ad % to labels
+      lbls <- paste(lbls,"%",sep="") # add % to labels
       names(pct) <- lbls
       pct <- pct[pct > 1]
       if(sum(pct) < 100){
@@ -372,6 +372,7 @@ plot.occCiteData <- function (x, ...){
   }
   else{
     spList <- unique(d$name)
+    spList <- spList[!is.na(spList)]
     spPlotList <- vector(mode = "list", length = length(spList))
     for (sp in spList){
       allPlots <- vector(mode = "list", length = length(plotTypes))
