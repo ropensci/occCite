@@ -10,7 +10,7 @@ This is a package update. In this version, I have:
 * r-hub
 
 ## R CMD check results
-There were no WARNINGs or NOTEs. 
+There were no WARNINGs. 
 
 There was 1 ERROR when using r-hub.
 
@@ -18,6 +18,21 @@ There was 1 ERROR when using r-hub.
   Running examples in 'occCite-Ex.R' failed
 
 This example should not be tested, as it requires confidential user information to proceed.
+
+There was 1 NOTE when using r-hub, win-builder devel, and win-builder release.
+
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
+New submission
+
+
+Package was archived on CRAN
+
+CRAN repository db overrides:
+  X-CRAN-Comment: Archived on 2020-11-04 as check problems were not
+    corrected in time.
+    
+The check problems were corrected.
 
 ## Downstream dependencies
 I also ran tools::check_packages_in_dir check on downstream dependencies of 
