@@ -316,7 +316,10 @@ plot.occCiteData <- function (x, ...){
     if("yearHistogram" %in% plotTypes){
       yearHistogram <- d %>%
         ggplot( aes(x=year)) +
-        geom_histogram( binwidth= (max(d$year)-min(d$year))/10, fill="black", color="white", alpha=0.9) +
+        geom_histogram( binwidth= (max(d$year,
+                                       na.rm = T)-min(d$year,
+                                                      na.rm =T))/10,
+                        fill="black", color="white", alpha=0.9, na.rm = T) +
         ggtitle("All Occurrence Records by Year") +
         theme(plot.title = element_text(size=15)) +
         xlab("Year") +
@@ -376,8 +379,10 @@ plot.occCiteData <- function (x, ...){
       if("yearHistogram" %in% plotTypes){
         yearHistogram <- sub.d %>%
           ggplot(aes(x=year)) +
-          geom_histogram( binwidth= (max(sub.d$year)-min(sub.d$year))/10,
-                          fill="black", color="white", alpha=0.9) +
+          geom_histogram(binwidth= (max(sub.d$year,
+                                         na.rm = T)-min(sub.d$year,
+                                                        na.rm = T))/10,
+                          fill="black", color="white", alpha=0.9, na.rm = T) +
           ggtitle(paste0(sp, " Occurrence Records by Year")) +
           theme(plot.title = element_text(size=15)) +
           xlab("Year") +
