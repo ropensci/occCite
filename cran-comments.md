@@ -12,13 +12,6 @@ This is a package update. In this version, I have:
 ## R CMD check results
 There were no WARNINGs. 
 
-There was 1 ERROR when using r-hub.
-
-* checking examples with --run-donttest ... ERROR
-  Running examples in 'occCite-Ex.R' failed
-
-This example should not be tested, as it requires confidential user information to proceed.
-
 There was 1 NOTE when using r-hub, win-builder devel, and win-builder release.
 
 * checking CRAN incoming feasibility ... NOTE

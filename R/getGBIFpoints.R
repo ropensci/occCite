@@ -20,7 +20,7 @@
 #'  a query to `rgbif::occ_download_get()`.}
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' getGBIFpoints(taxon="Gadus morhua",
 #'               GBIFLogin = myGBIFLogin,
 #'               GBIFDownloadDirectory = NULL)

@@ -13,7 +13,7 @@
 #' @import RPostgreSQL
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' data(myOccCiteObject)
 #' myCitations <- occCitation(x = myOccCiteObject)
 #' }

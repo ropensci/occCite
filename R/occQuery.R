@@ -38,7 +38,7 @@
 #' on the occurrence sources queried.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' ##If you have already created a occCite object, and have not previously
 #' ##downloaded GBIF data.
 #' occQuery(x = myOccCiteObject,

@@ -20,7 +20,7 @@ Downloads occurrence points and useful related
 information for processing within other occCite functions
 }
 \examples{
-\donttest{
+\dontrun{
 getBIENpoints(taxon="Protea cynaroides")
 }
 
