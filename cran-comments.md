@@ -18,7 +18,6 @@ There was 1 NOTE when using r-hub, win-builder devel, and win-builder release.
 Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
 New submission
 
-
 Package was archived on CRAN
 
 CRAN repository db overrides:
@@ -26,6 +25,13 @@ CRAN repository db overrides:
     corrected in time.
     
 The check problems were corrected.
+
+There was 1 NOTE when using r-hub.
+
+* checking for future file timestamps ... NOTE
+unable to verify current time
+
+This appears to be a check function problem, not a problem with the package.
 
 ## Downstream dependencies
 I also ran tools::check_packages_in_dir check on downstream dependencies of 
