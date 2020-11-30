@@ -13,8 +13,8 @@ test_that("gbifRetriever behaves as expected", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
   setwd(dir = system.file('extdata/', package='occCite'))
-  taxon = "Protea cynaroides"
-  testResult = occCite:::gbifRetriever(taxon)
+  taxon <- "Protea cynaroides"
+  testResult <- occCite:::gbifRetriever(taxon)
 
   expect_equal(class(testResult), "list")
   expect_equal(class(testResult[[1]]), "data.frame")

@@ -7,8 +7,8 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
   on.exit(setwd(oldwd))
 
   setwd(dir = system.file('extdata/', package='occCite'))
-  taxon = "Protea cynaroides"
-  testResult = occCite:::gbifRetriever(taxon)
+  taxon <- "Protea cynaroides"
+  testResult <- occCite:::gbifRetriever(taxon)
 
   expect_equal(class(testResult[[1]]), "data.frame")
   expect_equal(names(testResult)[[1]], "OccurrenceTable")
@@ -45,8 +45,8 @@ test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table",
   on.exit(setwd(oldwd))
 
   setwd(dir = system.file('extdata/', package='occCite'))
-  taxon = "Protea cynaroides"
-  testResult = occCite:::gbifRetriever(taxon)[[1]]
+  taxon <- "Protea cynaroides"
+  testResult <- occCite:::gbifRetriever(taxon)[[1]]
 
   expect_equal(class(testResult), "data.frame")
   expect_true("gbifID" %in% colnames(testResult))
@@ -75,7 +75,7 @@ test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF tab
   on.exit(setwd(oldwd))
 
   setwd(dir = system.file('extdata/', package='occCite'))
-  taxon = "Protea cynaroides"
+  taxon <- "Protea cynaroides"
   if(!dir.exists("temp/")) dir.create("temp/")
   testResult <- occCite:::getGBIFpoints(taxon = taxon,
                                         GBIFLogin = occCite:::GBIFLoginManager(),

@@ -13,7 +13,7 @@
 
 GBIFtableCleanup <- function(GBIFtable){
 
-  isnothing = function(x) {
+  isnothing <- function(x) {
     any(is.null(x))  || any(is.na(x))  || any(is.nan(x))
   }
 

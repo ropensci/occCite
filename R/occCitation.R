@@ -86,10 +86,10 @@ occCitation <-function(x = NULL){
                      paste(shQuote(BIENdatasetKeys, type = "sh"),
                            collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);")
 
-      host='vegbiendev.nceas.ucsb.edu'
-      dbname='public_vegbien'
-      user='public_bien'
-      password='bien_public'
+      host<-'vegbiendev.nceas.ucsb.edu'
+      dbname<-'public_vegbien'
+      user<-'public_bien'
+      password<-'bien_public'
       # Name the database type that will be used
       drv <- DBI::dbDriver('PostgreSQL')
       # establish connection with database
