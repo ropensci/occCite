@@ -18,16 +18,17 @@ test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   skip_on_cran()
 
   test <- try(rgbif::occ_download(user=GBIFLogin@username,
-                                  email = GBIFLogin@email,
-                                  pwd = GBIFLogin@pwd,
-                                  rgbif::pred("catalogNumber", 217880)), silent = T)
+                            email = GBIFLogin@email,
+                            pwd = GBIFLogin@pwd,
+                            rgbif::pred("catalogNumber", 217880)),
+              silent = T)
   skip_if(class(test) != 'occ_download', "GBIF login unsuccessful")
 
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
   setwd(dir = system.file('extdata/', package='occCite'))
-  taxon = "Protea cynaroides"
+  taxon <- "Protea cynaroides"
   if(!dir.exists("temp/")) dir.create("temp/")
   testResult <- occCite:::getGBIFpoints(taxon = taxon,
                         GBIFLogin = occCite:::GBIFLoginManager(),
@@ -63,12 +64,14 @@ test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table",
 
 test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF table", {
   skip_on_cran()
-  skip_if(nchar(Sys.getenv("GBIF_EMAIL")) < 1, "GBIF Login information not available")
+  skip_if(nchar(Sys.getenv("GBIF_EMAIL")) < 1,
+          "GBIF Login information not available")
 
   test <- try(rgbif::occ_download(user=GBIFLogin@username,
                                   email = GBIFLogin@email,
                                   pwd = GBIFLogin@pwd,
-                                  rgbif::pred("catalogNumber", 217880)), silent = T)
+                                  rgbif::pred("catalogNumber", 217880)),
+              silent = T)
   skip_if(class(test) != 'occ_download', "GBIF login unsuccessful")
 
   oldwd <- getwd()
@@ -78,9 +81,9 @@ test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF tab
   taxon <- "Protea cynaroides"
   if(!dir.exists("temp/")) dir.create("temp/")
   testResult <- occCite:::getGBIFpoints(taxon = taxon,
-                                        GBIFLogin = occCite:::GBIFLoginManager(),
-                                        GBIFDownloadDirectory = "temp/",
-                                        checkPreviousGBIFDownload = T)[[1]]
+                                GBIFLogin = occCite:::GBIFLoginManager(),
+                                GBIFDownloadDirectory = "temp/",
+                                checkPreviousGBIFDownload = T)[[1]]
 
   expect_equal(class(testResult), "data.frame")
   expect_true("gbifID" %in% colnames(testResult))

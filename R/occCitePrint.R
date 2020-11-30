@@ -68,31 +68,35 @@ print.occCiteCitation <- function(x, ...) {
     for(j in 1:nrow(temp)){
       i <- temp[j,]
       if("R Core Team" %in% i$AUTHOR[[1]]["full_name"]){
-        packageCitations[j] <- paste0(i$AUTHOR[[1]]['full_name'], ". ", "(",i$YEAR, "). ",
-                                      i$TITLE, ". ", i$ORGANIZATION, ", ",
-                                      i$ADDRESS, ". ", i$URL, ".")
+        packageCitations[j] <- paste0(i$AUTHOR[[1]]['full_name'],
+                                      ". ", "(",i$YEAR, "). ",
+                                      i$TITLE, ". ",
+                                      i$ORGANIZATION, ", ",
+                                      i$ADDRESS, ". ",
+                                      i$URL, ".")
       } else if(i$CATEGORY=="ARTICLE"){
         packageCitations[j] <- paste0(paste(apply(i$AUTHOR[[1]],
-                                                  MARGIN = 1,
-                                                  FUN = function(x) paste0(x[4], ", ",
-                                                                           substring(x[2], 1, 1), ".",
-                                                                           if(!is.na(x[3])){
-                                                                             paste0(substring(x[3], 1, 1), ".")})),
+                                            MARGIN = 1,
+                                            FUN = function(x) paste0(x[4], ", ",
+                                                              substring(x[2], 1, 1), ".",
+                                                              if(!is.na(x[3])){
+                                                                paste0(substring(x[3], 1, 1), ".")})),
                                             collapse = ", "),
                                       " (",i$YEAR, "). ",
                                       i$TITLE, ". ",
-                                      i$JOURNAL, if(!any(is.na(i$VOLUME), is.na(i$PAGES))){paste0(" ")},
+                                      i$JOURNAL, if(!any(is.na(i$VOLUME),
+                                                         is.na(i$PAGES))){paste0(" ")},
                                       if(!is.na(i$VOLUME)){paste0(i$VOLUME, ": ")},
                                       if(!is.na(i$PAGES)){paste0(i$PAGES)},
                                       "."
         )
       } else if(grepl("R package", i$NOTE)){
         packageCitations[j] <- paste0(paste(apply(i$AUTHOR[[1]],
-                                                  MARGIN = 1,
-                                                  FUN = function(x) paste0(x[4], ", ",
-                                                                           substring(x[2], 1, 1), ".",
-                                                                           if(!is.na(x[3])){
-                                                                             paste0(substring(x[3], 1, 1), ".")})),
+                                            MARGIN = 1,
+                                            FUN = function(x) paste0(x[4], ", ",
+                                                              substring(x[2], 1, 1), ".",
+                                                              if(!is.na(x[3])){
+                                                                paste0(substring(x[3], 1, 1), ".")})),
                                             collapse = ", "),
                                       " (",i$YEAR, "). ",
                                       i$TITLE, ". ",
@@ -101,11 +105,11 @@ print.occCiteCitation <- function(x, ...) {
       }
       else{
         packageCitations[j] <- paste0(paste(apply(i$AUTHOR[[1]],
-                                                  MARGIN = 1,
-                                                  FUN = function(x) paste0(x[4], ", ",
-                                                                           substring(x[2], 1, 1), ".",
-                                                                           if(!is.na(x[3])){
-                                                                             paste0(substring(x[3], 1, 1), ".")})),
+                                            MARGIN = 1,
+                                            FUN = function(x) paste0(x[4], ", ",
+                                                              substring(x[2], 1, 1), ".",
+                                                              if(!is.na(x[3])){
+                                                                paste0(substring(x[3], 1, 1), ".")})),
                                             collapse = ", "),
                                       " (",i$YEAR, "). ",
                                       i$TITLE, ". ",
@@ -159,7 +163,9 @@ print.occCiteCitation <- function(x, ...) {
 
     # Print results
     recordCitations <- recordCitations[order(recordCitations$Citation),]
-    recordCitations <- unique(recordCitations[,c("occSearch", "Citation", "Accession Date")])
+    recordCitations <- unique(recordCitations[,c("occSearch",
+                                                 "Citation",
+                                                 "Accession Date")])
     recordCitations <- paste0(recordCitations$Citation,
               " Accessed via ", recordCitations$occSearch,
               " on ", recordCitations$`Accession Date`, ".")

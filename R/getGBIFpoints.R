@@ -27,13 +27,15 @@
 #'}
 #'
 #' @export
-getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = NULL, checkPreviousGBIFDownload = T){
+getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin,
+                        GBIFDownloadDirectory = NULL,
+                        checkPreviousGBIFDownload = T){
 
   #File hygene
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
-  # Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
+  # Avoids errors when taxonomic authority includes special characters, i.e. "æ"
   cleanTaxon <- stringr::str_extract(string = taxon,
                                      pattern = "(\\w+\\s\\w+)")
   key <- rgbif::name_suggest(q=cleanTaxon, rank='species')$data$key[1]
@@ -41,20 +43,26 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin, GBIFDownloadDirectory = NU
   if (checkPreviousGBIFDownload){
     occD <- prevGBIFdownload(key, GBIFLogin)
     if (is.null(occD)){
-      print(paste0("There was no previously-prepared download on GBIF for ", taxon, ". New GBIF download will be prepared."))
+      print(paste0("There was no previously-prepared download on GBIF for ",
+                   taxon, ". New GBIF download will be prepared."))
     }
   }
 
-  if(checkPreviousGBIFDownload == F | (checkPreviousGBIFDownload == T && is.null(occD))) {
+  if(checkPreviousGBIFDownload == F |
+     (checkPreviousGBIFDownload == T && is.null(occD))) {
     occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
-                         rgbif::pred("hasCoordinate", TRUE), rgbif::pred("hasGeospatialIssue", FALSE),
+                         rgbif::pred("hasCoordinate", TRUE),
+                         rgbif::pred("hasGeospatialIssue", FALSE),
                          user = GBIFLogin@username, email = GBIFLogin@email,
                          pwd = GBIFLogin@pwd)
 
-    print(paste0("It is: ", format(Sys.time(), format = "%H:%M:%S"), ". Please be patient while GBIF prepares your download for ", taxon, ". This can take some time."));
+    print(paste0("It is: ", format(Sys.time(), format = "%H:%M:%S"),
+                 ". Please be patient while GBIF prepares your download for ",
+                 taxon, ". This can take some time."));
     while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED"){
       Sys.sleep(60)
-      print(paste("Still waiting for", taxon, "download preparation to be completed. Time: ",
+      print(paste("Still waiting for", taxon,
+                  "download preparation to be completed. Time: ",
                   format(Sys.time(), format = "%H:%M:%S")))
     }
   }

@@ -24,7 +24,8 @@ getBIENpoints<-function(taxon){
                                       collection.info = T, natives.only = F)
 
   if(nrow(occs)==0){
-    print(paste("There are no BIEN points for ", taxon, ". Are you sure it's a plant?", sep = ""))
+    print(paste("There are no BIEN points for ",
+                taxon, ". Are you sure it's a plant?", sep = ""))
     return(NULL)
   }
 
@@ -32,14 +33,16 @@ getBIENpoints<-function(taxon){
   occs<-occs[which(!is.na(occs$latitude) & !is.na(occs$longitude)),]
 
   if(nrow(occs)==0){
-    print(paste("There are no BIEN points with coordinates for ", taxon, ".", sep = ""))
+    print(paste("There are no BIEN points with coordinates for ",
+                taxon, ".", sep = ""))
     return(NULL)
   }
 
   #Fixing dates
   occs <-occs[which(!is.na(occs$date_collected)),]
   if(nrow(occs)==0){
-    print(paste("There are no BIEN points that contain collection dates for ", taxon, ".", sep = ""))
+    print(paste("There are no BIEN points that contain collection dates for ",
+                taxon, ".", sep = ""))
     return(NULL)
   }
   occs$date_collected <- lubridate::ymd(occs$date_collected)

@@ -21,7 +21,9 @@ summary.occCiteData <- function(object, ...) {
 
   if(!is.null(x@occCiteSearchDate)){
     cat("\t\n",
-        sprintf("OccCite query occurred on: %s\n", as.character(as.Date(x@occCiteSearchDate), format = "%d %B, %Y")))
+        sprintf("OccCite query occurred on: %s\n",
+                as.character(as.Date(x@occCiteSearchDate),
+                             format = "%d %B, %Y")))
   }
 
   if(!is.null(x@userQueryType)){
@@ -38,12 +40,13 @@ summary.occCiteData <- function(object, ...) {
   if(!is.null(x@cleanedTaxonomy)){
     cat("\t\n",
         sprintf("Taxonomic cleaning results: %s\n", "\t\n"))
-    print(x@cleanedTaxonomy);
+    print(x@cleanedTaxonomy)
   }
 
   if(length(x@occResults) > 0){
     cat("\t\n",
-        sprintf("Sources for occurrence data: %s\n", paste0(x@occSources, collapse = ", ")), "\t\n")
+        sprintf("Sources for occurrence data: %s\n",
+                paste0(x@occSources, collapse = ", ")), "\t\n")
     #Tabulate search results
     occurrenceCountGBIF <- vector(mode = "numeric",
                                   length = length(x@occResults))
@@ -96,7 +99,8 @@ summary.occCiteData <- function(object, ...) {
     for (i in 1:length(x@occResults)){
       if(as.numeric(sumTab$Occurrences[[i]]) > 0){
         GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
-        GBIFaccessDate[[i]] <- strsplit(x@occResults[[i]]$GBIF$Metadata$modified, "T")[[1]][1]
+        GBIFaccessDate[[i]] <- strsplit(x@occResults[[i]]$GBIF$Metadata$modified,
+                                        "T")[[1]][1]
       } else {
         GBIFdoi[[i]] <- NA
         GBIFaccessDate[[i]] <- NA

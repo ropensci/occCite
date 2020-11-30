@@ -151,7 +151,8 @@ occQuery <- function(x = NULL,
   searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`)
 
   #Check to make sure there was a taxon match
-  if(grepl(pattern = "No match", x = paste0(searchTaxa, collapse = "")) | is.null(searchTaxa)){
+  if(grepl(pattern = "No match",
+           x = paste0(searchTaxa, collapse = "")) | is.null(searchTaxa)){
     warning("There was no taxonomic match. Search cancelled.\n")
     return(NULL)
   }
@@ -174,9 +175,9 @@ occQuery <- function(x = NULL,
     else{
       for (i in searchTaxa){
         temp <- getGBIFpoints(taxon = i,
-                              GBIFLogin = GBIFLogin,
-                              GBIFDownloadDirectory = GBIFDownloadDirectory,
-                              checkPreviousGBIFDownload = checkPreviousGBIFDownload)
+                      GBIFLogin = GBIFLogin,
+                      GBIFDownloadDirectory = GBIFDownloadDirectory,
+                      checkPreviousGBIFDownload = checkPreviousGBIFDownload)
         temp[[1]] <- GBIFtableCleanup(temp[[1]])
         gbifResults[[i]] <- temp
       }

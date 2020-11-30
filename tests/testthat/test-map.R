@@ -16,7 +16,8 @@ test_that("inputs to map are as expected", {
   expect_true(all(!is.na(stringr::str_extract(string = resNames,
                                               pattern = "(\\w+\\s\\w+)"))))
 
-  expect_true(all(c("longitude", "latitude") %in% names(tabulate.occResults(x, sp.name))))
+  expect_true(all(c("longitude", "latitude")
+                  %in% names(tabulate.occResults(x, sp.name))))
 })
 
 test_that("default occCiteMap settings work", {

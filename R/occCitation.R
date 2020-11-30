@@ -45,10 +45,14 @@ occCitation <-function(x = NULL){
         GBIFDatasetCount <- as.data.frame(table(unlist(datasetKeys)))
         GBIFdatasetKeys <- unique(unlist(datasetKeys))
         GBIFdatasetKeys <- stats::na.omit(GBIFdatasetKeys)
-        ##Look up citations on GBIF based on dataset keys and removes accession date (supplied date from rgbif is date citation was sought, not the date the data was accessed)
+        ## Look up citations on GBIF based on dataset keys
+        ## removes accession date
+        ### supplied date from rgbif is date citation was sought
+        ### not the date the data was accessed
         for(j in GBIFdatasetKeys){
           temp <- gsub(rgbif::gbif_citation(j)$citation$text,
-                       pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.", replacement = "",
+                       pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.",
+                       replacement = "",
                        useBytes = T)
           temp <- gsub(temp, pattern = "Occurrence dataset ", replacement = "")
           temp <- paste0(temp, ".")
@@ -68,7 +72,8 @@ occCitation <-function(x = NULL){
         BIENKeysNAs <- occResults$BIEN$OccurrenceTable$Dataset[is.na(occResults$BIEN$OccurrenceTable$DatasetKey)]
         BIENKeysNAs <- unique(BIENKeysNAs)
       }
-      BIENdatasetKeys <- append(BIENdatasetKeys,unlist(as.character((occResults$BIEN$OccurrenceTable$DatasetKey))))
+      BIENdatasetKeys <- append(BIENdatasetKeys,
+                                unlist(as.character((occResults$BIEN$OccurrenceTable$DatasetKey))))
       BIENdatasetKeys <- BIENdatasetKeys[!is.na(BIENdatasetKeys)]
 
       BIENdatasetCount <- as.data.frame(table(unlist(BIENdatasetKeys)))
@@ -77,14 +82,16 @@ occCitation <-function(x = NULL){
       #Handle datasets without keys
       if (length(BIENKeysNAs) > 0){
         print(paste0("NOTE: ", length(BIENKeysNAs),
-                     " BIEN dataset(s) for ", sp, " do not have dataset keys to link citations. They are: ",
+                     " BIEN dataset(s) for ", sp,
+                     " do not have dataset keys to link citations. They are: ",
                      paste(as.character(unlist(BIENKeysNAs)), collapse = ", ")))
       }
 
       ##Get data sources
       query <- paste("WITH a AS (SELECT * FROM datasource where datasource_id in (",
                      paste(shQuote(BIENdatasetKeys, type = "sh"),
-                           collapse = ', '),")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);")
+                           collapse = ', '),
+                     ")) SELECT * FROM datasource where datasource_id in (SELECT datasource_id FROM a);")
 
       host<-'vegbiendev.nceas.ucsb.edu'
       dbname<-'public_vegbien'
@@ -93,10 +100,12 @@ occCitation <-function(x = NULL){
       # Name the database type that will be used
       drv <- DBI::dbDriver('PostgreSQL')
       # establish connection with database
-      con <- DBI::dbConnect(drv, host=host, dbname=dbname, user=user, password = password)
+      con <- DBI::dbConnect(drv, host=host,
+                            dbname=dbname,
+                            user=user,
+                            password = password)
 
-
-      BIENsources <- DBI::dbGetQuery(con, statement = query);
+      BIENsources <- DBI::dbGetQuery(con, statement = query)
 
       DBI::dbDisconnect(con)
 
@@ -106,7 +115,9 @@ occCitation <-function(x = NULL){
 
     #Columns: UUID, Citation, Access date, number of records
     if(!is.null(occResults$GBIF)){
-      GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified,"T")[[1]][1]# Assumes that all species queries occurred at the same time, which may not necessarily be the case FIX LATER
+      # Assumes all species queries occurred at same time, which may not be the case
+      #FIX LATER
+      GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified,"T")[[1]][1]
       if(length(stats::na.exclude(GBIFCitationList))>0){
         gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
                                 GBIFdatasetKeys, unlist(GBIFCitationList),
@@ -116,18 +127,19 @@ occCitation <-function(x = NULL){
         gbifTable <- data.frame(as.list(c("GBIF", rep(NA, times = 4))))
       }
 
-      colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences");
+      colnames(gbifTable) <- c("occSearch", "Dataset Key", "Citation",
+                               "Accession Date", "Number of Occurrences")
     }
 
     if(!is.null(occResults$BIEN)){
       BIENcitations <- BIENsources$source_citation
-      # If there is no citation available, replace it with the full name of the primary provider
+      # If no citation available, replace it with full name of primary provider
       for (i in 1:length(BIENcitations)){
         if (is.na(BIENcitations[i])){
           BIENcitations[i] <- BIENsources$source_fullname[i]
         }
       }
-      # Failing that, replace it with the shortened name of the primary provider
+      # Failing that, replace it with shortened name of primary provider
       for (i in 1:length(BIENcitations)){
         if (is.na(BIENcitations[i])){
           BIENcitations[i] <- BIENsources$source_name[i]
@@ -139,22 +151,28 @@ occCitation <-function(x = NULL){
           BIENsources$doi[i] <- ""
         }
       }
-      BIENcitations <- paste(as.character(BIENcitations), as.character(BIENsources$doi), sep = ". ")
+      BIENcitations <- paste(as.character(BIENcitations),
+                             as.character(BIENsources$doi), sep = ". ")
 
       for (i in 1:length(BIENcitations)){
         if (grepl("\\.\\s$", BIENcitations[[i]])){
-          BIENcitations[[i]] <- gsub(BIENcitations[[i]], pattern = "\\.\\s", replacement = ".")
+          BIENcitations[[i]] <- gsub(BIENcitations[[i]],
+                                     pattern = "\\.\\s",
+                                     replacement = ".")
         } else{
           BIENcitations[[i]] <- paste0(BIENcitations[[i]], ".")
         }
       }
 
-      bienTable <- data.frame(as.character(rep("BIEN", length(BIENdatasetKeys))),
+      bienTable <- data.frame(as.character(rep("BIEN",
+                                               length(BIENdatasetKeys))),
                               as.character(BIENdatasetKeys),
                               BIENcitations,
-                              as.character(BIENsources$date_accessed), as.numeric(BIENdatasetCount[,2]),
+                              as.character(BIENsources$date_accessed),
+                              as.numeric(BIENdatasetCount[,2]),
                               stringsAsFactors = F)
-      colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation", "Accession Date", "Number of Occurrences")
+      colnames(bienTable) <- c("occSearch", "Dataset Key", "Citation",
+                               "Accession Date", "Number of Occurrences")
     }
 
     if(!is.null(occResults$GBIF) & !is.null(occResults$BIEN)){
@@ -170,7 +188,8 @@ occCitation <-function(x = NULL){
     citationTables[[sp]] <- citationTable[order(citationTable$Citation),]
   }
 
-  occCiteCitationInstance <- methods::new("occCiteCitation", occCitationResults = citationTables)
+  occCiteCitationInstance <- methods::new("occCiteCitation",
+                                          occCitationResults = citationTables)
 
   return(occCiteCitationInstance)
 }

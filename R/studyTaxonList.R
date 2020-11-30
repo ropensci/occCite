@@ -26,7 +26,8 @@
 #'                      datasources = c('NCBI'))
 #'
 #' ## Inputting a phylogeny
-#' phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
+#' phylogeny <- ape::read.nexus(
+#'      system.file("extdata/Fish_12Tax_time_calibrated.tre",
 #'      package = "occCite"))
 #' phylogeny <- ape::extract.clade(phylogeny, 18)
 #' studyTaxonList(x = phylogeny, datasources = c('NCBI'))
@@ -51,12 +52,15 @@ studyTaxonList <- function(x = NULL, datasources = c('NCBI')) {
   resolvedNames <- data.frame()
   count <- 1
   while(count <= length(targets)){
-    resolvedNames <- rbind(resolvedNames, taxonRectification(taxName = targets[[count]],
-                                                             datasources = datasources))
+    resolvedNames <- rbind(resolvedNames,
+                           taxonRectification(taxName = targets[[count]],
+                                              datasources = datasources))
     count <- count + 1
   }
 
-  colnames(resolvedNames) <- c("Input Name", "Best Match", "Taxonomic Databases w/ Matches")
+  colnames(resolvedNames) <- c("Input Name",
+                               "Best Match",
+                               "Taxonomic Databases w/ Matches")
   resolvedNames <- as.data.frame(resolvedNames)
 
   #Populating an instance of class occCiteData

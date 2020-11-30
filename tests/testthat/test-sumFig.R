@@ -16,7 +16,11 @@ test_that("inputs to sumFig are as expected", {
   expect_true(all(!is.na(stringr::str_extract(string = resNames,
                                               pattern = "(\\w+\\s\\w+)"))))
 
-  expect_true(all(c("name", "year", "DataService", "Dataset") %in% names(tabulate.occResults(x, sp.name))))
+  expect_true(all(c("name",
+                    "year",
+                    "DataService",
+                    "Dataset")
+                  %in% names(tabulate.occResults(x, sp.name))))
 })
 
 test_that("default sumFig settings work", {

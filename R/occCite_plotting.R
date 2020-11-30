@@ -35,36 +35,43 @@ tabulate.occResults <- function(x, sp.name) {
 
 #' @title Generating a map of downloaded points
 #'
-#' @description Makes maps for each individual species in an \code{\link{occCiteData}}
-#'  object.
+#' @description Makes maps for each individual species in an
+#' \code{\link{occCiteData}} object.
 #'
 #' @param occCiteData An object of class \code{\link{occCiteData}} to map
 #'
 #' @param species_map Character; either the default "all" to map all species
-#' in \code{\link{occCiteData}}, or a subset of these specified as a character or character vector
+#' in \code{\link{occCiteData}}, or a subset of these specified as a character
+#' or character vector.
 #'
-#' @param species_colors Character; the default NULL will choose random colors from
-#' those available (see Details), or those specified by the user as
-#' a character or character vector (the number of colors must match the number of species mapped)
+#' @param species_colors Character; the default NULL will choose random
+#' colors from those available (see Details), or those specified by the
+#' user as a character or character vector (the number of colors must match
+#' the number of species mapped).
 #'
-#' @param ds_map Character; specifies which data service records will be mapped, with the default
-#' being GBIF, BIEN, and GBIF_BIEN (records with the same coordinates in both databases)
+#' @param ds_map Character; specifies which data service records will be
+#' mapped, with the default being GBIF, BIEN, and GBIF_BIEN (records with
+#' the same coordinates in both databases).
 #'
-#' @param map_limit Numeric; the number of points to map per species, set at a default of 1000
-#' randomly selected records; users can specify a higher number, but be aware that leaflet can
-#' lag or crash when too many points are plotted
+#' @param map_limit Numeric; the number of points to map per species, set
+#' at a default of 1000 randomly selected records; users can specify a
+#' higher number, but be aware that leaflet can lag or crash when too many
+#' points are plotted.
 #'
-#' @param awesomeMarkers Logical; if `TRUE` (default), mapped points will be `awesomeMarkers`
-#' attributed with an icon for a globe for GBIF, a leaf for BIEN, or a database if records
-#' from both databases have the same coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`
+#' @param awesomeMarkers Logical; if `TRUE` (default), mapped points will
+#' be `awesomeMarkers` attributed with an icon for a globe for GBIF, a leaf
+#' for BIEN, or a database if records from both databases have the same
+#' coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`
 #'
-#' @param cluster Logical; if `TRUE` (default is `FALSE`) turns on marker clustering, which does not
-#' preserve color differences between species
+#' @param cluster Logical; if `TRUE` (default is `FALSE`) turns on marker
+#' clustering, which does not preserve color differences between species
 #'
-#' @details When mapping using `awesomeMarkers` (default), the parameter species_colors must match those in
-#' a specified color library, currently: c("red", "lightred", "orange", "beige", "green", "lightgreen",
-#' "blue", "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray"). When `awesomeMarkers`
-#' is `FALSE` and species_colors are not specified, random colors from the `RColorBrewer` Set1 palette are used.
+#' @details When mapping using `awesomeMarkers` (default), the parameter
+#' species_colors must match those in a specified color library, currently:
+#' c("red", "lightred", "orange", "beige", "green", "lightgreen", "blue",
+#' "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray").
+#' When `awesomeMarkers` is `FALSE` and species_colors are not specified,
+#' random colors from the `RColorBrewer` Set1 palette are used.
 #'
 #' @return A leaflet map
 #'
@@ -118,13 +125,18 @@ occCiteMap <- function(occCiteData,
     }
   }
 
-  d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
+  d.tbl <- lapply(1:length(d.res),
+                  function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
     if(nrow(d.tbl[[i]]) > 0) d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
     d.tbl.n <- nrow(d.tbl[[i]])
     if(d.tbl.n > map_limit) {
-      message(paste0("Number of occurrences for ", sp.names[i], " exceeds limit of ",
-                     map_limit, ", so mapping a random sample of ", map_limit, " occurrences..."))
+      message(paste0("Number of occurrences for ",
+                     sp.names[i], " exceeds limit of ",
+                     map_limit,
+                     ", so mapping a random sample of ",
+                     map_limit,
+                     " occurrences..."))
       d.tbl[[i]] <- d.tbl[[i]][sample(1:d.tbl.n, map_limit),]
     }
     if (d.tbl.n == 0){
@@ -142,13 +154,17 @@ occCiteMap <- function(occCiteData,
   d$Dataset[d$Dataset==""] <- "Dataset not specified"
 
   # remove coordinate duplicates with same data service
-  d <- dplyr::distinct(d, .data$longitude, .data$latitude, .data$DataService, .keep_all = TRUE)
+  d <- dplyr::distinct(d, .data$longitude, .data$latitude,
+                       .data$DataService, .keep_all = TRUE)
 
   d$label <- paste(paste("name:", d$name),
-                   paste("longitude:", d$longitude), paste("latitude:", d$latitude),
-                   paste0("day: ", d$day, ", month: ", d$month, ", year: ", d$year),
-                   paste("dataset:", d$Dataset), paste("data service:", d$DataService,
-                                                       "<br/><br/>"), sep = "<br/>")
+                   paste("longitude:", d$longitude),
+                   paste("latitude:", d$latitude),
+                   paste0("day: ", d$day, ", month: ",
+                          d$month, ", year: ", d$year),
+                   paste("dataset:", d$Dataset),
+                   paste("data service:", d$DataService,
+                         "<br/><br/>"), sep = "<br/>")
   d$label <- lapply(d$label, htmltools::HTML)
   d$DataService <- factor(d$DataService)
 
@@ -191,9 +207,15 @@ occCiteMap <- function(occCiteData,
   if(awesomeMarkers == TRUE) {
     makeIconList <- function(sp) {
       leaflet::awesomeIconList(
-        GBIF = leaflet::makeAwesomeIcon(icon = "globe", library = "fa", markerColor = sp.cols[[sp]]),
-        BIEN = leaflet::makeAwesomeIcon(icon = "leaf", library = "fa", markerColor = sp.cols[[sp]]),
-        GBIF_BIEN = leaflet::makeAwesomeIcon(icon = "database", library = "fa", markerColor = sp.cols[[sp]])
+        GBIF = leaflet::makeAwesomeIcon(icon = "globe",
+                                        library = "fa",
+                                        markerColor = sp.cols[[sp]]),
+        BIEN = leaflet::makeAwesomeIcon(icon = "leaf",
+                                        library = "fa",
+                                        markerColor = sp.cols[[sp]]),
+        GBIF_BIEN = leaflet::makeAwesomeIcon(icon = "database",
+                                             library = "fa",
+                                             markerColor = sp.cols[[sp]])
       )
     }
     sp.icons <- lapply(sp.names, makeIconList)
@@ -204,8 +226,10 @@ occCiteMap <- function(occCiteData,
       sp.icons.i <- sp.icons[[i]]
       labs.lst.i <- labs.lst[[i]]
       m <- m %>% leaflet::addAwesomeMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
-                                            ~longitude, ~latitude, label = ~labs.lst.i,
-                                            icon = ~sp.icons.i[DataService], clusterOptions = clusterOpts)
+                                            ~longitude, ~latitude,
+                                            label = ~labs.lst.i,
+                                            icon = ~sp.icons.i[DataService],
+                                            clusterOptions = clusterOpts)
     }
   }else{
     for(i in sp.names) {
@@ -215,8 +239,14 @@ occCiteMap <- function(occCiteData,
       labs.lst.i <- labs.lst[[i]]
       m <- m %>% leaflet::addCircleMarkers(data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
                                            ~longitude, ~latitude,
-                                           label = ~labs.lst.i, color = "black", fillColor = ~sp.cols.i, weight = 2,
-                                           radius = 5, fill = TRUE, fillOpacity = 0.5, clusterOptions = clusterOpts)
+                                           label = ~labs.lst.i,
+                                           color = "black",
+                                           fillColor = ~sp.cols.i,
+                                           weight = 2,
+                                           radius = 5,
+                                           fill = TRUE,
+                                           fillOpacity = 0.5,
+                                           clusterOptions = clusterOpts)
     }
   }
   return(m)
@@ -275,18 +305,18 @@ plot.occCiteData <- function (x, ...){
   #Error check input.
   if (!is(x, "occCiteData")){
     warning("Input is not of class 'occCiteData'.\n")
-    return(NULL);
+    return(NULL)
   }
 
   if (!is.logical(bySpecies)){
     warning("The bySpecies argument must be TRUE or FALSE.")
-    return(NULL);
+    return(NULL)
   }
 
   plots <- c("yearHistogram", "source", "aggregator")
   if(sum(!plotTypes %in% plots) > 0){
-    warning(paste0("The following plot types are not implemented in sumFig.occCite: ",
-                   plotTypes[!plotTypes %in% plots]));
+    warning(paste0("The following plot types are not implemented in plot.occCite: ",
+                   plotTypes[!plotTypes %in% plots]))
     return(NULL)
   }
   else if(is.null(plotTypes)){#Fills in NULL
@@ -294,7 +324,8 @@ plot.occCiteData <- function (x, ...){
   }
 
   d.res <- x@occResults
-  d.tbl <- lapply(1:length(d.res), function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
+  d.tbl <- lapply(1:length(d.res),
+                  function(x) tabulate.occResults(d.res[[x]], names(d.res)[x]))
   for(i in 1:length(d.tbl)) {
     d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,c("longitude", "latitude")]),]
     d.tbl.n <- nrow(d.tbl[[i]])
@@ -341,13 +372,15 @@ plot.occCiteData <- function (x, ...){
       pct <- pct[pct > 1]
       if(sum(pct) < 100){
         pct["Other*"] <- (100 - sum(pct))
-        source <- waffle::waffle(pct, rows = 10, colors = viridis::viridis(length(pct)),
-                                 title = "All Occurrence Records by Primary Data Source",
-                                 xlab = "*Sources contributing <2% not shown.")
+        source <- waffle::waffle(pct, rows = 10,
+                          colors = viridis::viridis(length(pct)),
+                          title = "All Occurrence Records by Primary Data Source",
+                          xlab = "*Sources contributing <2% not shown.")
       }
       else{
-        source <- waffle::waffle(pct, rows = 10, colors = viridis::viridis(length(pct)),
-                                 title = "All Occurrence Records by Primary Data Source")
+        source <- waffle::waffle(pct, rows = 10,
+                         colors = viridis::viridis(length(pct)),
+                         title = "All Occurrence Records by Primary Data Source")
       }
       source <- ggplot_build(source)
       if ("yearHistogram" %in% plotTypes){
@@ -364,8 +397,9 @@ plot.occCiteData <- function (x, ...){
       lbls <- paste(lbls, pct) # add percents to labels
       lbls <- paste(lbls,"%",sep="") # ad % to labels
       names(pct) <- lbls
-      aggregator <- waffle::waffle(pct, rows = 10, colors = viridis::viridis(length(datasetTab)),
-                                   title = "All Occurrence Records by Data Aggregator")
+      aggregator <- waffle::waffle(pct, rows = 10,
+                            colors = viridis::viridis(length(datasetTab)),
+                            title = "All Occurrence Records by Data Aggregator")
       aggregator <- ggplot_build(aggregator)
       allPlots[[length(allPlots)]] <- aggregator
     }
@@ -406,13 +440,16 @@ plot.occCiteData <- function (x, ...){
         pct <- pct[pct > 1]
         if(sum(pct) < 100){
           pct["Other*"] <- (100 - sum(pct))
-          source <- waffle::waffle(pct, rows = 10, colors = viridis::viridis(length(pct)),
-                                   title = paste0(sp, " Occurrence Records by Primary Data Source"),
-                                   xlab = "*Sources contributing <2% not shown.")
+          source <- waffle::waffle(pct, rows = 10,
+                              colors = viridis::viridis(length(pct)),
+                              title = paste0(sp, " Occurrence Records by Primary Data Source"),
+                              xlab = "*Sources contributing <2% not shown.")
         }
         else{
-          source <- waffle::waffle(pct, rows = 10, colors = viridis::viridis(length(pct)),
-                                   title = paste0(sp, " Occurrence Records by Primary Data Source"))
+          source <- waffle::waffle(pct, rows = 10,
+                              colors = viridis::viridis(length(pct)),
+                              title = paste0(sp,
+                                          " Occurrence Records by Primary Data Source"))
         }
         source <- ggplot_build(source)
         if ("yearHistogram" %in% plotTypes){

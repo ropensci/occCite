@@ -3,9 +3,13 @@ context("Testing gbifRetriever")
 library(occCite)
 
 test_that("inputs to gbifRetriever are as expected", {
-  expect_equal(class(rgbif::name_suggest(q= "Protea cynaroides", fields = "key", rank = "species")),
+  expect_equal(class(rgbif::name_suggest(q= "Protea cynaroides",
+                                         fields = "key",
+                                         rank = "species")),
                "gbif")
-  expect_equal(class(as.numeric(rgbif::name_suggest(q= "Protea cynaroides", fields = "key", rank = "species")$data[1])),
+  expect_equal(class(as.numeric(rgbif::name_suggest(q= "Protea cynaroides",
+                                                    fields = "key",
+                                                    rank = "species")$data[1])),
                "numeric")
 })
 

@@ -64,11 +64,15 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   }
 
   #Populating an instance of class occCiteData
-  loginInstance <- methods::new("GBIFLogin", username = user, email = email, pwd = pwd)
+  loginInstance <- methods::new("GBIFLogin",
+                                username = user,
+                                email = email,
+                                pwd = pwd)
   return(loginInstance)
 }
 
-#Functions for checking for login information in system environment(adapted from occ_download in rgbif)
+#Functions for checking for login information in system environment
+# (adapted from occ_download in rgbif)
 check_user <- function(x) {
   z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x
   if (z == "") getOption("gbif_user", stop("supply a username")) else z

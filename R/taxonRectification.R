@@ -15,14 +15,14 @@
 #' the matching name.
 #'
 #' @examples
-#' #Inputting a taxonomic name and specifying what taxonomic sources you want to search
+#' #Inputting taxonomic name and specifying what taxonomic sources to search
 #' taxonRectification(taxName = "Buteo buteo hartedi", datasources = 'NCBI')
 #'
 #' @export
 #'
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
   sources <- taxize::gnr_datasources();#Populates the list of data sources
-  #Are user-input databases included in the list of data sources for Global Names Resolver?
+  #Are user-input databases included in list of data sources for Global Names Resolver?
   if(!is.null(datasources)){
     for (db in datasources){
       notInDB <- character()
@@ -31,7 +31,7 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
       }
     }
     if (length(notInDB) != 0){
-      warning(paste("The following sources were not found in Global Names Index source list: ",
+      warning(paste("Following sources not found in Global Names Index source list: ",
                     paste(notInDB, collapse = ', '), sep=""))
     }
     #Remove invalid sources from datasources
@@ -46,16 +46,18 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
 
   #Resolving the user-input taxonomic names
   sourceIDs <- sources$id[sources$title %in% datasources]
-  #Protects against an error thrown when giving gnr_resolve a complete list of data sources
+  #Protects against error thrown when giving gnr_resolve a complete list of data sources
   if (nrow(sources) == length(sourceIDs)){
-    sourceIDs <- NULL;
+    sourceIDs <- NULL
   }
   taxonomicDatabaseMatches <- vector("list")
   temp <- taxize::gnr_resolve(sci = taxName, data_source_ids = sourceIDs)
   if (length(temp) == 0){
     bestNameMatch <- "No match"
     taxonomicDatabaseMatches <- taxonomicDatabaseMatches
-    warning(paste(taxName, " is not found in any of the taxonomic data sources specified.", sep = ""))
+    warning(paste(taxName,
+                  " is not found in any of the taxonomic data sources specified.",
+                  sep = ""))
   }
   else {
     bestMatch <- temp[order(temp$score),]$matched_name[1]
@@ -65,7 +67,9 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
 
   #Building the results table
   resolvedNames <- data.frame(taxName, bestMatch, taxonomicDatabaseMatches)
-  colnames(resolvedNames) <- c("Input Name", "Best Match", "Searched Taxonomic Databases w/ Matches")
+  colnames(resolvedNames) <- c("Input Name",
+                               "Best Match",
+                               "Searched Taxonomic Databases w/ Matches")
   resolvedNames <- as.data.frame(resolvedNames)
 
   return(resolvedNames)

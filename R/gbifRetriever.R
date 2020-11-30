@@ -18,9 +18,11 @@
 gbifRetriever <- function (taxon = NULL){
   #Error checking
   cleanTaxon <- stringr::str_extract(string = taxon,
-                                     pattern = "(\\w+\\s\\w+)")# Avoids search errors when taxonomic authority includes special characters, i.e. "æ"
+                                     pattern = "(\\w+\\s\\w+)") # Remove problem characters, i.e. "æ"
 
-  taxon_key <- as.numeric(rgbif::name_suggest(q= cleanTaxon, fields = "key", rank = "species")$data[1])
+  taxon_key <- as.numeric(rgbif::name_suggest(q= cleanTaxon,
+                                              fields = "key",
+                                              rank = "species")$data[1])
   if(is.null(taxon_key)){
     warning(paste0(" Taxon ", taxon," could not be resolved."))
     return(NULL)
@@ -44,7 +46,8 @@ gbifRetriever <- function (taxon = NULL){
     }
   }
   if(length(matchIndex) == 0){
-    print(paste0("There are no local drive downloads for ", taxon, "in ", getwd(), "."))
+    print(paste0("There are no local drive downloads for ",
+                 taxon, "in ", getwd(), "."))
     dataService <- "GBIF"
     occFromGBIF <- c(rep(NA,9), dataService)
     names(occFromGBIF) <- c("gbifID", "name", "longitude",
@@ -57,7 +60,8 @@ gbifRetriever <- function (taxon = NULL){
 
     outlist <- list()
     outlist[[1]]<- occFromGBIF
-    outlist[[2]]<-paste0("There are no local drive downloads for ", taxon, "in ", getwd(), ".")
+    outlist[[2]]<-paste0("There are no local drive downloads for ",
+                         taxon, "in ", getwd(), ".")
     outlist[[3]]<-NA
     names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
     return(outlist)
@@ -66,7 +70,8 @@ gbifRetriever <- function (taxon = NULL){
     #Gets the downloaded data for the most recent match and returns it
     newestTaxonomicMatch <- matchIndex[order(matchDate,
                                              decreasing = T)][1]
-    res <- rgbif::as.download(paths[[newestTaxonomicMatch]], key = keys[[newestTaxonomicMatch]])
+    res <- rgbif::as.download(paths[[newestTaxonomicMatch]],
+                              key = keys[[newestTaxonomicMatch]])
     rawOccs <- res
     occFromGBIF <- tabGBIF(res, taxon = taxon)
     occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]])

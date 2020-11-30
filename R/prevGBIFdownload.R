@@ -24,7 +24,9 @@
 #' @export
 #'
 prevGBIFdownload <- function(taxonKey = "No key", GBIFLogin){
-  dl <- rgbif::occ_download_list(user= GBIFLogin@username, pwd = GBIFLogin@pwd, limit = 1000)
+  dl <- rgbif::occ_download_list(user= GBIFLogin@username,
+                                 pwd = GBIFLogin@pwd,
+                                 limit = 1000)
   recKey <- NULL
   retmat <- NULL
   for(i in 1:dim(dl$results)[1]){
