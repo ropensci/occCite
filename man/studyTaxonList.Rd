@@ -35,7 +35,8 @@ studyTaxonList(x = c("Buteo buteo",
                      datasources = c('NCBI'))
 
 ## Inputting a phylogeny
-phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
+phylogeny <- ape::read.nexus(
+     system.file("extdata/Fish_12Tax_time_calibrated.tre",
      package = "occCite"))
 phylogeny <- ape::extract.clade(phylogeny, 18)
 studyTaxonList(x = phylogeny, datasources = c('NCBI'))
