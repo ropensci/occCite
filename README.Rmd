@@ -22,6 +22,8 @@ knitr::opts_knit$set(root.dir = paste0(path.package("occCite"), "/extdata/"))
 
 <!-- badges: start -->
 [![R build status](https://github.com/hannahlowens/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/hannahlowens/occCite/actions)
+[![cran version](https://www.r-pkg.org/badges/version/occCite)](https://cran.r-project.org/package=occCite)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/occCite)](https://github.com/r-hub/cranlogs.app)
 <!-- badges: end -->
 
 # Introduction 
