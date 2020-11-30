@@ -58,7 +58,7 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin,
 
     print(paste0("It is: ", format(Sys.time(), format = "%H:%M:%S"),
                  ". Please be patient while GBIF prepares your download for ",
-                 taxon, ". This can take some time."));
+                 taxon, ". This can take some time."))
     while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED"){
       Sys.sleep(60)
       print(paste("Still waiting for", taxon,
