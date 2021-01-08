@@ -14,7 +14,7 @@
 GBIFtableCleanup <- function(GBIFtable){
 
   isnothing <- function(x) {
-    any(is.null(x))  || any(is.na(x))  || any(is.nan(x))
+    any(is.null(x))  || sum(apply(my.df,2,is.nan)) > 0  || any(is.nan(x))
   }
 
   if (!isnothing(GBIFtable)){
