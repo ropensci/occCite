@@ -106,4 +106,8 @@ test_that("GBIFtableCleanup behaves as expected when given a GBIF table that is 
   expect_equal(nrow(occCite:::GBIFtableCleanup(NA)), 1)
   expect_equal(ncol(occCite:::GBIFtableCleanup(NA)), 9)
   expect_true(all(is.na(occCite:::GBIFtableCleanup(NA))))
+
+  expect_equal(nrow(occCite:::GBIFtableCleanup(NaN)), 1)
+  expect_equal(ncol(occCite:::GBIFtableCleanup(NaN)), 9)
+  expect_true(all(is.na(occCite:::GBIFtableCleanup(NaN))))
 })
