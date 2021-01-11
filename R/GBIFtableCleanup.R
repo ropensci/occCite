@@ -16,19 +16,7 @@ GBIFtableCleanup <- function(GBIFtable){
   isnothing <- function(x) {
     any(is.null(x))  || any(is.na(x)  || sum(apply(x,2,is.nan)) > 0)
   }
-
-  if (!isnothing(GBIFtable)){
-    GBIFtable <- GBIFtable[,-1]
-    GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
-    GBIFtable["longitude"] <- as.numeric(unlist(GBIFtable["longitude"]))
-    GBIFtable["latitude"] <- as.numeric(unlist(GBIFtable["latitude"]))
-    GBIFtable["day"] <- as.integer(unlist(GBIFtable["day"]))
-    GBIFtable["month"] <- as.integer(unlist(GBIFtable["month"]))
-    GBIFtable["year"] <- as.integer(unlist(GBIFtable["year"]))
-    GBIFtable["Dataset"] <- as.factor(unlist(GBIFtable["Dataset"]))
-    GBIFtable["DatasetKey"] <- as.factor(unlist(GBIFtable["DatasetKey"]))
-    GBIFtable["DataService"] <- as.factor(unlist(GBIFtable["DataService"]))
-  } else {
+  if (is.null(nrow(GBIFtable))){
     GBIFtable <- NULL
     GBIFtable["name"] <- NA
     GBIFtable["longitude"] <- NA
@@ -41,6 +29,31 @@ GBIFtableCleanup <- function(GBIFtable){
     GBIFtable["DataService"] <- NA
     GBIFtable <- as.data.frame(as.list(GBIFtable))
   }
-
+  else {
+    if (!isnothing(GBIFtable)){
+      GBIFtable <- GBIFtable[,-1]
+      GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
+      GBIFtable["longitude"] <- as.numeric(unlist(GBIFtable["longitude"]))
+      GBIFtable["latitude"] <- as.numeric(unlist(GBIFtable["latitude"]))
+      GBIFtable["day"] <- as.integer(unlist(GBIFtable["day"]))
+      GBIFtable["month"] <- as.integer(unlist(GBIFtable["month"]))
+      GBIFtable["year"] <- as.integer(unlist(GBIFtable["year"]))
+      GBIFtable["Dataset"] <- as.factor(unlist(GBIFtable["Dataset"]))
+      GBIFtable["DatasetKey"] <- as.factor(unlist(GBIFtable["DatasetKey"]))
+      GBIFtable["DataService"] <- as.factor(unlist(GBIFtable["DataService"]))
+    } else {
+      GBIFtable <- NULL
+      GBIFtable["name"] <- NA
+      GBIFtable["longitude"] <- NA
+      GBIFtable["latitude"] <- NA
+      GBIFtable["day"] <- NA
+      GBIFtable["month"] <- NA
+      GBIFtable["year"] <- NA
+      GBIFtable["Dataset"] <- NA
+      GBIFtable["DatasetKey"] <- NA
+      GBIFtable["DataService"] <- NA
+      GBIFtable <- as.data.frame(as.list(GBIFtable))
+    }
+  }
   return(GBIFtable)
 }

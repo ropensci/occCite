@@ -28,7 +28,7 @@ gbifRetriever <- function (taxon = NULL){
     return(NULL)
   }
 
-  paths <- list.files(getwd(), pattern = "\\d{7}-\\d{15}.zip", recursive = T)
+  paths <- list.files(getwd(), pattern = "\\d{7}-\\d{15}.zip", recursive = T, full.names = T)
   keys <- as.vector(stringr::str_match(paths, pattern = "\\d{7}-\\d{15}"))
   paths <- stringr::str_remove(paths, pattern = "\\d{7}-\\d{15}.zip")
 
@@ -73,7 +73,7 @@ gbifRetriever <- function (taxon = NULL){
     res <- rgbif::as.download(paths[[newestTaxonomicMatch]],
                               key = keys[[newestTaxonomicMatch]])
     rawOccs <- res
-    occFromGBIF <- tabGBIF(res, taxon = taxon)
+    occFromGBIF <- occCite:::tabGBIF(res, taxon = taxon)
     occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]])
 
     #Preparing list for return
