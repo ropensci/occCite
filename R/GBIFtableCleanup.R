@@ -16,6 +16,7 @@ GBIFtableCleanup <- function(GBIFtable){
   isnothing <- function(x) {
     any(is.null(x))  || any(is.na(x)  || sum(apply(x,2,is.nan)) > 0)
   }
+
   if (is.null(nrow(GBIFtable))){
     GBIFtable <- NULL
     GBIFtable["name"] <- NA
@@ -28,8 +29,8 @@ GBIFtableCleanup <- function(GBIFtable){
     GBIFtable["DatasetKey"] <- NA
     GBIFtable["DataService"] <- NA
     GBIFtable <- as.data.frame(as.list(GBIFtable))
-  }
-  else {
+    return(GBIFtable)
+  } else {
     if (!isnothing(GBIFtable)){
       GBIFtable <- GBIFtable[,-1]
       GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
@@ -54,6 +55,6 @@ GBIFtableCleanup <- function(GBIFtable){
       GBIFtable["DataService"] <- NA
       GBIFtable <- as.data.frame(as.list(GBIFtable))
     }
+    return(GBIFtable)
   }
-  return(GBIFtable)
 }
