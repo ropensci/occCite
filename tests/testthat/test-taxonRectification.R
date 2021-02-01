@@ -8,9 +8,9 @@ test_that("functions on which it depends function as necessary", {
   expect_true("data.frame" %in% class(sources))
   expect_true("title" %in% colnames(sources))
   expect_true("id" %in% colnames(sources))
-  expect_true("NCBI" %in% sources$title)
+  expect_true("National Center for Biotechnology Information" %in% sources$title)
 
-  datasources <- "NCBI"
+  datasources <- "National Center for Biotechnology Information"
   sourceIDs <- sources$id[sources$title %in% datasources]
   temp <- taxize::gnr_resolve(sci = "Buteo buteo", data_source_ids = sourceIDs)
 
@@ -25,7 +25,7 @@ test_that("functions on which it depends function as necessary", {
 
 test_that("taxonRectification performs as expected", {
   testResult <- taxonRectification(taxName = "Buteo buteo hartedi",
-                                   datasources = 'NCBI')
+                                   datasources = 'National Center for Biotechnology Information')
 
   expect_true(class(testResult) == "data.frame")
   expect_true("Input Name" %in% colnames(testResult))
@@ -35,5 +35,5 @@ test_that("taxonRectification performs as expected", {
   expect_true(nrow(testResult) == 1)
   expect_true(testResult$`Input Name`[1] == "Buteo buteo hartedi")
   expect_true(testResult$`Best Match`[1] == "Buteo buteo harterti")
-  expect_true(testResult$`Searched Taxonomic Databases w/ Matches` == "NCBI")
+  expect_true(testResult$`Searched Taxonomic Databases w/ Matches` == "National Center for Biotechnology Information")
 })

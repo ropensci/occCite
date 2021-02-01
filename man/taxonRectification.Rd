@@ -25,6 +25,7 @@ warnings if the name is invalid.
 }
 \examples{
 #Inputting taxonomic name and specifying what taxonomic sources to search
-taxonRectification(taxName = "Buteo buteo hartedi", datasources = 'NCBI')
+taxonRectification(taxName = "Buteo buteo hartedi",
+                   datasources = 'National Center for Biotechnology Information')
 
 }
