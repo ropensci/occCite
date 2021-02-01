@@ -11,7 +11,7 @@ This is a package update. In this version, I have:
 ## R CMD check results
 There were no WARNINGs. 
 
-There was 1 NOTE when using r-hub and local OS X.
+There was 1 NOTE when using r-hub, win-builder, and local OS X.
 
 * checking dependencies in R code ... NOTE
   almost never needs to use ::: for its own objects:
@@ -31,7 +31,7 @@ studyTaxonList 0.95   0.14    5.28
 This example uses an API. Usually it is faster than 5s.
 
 ## Downstream dependencies
-I also ran tools::check_packages_in_dir check on downstream dependencies of 
+I also ran tools::check_packages_in_dir() check on downstream dependencies of 
 occCite. 
 
 All packages that I could install passed with no ERRORs or WARNINGs.
