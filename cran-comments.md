@@ -1,8 +1,7 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Renamed several functions to be more in line with naming conventions for methods.
-* Custom plot method defined for `occCiteData` class.
+* Changed the names of taxonomic resources in examples, tests, and vignettes to reflect changes made in the Global Names Resolver.
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2
