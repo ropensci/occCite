@@ -80,7 +80,7 @@ occQuery <- function(x = NULL,
   on.exit(setwd(oldwd))
 
   #Error check input x.
-  if (!is(x, "occCiteData") && !is.vector(x)){
+  if (!is(x, "occCiteData") & !is.vector(x)){
     warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n")
     return(NULL)
   }

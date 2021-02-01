@@ -32,17 +32,17 @@
 #' @export
 GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   #Error checking inputs
-  if (!is.null(user) && class(user)!="character"){
+  if (!is.null(user) & class(user)!="character"){
     warning("Input user name is invalid; it must be a vector of class 'character'.\n")
     return(NULL)
   }
 
-  if (!is.null(email) && class(email)!="character"){
+  if (!is.null(email) & class(email)!="character"){
     warning("Input email is invalid; it must be a vector of class 'character'.\n")
     return(NULL)
   }
 
-  if (!is.null(pwd) && class(pwd)!="character"){
+  if (!is.null(pwd) & class(pwd)!="character"){
     warning("Input password is invalid; it must be a vector of class 'character'.\n")
     return(NULL)
   }
