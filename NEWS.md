@@ -2,6 +2,10 @@
 
 * Ongoing development
 
+# occCite 0.4.6
+
+* Taxonomic sources were renames in the Global Names Resolver.
+
 # occCite 0.4.5
 
 * sumFig() function is now a `plot` method for objects of class `occCiteData`.
