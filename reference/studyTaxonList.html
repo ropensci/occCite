@@ -175,7 +175,7 @@ contain the matching name.</p>
                      <span class='st'>"Buteo buteo hartedi"</span>,
                      <span class='st'>"Buteo japonicus"</span><span class='op'>)</span>,
                      datasources <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'NCBI'</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; An object of class "occCiteData"
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; An object of class "occCiteData"
 #&gt; Slot "userQueryType":
 #&gt; [1] "User-supplied list of taxa."
 #&gt; 
@@ -183,10 +183,14 @@ contain the matching name.</p>
 #&gt; [1] "NCBI"
 #&gt; 
 #&gt; Slot "cleanedTaxonomy":
-#&gt;            Input Name           Best Match Taxonomic Databases w/ Matches
-#&gt; 1         Buteo buteo          Buteo buteo                           NCBI
-#&gt; 2 Buteo buteo hartedi Buteo buteo harterti                           NCBI
-#&gt; 3     Buteo japonicus      Buteo japonicus                           NCBI
+#&gt;            Input Name                       Best Match
+#&gt; 1         Buteo buteo                      Buteo buteo
+#&gt; 2 Buteo buteo hartedi Buteo buteo harterti Swann, 1919
+#&gt; 3     Buteo japonicus                  Buteo japonicus
+#&gt;                                                                                                                                                                                                                                                                                                                                    Taxonomic Databases w/ Matches
+#&gt; 1 National Center for Biotechnology Information; Freebase; Encyclopedia of Life; AnAge; Birds of the World: Recommended English Names; /home/dimus/files/dwca/clemens.zip; CU*STAR; nlbif; Index to Organism Names; uBio NameBank; Arctos; Open Tree of Life Reference Taxonomy; iNaturalist; Index Animalium; The eBird/Clements Checklist of Birds of the World
+#&gt; 2                                                                                                                                                                                                                                                                          Catalogue of Life; Integrated Taxonomic Information SystemITIS; GBIF Backbone Taxonomy
+#&gt; 3                                                                                                                National Center for Biotechnology Information; Encyclopedia of Life; Birds of the World: Recommended English Names; uBio NameBank; Arctos; Open Tree of Life Reference Taxonomy; iNaturalist; The eBird/Clements Checklist of Birds of the World
 #&gt; 
 #&gt; Slot "occSources":
 #&gt; logical(0)
@@ -203,7 +207,7 @@ contain the matching name.</p>
      package <span class='op'>=</span> <span class='st'>"occCite"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>phylogeny</span> <span class='op'>&lt;-</span> <span class='fu'>ape</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/ape/man/drop.tip.html'>extract.clade</a></span><span class='op'>(</span><span class='va'>phylogeny</span>, <span class='fl'>18</span><span class='op'>)</span>
 <span class='fu'>studyTaxonList</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>phylogeny</span>, datasources <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'NCBI'</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; An object of class "occCiteData"
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Following sources not found in Global Names Index source list: NCBI</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No valid taxonomic data sources supplied. Populating default list from all available sources.</span></div><div class='output co'>#&gt; An object of class "occCiteData"
 #&gt; Slot "userQueryType":
 #&gt; [1] "User-supplied phylogeny."
 #&gt; 
@@ -211,22 +215,22 @@ contain the matching name.</p>
 #&gt; [1] "NCBI"
 #&gt; 
 #&gt; Slot "cleanedTaxonomy":
-#&gt;                   Input Name                 Best Match
-#&gt; 1           Istiompax_indica           Istiompax indica
-#&gt; 2             Kajikia_albida             Kajikia albida
-#&gt; 3              Kajikia_audax              Kajikia audax
-#&gt; 4 Tetrapturus_angustirostris Tetrapturus angustirostris
-#&gt; 5         Tetrapturus_belone         Tetrapturus belone
-#&gt; 6        Tetrapturus_georgii        Tetrapturus georgii
-#&gt; 7      Tetrapturus_pfluegeri      Tetrapturus pfluegeri
-#&gt;   Taxonomic Databases w/ Matches
-#&gt; 1                           NCBI
-#&gt; 2                           NCBI
-#&gt; 3                           NCBI
-#&gt; 4                           NCBI
-#&gt; 5                           NCBI
-#&gt; 6                           NCBI
-#&gt; 7                           NCBI
+#&gt;                   Input Name                                    Best Match
+#&gt; 1           Istiompax_indica               Istiompax indica (Cuvier, 1832)
+#&gt; 2             Kajikia_albida                   Kajikia albida (Poey, 1860)
+#&gt; 3              Kajikia_audax                Kajikia audax (Philippi, 1887)
+#&gt; 4 Tetrapturus_angustirostris       Tetrapturus angustirostris Tanaka, 1915
+#&gt; 5         Tetrapturus_belone           Tetrapturus belone Rafinesque, 1810
+#&gt; 6        Tetrapturus_georgii                Tetrapturus georgii Lowe, 1841
+#&gt; 7      Tetrapturus_pfluegeri Tetrapturus pfluegeri Robins &amp; de Sylva, 1963
+#&gt;                                                                                                                                                                                                                                        Taxonomic Databases w/ Matches
+#&gt; 1                                                                                                  Catalogue of Life; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy; The National Checklist of Taiwan
+#&gt; 2                                                                                       Catalogue of Life; Integrated Taxonomic Information SystemITIS; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy
+#&gt; 3                                                                Catalogue of Life; Wikispecies; Integrated Taxonomic Information SystemITIS; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy; FishBase
+#&gt; 4 Catalogue of Life; Integrated Taxonomic Information SystemITIS; Union 4; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy; The National Checklist of Taiwan; FishBase; BioLib.cz; nlbif; uBio NameBank
+#&gt; 5                   Catalogue of Life; Integrated Taxonomic Information SystemITIS; Union 4; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy; FishBase; EUNIS; BioLib.cz; nlbif; uBio NameBank; MCZbase
+#&gt; 6                            Catalogue of Life; Integrated Taxonomic Information SystemITIS; Union 4; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy; FishBase; EUNIS; BioLib.cz; nlbif; uBio NameBank
+#&gt; 7                                                                                    Catalogue of Life; Wikispecies; The Interim Register of Marine and Nonmarine Genera; World Register of Marine Species; GBIF Backbone Taxonomy; FishBase; EUNIS; BioLib.cz; nlbif
 #&gt; 
 #&gt; Slot "occSources":
 #&gt; logical(0)

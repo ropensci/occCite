@@ -95,7 +95,7 @@
                         <h4 class="author">Vijay Barve</h4>
                         <h4 class="author">Robert Guralnick</h4>
             
-            <h4 class="date">2021-01-11</h4>
+            <h4 class="date">2021-02-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hannahlowens/occCite/blob/master/vignettes/occCite_Vignette.Rmd"><code>vignettes/occCite_Vignette.Rmd</code></a></small>
       <div class="hidden name"><code>occCite_Vignette.Rmd</code></div>
@@ -236,14 +236,14 @@
 ## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet observations. Version 1.2. Pl@ntNet. https://doi.org/10.15468/gtebaa. Accessed via GBIF on 2020-11-23.
 ## Cameron E, Auckland Museum A M (2021). Auckland Museum Botany Collection. Version 1.56. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2020-11-23.
 ## Capers R (2014). CONN. University of Connecticut. https://doi.org/10.15468/w35jmd. Accessed via GBIF on 2020-11-23.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## de Vries H, Lemmens M. Observation.org, Nature data from around the World. Observation.org. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2020-11-23.
 ## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2020-11-23.
 ## Magill B, Solomon J, Stimmel H (2021). Tropicos Specimen Data. Missouri Botanical Garden. https://doi.org/10.15468/hja69f. Accessed via GBIF on 2020-11-23.
 ## Maitner, B. (2020). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.4. https://CRAN.R-project.org/package=BIEN.
 ## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.
-## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.193. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2020-11-23.
+## MNHN, Chagnoux S (2021). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.196. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2020-11-23.
 ## MNHN. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
 ## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2020-11-23.
 ## NSW. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
@@ -252,7 +252,7 @@
 ## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2020-11-23.
 ## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2020-11-23.
 ## UConn. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2020-11-23.</code></pre>
+## Ueda K (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2020-11-23.</code></pre>
 </div>
 <div id="simple-taxonomic-rectification" class="section level2">
 <h2 class="hasAnchor">
@@ -262,10 +262,14 @@
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Rectify taxonomy</span>
 <span class="va">myTROccCiteObject</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/studyTaxonList.html">studyTaxonList</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Protea cynaroides"</span>, 
-                                  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NCBI"</span>, <span class="st">"EOL"</span>, <span class="st">"ITIS"</span><span class="op">)</span><span class="op">)</span>
+                                  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"National Center for Biotechnology Information"</span>,
+                                                  <span class="st">"Encyclopedia of Life"</span>, 
+                                                  <span class="st">"Integrated Taxonomic Information SystemITIS"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">myTROccCiteObject</span><span class="op">@</span><span class="va">cleanedTaxonomy</span></code></pre></div>
-<pre><code>##          Input Name        Best Match Taxonomic Databases w/ Matches
-## 1 Protea cynaroides Protea cynaroides                           NCBI</code></pre>
+<pre><code>##          Input Name        Best Match
+## 1 Protea cynaroides Protea cynaroides
+##                                        Taxonomic Databases w/ Matches
+## 1 National Center for Biotechnology Information; Encyclopedia of Life</code></pre>
 <hr>
 </div>
 </div>
@@ -284,8 +288,14 @@
                                   GBIFDownloadDirectory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">'extdata/'</span>, package<span class="op">=</span><span class="st">'occCite'</span><span class="op">)</span>,
                                   loadLocalGBIFDownload <span class="op">=</span> <span class="cn">T</span>,
                                   checkPreviousGBIFDownload <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning in taxonRectification(taxName = targets[[count]], datasources =
+## datasources): Following sources not found in Global Names Index source list:
+## NCBI</code></pre>
+<pre><code>## Warning in taxonRectification(taxName = targets[[count]], datasources =
+## datasources): No valid taxonomic data sources supplied. Populating default list
+## from all available sources.</code></pre>
 <p>Here is the result. Look familiar?</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#GBIF search results</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">myOldOccCiteObject</span><span class="op">@</span><span class="va">occResults</span><span class="op">$</span><span class="va">`Protea cynaroides`</span><span class="op">$</span><span class="va">GBIF</span><span class="op">$</span><span class="va">OccurrenceTable</span><span class="op">)</span>;</code></pre></div>
 <pre><code>##                name longitude  latitude day month year
@@ -309,11 +319,11 @@
 ## 4        GBIF
 ## 5        GBIF
 ## 6        GBIF</code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#The full summary</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">myOldOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code>##  
-##  OccCite query occurred on: 11 January, 2021
+##  OccCite query occurred on: 01 February, 2021
 ##  
 ##  User query type: User-supplied list of taxa.
 ##  
@@ -322,8 +332,10 @@
 ##  
 ##  Taxonomic cleaning results:     
 ## 
-##          Input Name        Best Match Taxonomic Databases w/ Matches
-## 1 Protea cynaroides Protea cynaroides                           NCBI
+##          Input Name        Best Match
+## 1 Protea cynaroides Protea cynaroides
+##                                                                                                                                     Taxonomic Databases w/ Matches
+## 1 National Center for Biotechnology Information; Freebase; Encyclopedia of Life; CU*STAR; uBio NameBank; Arctos; Open Tree of Life Reference Taxonomy; iNaturalist
 ##  
 ##  Sources for occurrence data: gbif, bien
 ##      
@@ -335,7 +347,7 @@
 ##             Species GBIF Access Date           GBIF DOI
 ## 1 Protea cynaroides       2019-07-15 10.15468/dl.iqnra2</code></pre>
 <p>Getting citation data works the exact same way with previously-downloaded data as it does from a fresh data set.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Get citations</span>
 <span class="va">myOldOccCitations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/occCitation.html">occCitation</a></span><span class="op">(</span><span class="va">myOldOccCiteObject</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">myOldOccCitations</span><span class="op">)</span></code></pre></div>
@@ -348,13 +360,13 @@
 ## Results written to file 'temp.bib'</code></pre>
 <pre><code>## Cameron E, Auckland Museum A M (2021). Auckland Museum Botany Collection. Version 1.56. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2019-07-15.
 ## Capers R (2014). CONN. University of Connecticut. https://doi.org/10.15468/w35jmd. Accessed via GBIF on 2019-07-15.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2019-07-15.
 ## Magill B, Solomon J, Stimmel H (2021). Tropicos Specimen Data. Missouri Botanical Garden. https://doi.org/10.15468/hja69f. Accessed via GBIF on 2019-07-15.
 ## Maitner, B. (2020). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.4. https://CRAN.R-project.org/package=BIEN.
 ## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.
-## MNHN, Chagnoux S (2020). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.193. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2019-07-15.
+## MNHN, Chagnoux S (2021). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.196. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2019-07-15.
 ## MNHN. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
 ## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2019-07-15.
 ## NSW. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
@@ -364,7 +376,7 @@
 ## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2019-07-15.
 ## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2019-07-15.
 ## UConn. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-15.</code></pre>
+## Ueda K (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-15.</code></pre>
 <p>Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF data sources (e.g. BIEN) in the same query.</p>
 <hr>
 </div>
@@ -377,14 +389,15 @@
 <h2 class="hasAnchor">
 <a href="#occcite-with-a-phylogeny" class="anchor"></a>occCite with a Phylogeny</h2>
 <p>Here is an example of how such a search is structured, using an unpublished phylogeny of billfishes.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span>
 <span class="co">#Get tree</span>
 <span class="va">treeFile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata/Fish_12Tax_time_calibrated.tre"</span>, package<span class="op">=</span><span class="st">'occCite'</span><span class="op">)</span>
 <span class="va">phylogeny</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.nexus.html">read.nexus</a></span><span class="op">(</span><span class="va">treeFile</span><span class="op">)</span>
 <span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">extract.clade</a></span><span class="op">(</span><span class="va">phylogeny</span>, <span class="fl">18</span><span class="op">)</span>
 <span class="co">#Query databases for names</span>
-<span class="va">myPhyOccCiteObject</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/studyTaxonList.html">studyTaxonList</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tree</span>, datasources <span class="op">=</span> <span class="st">"NCBI"</span><span class="op">)</span>
+<span class="va">myPhyOccCiteObject</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/studyTaxonList.html">studyTaxonList</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tree</span>, 
+                                     datasources <span class="op">=</span> <span class="st">"National Center for Biotechnology Information"</span><span class="op">)</span>
 <span class="co">#Query GBIF for occurrence data</span>
 <span class="va">myPhyOccCiteObject</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/occQuery.html">occQuery</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">myPhyOccCiteObject</span>, 
                             datasources <span class="op">=</span> <span class="st">"gbif"</span>,
@@ -394,11 +407,11 @@
 <span class="co"># What does a multispecies query look like?</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code>##  
-##  OccCite query occurred on: 11 January, 2021
+##  OccCite query occurred on: 01 February, 2021
 ##  
 ##  User query type: User-supplied phylogeny.
 ##  
-##  Sources for taxonomic rectification: NCBI
+##  Sources for taxonomic rectification: National Center for Biotechnology Information
 ##      
 ##  
 ##  Taxonomic cleaning results:     
@@ -411,14 +424,14 @@
 ## 5         Tetrapturus_belone         Tetrapturus belone
 ## 6        Tetrapturus_georgii        Tetrapturus georgii
 ## 7      Tetrapturus_pfluegeri      Tetrapturus pfluegeri
-##   Taxonomic Databases w/ Matches
-## 1                           NCBI
-## 2                           NCBI
-## 3                           NCBI
-## 4                           NCBI
-## 5                           NCBI
-## 6                           NCBI
-## 7                           NCBI
+##                  Taxonomic Databases w/ Matches
+## 1 National Center for Biotechnology Information
+## 2 National Center for Biotechnology Information
+## 3 National Center for Biotechnology Information
+## 4 National Center for Biotechnology Information
+## 5 National Center for Biotechnology Information
+## 6 National Center for Biotechnology Information
+## 7 National Center for Biotechnology Information
 ##  
 ##  Sources for occurrence data: gbif
 ##      
@@ -442,15 +455,15 @@
 ## 6        Tetrapturus georgii       2019-07-04 10.15468/dl.h860up
 ## 7      Tetrapturus pfluegeri       2019-07-04 10.15468/dl.qjidbs</code></pre>
 <p>When you have results for multiple species, as in this case, you can also plot the summary figures either for the whole search…</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span></code></pre></div>
 <p><img src="occCite_Vignette_files/figure-html/plotting%20all%20species-1.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20all%20species-2.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20all%20species-3.png" width="33%"></p>
 <p><em>or</em> you can plot the results by species!</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span>, bySpecies <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre></div>
 <p><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-1.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-2.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-3.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-4.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-5.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-6.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-7.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-8.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-9.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-10.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-11.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-12.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-13.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-14.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-15.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-16.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-17.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-18.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-19.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-20.png" width="33%"><img src="occCite_Vignette_files/figure-html/plotting%20phylogenetic%20search%20by%20species-21.png" width="33%"></p>
 <p>And then you can print out the citations, separated by species (or not, but in this example, they’re separate).</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Get citations</span>
 <span class="va">myPhyOccCitations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/occCitation.html">occCitation</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span>
 
@@ -468,9 +481,9 @@
 ## Australian Museum (2020). Australian Museum provider for OZCAM. https://doi.org/10.15468/e7susi. Accessed via GBIF on 2019-07-04.
 ## Barde J (2011). ecoscope_observation_database. IRD - Institute of Research for Development. https://doi.org/10.15468/dz1kk0. Accessed via GBIF on 2019-07-04.
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités (Réunion). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/elttrd. Accessed via GBIF on 2019-07-04.
-## Catania D, Fong J (2020). CAS Ichthyology (ICH). Version 150.253. California Academy of Sciences. https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.
+## Catania D, Fong J (2021). CAS Ichthyology (ICH). Version 150.255. California Academy of Sciences. https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.
 ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## CSIRO - Arafura Sea shark surveys (Rachel cruises 1984-1985) https://doi.org/10.15468/yickr6. Accessed via GBIF on 2019-07-04.
 ## CSIRO National Collections and Marine Infrastructure (NCMI) Information and Data Centre (IDC): Pelagic fish food web linkages, Queensland, Australia (2003-2005) https://doi.org/10.15468/yy5wdp. Accessed via GBIF on 2019-07-04.
@@ -487,11 +500,11 @@
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 ## Raiva R, Santana P (2019). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.4. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/4fj2tq. Accessed via GBIF on 2019-07-04.
 ## Raiva R, Viador R, Santana P (2019). Diversidade e ocorrência de peixes na Zambézia (2003-2016). National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/mrz36h. Accessed via GBIF on 2019-07-04.
-## Robins R (2021). UF FLMNH Ichthyology. Version 117.294. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+## Robins R (2021). UF FLMNH Ichthyology. Version 117.297. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
 ## Sánchez González S, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Taxonomía y sistemática de la Ictiofauna de la Bahía de Banderas del Estado de Nayarit, México. Comisión nacional para el conocimiento y uso de la biodiversidad. https://doi.org/10.15468/uhrwsl. Accessed via GBIF on 2019-07-04.
 ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.
 ## Uchifune Y, Yamamoto H (2020). Asia-Pacific Dataset. Version 1.33. National Museum of Nature and Science, Japan. https://doi.org/10.15468/vjeh1p. Accessed via GBIF on 2019-07-04.
-## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
+## Ueda K (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
 ## Western Australian Museum (2019). Western Australian Museum provider for OZCAM. https://doi.org/10.15468/5qt0dm. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
 ## 'occCite'
@@ -509,20 +522,20 @@
 ## Bentley A (2020). KUBI Ichthyology Tissue Collection. Version 18.56. University of Kansas Biodiversity Institute. https://doi.org/10.15468/jmsnwg. Accessed via GBIF on 2019-07-04.
 ## Casassovici A, Brosens D (2021). Diveboard - Scuba diving citizen science observations. Version 54.33. Diveboard. https://doi.org/10.15468/tnjrgy. Accessed via GBIF on 2019-07-04.
 ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## Elías Gutiérrez M, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Códigos de barras de la vida en peces y zooplancton de México. Version 1.7. Comisión nacional para el conocimiento y uso de la biodiversidad. https://doi.org/10.15468/xmbkgo. Accessed via GBIF on 2019-07-04.
 ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.
 ## Feeney R (2019). LACM Vertebrate Collection. Version 18.7. Natural History Museum of Los Angeles County. https://doi.org/10.15468/77rmwd. Accessed via GBIF on 2019-07-04.
 ## Frable B (2019). SIO Marine Vertebrate Collection. Version 1.7. Scripps Institution of Oceanography. https://doi.org/10.15468/ad1ovc. Accessed via GBIF on 2019-07-04.
-## Harvard University M, Morris P J (2021). Museum of Comparative Zoology, Harvard University. Version 162.244. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
+## Harvard University M, Morris P J (2021). Museum of Comparative Zoology, Harvard University. Version 162.247. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
 ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
 ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
 ## Millen B (2019). Ichthyology Collection - Royal Ontario Museum. Version 18.7. Royal Ontario Museum. https://doi.org/10.15468/syisbx. Accessed via GBIF on 2019-07-04.
-## Orrell T (2020). NMNH Extant Specimen Records. Version 1.39. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2019-07-04.
+## Orrell T, Informatics Office (2021). NMNH Extant Specimen Records. Version 1.40. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2019-07-04.
 ## Pozo de la Tijera M D C, Comisión nacional para el conocimiento y uso de la biodiversidad C (2020). Fortalecimiento de las colecciones de ECOSUR. Primera fase (Ictioplancton Chetumal). Version 1.3. Comisión nacional para el conocimiento y uso de la biodiversidad. https://doi.org/10.15468/orx3mk. Accessed via GBIF on 2019-07-04.
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
-## Robins R (2021). UF FLMNH Ichthyology. Version 117.294. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+## Robins R (2021). UF FLMNH Ichthyology. Version 117.297. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
 ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
 ## 'occCite'
@@ -539,7 +552,7 @@
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités (Réunion). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/elttrd. Accessed via GBIF on 2019-07-04.
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/gdrknh. Accessed via GBIF on 2019-07-04.
 ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## Chiang W (2014). Taiwan Fisheries Research Institute – Digital archives of coastal and offshore specimens. TELDAP. https://doi.org/10.15468/xvxngy. Accessed via GBIF on 2019-07-04.
 ## Commonwealth Scientific and Industrial Research Organisation (2020). CSIRO Ichthyology provider for OZCAM. https://doi.org/10.15468/azp1pf. Accessed via GBIF on 2019-07-04.
@@ -552,14 +565,14 @@
 ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
 ## Ministry for Primary Industries (2014). New Zealand research tagging database. Southwestern Pacific OBIS, National Institute of Water and Atmospheric Research (NIWA), Wellington, New Zealand, 411926 records, Online http://nzobisipt.niwa.co.nz/resource.do?r=mpi_tag released on November 5, 2014. https://doi.org/10.15468/i66xdm. Accessed via GBIF on 2019-07-04.
 ## Museum and Art Gallery of the Northern Territory (2019). Northern Territory Museum and Art Gallery provider for OZCAM. https://doi.org/10.15468/giro3a. Accessed via GBIF on 2019-07-04.
-## Orrell T (2020). NMNH Extant Specimen Records. Version 1.39. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2019-07-04.
+## Orrell T, Informatics Office (2021). NMNH Extant Specimen Records. Version 1.40. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2019-07-04.
 ## Queensland Museum (2020). Queensland Museum provider for OZCAM. https://doi.org/10.15468/lotsye. Accessed via GBIF on 2019-07-04.
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
-## Robins R (2021). UF FLMNH Ichthyology. Version 117.294. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+## Robins R (2021). UF FLMNH Ichthyology. Version 117.297. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
 ## SWPRON (2014). Marine biological observation data from coastal and offshore surveys around New Zealand. Southwestern Pacific OBIS, National Institute of Water and Atmospheric Research (NIWA), Wellington, New Zealand, 9092 records, Online http://nzobisipt.niwa.co.nz/resource.do?r=mbis_nz released on January 16, 2018. https://doi.org/10.15468/pzpgop. Accessed via GBIF on 2019-07-04.
 ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.
 ## Uchifune Y, Yamamoto H (2020). Asia-Pacific Dataset. Version 1.33. National Museum of Nature and Science, Japan. https://doi.org/10.15468/vjeh1p. Accessed via GBIF on 2019-07-04.
-## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
+## Ueda K (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
 ## University of Washington Ichthyology Collection (UWFC) https://doi.org/10.15468/vvp7gr. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
 ## 'occCite'
@@ -575,15 +588,15 @@
 ## Barde J (2011). ecoscope_observation_database. IRD - Institute of Research for Development. https://doi.org/10.15468/dz1kk0. Accessed via GBIF on 2019-07-04.
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités (Réunion). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/elttrd. Accessed via GBIF on 2019-07-04.
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/gdrknh. Accessed via GBIF on 2019-07-04.
-## Catania D, Fong J (2020). CAS Ichthyology (ICH). Version 150.253. California Academy of Sciences. https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.
+## Catania D, Fong J (2021). CAS Ichthyology (ICH). Version 150.255. California Academy of Sciences. https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.
 ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## Chiang W (2014). Taiwan Fisheries Research Institute – Digital archives of coastal and offshore specimens. TELDAP. https://doi.org/10.15468/xvxngy. Accessed via GBIF on 2019-07-04.
 ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.
 ## Feeney R (2019). LACM Vertebrate Collection. Version 18.7. Natural History Museum of Los Angeles County. https://doi.org/10.15468/77rmwd. Accessed via GBIF on 2019-07-04.
 ## Frable B (2019). SIO Marine Vertebrate Collection. Version 1.7. Scripps Institution of Oceanography. https://doi.org/10.15468/ad1ovc. Accessed via GBIF on 2019-07-04.
-## Harvard University M, Morris P J (2021). Museum of Comparative Zoology, Harvard University. Version 162.244. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
+## Harvard University M, Morris P J (2021). Museum of Comparative Zoology, Harvard University. Version 162.247. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
 ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
 ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
 ## Ministry for Primary Industries (2014). New Zealand research tagging database. Southwestern Pacific OBIS, National Institute of Water and Atmospheric Research (NIWA), Wellington, New Zealand, 411926 records, Online http://nzobisipt.niwa.co.nz/resource.do?r=mpi_tag released on November 5, 2014. https://doi.org/10.15468/i66xdm. Accessed via GBIF on 2019-07-04.
@@ -592,11 +605,11 @@
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 ## Raiva R, Santana P (2019). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.4. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/4fj2tq. Accessed via GBIF on 2019-07-04.
 ## Raiva R, Viador R, Santana P (2019). Diversidade e ocorrência de peixes na Zambézia (2003-2016). National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/mrz36h. Accessed via GBIF on 2019-07-04.
-## Robins R (2021). UF FLMNH Ichthyology. Version 117.294. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+## Robins R (2021). UF FLMNH Ichthyology. Version 117.297. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
 ## South Australian Museum (2020). South Australian Museum Australia provider for OZCAM. https://doi.org/10.15468/wz4rrh. Accessed via GBIF on 2019-07-04.
 ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.
 ## Uchifune Y, Yamamoto H (2020). Asia-Pacific Dataset. Version 1.33. National Museum of Nature and Science, Japan. https://doi.org/10.15468/vjeh1p. Accessed via GBIF on 2019-07-04.
-## Ueda K (2020). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
+## Ueda K (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
 ## Western Australian Museum (2019). Western Australian Museum provider for OZCAM. https://doi.org/10.15468/5qt0dm. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
 ## 'occCite'
@@ -609,15 +622,15 @@
 <pre><code>## Species: Tetrapturus belone 
 ## 
 ## Bentley A (2020). KUBI Ichthyology Collection. Version 17.68. University of Kansas Biodiversity Institute. https://doi.org/10.15468/mgjasg. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.
-## Harvard University M, Morris P J (2021). Museum of Comparative Zoology, Harvard University. Version 162.244. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
+## Harvard University M, Morris P J (2021). Museum of Comparative Zoology, Harvard University. Version 162.247. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
 ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
 ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 ## Ranz J (2017). Banco de Datos de la Biodiversidad de la Comunitat Valenciana. Biodiversity data bank of Generalitat Valenciana. https://doi.org/10.15468/b4yqdy. Accessed via GBIF on 2019-07-04.
-## Robins R (2021). UF FLMNH Ichthyology. Version 117.294. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+## Robins R (2021). UF FLMNH Ichthyology. Version 117.297. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
 ## UMS PatriNat (OFB-CNRS-MNHN), Paris (2020). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.1. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
 ## 'occCite'
@@ -630,12 +643,12 @@
 <pre><code>## Species: Tetrapturus georgii 
 ## 
 ## Bentley A (2020). KUBI Ichthyology Collection. Version 17.68. University of Kansas Biodiversity Institute. https://doi.org/10.15468/mgjasg. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.
 ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
 ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
-## Orrell T (2020). NMNH Extant Specimen Records. Version 1.39. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2019-07-04.
+## Orrell T, Informatics Office (2021). NMNH Extant Specimen Records. Version 1.40. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2019-07-04.
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
@@ -652,13 +665,13 @@
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités (Réunion). Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/elttrd. Accessed via GBIF on 2019-07-04.
 ## BARDE Julien N, Inventaire National du Patrimoine Naturel (2019). Programme Ecoscope: données d'observations des écosystèmes marins exploités. Version 1.1. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/gdrknh. Accessed via GBIF on 2019-07-04.
 ## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.4.2. https://CRAN.R-project.org/package=rgbif.
+## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
 ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
 ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.
 ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
 ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
 ## R Core Team. (2020). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
-## Robins R (2021). UF FLMNH Ichthyology. Version 117.294. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+## Robins R (2021). UF FLMNH Ichthyology. Version 117.297. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
 ## The International Barcode of Life Consortium (2016). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.</code></pre>
 </div>
 </div>
