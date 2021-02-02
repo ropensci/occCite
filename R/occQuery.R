@@ -167,7 +167,7 @@ occQuery <- function(x = NULL,
       for(i in 1:length(searchTaxa)){
         #Gets *all* downloaded records
         temp <- gbifRetriever(searchTaxa[[i]])
-        temp$OccurrenceTable <- occCite:::GBIFtableCleanup(temp$OccurrenceTable)
+        temp$OccurrenceTable <- GBIFtableCleanup(temp$OccurrenceTable)
         gbifResults[[i]] <- temp
       }
       setwd(currentWD)

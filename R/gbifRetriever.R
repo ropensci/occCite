@@ -73,7 +73,7 @@ gbifRetriever <- function (taxon = NULL){
     res <- rgbif::as.download(paths[[newestTaxonomicMatch]],
                               key = keys[[newestTaxonomicMatch]])
     rawOccs <- res
-    occFromGBIF <- occCite:::tabGBIF(res, taxon = taxon)
+    occFromGBIF <- tabGBIF(res, taxon = taxon)
     occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]])
 
     #Preparing list for return

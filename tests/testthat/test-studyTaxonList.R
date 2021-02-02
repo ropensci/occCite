@@ -15,7 +15,7 @@ test_that("studyTaxonList works with a phylogeny", {
   phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
                                            package = "occCite"))
   phylogeny <- ape::extract.clade(phylogeny, 18)
-  testResult <- studyTaxonList(x = phylogeny, datasources = c('NCBI'))
+  testResult <- studyTaxonList(x = phylogeny, datasources = c('National Center for Biotechnology Information'))
 
   expect_true(class(testResult) == "occCiteData")
   expect_true("userQueryType" %in% slotNames(testResult))
@@ -26,7 +26,7 @@ test_that("studyTaxonList works with a phylogeny", {
   expect_true("occResults" %in% slotNames(testResult))
 
   expect_true(testResult@userQueryType == "User-supplied phylogeny.")
-  expect_true(testResult@userSpecTaxonomy == "NCBI")
+  expect_true(testResult@userSpecTaxonomy == "National Center for Biotechnology Information")
 
   expect_true(class(testResult@cleanedTaxonomy) == "data.frame")
   expect_true(nrow(testResult@cleanedTaxonomy) == 7)
@@ -42,7 +42,7 @@ test_that("studyTaxonList works with a phylogeny", {
 
 test_that("studyTaxonList works with a vector of species", {
   taxVector <- c("Buteo buteo", "Buteo buteo hartedi", "Buteo japonicus")
-  testResult <- studyTaxonList(x = taxVector, datasources = c('NCBI'))
+  testResult <- studyTaxonList(x = taxVector, datasources = c('National Center for Biotechnology Information'))
 
   expect_true(class(testResult) == "occCiteData")
   expect_true("userQueryType" %in% slotNames(testResult))
@@ -53,7 +53,7 @@ test_that("studyTaxonList works with a vector of species", {
   expect_true("occResults" %in% slotNames(testResult))
 
   expect_true(testResult@userQueryType == "User-supplied list of taxa.")
-  expect_true(testResult@userSpecTaxonomy == "NCBI")
+  expect_true(testResult@userSpecTaxonomy == "National Center for Biotechnology Information")
 
   expect_true(class(testResult@cleanedTaxonomy) == "data.frame")
   expect_true(nrow(testResult@cleanedTaxonomy) == 3)

@@ -9,24 +9,14 @@ This is a package update. In this version, I have:
 * r-hub
 
 ## R CMD check results
-There were no WARNINGs. 
+There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE when using r-hub, win-builder, and local OS X.
-
-* checking dependencies in R code ... NOTE
-  almost never needs to use ::: for its own objects:
-There are ::: calls to the package's namespace in its code. A package
-     almost never needs to use ::: for its own objects:
-     ‘GBIFtableCleanup’ ‘tabGBIF’
-     
-These internal functions are used by several package functions, and it was not feasible from an organizational perspective to put the helper functions in the same file as all the functions that use them.
-  
 There was 1 NOTE when using r-hub.
 
 * checking examples ... NOTE
 Examples with CPU (user + system) or elapsed time > 5s
-studyTaxonList 0.95   0.14    5.28
-               user system elapsed
+                  user system elapsed
+   studyTaxonList  0.8   0.08     5.1
                
 This example uses an API. Usually it is faster than 5s.
 
