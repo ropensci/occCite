@@ -11,7 +11,7 @@ This is a package update. In this version, I have:
 ## R CMD check results
 There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE when using r-hub.
+There was 1 NOTE when using Windows Server 2008 R2 SP1, R-devel, 32/64 bit on r-hub.
 
 * checking examples ... NOTE
 Examples with CPU (user + system) or elapsed time > 5s
