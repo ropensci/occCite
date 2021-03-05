@@ -22,7 +22,7 @@
 #' @export
 #'
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
-  sources <- taxize::gnr_datasources();#Populates the list of data sources
+  sources <- taxize::gnr_datasources()#Populates the list of data sources
   #Are user-input databases included in list of data sources for Global Names Resolver?
   if(!is.null(datasources)){
     for (db in datasources){
@@ -53,9 +53,9 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
   }
   taxonomicDatabaseMatches <- vector("list")
   temp <- taxize::gnr_resolve(sci = taxName, data_source_ids = sourceIDs)
-  if (length(temp) == 0){
-    bestNameMatch <- "No match"
-    taxonomicDatabaseMatches <- taxonomicDatabaseMatches
+  if (nrow(temp) == 0){
+    bestMatch <- "No match"
+    taxonomicDatabaseMatches <- "No match"
     warning(paste(taxName,
                   " is not found in any of the taxonomic data sources specified.",
                   sep = ""))

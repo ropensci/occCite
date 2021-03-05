@@ -33,7 +33,8 @@
 #' studyTaxonList(x = phylogeny, datasources = c('NCBI'))
 #'
 #' @export
-studyTaxonList <- function(x = NULL, datasources = c('NCBI')) {
+studyTaxonList <- function(x = NULL,
+                           datasources = c("National Center for Biotechnology Information")) {
   #Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x))&&class(x)=="character")){
     warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n")
