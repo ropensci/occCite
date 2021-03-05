@@ -4,7 +4,7 @@
 
 # occCite 0.4.6
 
-* Taxonomic sources were renames in the Global Names Resolver.
+* Taxonomic sources were renamed in the Global Names Resolver.
 
 # occCite 0.4.5
 
