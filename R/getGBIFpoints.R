@@ -40,6 +40,16 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin,
                                      pattern = "(\\w+\\s\\w+)")
   key <- rgbif::name_suggest(q=cleanTaxon, rank='species')$data$key[1]
 
+  if(is.null(key)){
+    outlist <- list()
+    outlist[[1]] <- NULL
+    outlist[[2]] <- NULL
+    outlist[[3]] <- NULL
+    names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
+    warning(paste0("There was no taxonomic match for ", taxon, ".\n"))
+    return(outlist)
+  }
+
   if (checkPreviousGBIFDownload){
     occD <- prevGBIFdownload(key, GBIFLogin)
     if (is.null(occD)){
