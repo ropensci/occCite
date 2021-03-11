@@ -42,9 +42,9 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin,
 
   if(is.null(key)){
     outlist <- list()
-    outlist[[1]] <- NULL
-    outlist[[2]] <- NULL
-    outlist[[3]] <- NULL
+    outlist[[1]] <- data.frame()
+    outlist[[2]] <- paste0("There was no taxonomic match for ", taxon, ".\n")
+    outlist[[3]] <- data.frame()
     names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
     warning(paste0("There was no taxonomic match for ", taxon, ".\n"))
     return(outlist)

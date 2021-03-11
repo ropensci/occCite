@@ -30,6 +30,19 @@ GBIFtableCleanup <- function(GBIFtable){
     GBIFtable["DataService"] <- NA
     GBIFtable <- as.data.frame(as.list(GBIFtable))
     return(GBIFtable)
+  } else if (nrow(GBIFtable) == 0){
+    GBIFtable <- NULL
+    GBIFtable["name"] <- NA
+    GBIFtable["longitude"] <- NA
+    GBIFtable["latitude"] <- NA
+    GBIFtable["day"] <- NA
+    GBIFtable["month"] <- NA
+    GBIFtable["year"] <- NA
+    GBIFtable["Dataset"] <- NA
+    GBIFtable["DatasetKey"] <- NA
+    GBIFtable["DataService"] <- NA
+    GBIFtable <- as.data.frame(as.list(GBIFtable))
+    return(GBIFtable)
   } else {
     if (!isnothing(GBIFtable)){
       GBIFtable <- GBIFtable[,-1]
