@@ -35,13 +35,13 @@ well as warnings if there are invalid names.
 studyTaxonList(x = c("Buteo buteo",
                      "Buteo buteo hartedi",
                      "Buteo japonicus"),
-                     datasources = c('NCBI'))
+                     datasources = c('National Center for Biotechnology Information'))
 
 ## Inputting a phylogeny
 phylogeny <- ape::read.nexus(
      system.file("extdata/Fish_12Tax_time_calibrated.tre",
      package = "occCite"))
 phylogeny <- ape::extract.clade(phylogeny, 18)
-studyTaxonList(x = phylogeny, datasources = c('NCBI'))
+studyTaxonList(x = phylogeny, datasources = c('National Center for Biotechnology Information'))
 
 }
