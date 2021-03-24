@@ -34,7 +34,7 @@
 #'
 #' @export
 studyTaxonList <- function(x = NULL,
-                           datasources = c("National Center for Biotechnology Information")) {
+                           datasources = c('National Center for Biotechnology Information')) {
   #Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x))&&class(x)=="character")){
     warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n")
@@ -51,12 +51,14 @@ studyTaxonList <- function(x = NULL,
 
   #Building the results table
   resolvedNames <- data.frame()
-  count <- 1
-  while(count <= length(targets)){
-    resolvedNames <- rbind(resolvedNames,
-                           taxonRectification(taxName = targets[[count]],
-                                              datasources = datasources))
-    count <- count + 1
+  for (i in 1:length(targets)){
+    newResName <- withCallingHandlers({
+      taxonRectification(taxName = targets[[i]],
+                         datasources = datasources)}, warning=function(w) {
+      message("handled warning: ", conditionMessage(w))
+      invokeRestart("muffleWarning")
+    })
+    resolvedNames <- rbind(resolvedNames, newResName)
   }
 
   colnames(resolvedNames) <- c("Input Name",

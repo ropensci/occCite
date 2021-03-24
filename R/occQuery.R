@@ -153,8 +153,14 @@ occQuery <- function(x = NULL,
   #Check to make sure there was a taxon match
   if(grepl(pattern = "No match",
            x = paste0(searchTaxa, collapse = "")) | is.null(searchTaxa)){
-    warning("There was no taxonomic match. Search cancelled.\n")
-    return(NULL)
+    warning(paste0("There was no taxonomic match for ",
+    queryResults@cleanedTaxonomy[queryResults@cleanedTaxonomy$`Best Match` == "No match",1],
+    ". This/these species have been removed from your search.\n"))
+    searchTaxa <- searchTaxa[searchTaxa != "No match"]
+    if(length(searchTaxa) == 0) {
+      warning("No names provided had taxonomic matches. The search has been cancelled.")
+      return(NULL)
+    }
   }
 
   #For GBIF
