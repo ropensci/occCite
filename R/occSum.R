@@ -59,7 +59,10 @@ summary.occCiteData <- function(object, ...) {
 
     for (i in 1:length(x@occResults)){
       #GBIF counts
-      if (is.null(x@occResults[[i]]$GBIF$OccurrenceTable) | nrow(x@occResults[[i]]$GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey),]) == 0){
+      if (any(x@occSources == "bien",
+              is.null(x@occResults[[i]]$GBIF$OccurrenceTable),
+              nrow(x@occResults[[i]]$GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey),]) == 0,
+              na.rm = T)){
         occurrenceCountGBIF[[i]] <- 0
         sourceCountGBIF[[i]] <- 0
       }
@@ -70,7 +73,9 @@ summary.occCiteData <- function(object, ...) {
           unique(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey))
       }
       #BIEN counts
-      if (is.null(x@occResults[[i]]$BIEN$OccurrenceTable)){
+      if (any(x@occSources == "gbif",
+              is.null(x@occResults[[i]]$BIEN$OccurrenceTable),
+              na.rm = T)){
         occurrenceCountBIEN[[i]] <- 0
         sourceCountBIEN[[i]] <- 0
       }
