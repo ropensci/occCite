@@ -79,7 +79,7 @@ warnings if the name is invalid." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">occCite</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.7</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@ warnings if the name is invalid." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -113,7 +113,7 @@ warnings if the name is invalid." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/hannahlowens/occCite/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -165,12 +165,13 @@ warnings if the name is invalid.</p>
 the matching name.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#Inputting a taxonomic name and specifying what taxonomic sources you want to search</span>
-<span class='fu'>taxonRectification</span><span class='op'>(</span>taxName <span class='op'>=</span> <span class='st'>"Buteo buteo hartedi"</span>, datasources <span class='op'>=</span> <span class='st'>'NCBI'</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>#Inputting taxonomic name and specifying what taxonomic sources to search</span>
+<span class='fu'>taxonRectification</span><span class='op'>(</span>taxName <span class='op'>=</span> <span class='st'>"Buteo buteo hartedi"</span>,
+                   datasources <span class='op'>=</span> <span class='st'>'National Center for Biotechnology Information'</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;            Input Name           Best Match
 #&gt; 1 Buteo buteo hartedi Buteo buteo harterti
-#&gt;   Searched Taxonomic Databases w/ Matches
-#&gt; 1                                    NCBI</div><div class='input'>
+#&gt;         Searched Taxonomic Databases w/ Matches
+#&gt; 1 National Center for Biotechnology Information</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

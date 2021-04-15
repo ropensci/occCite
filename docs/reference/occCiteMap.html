@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Generating a map of downloaded points — occCiteMap" />
-<meta property="og:description" content="Makes maps for each individual species in an occCiteData
- object." />
+<meta property="og:description" content="Makes maps for each individual species in an
+occCiteData object." />
 <meta property="og:image" content="/reference/figures/occTag.png" />
 <meta property="og:image:alt" content="Gray specimen tag that says 'occCite: Tools for querying and citing large occurrence datasets'" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">occCite</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.7</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -112,7 +112,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/hannahlowens/occCite/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,8 +135,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Makes maps for each individual species in an <code><a href='occCiteData-class.html'>occCiteData</a></code>
- object.</p>
+    <p>Makes maps for each individual species in an
+<code><a href='occCiteData-class.html'>occCiteData</a></code> object.</p>
     </div>
 
     <pre class="usage"><span class='fu'>occCiteMap</span><span class='op'>(</span>
@@ -159,35 +159,40 @@
     <tr>
       <th>species_map</th>
       <td><p>Character; either the default "all" to map all species
-in <code><a href='occCiteData-class.html'>occCiteData</a></code>, or a subset of these specified as a character or character vector</p></td>
+in <code><a href='occCiteData-class.html'>occCiteData</a></code>, or a subset of these specified as a character
+or character vector.</p></td>
     </tr>
     <tr>
       <th>species_colors</th>
-      <td><p>Character; the default NULL will choose random colors from
-those available (see Details), or those specified by the user as
-a character or character vector (the number of colors must match the number of species mapped)</p></td>
+      <td><p>Character; the default NULL will choose random
+colors from those available (see Details), or those specified by the
+user as a character or character vector (the number of colors must match
+the number of species mapped).</p></td>
     </tr>
     <tr>
       <th>ds_map</th>
-      <td><p>Character; specifies which data service records will be mapped, with the default
-being GBIF, BIEN, and GBIF_BIEN (records with the same coordinates in both databases)</p></td>
+      <td><p>Character; specifies which data service records will be
+mapped, with the default being GBIF, BIEN, and GBIF_BIEN (records with
+the same coordinates in both databases).</p></td>
     </tr>
     <tr>
       <th>map_limit</th>
-      <td><p>Numeric; the number of points to map per species, set at a default of 1000
-randomly selected records; users can specify a higher number, but be aware that leaflet can
-lag or crash when too many points are plotted</p></td>
+      <td><p>Numeric; the number of points to map per species, set
+at a default of 1000 randomly selected records; users can specify a
+higher number, but be aware that leaflet can lag or crash when too many
+points are plotted.</p></td>
     </tr>
     <tr>
       <th>awesomeMarkers</th>
-      <td><p>Logical; if `TRUE` (default), mapped points will be `awesomeMarkers`
-attributed with an icon for a globe for GBIF, a leaf for BIEN, or a database if records
-from both databases have the same coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`</p></td>
+      <td><p>Logical; if `TRUE` (default), mapped points will
+be `awesomeMarkers` attributed with an icon for a globe for GBIF, a leaf
+for BIEN, or a database if records from both databases have the same
+coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`</p></td>
     </tr>
     <tr>
       <th>cluster</th>
-      <td><p>Logical; if `TRUE` (default is `FALSE`) turns on marker clustering, which does not
-preserve color differences between species</p></td>
+      <td><p>Logical; if `TRUE` (default is `FALSE`) turns on marker
+clustering, which does not preserve color differences between species</p></td>
     </tr>
     </table>
 
@@ -196,10 +201,12 @@ preserve color differences between species</p></td>
     <p>A leaflet map</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>When mapping using `awesomeMarkers` (default), the parameter species_colors must match those in
-a specified color library, currently: c("red", "lightred", "orange", "beige", "green", "lightgreen",
-"blue", "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray"). When `awesomeMarkers`
-is `FALSE` and species_colors are not specified, random colors from the `RColorBrewer` Set1 palette are used.</p>
+    <p>When mapping using `awesomeMarkers` (default), the parameter
+species_colors must match those in a specified color library, currently:
+c("red", "lightred", "orange", "beige", "green", "lightgreen", "blue",
+"lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray").
+When `awesomeMarkers` is `FALSE` and species_colors are not specified,
+random colors from the `RColorBrewer` Set1 palette are used.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>myOccCiteObject</span><span class='op'>)</span>

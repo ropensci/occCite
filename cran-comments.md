@@ -1,7 +1,8 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Changed the names of taxonomic resources in examples, tests, and vignettes to reflect changes made in the Global Names Resolver.
+* Made internal logic made more robust to various error scenarios.
+* Written in warnings to user if no taxonomic matches exist for a given name (but won't crash a search loop).
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2
