@@ -111,7 +111,12 @@ prepared download." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/hannahlowens/occCite/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -126,7 +131,7 @@ prepared download." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download previously-prepared GBIF data sets</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/hannahlowens/occCite/blob/master/R/prevGBIFdownload.R'><code>R/prevGBIFdownload.R</code></a></small>
     <div class="hidden name"><code>prevGBIFdownload.Rd</code></div>
     </div>
 
@@ -163,7 +168,8 @@ GBIF to begin the download.</p></td>
   email <span class='op'>=</span> <span class='st'>"ireneAdler@laScala.org"</span>,
   pwd <span class='op'>=</span> <span class='st'>"sh3r"</span>
 <span class='op'>)</span>
-<span class='va'>taxKey</span> <span class='op'>&lt;-</span> <span class='fu'>rgbif</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/rgbif/reference/name_suggest.html'>name_suggest</a></span><span class='op'>(</span>q <span class='op'>=</span> <span class='st'>"Protea cynaroides"</span>, rank <span class='op'>=</span> <span class='st'>"species"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>key</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
+<span class='va'>taxKey</span> <span class='op'>&lt;-</span> <span class='fu'>rgbif</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/rgbif/reference/name_suggest.html'>name_suggest</a></span><span class='op'>(</span>q <span class='op'>=</span> <span class='st'>"Protea cynaroides"</span>,
+                              rank <span class='op'>=</span> <span class='st'>"species"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>key</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
 <span class='fu'>prevGBIFdownload</span><span class='op'>(</span>
   taxonKey <span class='op'>=</span> <span class='va'>taxKey</span>,
   GBIFLogin <span class='op'>=</span> <span class='va'>myGBIFLogin</span>
