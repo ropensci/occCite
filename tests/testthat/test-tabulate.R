@@ -7,11 +7,13 @@ test_that("inputs to tabulate.occResults are as expected", {
   testResults <- myOccCiteObject@occResults
   resNames <- names(testResults)
 
-  expect_true(class(myOccCiteObject)=="occCiteData")
-  expect_true(names(myOccCiteObject@occResults)>0)
+  expect_true(class(myOccCiteObject) == "occCiteData")
+  expect_true(names(myOccCiteObject@occResults) > 0)
   expect_true(is.character(resNames))
-  expect_true(all(!is.na(stringr::str_extract(string = resNames,
-                                              pattern = "(\\w+\\s\\w+)"))))
+  expect_true(all(!is.na(stringr::str_extract(
+    string = resNames,
+    pattern = "(\\w+\\s\\w+)"
+  ))))
 })
 
 test_that("outputs to tablulate.occResults are as expected", {
@@ -20,7 +22,7 @@ test_that("outputs to tablulate.occResults are as expected", {
   x <- myOccCiteObject@occResults[[1]]
   testResults <- tabulate.occResults(x = x, sp.name = sp.name)
 
-  expect_true(class(testResults)=="data.frame")
+  expect_true(class(testResults) == "data.frame")
 
   expect_true("name" %in% names(testResults))
   expect_true(!is.na(testResults$name[1]))

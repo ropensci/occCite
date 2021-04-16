@@ -3,20 +3,28 @@ context("Testing gbifRetriever")
 library(occCite)
 
 test_that("inputs to gbifRetriever are as expected", {
-  expect_equal(class(rgbif::name_suggest(q= "Protea cynaroides",
-                                         fields = "key",
-                                         rank = "species")),
-               "gbif")
-  expect_equal(class(as.numeric(rgbif::name_suggest(q= "Protea cynaroides",
-                                                    fields = "key",
-                                                    rank = "species")$data[1])),
-               "numeric")
+  expect_equal(
+    class(rgbif::name_suggest(
+      q = "Protea cynaroides",
+      fields = "key",
+      rank = "species"
+    )),
+    "gbif"
+  )
+  expect_equal(
+    class(as.numeric(rgbif::name_suggest(
+      q = "Protea cynaroides",
+      fields = "key",
+      rank = "species"
+    )$data[1])),
+    "numeric"
+  )
 })
 
 test_that("gbifRetriever behaves as expected", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
-  setwd(dir = system.file('extdata/', package='occCite'))
+  setwd(dir = system.file("extdata/", package = "occCite"))
   taxon <- "Protea cynaroides"
   testResult <- occCite:::gbifRetriever(taxon)
 

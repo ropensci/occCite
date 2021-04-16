@@ -39,31 +39,37 @@
 #'
 #' @examples
 #' \dontrun{
-#' ##If you have already created a occCite object, and have not previously
-#' ##downloaded GBIF data.
-#' occQuery(x = myOccCiteObject,
-#'          datasources = c("gbif", "bien"),
-#'          GBIFLogin = myLogin,
-#'          GBIFDownloadDirectory = "./Desktop",
-#'          loadLocalGBIFDownload = F)
+#' ## If you have already created a occCite object, and have not previously
+#' ## downloaded GBIF data.
+#' occQuery(
+#'   x = myOccCiteObject,
+#'   datasources = c("gbif", "bien"),
+#'   GBIFLogin = myLogin,
+#'   GBIFDownloadDirectory = "./Desktop",
+#'   loadLocalGBIFDownload = F
+#' )
 #'
 #' ## If you don't have a occCite object yet
-#' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
-#'          datasources = c("gbif", "bien"),
-#'          GBIFLogin = myLogin,
-#'          GBIFOverwrite = T,
-#'          GBIFDownloadDirectory = "./Desktop",
-#'          loadLocalGBIFDownload = F)
+#' occQuery(
+#'   x = c("Buteo buteo", "Protea cynaroides"),
+#'   datasources = c("gbif", "bien"),
+#'   GBIFLogin = myLogin,
+#'   GBIFOverwrite = T,
+#'   GBIFDownloadDirectory = "./Desktop",
+#'   loadLocalGBIFDownload = F
+#' )
 #'
 #' ## If you have previously downloaded occurrence data from GBIF
 #' ## and saved it in a folder called "GBIFDownloads".
-#' occQuery(x = c("Buteo buteo", "Protea cynaroides"),
-#'          datasources = c("gbif", "bien"),
-#'          GBIFLogin = myLogin,
-#'          GBIFoverwrite = T,
-#'          GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
-#'          loadLocalGBIFDownload = T)
-#'}
+#' occQuery(
+#'   x = c("Buteo buteo", "Protea cynaroides"),
+#'   datasources = c("gbif", "bien"),
+#'   GBIFLogin = myLogin,
+#'   GBIFoverwrite = T,
+#'   GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
+#'   loadLocalGBIFDownload = T
+#' )
+#' }
 #'
 #' @export
 
@@ -75,146 +81,156 @@ occQuery <- function(x = NULL,
                      checkPreviousGBIFDownload = T,
                      options = NULL) {
 
-  #File hygene
+  # File hygene
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
-  #Error check input x.
-  if (!is(x, "occCiteData") & !is.vector(x)){
+  # Error check input x.
+  if (!is(x, "occCiteData") & !is.vector(x)) {
     warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n")
     return(NULL)
   }
 
-  #Instantiate a occCite data object if one was not supplied
-  if(!is(x, "occCiteData")){
+  # Instantiate a occCite data object if one was not supplied
+  if (!is(x, "occCiteData")) {
     x <- studyTaxonList(x)
   }
 
-  #Error check input datasources.
-  if (!is.vector(datasources) && is(datasources, "character")){
+  # Error check input datasources.
+  if (!is.vector(datasources) && is(datasources, "character")) {
     warning("Input datasources is not of class 'vector'. Datasources object must be a vector of class 'character'.\n")
     return(NULL)
   }
 
-  #Error check input GBIF directory.
-  if ("gbif" %in% datasources && !is.null(GBIFDownloadDirectory) && !is(GBIFDownloadDirectory, "character")){
+  # Error check input GBIF directory.
+  if ("gbif" %in% datasources && !is.null(GBIFDownloadDirectory) && !is(GBIFDownloadDirectory, "character")) {
     warning("Input GBIFDownload directory is not of class 'character'.\n")
     return(NULL)
   }
 
-  if(is.null(GBIFDownloadDirectory)){
+  if (is.null(GBIFDownloadDirectory)) {
     GBIFDownloadDirectory <- getwd()
   }
 
-  if(!dir.exists(GBIFDownloadDirectory)){
+  if (!dir.exists(GBIFDownloadDirectory)) {
     warning("You have specified a non-existant location for your GBIF data downloads.\n")
     return(NULL)
   }
 
-  if(!is.logical(loadLocalGBIFDownload)){
+  if (!is.logical(loadLocalGBIFDownload)) {
     warning(paste("You have not used a logical operator to specify whether occCite should pull already-downloaded occurrences from ",
-                  GBIFDownloadDirectory, ".", sep = ""))
+      GBIFDownloadDirectory, ".",
+      sep = ""
+    ))
     return(NULL)
   }
 
-  if(!is.logical(checkPreviousGBIFDownload)){
+  if (!is.logical(checkPreviousGBIFDownload)) {
     warning(paste("You have not used a logical operator to specify whether occCite should check GBIF for previously-prepared downloads for the taxa specified."))
     return(NULL)
   }
 
-  #Check to see if the sources input are actually ones used by occQuery
-  sources <- c("gbif", "bien"); #sources
+  # Check to see if the sources input are actually ones used by occQuery
+  sources <- c("gbif", "bien") # sources
   datasources <- tolower(datasources)
-  if(sum(!datasources %in% sources) > 0){
+  if (sum(!datasources %in% sources) > 0) {
     warning(paste("The following datasources are not implemented in occQuery(): ",
-                  datasources[!datasources %in% sources], sep = ""))
+      datasources[!datasources %in% sources],
+      sep = ""
+    ))
     return(NULL)
   }
-  else if(is.null(datasources)){#Fills in NULL
+  else if (is.null(datasources)) { # Fills in NULL
     x@occSources <- sources
   }
-  else{
+  else {
     x@occSources <- datasources
   }
 
-  #If GBIF was selected, check to see if GBIF login information is supplied.
-  if ("gbif" %in% datasources && !is(GBIFLogin, "GBIFLogin") && !loadLocalGBIFDownload){
+  # If GBIF was selected, check to see if GBIF login information is supplied.
+  if ("gbif" %in% datasources && !is(GBIFLogin, "GBIFLogin") && !loadLocalGBIFDownload) {
     warning("You have chosen GBIF as a datasource, but have not supplied GBIF login information. Please create a GBIFLogin object using GBIFLoginManager().\n")
     return(NULL)
   }
 
-  #Get time stamp for search
+  # Get time stamp for search
   x@occCiteSearchDate <- as.character(Sys.Date(), format = "%Y-%m-%d")
 
-  #Occurrence queries for each species
+  # Occurrence queries for each species
   queryResults <- x
   searchTaxa <- as.character(queryResults@cleanedTaxonomy$`Best Match`)
 
-  #Check to make sure there was a taxon match
-  if(grepl(pattern = "No match",
-           x = paste0(searchTaxa, collapse = "")) | is.null(searchTaxa)){
-    warning(paste0("There was no taxonomic match for ",
-    queryResults@cleanedTaxonomy[queryResults@cleanedTaxonomy$`Best Match` == "No match",1],
-    ". This/these species have been removed from your search.\n"))
+  # Check to make sure there was a taxon match
+  if (grepl(
+    pattern = "No match",
+    x = paste0(searchTaxa, collapse = "")
+  ) | is.null(searchTaxa)) {
+    warning(paste0(
+      "There was no taxonomic match for ",
+      queryResults@cleanedTaxonomy[queryResults@cleanedTaxonomy$`Best Match` == "No match", 1],
+      ". This/these species have been removed from your search.\n"
+    ))
     searchTaxa <- searchTaxa[searchTaxa != "No match"]
-    if(length(searchTaxa) == 0) {
+    if (length(searchTaxa) == 0) {
       warning("No names provided had taxonomic matches. The search has been cancelled.")
       return(NULL)
     }
   }
 
-  #For GBIF
-  if ("gbif" %in% datasources){
+  # For GBIF
+  if ("gbif" %in% datasources) {
     gbifResults <- vector(mode = "list", length = length(searchTaxa))
     names(gbifResults) <- searchTaxa
-    if(loadLocalGBIFDownload){
+    if (loadLocalGBIFDownload) {
       currentWD <- getwd()
       setwd(GBIFDownloadDirectory)
-      for(i in 1:length(searchTaxa)){
-        #Gets *all* downloaded records
+      for (i in 1:length(searchTaxa)) {
+        # Gets *all* downloaded records
         temp <- gbifRetriever(searchTaxa[[i]])
         temp$OccurrenceTable <- GBIFtableCleanup(temp$OccurrenceTable)
         gbifResults[[i]] <- temp
       }
       setwd(currentWD)
     }
-    else{
-      for (i in searchTaxa){
-        temp <- getGBIFpoints(taxon = i,
-                      GBIFLogin = GBIFLogin,
-                      GBIFDownloadDirectory = GBIFDownloadDirectory,
-                      checkPreviousGBIFDownload = checkPreviousGBIFDownload)
+    else {
+      for (i in searchTaxa) {
+        temp <- getGBIFpoints(
+          taxon = i,
+          GBIFLogin = GBIFLogin,
+          GBIFDownloadDirectory = GBIFDownloadDirectory,
+          checkPreviousGBIFDownload = checkPreviousGBIFDownload
+        )
         temp[[1]] <- GBIFtableCleanup(temp[[1]])
         gbifResults[[i]] <- temp
       }
     }
   }
 
-  #For BIEN
-  if ("bien" %in% datasources){
+  # For BIEN
+  if ("bien" %in% datasources) {
     bienResults <- vector(mode = "list", length = length(searchTaxa))
     names(bienResults) <- searchTaxa
-    if("bien" %in% datasources){
-      for (i in searchTaxa){
+    if ("bien" %in% datasources) {
+      for (i in searchTaxa) {
         bienResults[[i]] <- getBIENpoints(taxon = i)
       }
     }
   }
-  else{
+  else {
     bienResults <- NULL
   }
 
-  #Merge GBIF and BIEN results
+  # Merge GBIF and BIEN results
   occSearchResults <- vector(mode = "list", length = length(searchTaxa))
   names(occSearchResults) <- searchTaxa
-  for (i in searchTaxa){
-    if ("bien" %in% datasources && "gbif" %in% datasources){
+  for (i in searchTaxa) {
+    if ("bien" %in% datasources && "gbif" %in% datasources) {
       bien <- bienResults[[i]]
       gbif <- gbifResults[[i]]
       occSearchResults[[i]] <- list(gbif, bien)
       names(occSearchResults[[i]]) <- c("GBIF", "BIEN")
     }
-    else if("bien" %in% datasources && length(datasources)==1){
+    else if ("bien" %in% datasources && length(datasources) == 1) {
       bien <- bienResults[[i]]
       occSearchResults[[i]] <- list(bien)
       names(occSearchResults[[i]]) <- c("BIEN")
@@ -226,7 +242,7 @@ occQuery <- function(x = NULL,
     }
   }
 
-  #Putting results into occCite object
+  # Putting results into occCite object
   queryResults@occResults <- occSearchResults
 
   return(queryResults)

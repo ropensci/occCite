@@ -20,55 +20,70 @@
 #'
 #' @examples
 #' ## Inputting a vector of taxon names
-#' studyTaxonList(x = c("Buteo buteo",
-#'                      "Buteo buteo hartedi",
-#'                      "Buteo japonicus"),
-#'                      datasources = c('National Center for Biotechnology Information'))
+#' studyTaxonList(
+#'   x = c(
+#'     "Buteo buteo",
+#'     "Buteo buteo hartedi",
+#'     "Buteo japonicus"
+#'   ),
+#'   datasources = c("National Center for Biotechnology Information")
+#' )
 #'
 #' ## Inputting a phylogeny
 #' phylogeny <- ape::read.nexus(
-#'      system.file("extdata/Fish_12Tax_time_calibrated.tre",
-#'      package = "occCite"))
+#'   system.file("extdata/Fish_12Tax_time_calibrated.tre",
+#'     package = "occCite"
+#'   )
+#' )
 #' phylogeny <- ape::extract.clade(phylogeny, 18)
-#' studyTaxonList(x = phylogeny, datasources = c('National Center for Biotechnology Information'))
-#'
+#' studyTaxonList(x = phylogeny, datasources = c("National Center for Biotechnology Information"))
 #' @export
 studyTaxonList <- function(x = NULL,
-                           datasources = c('National Center for Biotechnology Information')) {
-  #Error check inputs (x).
-  if (!class(x) == "phylo" & !(is.vector(class(x))&&class(x)=="character")){
+                           datasources = c("National Center for Biotechnology Information")) {
+  # Error check inputs (x).
+  if (!class(x) == "phylo" & !(is.vector(class(x)) && class(x) == "character")) {
     warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n")
     return(NULL)
   }
-  else if(is.vector(class(x))&&class(x)=="character"){
+  else if (is.vector(class(x)) && class(x) == "character") {
     targets <- x
-    dataFrom <- "User-supplied list of taxa." #Keeping track of metadata
+    dataFrom <- "User-supplied list of taxa." # Keeping track of metadata
   }
-  else if(class(x) == "phylo"){
+  else if (class(x) == "phylo") {
     targets <- x$tip.label
-    dataFrom <- "User-supplied phylogeny." #Keeping track of metadata
+    dataFrom <- "User-supplied phylogeny." # Keeping track of metadata
   }
 
-  #Building the results table
+  # Building the results table
   resolvedNames <- data.frame()
-  for (i in 1:length(targets)){
-    newResName <- withCallingHandlers({
-      taxonRectification(taxName = targets[[i]],
-                         datasources = datasources)}, warning=function(w) {
-      message("handled warning: ", conditionMessage(w))
-      invokeRestart("muffleWarning")
-    })
+  for (i in 1:length(targets)) {
+    newResName <- withCallingHandlers(
+      {
+        taxonRectification(
+          taxName = targets[[i]],
+          datasources = datasources
+        )
+      },
+      warning = function(w) {
+        message("handled warning: ", conditionMessage(w))
+        invokeRestart("muffleWarning")
+      }
+    )
     resolvedNames <- rbind(resolvedNames, newResName)
   }
 
-  colnames(resolvedNames) <- c("Input Name",
-                               "Best Match",
-                               "Taxonomic Databases w/ Matches")
+  colnames(resolvedNames) <- c(
+    "Input Name",
+    "Best Match",
+    "Taxonomic Databases w/ Matches"
+  )
   resolvedNames <- as.data.frame(resolvedNames)
 
-  #Populating an instance of class occCiteData
-  occCiteInstance <- methods::new("occCiteData", userQueryType = dataFrom,
-                                  userSpecTaxonomy = datasources,
-                                  cleanedTaxonomy = resolvedNames)
+  # Populating an instance of class occCiteData
+  occCiteInstance <- methods::new("occCiteData",
+    userQueryType = dataFrom,
+    userSpecTaxonomy = datasources,
+    cleanedTaxonomy = resolvedNames
+  )
   return(occCiteInstance)
 }

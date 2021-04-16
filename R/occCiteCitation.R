@@ -11,6 +11,7 @@
 #' @importFrom methods new
 #'
 #' @export
-occCiteCitation <- methods::setRefClass(Class = "occCiteCitation",
-                                    fields = list(occCitationResults = "list")
-                                    )
+occCiteCitation <- methods::setRefClass(
+  Class = "occCiteCitation",
+  fields = list(occCitationResults = "list")
+)

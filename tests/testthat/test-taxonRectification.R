@@ -24,14 +24,16 @@ test_that("functions on which it depends function as necessary", {
 })
 
 test_that("taxonRectification performs as expected", {
-  testResult <- taxonRectification(taxName = "Buteo buteo hartedi",
-                                   datasources = 'National Center for Biotechnology Information')
+  testResult <- taxonRectification(
+    taxName = "Buteo buteo hartedi",
+    datasources = "National Center for Biotechnology Information"
+  )
 
   expect_true(class(testResult) == "data.frame")
   expect_true("Input Name" %in% colnames(testResult))
   expect_true("Input Name" %in% colnames(testResult))
   expect_true("Searched Taxonomic Databases w/ Matches"
-              %in% colnames(testResult))
+  %in% colnames(testResult))
   expect_true(nrow(testResult) == 1)
   expect_true(testResult$`Input Name`[1] == "Buteo buteo hartedi")
   expect_true(testResult$`Best Match`[1] == "Buteo buteo harterti")

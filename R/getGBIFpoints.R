@@ -21,26 +21,30 @@
 #'
 #' @examples
 #' \dontrun{
-#' getGBIFpoints(taxon="Gadus morhua",
-#'               GBIFLogin = myGBIFLogin,
-#'               GBIFDownloadDirectory = NULL)
-#'}
+#' getGBIFpoints(
+#'   taxon = "Gadus morhua",
+#'   GBIFLogin = myGBIFLogin,
+#'   GBIFDownloadDirectory = NULL
+#' )
+#' }
 #'
 #' @export
-getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin,
-                        GBIFDownloadDirectory = NULL,
-                        checkPreviousGBIFDownload = T){
+getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
+                          GBIFDownloadDirectory = NULL,
+                          checkPreviousGBIFDownload = T) {
 
-  #File hygene
+  # File hygene
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
   # Avoids errors when taxonomic authority includes special characters, i.e. "æ"
-  cleanTaxon <- stringr::str_extract(string = taxon,
-                                     pattern = "(\\w+\\s\\w+)")
-  key <- rgbif::name_suggest(q=cleanTaxon, rank='species')$data$key[1]
+  cleanTaxon <- stringr::str_extract(
+    string = taxon,
+    pattern = "(\\w+\\s\\w+)"
+  )
+  key <- rgbif::name_suggest(q = cleanTaxon, rank = "species")$data$key[1]
 
-  if(is.null(key)){
+  if (is.null(key)) {
     outlist <- list()
     outlist[[1]] <- data.frame()
     outlist[[2]] <- paste0("There was no taxonomic match for ", taxon, ".\n")
@@ -50,53 +54,63 @@ getGBIFpoints<-function(taxon, GBIFLogin = GBIFLogin,
     return(outlist)
   }
 
-  if (checkPreviousGBIFDownload){
+  if (checkPreviousGBIFDownload) {
     occD <- prevGBIFdownload(key, GBIFLogin)
-    if (is.null(occD)){
-      print(paste0("There was no previously-prepared download on GBIF for ",
-                   taxon, ". New GBIF download will be prepared."))
+    if (is.null(occD)) {
+      print(paste0(
+        "There was no previously-prepared download on GBIF for ",
+        taxon, ". New GBIF download will be prepared."
+      ))
     }
   }
 
-  if(checkPreviousGBIFDownload == F |
-     (checkPreviousGBIFDownload == T && is.null(occD))) {
+  if (checkPreviousGBIFDownload == F |
+    (checkPreviousGBIFDownload == T && is.null(occD))) {
     occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
-                         rgbif::pred("hasCoordinate", TRUE),
-                         rgbif::pred("hasGeospatialIssue", FALSE),
-                         user = GBIFLogin@username, email = GBIFLogin@email,
-                         pwd = GBIFLogin@pwd)
+      rgbif::pred("hasCoordinate", TRUE),
+      rgbif::pred("hasGeospatialIssue", FALSE),
+      user = GBIFLogin@username, email = GBIFLogin@email,
+      pwd = GBIFLogin@pwd
+    )
 
-    print(paste0("It is: ", format(Sys.time(), format = "%H:%M:%S"),
-                 ". Please be patient while GBIF prepares your download for ",
-                 taxon, ". This can take some time."))
-    while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED"){
+    print(paste0(
+      "It is: ", format(Sys.time(), format = "%H:%M:%S"),
+      ". Please be patient while GBIF prepares your download for ",
+      taxon, ". This can take some time."
+    ))
+    while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED") {
       Sys.sleep(60)
-      print(paste("Still waiting for", taxon,
-                  "download preparation to be completed. Time: ",
-                  format(Sys.time(), format = "%H:%M:%S")))
+      print(paste(
+        "Still waiting for", taxon,
+        "download preparation to be completed. Time: ",
+        format(Sys.time(), format = "%H:%M:%S")
+      ))
     }
   }
 
-  if(is.null(GBIFDownloadDirectory)) {
+  if (is.null(GBIFDownloadDirectory)) {
     GBIFDownloadDirectory <- getwd()
   }
 
-  #Create folders for each species at the designated location
+  # Create folders for each species at the designated location
   fileTax <- gsub(pattern = " ", replacement = "_", x = taxon)
   dir.create(file.path(GBIFDownloadDirectory, fileTax),
-               showWarnings = FALSE)
+    showWarnings = FALSE
+  )
   presWD <- getwd()
   setwd(GBIFDownloadDirectory)
 
-  #Getting the download from GBIF and loading it into R
-  res <- rgbif::occ_download_get(key=occD[1], overwrite=TRUE,
-                                 file.path(getwd(), fileTax))
+  # Getting the download from GBIF and loading it into R
+  res <- rgbif::occ_download_get(
+    key = occD[1], overwrite = TRUE,
+    file.path(getwd(), fileTax)
+  )
   rawOccs <- res
   occFromGBIF <- tabGBIF(GBIFresults = res, taxon)
 
   occMetadata <- rgbif::occ_download_meta(occD[1])
 
-  #Preparing list for return
+  # Preparing list for return
   outlist <- list()
   outlist[[1]] <- occFromGBIF
   outlist[[2]] <- occMetadata

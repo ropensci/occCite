@@ -17,30 +17,33 @@
 #'
 #' @noRd
 
-tabGBIF <- function(GBIFresults, taxon){
-
+tabGBIF <- function(GBIFresults, taxon) {
   occFromGBIF <- rgbif::occ_download_import(GBIFresults)
 
-  if(nrow(occFromGBIF)==0){
+  if (nrow(occFromGBIF) == 0) {
     print(paste("Note: there are no GBIF points for ", taxon, ".", sep = ""))
     return(NULL)
   }
 
-  occFromGBIF <- data.frame(occFromGBIF$gbifID, occFromGBIF$species,
-                            occFromGBIF$decimalLongitude,
-                            occFromGBIF$decimalLatitude,
-                            occFromGBIF$day, occFromGBIF$month,
-                            occFromGBIF$year, occFromGBIF$datasetName,
-                            as.character(occFromGBIF$datasetKey))
+  occFromGBIF <- data.frame(
+    occFromGBIF$gbifID, occFromGBIF$species,
+    occFromGBIF$decimalLongitude,
+    occFromGBIF$decimalLatitude,
+    occFromGBIF$day, occFromGBIF$month,
+    occFromGBIF$year, occFromGBIF$datasetName,
+    as.character(occFromGBIF$datasetKey)
+  )
   dataService <- rep("GBIF", nrow(occFromGBIF))
   occFromGBIF <- cbind(occFromGBIF, dataService)
   # "Dataset" column excluded because not always filled out
   ## but useful for quick human checks
-  occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF[,-8]),]
+  occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF[, -8]), ]
 
-  colnames(occFromGBIF) <- c("gbifID", "name", "longitude",
-                             "latitude", "day", "month",
-                             "year", "Dataset",
-                             "DatasetKey", "DataService")
+  colnames(occFromGBIF) <- c(
+    "gbifID", "name", "longitude",
+    "latitude", "day", "month",
+    "year", "Dataset",
+    "DatasetKey", "DataService"
+  )
   return(occFromGBIF)
 }

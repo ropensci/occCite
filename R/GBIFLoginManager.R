@@ -17,61 +17,69 @@
 #'
 #' @examples
 #' ## Inputting user particulars
-#'\dontrun{
-#' myLogin <- GBIFLoginManager(user = "theWoman",
-#'                             email = "ireneAdler@@laScala.org",
-#'                             pwd = "sh3r")
-#'}
+#' \dontrun{
+#' myLogin <- GBIFLoginManager(
+#'   user = "theWoman",
+#'   email = "ireneAdler@@laScala.org",
+#'   pwd = "sh3r"
+#' )
+#' }
 #'
-#'\dontrun{
+#' \dontrun{
 #' ## Can also be mined from your system environment
-#' myLogin <- GBIFLoginManager(user = NULL,
-#'                             email = NULL, pwd = NULL)
-#'}
+#' myLogin <- GBIFLoginManager(
+#'   user = NULL,
+#'   email = NULL, pwd = NULL
+#' )
+#' }
 #'
 #' @export
 GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
-  #Error checking inputs
-  if (!is.null(user) & class(user)!="character"){
+  # Error checking inputs
+  if (!is.null(user) & class(user) != "character") {
     warning("Input user name is invalid; it must be a vector of class 'character'.\n")
     return(NULL)
   }
 
-  if (!is.null(email) & class(email)!="character"){
+  if (!is.null(email) & class(email) != "character") {
     warning("Input email is invalid; it must be a vector of class 'character'.\n")
     return(NULL)
   }
 
-  if (!is.null(pwd) & class(pwd)!="character"){
+  if (!is.null(pwd) & class(pwd) != "character") {
     warning("Input password is invalid; it must be a vector of class 'character'.\n")
     return(NULL)
   }
 
-  #Checking for system login information if not supplied by user
+  # Checking for system login information if not supplied by user
   user <- check_user(user)
   email <- check_email(email)
   pwd <- check_pwd(pwd)
 
-  #Test login
-  test <- try(rgbif::occ_download(user=user,
-                                  email = email,
-                                  pwd = pwd,
-                                  rgbif::pred("catalogNumber", 217880)),
-              silent = T)
-  if(class(test) != 'occ_download'){
+  # Test login
+  test <- try(rgbif::occ_download(
+    user = user,
+    email = email,
+    pwd = pwd,
+    rgbif::pred("catalogNumber", 217880)
+  ),
+  silent = T
+  )
+  if (class(test) != "occ_download") {
     warning("GBIF user login data incorrect.\n")
     return(NULL)
   }
 
-  #Populating an instance of class occCiteData
+  # Populating an instance of class occCiteData
   loginInstance <- methods::new("GBIFLogin",
-                                username = user,
-                                email = email,
-                                pwd = pwd)
+    username = user,
+    email = email,
+    pwd = pwd
+  )
   return(loginInstance)
 }
 
-#Functions for checking for login information in system environment
+# Functions for checking for login information in system environment
 # (adapted from occ_download in rgbif)
 check_user <- function(x) {
   z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x

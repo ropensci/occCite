@@ -12,13 +12,12 @@
 #' @keywords internal
 #' @noRd
 
-GBIFtableCleanup <- function(GBIFtable){
-
+GBIFtableCleanup <- function(GBIFtable) {
   isnothing <- function(x) {
-    any(is.null(x))  | any(is.na(x)  | sum(apply(x,2,is.nan)) > 0)
+    any(is.null(x)) | any(is.na(x) | sum(apply(x, 2, is.nan)) > 0)
   }
 
-  if (is.null(nrow(GBIFtable))){
+  if (is.null(nrow(GBIFtable))) {
     GBIFtable <- NULL
     GBIFtable["name"] <- NA
     GBIFtable["longitude"] <- NA
@@ -31,7 +30,7 @@ GBIFtableCleanup <- function(GBIFtable){
     GBIFtable["DataService"] <- NA
     GBIFtable <- as.data.frame(as.list(GBIFtable))
     return(GBIFtable)
-  } else if (nrow(GBIFtable) == 0){
+  } else if (nrow(GBIFtable) == 0) {
     GBIFtable <- NULL
     GBIFtable["name"] <- NA
     GBIFtable["longitude"] <- NA
@@ -45,8 +44,8 @@ GBIFtableCleanup <- function(GBIFtable){
     GBIFtable <- as.data.frame(as.list(GBIFtable))
     return(GBIFtable)
   } else {
-    if (!isnothing(GBIFtable)){
-      GBIFtable <- GBIFtable[,-1]
+    if (!isnothing(GBIFtable)) {
+      GBIFtable <- GBIFtable[, -1]
       GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
       GBIFtable["longitude"] <- as.numeric(unlist(GBIFtable["longitude"]))
       GBIFtable["latitude"] <- as.numeric(unlist(GBIFtable["latitude"]))

@@ -4,10 +4,12 @@ library(occCite)
 
 test_that("BIEN behaves as expected", {
   skip_on_cran()
-  testResult <- BIEN::BIEN_occurrence_species(species = "Protea cynaroides",
-                                        cultivated = T,
-                                        only.new.world = F, native.status = F,
-                                        collection.info = T, natives.only = F)
+  testResult <- BIEN::BIEN_occurrence_species(
+    species = "Protea cynaroides",
+    cultivated = T,
+    only.new.world = F, native.status = F,
+    collection.info = T, natives.only = F
+  )
   expect_equal(class(testResult), "data.frame")
   expect_true("scrubbed_species_binomial" %in% colnames(testResult))
   expect_true("longitude" %in% colnames(testResult))
@@ -22,7 +24,7 @@ test_that("BIEN behaves as expected", {
 
 test_that("getBIENpoints behaves as expected", {
   skip_on_cran()
-  testResult <- getBIENpoints(taxon="Protea cynaroides")
+  testResult <- getBIENpoints(taxon = "Protea cynaroides")
   expect_equal(class(testResult), "list")
   expect_equal(length(testResult), 3)
 

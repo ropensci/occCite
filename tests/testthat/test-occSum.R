@@ -5,7 +5,7 @@ library(occCite)
 test_that("summary behaves as expected", {
   data("myOccCiteObject")
 
-  expect_true(class(myOccCiteObject)=="occCiteData")
+  expect_true(class(myOccCiteObject) == "occCiteData")
 
   expect_true("userQueryType" %in% slotNames(myOccCiteObject))
   expect_true(class(myOccCiteObject@userQueryType) == "character")
@@ -30,13 +30,15 @@ test_that("summary behaves as expected", {
   expect_true(class(myOccCiteObject@occResults) == "list")
   expect_true("GBIF" %in% names(myOccCiteObject@occResults[[1]]))
   expect_true(all(c("OccurrenceTable", "Metadata", "RawOccurrences")
-                  %in% names(myOccCiteObject@occResults[[1]][[1]])))
+  %in% names(myOccCiteObject@occResults[[1]][[1]])))
   expect_true(all(c("name", "longitude", "latitude", "day", "month", "year", "Dataset", "DatasetKey", "DataService") %in% colnames(myOccCiteObject@occResults[[1]][[1]][[1]])))
   expect_true("BIEN" %in% names(myOccCiteObject@occResults[[1]]))
   expect_true(all(c("OccurrenceTable", "Metadata", "RawOccurrences")
-                  %in% names(myOccCiteObject@occResults[[1]][[2]])))
-  expect_true(all(c("name", "longitude", "latitude",
-                    "day", "month", "year",
-                    "Dataset", "DatasetKey", "DataService")
-              %in% colnames(myOccCiteObject@occResults[[1]][[2]][[1]])))
+  %in% names(myOccCiteObject@occResults[[1]][[2]])))
+  expect_true(all(c(
+    "name", "longitude", "latitude",
+    "day", "month", "year",
+    "Dataset", "DatasetKey", "DataService"
+  )
+  %in% colnames(myOccCiteObject@occResults[[1]][[2]][[1]])))
 })

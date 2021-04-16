@@ -15,62 +15,68 @@
 #' the matching name.
 #'
 #' @examples
-#' #Inputting taxonomic name and specifying what taxonomic sources to search
-#' taxonRectification(taxName = "Buteo buteo hartedi",
-#'                    datasources = 'National Center for Biotechnology Information')
-#'
+#' # Inputting taxonomic name and specifying what taxonomic sources to search
+#' taxonRectification(
+#'   taxName = "Buteo buteo hartedi",
+#'   datasources = "National Center for Biotechnology Information"
+#' )
 #' @export
 #'
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
-  sources <- taxize::gnr_datasources()#Populates the list of data sources
-  #Are user-input databases included in list of data sources for Global Names Resolver?
-  if(!is.null(datasources)){
-    for (db in datasources){
+  sources <- taxize::gnr_datasources() # Populates the list of data sources
+  # Are user-input databases included in list of data sources for Global Names Resolver?
+  if (!is.null(datasources)) {
+    for (db in datasources) {
       notInDB <- character()
       if (!(db %in% sources$title)) {
         notInDB <- append(notInDB, db)
       }
     }
-    if (length(notInDB) != 0){
+    if (length(notInDB) != 0) {
       warning(paste("Following sources not found in Global Names Index source list: ",
-                    paste(notInDB, collapse = ', '), sep=""))
+        paste(notInDB, collapse = ", "),
+        sep = ""
+      ))
     }
-    #Remove invalid sources from datasources
+    # Remove invalid sources from datasources
     datasources <- datasources[!datasources %in% notInDB]
   }
 
-  #Populating vector of data sources if no valid sources are supplied
-  if (length(datasources) == 0){
+  # Populating vector of data sources if no valid sources are supplied
+  if (length(datasources) == 0) {
     warning("No valid taxonomic data sources supplied. Populating default list from all available sources.")
     datasources <- sources$title
   }
 
-  #Resolving the user-input taxonomic names
+  # Resolving the user-input taxonomic names
   sourceIDs <- sources$id[sources$title %in% datasources]
-  #Protects against error thrown when giving gnr_resolve a complete list of data sources
-  if (nrow(sources) == length(sourceIDs)){
+  # Protects against error thrown when giving gnr_resolve a complete list of data sources
+  if (nrow(sources) == length(sourceIDs)) {
     sourceIDs <- NULL
   }
   taxonomicDatabaseMatches <- vector("list")
   temp <- taxize::gnr_resolve(sci = taxName, data_source_ids = sourceIDs)
-  if (nrow(temp) == 0){
+  if (nrow(temp) == 0) {
     bestMatch <- "No match"
     taxonomicDatabaseMatches <- "No match"
     warning(paste(taxName,
-                  " is not found in any of the taxonomic data sources specified.",
-                  sep = ""))
+      " is not found in any of the taxonomic data sources specified.",
+      sep = ""
+    ))
   }
   else {
-    bestMatch <- temp[order(temp$score),]$matched_name[1]
+    bestMatch <- temp[order(temp$score), ]$matched_name[1]
     matchingSources <- temp$data_source_title[temp$matched_name == bestMatch]
     taxonomicDatabaseMatches <- paste(matchingSources, collapse = "; ")
   }
 
-  #Building the results table
+  # Building the results table
   resolvedNames <- data.frame(taxName, bestMatch, taxonomicDatabaseMatches)
-  colnames(resolvedNames) <- c("Input Name",
-                               "Best Match",
-                               "Searched Taxonomic Databases w/ Matches")
+  colnames(resolvedNames) <- c(
+    "Input Name",
+    "Best Match",
+    "Searched Taxonomic Databases w/ Matches"
+  )
   resolvedNames <- as.data.frame(resolvedNames)
 
   return(resolvedNames)

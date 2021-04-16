@@ -31,10 +31,12 @@
 #'
 #' @export
 occCiteData <- methods::setClass("occCiteData",
-                                 slots = c(userQueryType = "vector",
-                                           userSpecTaxonomy = "vector",
-                                           cleanedTaxonomy = "data.frame",
-                                           occSources = "vector",
-                                           occCiteSearchDate = "character",
-                                           occResults = "list")
-                                 )
+  slots = c(
+    userQueryType = "vector",
+    userSpecTaxonomy = "vector",
+    cleanedTaxonomy = "data.frame",
+    occSources = "vector",
+    occCiteSearchDate = "character",
+    occResults = "list"
+  )
+)

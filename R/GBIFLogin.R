@@ -14,13 +14,18 @@
 #'
 #' @examples
 #' \donttest{
-#' GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
-#'      email = "****@yahoo.com",
-#'      pwd = "12345")
-#'}
+#' GBIFLogin <- GBIFLoginManager(
+#'   user = "occCiteTester",
+#'   email = "****@yahoo.com",
+#'   pwd = "12345"
+#' )
+#' }
 #'
 #' @export
 GBIFLogin <- methods::setClass("GBIFLogin",
-                               slots = c(username = "vector",
-                                         email = "vector",
-                                         pwd = "vector"))
+  slots = c(
+    username = "vector",
+    email = "vector",
+    pwd = "vector"
+  )
+)

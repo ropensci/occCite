@@ -10,14 +10,16 @@ test_that("inputs to map are as expected", {
   x <- myOccCiteObject@occResults[[1]]
   tabResults <- tabulate.occResults(x = x, sp.name = sp.name)
 
-  expect_true(class(myOccCiteObject)=="occCiteData")
-  expect_true(names(myOccCiteObject@occResults)>0)
+  expect_true(class(myOccCiteObject) == "occCiteData")
+  expect_true(names(myOccCiteObject@occResults) > 0)
   expect_true(is.character(resNames))
-  expect_true(all(!is.na(stringr::str_extract(string = resNames,
-                                              pattern = "(\\w+\\s\\w+)"))))
+  expect_true(all(!is.na(stringr::str_extract(
+    string = resNames,
+    pattern = "(\\w+\\s\\w+)"
+  ))))
 
   expect_true(all(c("longitude", "latitude")
-                  %in% names(tabulate.occResults(x, sp.name))))
+  %in% names(tabulate.occResults(x, sp.name))))
 })
 
 test_that("default occCiteMap settings work", {
@@ -35,37 +37,41 @@ test_that("occCiteMap works with species specified", {
 test_that("occCiteMap works with non-awesome markers color specified", {
   data("myOccCiteObject")
   test <- occCiteMap(myOccCiteObject,
-                      "Protea cynaroides",
-                      species_colors = "brown",
-                      awesomeMarkers = F)
+    "Protea cynaroides",
+    species_colors = "brown",
+    awesomeMarkers = F
+  )
   expect_true(all(c("leaflet", "htmlwidget") %in% class(test)))
 })
 
 test_that("occCiteMap works with awesome markers color specified", {
   data("myOccCiteObject")
   test <- occCiteMap(myOccCiteObject,
-                      "Protea cynaroides",
-                      species_colors = "lightred",
-                      awesomeMarkers = T)
+    "Protea cynaroides",
+    species_colors = "lightred",
+    awesomeMarkers = T
+  )
   expect_true(all(c("leaflet", "htmlwidget") %in% class(test)))
 })
 
 test_that("occCiteMap works with map_limit specified", {
   data("myOccCiteObject")
   test <- occCiteMap(myOccCiteObject,
-                      "Protea cynaroides",
-                      species_colors = "lightred",
-                      awesomeMarkers = T,
-                      map_limit = 10)
+    "Protea cynaroides",
+    species_colors = "lightred",
+    awesomeMarkers = T,
+    map_limit = 10
+  )
   expect_true(all(c("leaflet", "htmlwidget") %in% class(test)))
 })
 
 test_that("occCiteMap works with cluster set to true", {
   data("myOccCiteObject")
   test <- occCiteMap(myOccCiteObject,
-                      "Protea cynaroides",
-                      species_colors = "lightred",
-                      awesomeMarkers = T,
-                      cluster = T)
+    "Protea cynaroides",
+    species_colors = "lightred",
+    awesomeMarkers = T,
+    cluster = T
+  )
   expect_true(all(c("leaflet", "htmlwidget") %in% class(test)))
 })

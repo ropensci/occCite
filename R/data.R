@@ -18,6 +18,6 @@
 #' }
 #' @examples
 #' \donttest{
-#'  myOccCiteObject
+#' myOccCiteObject
 #' }
 "myOccCiteObject"
