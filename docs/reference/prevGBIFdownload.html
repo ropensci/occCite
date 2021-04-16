@@ -102,7 +102,10 @@ prepared download." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/occCite_Vignette.html">An overview of executing searches and generating citations using occCite</a>
+      <a href="../articles/Advanced.html">Advanced execution of occurrence searches and citations generation</a>
+    </li>
+    <li>
+      <a href="../articles/Simple.html">Simple execution of occurrence searches and citation generation</a>
     </li>
   </ul>
 </li>
@@ -148,7 +151,7 @@ prepared download.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>taxonKey</th>
-      <td><p>A taxon key as returned from `rgbif::name_suggest()`.</p></td>
+      <td><p>A taxon key as returned from <code><a href='https://docs.ropensci.org/rgbif/reference/name_suggest.html'>rgbif::name_suggest()</a></code>.</p></td>
     </tr>
     <tr>
       <th>GBIFLogin</th>
@@ -163,12 +166,17 @@ GBIF to begin the download.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>GBIFLogin</span> <span class='op'>&lt;-</span> <span class='fu'><a href='GBIFLoginManager.html'>GBIFLoginManager</a></span><span class='op'>(</span>user <span class='op'>=</span> <span class='st'>"theWoman"</span>,
-               email <span class='op'>=</span> <span class='st'>"ireneAdler@laScala.org"</span>,
-               pwd <span class='op'>=</span> <span class='st'>"sh3r"</span><span class='op'>)</span>
-<span class='va'>taxKey</span> <span class='op'>&lt;-</span> <span class='fu'>rgbif</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/rgbif/reference/name_suggest.html'>name_suggest</a></span><span class='op'>(</span>q<span class='op'>=</span> <span class='st'>"Protea cynaroides"</span>, rank<span class='op'>=</span><span class='st'>'species'</span><span class='op'>)</span><span class='op'>$</span><span class='va'>key</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
-<span class='fu'>prevGBIFdownload</span><span class='op'>(</span>taxonKey <span class='op'>=</span> <span class='va'>taxKey</span>,
-              GBIFLogin <span class='op'>=</span> <span class='va'>myGBIFLogin</span><span class='op'>)</span>
+<span class='va'>GBIFLogin</span> <span class='op'>&lt;-</span> <span class='fu'><a href='GBIFLoginManager.html'>GBIFLoginManager</a></span><span class='op'>(</span>
+  user <span class='op'>=</span> <span class='st'>"theWoman"</span>,
+  email <span class='op'>=</span> <span class='st'>"ireneAdler@laScala.org"</span>,
+  pwd <span class='op'>=</span> <span class='st'>"sh3r"</span>
+<span class='op'>)</span>
+<span class='va'>taxKey</span> <span class='op'>&lt;-</span> <span class='fu'>rgbif</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/rgbif/reference/name_suggest.html'>name_suggest</a></span><span class='op'>(</span>q <span class='op'>=</span> <span class='st'>"Protea cynaroides"</span>,
+                              rank <span class='op'>=</span> <span class='st'>"species"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>key</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
+<span class='fu'>prevGBIFdownload</span><span class='op'>(</span>
+  taxonKey <span class='op'>=</span> <span class='va'>taxKey</span>,
+  GBIFLogin <span class='op'>=</span> <span class='va'>myGBIFLogin</span>
+<span class='op'>)</span>
 <span class='op'>}</span>
 
 </div></pre>

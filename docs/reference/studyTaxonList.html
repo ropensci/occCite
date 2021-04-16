@@ -103,7 +103,10 @@ well as warnings if there are invalid names." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/occCite_Vignette.html">An overview of executing searches and generating citations using occCite</a>
+      <a href="../articles/Advanced.html">Advanced execution of occurrence searches and citations generation</a>
+    </li>
+    <li>
+      <a href="../articles/Simple.html">Simple execution of occurrence searches and citation generation</a>
     </li>
   </ul>
 </li>
@@ -174,10 +177,14 @@ contain the matching name.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Inputting a vector of taxon names</span>
-<span class='fu'>studyTaxonList</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Buteo buteo"</span>,
-                     <span class='st'>"Buteo buteo hartedi"</span>,
-                     <span class='st'>"Buteo japonicus"</span><span class='op'>)</span>,
-                     datasources <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'National Center for Biotechnology Information'</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>studyTaxonList</span><span class='op'>(</span>
+  x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+    <span class='st'>"Buteo buteo"</span>,
+    <span class='st'>"Buteo buteo hartedi"</span>,
+    <span class='st'>"Buteo japonicus"</span>
+  <span class='op'>)</span>,
+  datasources <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"National Center for Biotechnology Information"</span><span class='op'>)</span>
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; An object of class "occCiteData"
 #&gt; Slot "userQueryType":
 #&gt; [1] "User-supplied list of taxa."
@@ -206,10 +213,13 @@ contain the matching name.</p>
 #&gt; </div><div class='input'>
 <span class='co'>## Inputting a phylogeny</span>
 <span class='va'>phylogeny</span> <span class='op'>&lt;-</span> <span class='fu'>ape</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/ape/man/read.nexus.html'>read.nexus</a></span><span class='op'>(</span>
-     <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata/Fish_12Tax_time_calibrated.tre"</span>,
-     package <span class='op'>=</span> <span class='st'>"occCite"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata/Fish_12Tax_time_calibrated.tre"</span>,
+    package <span class='op'>=</span> <span class='st'>"occCite"</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
 <span class='va'>phylogeny</span> <span class='op'>&lt;-</span> <span class='fu'>ape</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/ape/man/drop.tip.html'>extract.clade</a></span><span class='op'>(</span><span class='va'>phylogeny</span>, <span class='fl'>18</span><span class='op'>)</span>
-<span class='fu'>studyTaxonList</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>phylogeny</span>, datasources <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'National Center for Biotechnology Information'</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>studyTaxonList</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>phylogeny</span>,
+               datasources <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"National Center for Biotechnology Information"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; An object of class "occCiteData"
 #&gt; Slot "userQueryType":
 #&gt; [1] "User-supplied phylogeny."
@@ -243,8 +253,7 @@ contain the matching name.</p>
 #&gt; 
 #&gt; Slot "occResults":
 #&gt; list()
-#&gt; </div><div class='input'>
-</div></pre>
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

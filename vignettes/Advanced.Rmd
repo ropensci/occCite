@@ -1,0 +1,118 @@
+---
+title: "Advanced execution of occurrence searches and citations generation"
+author:
+- Hannah L. Owens
+- Cory Merow
+- Brian Maitner
+- Jamie M. Kass
+- Vijay Barve
+- Robert Guralnick
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    toc: true
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{Advanced execution of occurrence searches and citations generation}
+  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(ape)
+library(occCite)
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+knitr::opts_knit$set(root.dir = system.file('extdata/', package='occCite'))
+```
+
+# Advanced features
+
+This vignette demonstrates more advanced features and customization available in `occCite`. We recommend you read `vignette("Simple.Rmd", package = "occCite")` first, if you have not already done so.
+
+## Loading data from previous GBIF searches
+
+Querying GBIF can take quite a bit of time, especially for multiple species and/or well-known species. In this case, you may wish to access previously-downloaded data sets from your computer by specifying the general location of your downloaded `.zip` files. `occQuery` will crawl through your specified `GBIFDownloadDirectory` to collect all the `.zip` files contained in that folder and its subfolders. It will then import the most recent downloads that match your taxon list. These GBIF data will be appended to a BIEN search the same as if you do the simple real-time search (if you chose BIEN as well as GBIF), as was shown above. `checkPreviousGBIFDownload` is `TRUE` by default, but if `loadLocalGBIFDownload` is `TRUE`, `occQuery` will ignore `checkPreviousDownload`. It is also worth noting that `occCite` does not currently support mixed data download sources. That is, you cannot do GBIF queries for some taxa, download previously-prepared data sets for others, and load the rest from local data sets on your computer.
+
+```{r simple_load}
+# Simple load
+myOldOccCiteObject <- occQuery(x = "Protea cynaroides", 
+                                  datasources = c("gbif", "bien"), 
+                                  GBIFLogin = NULL, 
+                                  GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
+                                  loadLocalGBIFDownload = T,
+                                  checkPreviousGBIFDownload = F)
+```
+
+Here is the result. Look familiar?
+
+```{r simple_search_loaded_GBIF_results}
+#GBIF search results
+head(myOldOccCiteObject@occResults$`Protea cynaroides`$GBIF$OccurrenceTable);
+#The full summary
+summary(myOldOccCiteObject)
+```
+
+Getting citation data works the exact same way with previously-downloaded data as it does from a fresh data set.
+
+```{r getting_citations_from_already-downloaded_GBIF_data}
+#Get citations
+myOldOccCitations <- occCitation(myOldOccCiteObject)
+print(myOldOccCitations)
+```
+
+Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF data sources (e.g. BIEN) in the same query.
+
+***
+
+## Performing a Multi-Species Search
+
+In addition to doing a simple, single species search, you can also use `occCite` to search for and manage occurrence datasets for multiple species. You can either submit a vector of species names, or you can submit a *phylogeny*! The occCitation function will return a named list of citation tables in the case of multiple species.
+
+## occCite with a Phylogeny
+
+Here is an example of how such a search is structured, using an unpublished phylogeny of billfishes.
+
+```{r multispecies_search_with_phylogeny, eval=T, echo=T}
+library(ape)
+#Get tree
+treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite')
+phylogeny <- ape::read.nexus(treeFile)
+tree <- ape::extract.clade(phylogeny, 18)
+#Query databases for names
+myPhyOccCiteObject <- studyTaxonList(x = tree, 
+                                     datasources = "National Center for Biotechnology Information")
+#Query GBIF for occurrence data
+myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
+                            datasources = "gbif",
+                            GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
+                            loadLocalGBIFDownload = T,
+                            checkPreviousGBIFDownload = F)
+# What does a multispecies query look like?
+summary(myPhyOccCiteObject)
+```
+
+When you have results for multiple species, as in this case, you can also plot the summary figures either for the whole search...
+
+```{r plotting all species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+plot(myPhyOccCiteObject)
+```
+
+*or* you can plot the results by species!
+
+```{r plotting phylogenetic search by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+plot(myPhyOccCiteObject, bySpecies = T)
+```
+
+And then you can print out the citations, separated by species (or not, but in this example, they're separate).
+
+```{r getting_citations_for_a_multispecies_search, echo=T}
+#Get citations
+myPhyOccCitations <- occCitation(myPhyOccCiteObject)
+
+#Print citations as text with accession dates.
+print(myPhyOccCitations, bySpecies = T)
+```

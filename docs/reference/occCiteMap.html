@@ -101,7 +101,10 @@ occCiteData object." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/occCite_Vignette.html">An overview of executing searches and generating citations using occCite</a>
+      <a href="../articles/Advanced.html">Advanced execution of occurrence searches and citations generation</a>
+    </li>
+    <li>
+      <a href="../articles/Simple.html">Simple execution of occurrence searches and citation generation</a>
     </li>
   </ul>
 </li>
@@ -184,14 +187,14 @@ points are plotted.</p></td>
     </tr>
     <tr>
       <th>awesomeMarkers</th>
-      <td><p>Logical; if `TRUE` (default), mapped points will
-be `awesomeMarkers` attributed with an icon for a globe for GBIF, a leaf
+      <td><p>Logical; if <code>TRUE</code> (default), mapped points will
+be <code>awesomeMarkers</code> attributed with an icon for a globe for GBIF, a leaf
 for BIEN, or a database if records from both databases have the same
-coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`</p></td>
+coordinates; if <code>FALSE</code>, mapped points will be leaflet <code>circleMarkers</code></p></td>
     </tr>
     <tr>
       <th>cluster</th>
-      <td><p>Logical; if `TRUE` (default is `FALSE`) turns on marker
+      <td><p>Logical; if <code>TRUE</code> (default is <code>FALSE</code>) turns on marker
 clustering, which does not preserve color differences between species</p></td>
     </tr>
     </table>
@@ -201,18 +204,17 @@ clustering, which does not preserve color differences between species</p></td>
     <p>A leaflet map</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>When mapping using `awesomeMarkers` (default), the parameter
+    <p>When mapping using <code>awesomeMarkers</code> (default), the parameter
 species_colors must match those in a specified color library, currently:
 c("red", "lightred", "orange", "beige", "green", "lightgreen", "blue",
 "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray").
-When `awesomeMarkers` is `FALSE` and species_colors are not specified,
-random colors from the `RColorBrewer` Set1 palette are used.</p>
+When <code>awesomeMarkers</code> is <code>FALSE</code> and species_colors are not specified,
+random colors from the <code>RColorBrewer</code> Set1 palette are used.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>myOccCiteObject</span><span class='op'>)</span>
 <span class='fu'>occCiteMap</span><span class='op'>(</span><span class='va'>myOccCiteObject</span>, cluster <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Number of occurrences for Protea cynaroides exceeds limit of 1000, so mapping a random sample of 1000 occurrences...</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='message'>Number of occurrences for Protea cynaroides exceeds limit of 1000, so mapping a random sample of 1000 occurrences...</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

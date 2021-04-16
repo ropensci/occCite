@@ -29,3 +29,5 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 .DS_Store
+/doc/
+/Meta/

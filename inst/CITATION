@@ -1,0 +1,14 @@
+year <- format(Sys.Date(), "%Y")
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "Manual",
+         title = "occCite: Querying and Managing Large Biodiversity Occurrence Datasets",
+         author = c(person("Hannah", "Owens"),
+             				person("Cory", "Merow"),
+								    person("Brian", "Maitner"),
+								    person("Jamie", "Kass"),
+                    person("Vijay", "Barve"),
+                    person("Robert", "Guralnick")),
+         year = year,
+         note = note,
+         url = "https://CRAN.R-project.org/package=occCite")
