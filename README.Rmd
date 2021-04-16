@@ -61,7 +61,7 @@ At its simplest, `occCite` allows you to search for occurrences for a single spe
 mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                             datasources = c("gbif", "bien"),
                             GBIFLogin = GBIFLogin, 
-                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
+                            GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
                             checkPreviousGBIFDownload = T)
 ```
 
@@ -69,7 +69,7 @@ mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
 # Simple search
 mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
                             datasources = c("gbif", "bien"),
-                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
+                            GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
                             loadLocalGBIFDownload = T)
 ```
 
@@ -134,7 +134,7 @@ Querying GBIF can take quite a bit of time, especially for multiple species and/
 myOldOccCiteObject <- occQuery(x = "Protea cynaroides", 
                                   datasources = c("gbif", "bien"), 
                                   GBIFLogin = NULL, 
-                                  GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"),
+                                  GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
                                   loadLocalGBIFDownload = T,
                                   checkPreviousGBIFDownload = F)
 ```
@@ -179,7 +179,7 @@ myPhyOccCiteObject <- studyTaxonList(x = tree, datasources = "National Center fo
 #Query GBIF for occurrence data
 myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject, 
                             datasources = "gbif",
-                            GBIFDownloadDirectory = paste0(path.package("occCite"), "/extdata/"), 
+                            GBIFDownloadDirectory = system.file('extdata/', package='occCite'), 
                             loadLocalGBIFDownload = T,
                             checkPreviousGBIFDownload = F)
 ```
