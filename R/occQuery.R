@@ -87,7 +87,9 @@ occQuery <- function(x = NULL,
 
   # Error check input x.
   if (!is(x, "occCiteData") & !is.vector(x)) {
-    warning("Input x is not of class 'occCiteData', nor is it a vector. Input x must be result of a studyTaxonList() search OR a vector with a list of taxon names.\n")
+    warning(paste0("Input x is not of class 'occCiteData', nor is it a vector.\n",
+                   "Input x must be result of a studyTaxonList() search OR a\n",
+                   "vector with a list of taxon names.\n"))
     return(NULL)
   }
 
@@ -98,12 +100,14 @@ occQuery <- function(x = NULL,
 
   # Error check input datasources.
   if (!is.vector(datasources) && is(datasources, "character")) {
-    warning("Input datasources is not of class 'vector'. Datasources object must be a vector of class 'character'.\n")
+    warning(paste0("Input datasources is not of class 'vector'.\n",
+                   "Datasources object must be a vector of class 'character'.\n"))
     return(NULL)
   }
 
   # Error check input GBIF directory.
-  if ("gbif" %in% datasources && !is.null(GBIFDownloadDirectory) && !is(GBIFDownloadDirectory, "character")) {
+  if ("gbif" %in% datasources && !is.null(GBIFDownloadDirectory) && !is(GBIFDownloadDirectory,
+                                                                        "character")) {
     warning("Input GBIFDownload directory is not of class 'character'.\n")
     return(NULL)
   }
@@ -113,20 +117,24 @@ occQuery <- function(x = NULL,
   }
 
   if (!dir.exists(GBIFDownloadDirectory)) {
-    warning("You have specified a non-existant location for your GBIF data downloads.\n")
+    warning(paste0("You have specified a non-existant location\n",
+                   "for your GBIF data downloads.\n"))
     return(NULL)
   }
 
   if (!is.logical(loadLocalGBIFDownload)) {
-    warning(paste("You have not used a logical operator to specify whether occCite should pull already-downloaded occurrences from ",
-      GBIFDownloadDirectory, ".",
-      sep = ""
+    warning(paste0("You have not used a logical operator to specify\n",
+                   "whether occCite should pull already-downloaded \n",
+                   "occurrences from", GBIFDownloadDirectory, "."
     ))
     return(NULL)
   }
 
   if (!is.logical(checkPreviousGBIFDownload)) {
-    warning(paste("You have not used a logical operator to specify whether occCite should check GBIF for previously-prepared downloads for the taxa specified."))
+    warning(paste0("You have not used a logical operator to\n",
+                   "specify whether occCite should check GBIF\n",
+                   "for previously-prepared downloads for the\n",
+                   "taxa specified."))
     return(NULL)
   }
 
@@ -134,9 +142,9 @@ occQuery <- function(x = NULL,
   sources <- c("gbif", "bien") # sources
   datasources <- tolower(datasources)
   if (sum(!datasources %in% sources) > 0) {
-    warning(paste("The following datasources are not implemented in occQuery(): ",
-      datasources[!datasources %in% sources],
-      sep = ""
+    warning(paste0("The following datasources are ",
+                   "not implemented in occQuery(): ",
+                   datasources[!datasources %in% sources],
     ))
     return(NULL)
   }
@@ -149,7 +157,9 @@ occQuery <- function(x = NULL,
 
   # If GBIF was selected, check to see if GBIF login information is supplied.
   if ("gbif" %in% datasources && !is(GBIFLogin, "GBIFLogin") && !loadLocalGBIFDownload) {
-    warning("You have chosen GBIF as a datasource, but have not supplied GBIF login information. Please create a GBIFLogin object using GBIFLoginManager().\n")
+    warning(paste0("You have chosen GBIF as a datasource,\n",
+                   "but have not supplied GBIF login information.\n",
+                   "Please create a GBIFLogin object using GBIFLoginManager().\n"))
     return(NULL)
   }
 
@@ -172,7 +182,8 @@ occQuery <- function(x = NULL,
     ))
     searchTaxa <- searchTaxa[searchTaxa != "No match"]
     if (length(searchTaxa) == 0) {
-      warning("No names provided had taxonomic matches. The search has been cancelled.")
+      warning(paste0("No names provided had taxonomic matches.\n",
+                     "The search has been cancelled."))
       return(NULL)
     }
   }

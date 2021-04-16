@@ -36,7 +36,8 @@ print.occCiteCitation <- function(x, ...) {
   stopifnot(is(x, "occCiteCitation"))
 
   if (!requireNamespace("RefManageR", quietly = TRUE)) {
-    stop("Package \"RefManageR\" needed for this function to work. Please install it.",
+    stop(paste0("Package \"RefManageR\" needed for this\n",
+                "function to work. Please install it."),
       call. = FALSE
     )
   }

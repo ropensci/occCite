@@ -125,9 +125,10 @@ occCitation <- function(x = NULL) {
 
     # Columns: UUID, Citation, Access date, number of records
     if (!is.null(occResults$GBIF)) {
-      # Assumes all species queries occurred at same time, which may not be the case
+      # Assumes all species queries occurred at same time (may not be)
       # FIX LATER
-      GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified, "T")[[1]][1]
+      GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified,
+                                 "T")[[1]][1]
       if (length(stats::na.exclude(GBIFCitationList)) > 0) {
         gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
           GBIFdatasetKeys, unlist(GBIFCitationList),

@@ -33,9 +33,9 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
       }
     }
     if (length(notInDB) != 0) {
-      warning(paste("Following sources not found in Global Names Index source list: ",
-        paste(notInDB, collapse = ", "),
-        sep = ""
+      warning(paste0("Following sources not found in\n",
+                     "Global Names Index source list: ",
+                     paste(notInDB, collapse = ", ")
       ))
     }
     # Remove invalid sources from datasources
@@ -44,7 +44,8 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
 
   # Populating vector of data sources if no valid sources are supplied
   if (length(datasources) == 0) {
-    warning("No valid taxonomic data sources supplied. Populating default list from all available sources.")
+    warning(paste0("No valid taxonomic data sources supplied.\n",
+                   "Populating default list from all available sources."))
     datasources <- sources$title
   }
 

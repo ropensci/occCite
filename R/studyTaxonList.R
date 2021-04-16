@@ -36,13 +36,15 @@
 #'   )
 #' )
 #' phylogeny <- ape::extract.clade(phylogeny, 18)
-#' studyTaxonList(x = phylogeny, datasources = c("National Center for Biotechnology Information"))
+#' studyTaxonList(x = phylogeny,
+#'                datasources = c("National Center for Biotechnology Information"))
 #' @export
 studyTaxonList <- function(x = NULL,
                            datasources = c("National Center for Biotechnology Information")) {
   # Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x)) && class(x) == "character")) {
-    warning("Target input invalid. Input must be of class 'phylo' or a vector of class 'character'.\n")
+    warning(paste0("Target input invalid. Input must be of class\n",
+                   "'phylo' or a vector of class 'character'.\n"))
     return(NULL)
   }
   else if (is.vector(class(x)) && class(x) == "character") {

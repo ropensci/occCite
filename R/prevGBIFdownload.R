@@ -18,7 +18,8 @@
 #'   email = "ireneAdler@@laScala.org",
 #'   pwd = "sh3r"
 #' )
-#' taxKey <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$key[1]
+#' taxKey <- rgbif::name_suggest(q = "Protea cynaroides",
+#'                               rank = "species")$key[1]
 #' prevGBIFdownload(
 #'   taxonKey = taxKey,
 #'   GBIFLogin = myGBIFLogin

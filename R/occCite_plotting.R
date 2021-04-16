@@ -111,7 +111,8 @@ occCiteMap <- function(occCiteData,
   }
 
   if (!(all(ds_map %in% c("GBIF", "BIEN", "GBIF_BIEN")))) {
-    stop('Input for ds_map must be one, or all of: "GBIF", "BIEN", "GBIF_BIEN".')
+    stop(paste0('Input for ds_map must be one, or all of:\n",
+                "GBIF", "BIEN", "GBIF_BIEN".'))
   }
 
   d.res <- occCiteData@occResults
@@ -125,10 +126,12 @@ occCiteMap <- function(occCiteData,
 
   if (!is.null(species_colors)) {
     if (length(species_colors) != length(sp.names)) {
-      stop("Number of species colors provided must match number of species mapped.")
+      stop(paste0("Number of species colors provided must\n",
+                  "match number of species mapped."))
     }
     if (awesomeMarkers == TRUE & !all(species_colors %in% awesomeMarkers.cols)) {
-      stop("If mapping awesomeMarkers, please specify species colors from those available (see Details in ?occCiteMap)")
+      stop(paste0("If mapping awesomeMarkers, please specify species\n",
+                  "colors from those available (see Details in ?occCiteMap)"))
     }
   }
 
@@ -137,7 +140,11 @@ occCiteMap <- function(occCiteData,
     function(x) tabulate.occResults(d.res[[x]], names(d.res)[x])
   )
   for (i in 1:length(d.tbl)) {
-    if (nrow(d.tbl[[i]]) > 0) d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][, c("longitude", "latitude")]), ]
+    if (nrow(d.tbl[[i]]) > 0){
+      d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,
+                                                         c("longitude",
+                                                           "latitude")]), ]
+    }
     d.tbl.n <- nrow(d.tbl[[i]])
     if (d.tbl.n > map_limit) {
       message(paste0(
@@ -313,7 +320,9 @@ occCiteMap <- function(occCiteData,
 #'   x = myOccCiteObject, bySpecies = FALSE,
 #'   plotTypes = c("yearHistogram", "source", "aggregator")
 #' )
-#' @importFrom ggplot2 ggplot aes geom_histogram ggtitle theme xlab ylab theme_classic scale_y_continuous ggplot_build element_text
+#' @importFrom ggplot2 ggplot aes geom_histogram ggtitle
+#' @importFrom ggplot2theme xlab ylab theme_classic
+#' @importFrom ggplot2 scale_y_continuous ggplot_build element_text
 #' @importFrom stats complete.cases
 #' @importFrom methods is
 #'
@@ -366,7 +375,9 @@ plot.occCiteData <- function(x, ...) {
     function(x) tabulate.occResults(d.res[[x]], names(d.res)[x])
   )
   for (i in 1:length(d.tbl)) {
-    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][, c("longitude", "latitude")]), ]
+    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,
+                                                       c("longitude",
+                                                         "latitude")]), ]
     d.tbl.n <- nrow(d.tbl[[i]])
     if (d.tbl.n == 0) {
       d.tbl[[i]] <- NULL
