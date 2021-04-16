@@ -321,7 +321,7 @@ occCiteMap <- function(occCiteData,
 #'   plotTypes = c("yearHistogram", "source", "aggregator")
 #' )
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle
-#' @importFrom ggplot2theme xlab ylab theme_classic
+#' @importFrom ggplot2 theme xlab ylab theme_classic
 #' @importFrom ggplot2 scale_y_continuous ggplot_build element_text
 #' @importFrom stats complete.cases
 #' @importFrom methods is

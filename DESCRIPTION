@@ -22,8 +22,8 @@ Description: Facilitates the gathering of biodiversity occurrence data
   from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced ability to repeat analyses.
 License: GPL-3
-URL: hannahlowens.github.io/occCite/
-BugReports: github.com/hannahlowens/occCite/issues
+URL: https://hannahlowens.github.io/occCite/
+BugReports: https://github.com/hannahlowens/occCite/issues
 Encoding: UTF-8
 LazyData: true
 Language: en-US
@@ -34,7 +34,8 @@ Suggests:
     viridis,
     remotes,
     RefManageR,
-    testthat
+    testthat,
+    covr
 Imports:
     bib2df,
     BIEN,
