@@ -34,6 +34,7 @@ Suggests:
     viridis,
     remotes,
     RefManageR,
+    rmarkdown,
     testthat,
     covr
 Imports:

@@ -11,6 +11,7 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Codecov test
 coverage](https://codecov.io/gh/hannahlowens/occCite/branch/main/graph/badge.svg)](https://codecov.io/gh/hannahlowens/occCite?branch=main)
+[![](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci/software-review/issues/407)
 <!-- badges: end -->
 
 # Introduction
