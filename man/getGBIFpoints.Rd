@@ -27,7 +27,7 @@ user wishes to check their existing prepared downloads on the GBIF website.}
 \value{
 A list containing \enumerate{ \item a data frame of occurrence data;
 \item GBIF search metadata; \item a data frame containing the raw results of
- a query to `rgbif::occ_download_get()`.}
+a query to \code{rgbif::occ_download_get()}.}
 }
 \description{
 Downloads occurrence points and useful related information

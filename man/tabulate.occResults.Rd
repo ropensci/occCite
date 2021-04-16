@@ -7,17 +7,17 @@
 tabulate.occResults(x, sp.name)
 }
 \arguments{
-\item{x}{One species' worth of results from an `occCiteData` object}
+\item{x}{One species' worth of results from an \code{occCiteData} object}
 
-\item{sp.name}{A character string that is a species name from `x`}
+\item{sp.name}{A character string that is a species name from \code{x}}
 }
 \value{
 A table that can be more easily mapped and used
 for summary plots.
 }
 \description{
-This is a helper function that tabulates `occCiteData`
-objects for use by occCiteMap and `plot`.
+This is a helper function that tabulates \code{occCiteData}
+objects for use by occCiteMap and \code{plot}.
 }
 \examples{
 data(myOccCiteObject)

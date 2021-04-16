@@ -60,3 +60,4 @@ Imports:
     waffle
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
+Roxygen: list (markdown = TRUE, roclets = c ("namespace", "rd", "srr::srr_stats_roclet"))

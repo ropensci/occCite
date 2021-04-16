@@ -7,7 +7,7 @@
 prevGBIFdownload(taxonKey = "No key", GBIFLogin)
 }
 \arguments{
-\item{taxonKey}{A taxon key as returned from `rgbif::name_suggest()`.}
+\item{taxonKey}{A taxon key as returned from \code{rgbif::name_suggest()}.}
 
 \item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to
 GBIF to begin the download.}

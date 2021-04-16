@@ -3,18 +3,18 @@
 \docType{data}
 \name{myOccCiteObject}
 \alias{myOccCiteObject}
-\title{Results of an occCite search for *Protea cynaroides*}
+\title{Results of an occCite search for \emph{Protea cynaroides}}
 \format{
-An `occCiteData` object with the following slots:
+An \code{occCiteData} object with the following slots:
 \describe{
- \item{userQueryType}{What kind of query was made}
- \item{userSpecTaxonomy}{A vector of taxonomic sources specified}
- \item{cleanedTaxonomy}{A data frame with results of taxonomic cleanup}
- \item{occSources}{A vector of which databases were queried
- (i.e. GBIF and BIEN)}
- \item{occCiteSearchDate}{When the search was made}
- \item{occResults}{A list of length 1 named "Protea cynaroides".
- Contains a list of length 2 with results from each database, GBIF and BIEN}
+\item{userQueryType}{What kind of query was made}
+\item{userSpecTaxonomy}{A vector of taxonomic sources specified}
+\item{cleanedTaxonomy}{A data frame with results of taxonomic cleanup}
+\item{occSources}{A vector of which databases were queried
+(i.e. GBIF and BIEN)}
+\item{occCiteSearchDate}{When the search was made}
+\item{occResults}{A list of length 1 named "Protea cynaroides".
+Contains a list of length 2 with results from each database, GBIF and BIEN}
 }
 }
 \source{
@@ -28,7 +28,7 @@ data aggregators.
 myOccCiteObject
 }
 \description{
-Results of an occCite search for *Protea cynaroides*
+Results of an occCite search for \emph{Protea cynaroides}
 }
 \examples{
 \donttest{
