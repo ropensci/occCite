@@ -67,14 +67,7 @@
   <a href="news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/hannahlowens/occCite/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -101,7 +94,7 @@
 <a href="#setup" class="anchor"></a>Setup</h1>
 <p>If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below to show you the format. <em>You will need to provide actual account information.</em> This is because you will actually be downloading <em>all</em> of the records available for the species using <code>occ_download()</code>, instead of getting results from <code>occ_search()</code>, which has a hard limit of 200,000 occurrences.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hannahlowens/occCite">occCite</a></span><span class="op">)</span>;
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">occCite</span><span class="op">)</span>;
 <span class="co">#Creating a GBIF login</span>
 <span class="va">GBIFLogin</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/GBIFLoginManager.html">GBIFLoginManager</a></span><span class="op">(</span>user <span class="op">=</span> <span class="st">"occCiteTester"</span>,
                           email <span class="op">=</span> <span class="st">"****@yahoo.com"</span>,
@@ -744,9 +737,7 @@
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=occCite">https://​cloud.r-project.org/​package=occCite</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/hannahlowens/occCite/">https://​github.com/​hannahlowens/​occCite/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/hannahlowens/occCite/issues">https://​github.com/​hannahlowens/​occCite/​issues</a>
+<li>Report a bug at <br><a href="github.com/hannahlowens/occCite/issues">github.com/​hannahlowens/​occCite/​issues</a>
 </li>
 </ul>
 </div>

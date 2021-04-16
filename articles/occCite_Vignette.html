@@ -67,14 +67,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/hannahlowens/occCite/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -95,9 +88,9 @@
                         <h4 class="author">Vijay Barve</h4>
                         <h4 class="author">Robert Guralnick</h4>
             
-            <h4 class="date">2021-04-15</h4>
+            <h4 class="date">2021-04-16</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/hannahlowens/occCite/blob/master/vignettes/occCite_Vignette.Rmd"><code>vignettes/occCite_Vignette.Rmd</code></a></small>
+      
       <div class="hidden name"><code>occCite_Vignette.Rmd</code></div>
 
     </div>
@@ -116,7 +109,7 @@
 <a href="#setup" class="anchor"></a>Setup</h1>
 <p>If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below to show you the format. <em>You will need to provide actual account information.</em> This is because you will actually be downloading <em>all</em> of the records available for the species using <code>occ_download()</code>, instead of getting results from <code>occ_search()</code>, which has a hard limit of 200,000 occurrences.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hannahlowens/occCite">occCite</a></span><span class="op">)</span>;
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">occCite</span><span class="op">)</span>;
 <span class="co">#Creating a GBIF login</span>
 <span class="va">GBIFLogin</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/GBIFLoginManager.html">GBIFLoginManager</a></span><span class="op">(</span>user <span class="op">=</span> <span class="st">"occCiteTester"</span>,
                               email <span class="op">=</span> <span class="st">"****@yahoo.com"</span>,
@@ -315,7 +308,7 @@
 <code class="sourceCode R"><span class="co">#The full summary</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">myOldOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code>##  
-##  OccCite query occurred on: 15 April, 2021
+##  OccCite query occurred on: 16 April, 2021
 ##  
 ##  User query type: User-supplied list of taxa.
 ##  
@@ -399,7 +392,7 @@
 <span class="co"># What does a multispecies query look like?</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code>##  
-##  OccCite query occurred on: 15 April, 2021
+##  OccCite query occurred on: 16 April, 2021
 ##  
 ##  User query type: User-supplied phylogeny.
 ##  
@@ -623,7 +616,7 @@
 ## R Core Team. (2021). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 ## Ranz J (2017). Banco de Datos de la Biodiversidad de la Comunitat Valenciana. Biodiversity data bank of Generalitat Valenciana. https://doi.org/10.15468/b4yqdy. Accessed via GBIF on 2019-07-04.
 ## Robins R (2021). UF FLMNH Ichthyology. Version 117.307. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
-## UMS PatriNat (OFB-CNRS-MNHN), Paris (2020). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.1. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2019-07-04.</code></pre>
+## UMS PatriNat (OFB-CNRS-MNHN), Paris (2021). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.1. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2019-07-04.</code></pre>
 <pre><code>## Warning in utils::citation(pkg): no date field in DESCRIPTION file of package
 ## 'occCite'
 
