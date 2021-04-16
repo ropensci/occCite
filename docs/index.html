@@ -91,6 +91,10 @@
   <div class="contents col-md-9">
 
 
+<div id="summary" class="section level2">
+<h2 class="hasAnchor">
+<a href="#summary" class="anchor"></a>Summary</h2>
+<p>The <code>occCite</code> workflow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). <code>occCite</code> then rectifies these names by checking them against one or more taxonomic databases, which can be specified by the user (see the <a href="http://gni.globalnames.org/data_sources">Global Names List</a>). The results of the taxonomic rectification are then kept in an <code>occCiteData</code> object in local memory. Next, <code>occCite</code> takes the <code>occCiteData</code> object and user-defined search parameters to query BIEN (through <code>rbien</code>) and/or GBIF(through <code>rGBIF</code>) for records. The results are appended to the <code>occCiteData</code> object, along with metadata on the search. Finally, the user can pass the <code>occCiteData</code> object to <code>occCitation</code>, which compiles citations for the primary providers, database aggregators, and <code>R</code> packages used to build the dataset.</p>
 <p>Please cite occCite. Run the following to get the appropriate citation for the version you’re using:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"occCite"</span><span class="op">)</span></code></pre></div>
@@ -109,15 +113,7 @@
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">##     note = {R package version 0.4.7},</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">##     url = {https://CRAN.R-project.org/package=occCite},</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   }</span></span></code></pre></div>
-<p>To get started, see:</p>
-<ul>
-<li>occCite introduction vignette (<a href="https://hannahlowens.github.io/occCite/articles/Advanced.html" class="uri">https://hannahlowens.github.io/occCite/articles/Advanced.html</a>)</li>
-<li>occCite advanced feature vignette (<a href="https://docs.ropensci.org/rgbif/articles/rgbif.html" class="uri">https://docs.ropensci.org/rgbif/articles/rgbif.html</a>)</li>
-<li>Function reference <a href="https://hannahlowens.github.io/occCite/reference/index.html" class="uri">https://hannahlowens.github.io/occCite/reference/index.html</a>
-</li>
-<li>YouTube tutorial (<a href="https://www.youtube.com/watch?v=7qSCULN_VjY&amp;t=17s" class="uri">https://www.youtube.com/watch?v=7qSCULN_VjY&amp;t=17s</a>)</li>
-</ul>
-<p>The <code>occCite</code> manuscript is currently in review. Check back soon for more information on that!</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -128,6 +124,18 @@
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"DeveloperName/PackageName"</span><span class="op">)</span><span class="op">(</span><span class="st">"hannahlowens/occCite"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://hannahlowens.github.io/occCite/">"occCite"</a></span><span class="op">)</span></code></pre></div>
+</div>
+<div id="getting-started" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-started" class="anchor"></a>Getting Started</h2>
+<ul>
+<li>occCite introduction vignette (<a href="https://hannahlowens.github.io/occCite/articles/Advanced.html" class="uri">https://hannahlowens.github.io/occCite/articles/Advanced.html</a>)</li>
+<li>occCite advanced feature vignette (<a href="https://docs.ropensci.org/rgbif/articles/rgbif.html" class="uri">https://docs.ropensci.org/rgbif/articles/rgbif.html</a>)</li>
+<li>Function reference <a href="https://hannahlowens.github.io/occCite/reference/index.html" class="uri">https://hannahlowens.github.io/occCite/reference/index.html</a>
+</li>
+<li>YouTube tutorial (<a href="https://www.youtube.com/watch?v=7qSCULN_VjY&amp;t=17s" class="uri">https://www.youtube.com/watch?v=7qSCULN_VjY&amp;t=17s</a>)</li>
+</ul>
+<p>The <code>occCite</code> manuscript is currently in review. Check back soon for more information on that!</p>
 </div>
 <div id="meta" class="section level2">
 <h2 class="hasAnchor">
