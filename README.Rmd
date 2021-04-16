@@ -29,41 +29,37 @@ knitr::opts_knit$set(root.dir = paste0(path.package("occCite"), "/extdata/"))
 [![](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci/software-review/issues/407)
 <!-- badges: end -->
 
-Please cite rgbif. Run the following to get the appropriate citation for the version you're using:
+Please cite occCite. Run the following to get the appropriate citation for the version you're using:
 
-```r
-citation(package = "rgbif")
+```{r}
+citation(package = "occCite")
 ```
 
 To get started, see:
 
-* occCite introduction vignette (https://docs.ropensci.org/rgbif/articles/rgbif.html)
-* occCite advanced feature vignette 
-* Function reference (https://docs.ropensci.org/rgbif/reference/index.html): an overview of all `rgbif` functions.
-* Articles (https://docs.ropensci.org/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
+* occCite introduction vignette (https://hannahlowens.github.io/occCite/articles/Advanced.html)
+* occCite advanced feature vignette (https://docs.ropensci.org/rgbif/articles/rgbif.html)
+* Function reference https://hannahlowens.github.io/occCite/reference/index.html
+* YouTube tutorial (https://www.youtube.com/watch?v=7qSCULN_VjY&t=17s)
 
-Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif], [Ruby][gbifrb], and [PHP][phpgbif] clients.
+The `occCite` manuscript is currently in review. Check back soon for more information on that!
 
-Note: Maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
 
 ## Installation
 
 ```{r eval=FALSE}
-install.packages("rgbif")
+install.packages("occCite")
 ```
 
 Or, install development version
 
 ```{r eval=FALSE}
-pak::pkg_install("ropensci/rgbif")
-# OR
-install.packages("rgbif", repos="https://dev.ropensci.org")
+devtools::install_github("DeveloperName/PackageName")("hannahlowens/occCite")
 ```
 
 ```{r}
-library("rgbif")
+library("occCite")
 ```
-
 
 ## Meta
 
@@ -72,5 +68,3 @@ library("rgbif")
 * Get citation information for `occCite` in R using `citation(package = 'occCite')`
 
 - - -
-
-For an overview tutorial video of the package, see [our YouTube video](https://www.youtube.com/watch?v=7qSCULN_VjY&t=17s).
