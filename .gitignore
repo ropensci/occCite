@@ -5,6 +5,7 @@ doc
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
 
 # History files
 .Rapp.history

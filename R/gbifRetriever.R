@@ -14,6 +14,7 @@
 #' specified directory. (3) the raw occurrence data from GBIF.
 #'
 #' @keywords internal
+#' @noRd
 
 gbifRetriever <- function (taxon = NULL){
   #Error checking

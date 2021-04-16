@@ -10,6 +10,7 @@
 #' \code{\link{getBIENpoints}} results.
 #'
 #' @keywords internal
+#' @noRd
 
 GBIFtableCleanup <- function(GBIFtable){
 

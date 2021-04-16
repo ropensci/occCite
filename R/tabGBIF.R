@@ -14,6 +14,8 @@
 #' the specified directory.}
 #'
 #' @keywords internal
+#'
+#' @noRd
 
 tabGBIF <- function(GBIFresults, taxon){
 
