@@ -22,9 +22,11 @@ logging in to GBIF.}
 
 \examples{
 \donttest{
-GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
-     email = "****@yahoo.com",
-     pwd = "12345")
+GBIFLogin <- GBIFLoginManager(
+  user = "occCiteTester",
+  email = "****@yahoo.com",
+  pwd = "12345"
+)
 }
 
 }

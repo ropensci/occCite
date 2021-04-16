@@ -22,7 +22,7 @@ objects for use by occCiteMap and `plot`.
 \examples{
 data(myOccCiteObject)
 tabulate.occResults(myOccCiteObject@occResults,
-                    sp.name = "Protea cynaroides")
-
+  sp.name = "Protea cynaroides"
+)
 }
 \keyword{Internal}

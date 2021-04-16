@@ -24,8 +24,9 @@ taxonomic database, returns vector for use in database queries, as well as
 warnings if the name is invalid.
 }
 \examples{
-#Inputting taxonomic name and specifying what taxonomic sources to search
-taxonRectification(taxName = "Buteo buteo hartedi",
-                   datasources = 'National Center for Biotechnology Information')
-
+# Inputting taxonomic name and specifying what taxonomic sources to search
+taxonRectification(
+  taxName = "Buteo buteo hartedi",
+  datasources = "National Center for Biotechnology Information"
+)
 }

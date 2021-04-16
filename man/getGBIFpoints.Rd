@@ -35,9 +35,11 @@ for processing within other occCite functions
 }
 \examples{
 \dontrun{
-getGBIFpoints(taxon="Gadus morhua",
-              GBIFLogin = myGBIFLogin,
-              GBIFDownloadDirectory = NULL)
+getGBIFpoints(
+  taxon = "Gadus morhua",
+  GBIFLogin = myGBIFLogin,
+  GBIFDownloadDirectory = NULL
+)
 }
 
 }

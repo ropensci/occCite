@@ -32,7 +32,7 @@ Results of an occCite search for *Protea cynaroides*
 }
 \examples{
 \donttest{
- myOccCiteObject
+myOccCiteObject
 }
 }
 \keyword{datasets}

@@ -61,5 +61,4 @@ random colors from the `RColorBrewer` Set1 palette are used.
 \examples{
 data(myOccCiteObject)
 occCiteMap(myOccCiteObject, cluster = FALSE)
-
 }

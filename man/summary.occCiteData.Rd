@@ -18,5 +18,4 @@ Displays a summary of relevant stats about a query
 
 data(myOccCiteObject)
 summary(myOccCiteObject)
-
 }

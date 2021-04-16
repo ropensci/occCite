@@ -56,30 +56,36 @@ Takes rectified list of specimens from
 }
 \examples{
 \dontrun{
-##If you have already created a occCite object, and have not previously
-##downloaded GBIF data.
-occQuery(x = myOccCiteObject,
-         datasources = c("gbif", "bien"),
-         GBIFLogin = myLogin,
-         GBIFDownloadDirectory = "./Desktop",
-         loadLocalGBIFDownload = F)
+## If you have already created a occCite object, and have not previously
+## downloaded GBIF data.
+occQuery(
+  x = myOccCiteObject,
+  datasources = c("gbif", "bien"),
+  GBIFLogin = myLogin,
+  GBIFDownloadDirectory = "./Desktop",
+  loadLocalGBIFDownload = F
+)
 
 ## If you don't have a occCite object yet
-occQuery(x = c("Buteo buteo", "Protea cynaroides"),
-         datasources = c("gbif", "bien"),
-         GBIFLogin = myLogin,
-         GBIFOverwrite = T,
-         GBIFDownloadDirectory = "./Desktop",
-         loadLocalGBIFDownload = F)
+occQuery(
+  x = c("Buteo buteo", "Protea cynaroides"),
+  datasources = c("gbif", "bien"),
+  GBIFLogin = myLogin,
+  GBIFOverwrite = T,
+  GBIFDownloadDirectory = "./Desktop",
+  loadLocalGBIFDownload = F
+)
 
 ## If you have previously downloaded occurrence data from GBIF
 ## and saved it in a folder called "GBIFDownloads".
-occQuery(x = c("Buteo buteo", "Protea cynaroides"),
-         datasources = c("gbif", "bien"),
-         GBIFLogin = myLogin,
-         GBIFoverwrite = T,
-         GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
-         loadLocalGBIFDownload = T)
+occQuery(
+  x = c("Buteo buteo", "Protea cynaroides"),
+  datasources = c("gbif", "bien"),
+  GBIFLogin = myLogin,
+  GBIFoverwrite = T,
+  GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
+  loadLocalGBIFDownload = T
+)
 }
 
 }

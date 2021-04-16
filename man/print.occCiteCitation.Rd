@@ -28,5 +28,4 @@ print(myOccCiteObject)
 # Print citations for each species individually
 data(myOccCiteObject)
 print(myOccCiteObject, bySpecies = TRUE)
-
 }
