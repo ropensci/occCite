@@ -62,7 +62,7 @@ install.packages("occCite")
 Or, install development version
 
 ``` r
-devtools::install_github("DeveloperName/PackageName")("hannahlowens/occCite")
+devtools::install_github("hannahlowens/occCite")
 ```
 
 ``` r
