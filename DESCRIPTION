@@ -2,7 +2,6 @@ Package: occCite
 Type: Package
 Title: Querying and Managing Large Biodiversity Occurrence Datasets
 Version: 0.4.7
-Year: 2021
 Authors@R: c(
   person(given = "Hannah L.", family = "Owens", ,"hannah.owens@gmail.com", role=c("aut","cre"),
     comment = c(ORCID = "0000-0003-0071-1745")),
@@ -35,7 +34,6 @@ Suggests:
     viridis,
     remotes,
     RefManageR,
-    rmarkdown,
     testthat,
     covr
 Imports:
