@@ -2,24 +2,16 @@
 This is a package update. In this version, I have:
 
 * Made internal logic made more robust to various error scenarios.
-* Written in warnings to user if no taxonomic matches exist for a given name (but won't crash a search loop).
+* Written in warnings to user if no taxonomic matches exist for a given name
+* If at least one search name has a valid taxonomic match, a search loop will not crash
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2
 * win-builder (devel and release)
-* r-hub
+* ubuntu 20.04 (devel and release; on GitHub Actions), R 4.0.5
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
-
-There was 1 NOTE when using Windows Server 2008 R2 SP1, R-devel, 32/64 bit on r-hub.
-
-* checking examples ... NOTE
-Examples with CPU (user + system) or elapsed time > 5s
-                  user system elapsed
-   studyTaxonList  0.8   0.08     5.1
-               
-This example uses an API. Usually it is faster than 5s.
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 I also ran tools::check_packages_in_dir() check on downstream dependencies of 
