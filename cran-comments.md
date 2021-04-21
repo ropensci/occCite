@@ -17,8 +17,12 @@ This is a package update. In this version, I have:
 * A PREPERROR failure occurred when using rhub to check the Fedora Linux, R-devel, clang, gfortran platform. The message reads: "Error: Bioconductor version '3.13' requires R version '4.1'; R version is too new;". Bioconductor is not a downstream dependency of occCite, so I am unsure how to proceed.
 * A PREPERROR was also signaled for the rhub checks of the Ubuntu Linux 20.04.1 LTS, R-release, GCC platform and Ubuntu Linux 20.04.1 LTS, R-release, GCC platfrom, but the checks still completed successfully with no errors, warnings, or notes.
 
+## CRAN reviewer comments addressed
+
+* LICENSE file deleted
+
 ## Downstream dependencies
-I also ran tools::check_packages_in_dir() check on downstream dependencies of 
+I ran tools::check_packages_in_dir() check on downstream dependencies of 
 occCite. 
 
 All packages that I could install passed with no ERRORs or WARNINGs.
