@@ -30,32 +30,31 @@ Language: en-US
 Depends: R (>= 3.5.0)
 Suggests:
     rmarkdown,
-    RColorBrewer,
-    viridis,
     remotes,
     RefManageR,
     testthat,
-    covr
+    covr,
+    ape,
+    knitr
 Imports:
     bib2df,
     BIEN,
     bit64,
     dplyr,
-    ape,
     lubridate,
     methods,
     rgbif (>= 3.1),
     taxize,
     stringr,
-    knitr,
     stats,
     leaflet,
     htmltools,
     ggplot2,
     rlang,
-    magrittr,
     tidyr,
     RPostgreSQL,
+    RColorBrewer,
+    viridis,
     DBI,
     waffle
 VignetteBuilder: knitr

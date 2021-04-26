@@ -85,6 +85,7 @@ tabulate.occResults <- function(x, sp.name) {
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
 #' @importFrom stats complete.cases
+#' @importFrom RColorBrewer brewer.pal
 #'
 #' @export
 #'
@@ -325,6 +326,7 @@ occCiteMap <- function(occCiteData,
 #' @importFrom ggplot2 scale_y_continuous ggplot_build element_text
 #' @importFrom stats complete.cases
 #' @importFrom methods is
+#' @importFrom viridis viridis
 #'
 #' @method plot occCiteData
 #' @export
