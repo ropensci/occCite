@@ -1,4 +1,4 @@
-# occCite v0.5-alpha
+# occCite 0.4.7.9000
 
 * Ongoing development
 

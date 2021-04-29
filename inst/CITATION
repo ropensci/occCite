@@ -11,4 +11,5 @@ bibentry(bibtype = "Manual",
                     person("Robert", "Guralnick")),
          year = year,
          note = note,
-         url = "https://CRAN.R-project.org/package=occCite")
+         url = "https://CRAN.R-project.org/package=occCite",
+         doi = "https://doi.org/10.5281/zenodo.4726676")
