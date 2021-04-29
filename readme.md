@@ -43,8 +43,9 @@ citation(package = "occCite")
     ## 
     ## Owens H, Merow C, Maitner B, Kass J, Barve V, Guralnick R (2021).
     ## _occCite: Querying and Managing Large Biodiversity Occurrence
-    ## Datasets_. R package version 0.4.7, <URL:
-    ## https://CRAN.R-project.org/package=occCite>.
+    ## Datasets_. doi: 10.5281/zenodo.4726676 (URL:
+    ## https://doi.org/10.5281/zenodo.4726676), R package version 0.4.7.9000,
+    ## <URL: https://CRAN.R-project.org/package=occCite>.
     ## 
     ## A BibTeX entry for LaTeX users is
     ## 
@@ -52,8 +53,9 @@ citation(package = "occCite")
     ##     title = {occCite: Querying and Managing Large Biodiversity Occurrence Datasets},
     ##     author = {Hannah Owens and Cory Merow and Brian Maitner and Jamie Kass and Vijay Barve and Robert Guralnick},
     ##     year = {2021},
-    ##     note = {R package version 0.4.7},
+    ##     note = {R package version 0.4.7.9000},
     ##     url = {https://CRAN.R-project.org/package=occCite},
+    ##     doi = {https://doi.org/10.5281/zenodo.4726676},
     ##   }
 
 ## Installation
