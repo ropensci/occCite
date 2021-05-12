@@ -98,7 +98,7 @@
                         <h4 class="author">Vijay Barve</h4>
                         <h4 class="author">Robert Guralnick</h4>
             
-            <h4 class="date">2021-04-29</h4>
+            <h4 class="date">2021-05-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hannahlowens/occCite/blob/master/vignettes/Simple.Rmd"><code>vignettes/Simple.Rmd</code></a></small>
       <div class="hidden name"><code>Simple.Rmd</code></div>
@@ -220,43 +220,18 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Get citations</span>
 <span class="va">mySimpleOccCitations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/occCitation.html">occCitation</a></span><span class="op">(</span><span class="va">mySimpleOccCiteObject</span><span class="op">)</span></code></pre></div>
+<pre><code>## Error in data.frame(as.character(rep("BIEN", length(BIENdatasetKeys))), : arguments imply differing number of rows: 5, 4</code></pre>
 <p>Here is a simple way of generating a formatted citation document from the results of <code><a href="../reference/occCitation.html">occCitation()</a></code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mySimpleOccCitations</span><span class="op">)</span></code></pre></div>
-<pre><code>## Writing 5 Bibtex entries ... OK
-## Results written to file 'temp.bib'</code></pre>
-<pre><code>## Warning: `as_data_frame()` was deprecated in tibble 2.0.0.
-## Please use `as_tibble()` instead.
-## The signature and semantics have changed, see `?as_tibble`.</code></pre>
-<pre><code>## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet automatically identified occurrences. Version 1.2. Pl@ntNet. https://doi.org/10.15468/mma2ec. Accessed via GBIF on 2020-11-23.
-## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet observations. Version 1.2. Pl@ntNet. https://doi.org/10.15468/gtebaa. Accessed via GBIF on 2020-11-23.
-## Cameron E, Auckland Museum A M (2021). Auckland Museum Botany Collection. Version 1.59. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2020-11-23.
-## Capers R (2014). CONN. University of Connecticut. https://doi.org/10.15468/w35jmd. Accessed via GBIF on 2020-11-23.
-## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2021). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.5.2. https://CRAN.R-project.org/package=rgbif.
-## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
-## de Vries H, Lemmens M. Observation.org, Nature data from around the World. Observation.org. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2020-11-23.
-## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2020-11-23.
-## Maitner, B. (2020). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.4. https://CRAN.R-project.org/package=BIEN.
-## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.
-## MNHN, Chagnoux S (2021). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.207. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2020-11-23.
-## MNHN. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2020-11-23.
-## NSW. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2021). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.4.7.9000. https://CRAN.R-project.org/package=occCite.
-## R Core Team. (2021). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
-## SANBI. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2020-11-23.
-## Solomon J, Stimmel H (2021). Tropicos Specimen Data. Missouri Botanical Garden. https://doi.org/10.15468/hja69f. Accessed via GBIF on 2020-11-23.
-## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2020-11-23.
-## UConn. https://doi.org/10.15468/dl.fpwlzt. Accessed via BIEN on 2018-08-14.
-## Ueda K (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2020-11-23.</code></pre>
+<pre><code>## Error in print(mySimpleOccCitations): object 'mySimpleOccCitations' not found</code></pre>
 </div>
 <div id="simple-taxonomic-rectification" class="section level2">
 <h2 class="hasAnchor">
 <a href="#simple-taxonomic-rectification" class="anchor"></a>Simple Taxonomic Rectification</h2>
 <p>In the simplest of searches, such as the one above, the taxonomy of your input species name is automatically rectified through the <code>occCite</code> function <code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> using <code>gnr_resolve()</code> from the <code>taxize</code> <code>R</code> package. If you would like to change the source of the taxonomy being used to rectify your species names, you can specify as many taxonomic repositories as you like from the Global Names Index (GNI). The complete list of GNI repositories can be found <a href="http://gni.globalnames.org/data_sources">here</a>.</p>
 <p><code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> chooses the taxonomic names closest to those being input and documents which taxonomic repositories agreed with those names. <code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> instantiates an <code>occCiteData</code> object the same way <code><a href="../reference/occQuery.html">occQuery()</a></code> does. This object can be passed into <code><a href="../reference/occQuery.html">occQuery()</a></code> to perform your occurrence data search.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Rectify taxonomy</span>
 <span class="va">myTROccCiteObject</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/studyTaxonList.html">studyTaxonList</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Protea cynaroides"</span>, 
                                   datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"National Center for Biotechnology Information"</span>,
