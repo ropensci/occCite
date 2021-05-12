@@ -77,16 +77,16 @@ library("occCite")
 ## Getting Started
 
 -   occCite introduction vignette
-    (<https://hannahlowens.github.io/occCite/articles/Advanced.html>)
+    (<https://hannahlowens.github.io/occCite/articles/Simple.html>)
 -   occCite advanced feature vignette
-    (<https://docs.ropensci.org/rgbif/articles/rgbif.html>)
+    (<https://hannahlowens.github.io/occCite/articles/Advanced.html>)
 -   Function reference
     <https://hannahlowens.github.io/occCite/reference/index.html>
 -   YouTube tutorial
     (<https://www.youtube.com/watch?v=7qSCULN_VjY&t=17s>)
 
-The `occCite` manuscript is currently in review. Check back soon for
-more information on that!
+The `occCite` manuscript has been accepted at *Ecography*. Check back
+soon for the final citation!
 
 ## Meta
 
