@@ -2,6 +2,10 @@
 
 * Ongoing development
 
+# occCite 0.4.8
+
+* Fixed problem with occCitation that caused an error when dataset keys had no associated BIEN data.
+
 # occCite 0.4.7
 
 * Internal logic made more robust to various error scenarios.

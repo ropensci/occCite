@@ -121,6 +121,26 @@ occCitation <- function(x = NULL) {
       DBI::dbDisconnect(con)
 
       # bien sql replacement
+
+      # Handle keys without citations
+      if (nrow(BIENsources) < length(BIENdatasetKeys)) {
+        noNameKeys <- unlist(BIENdatasetKeys[!BIENdatasetKeys %in% BIENsources$datasource_id]) # Gets keys that are missing names
+        datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[,c("DatasetKey", "Dataset")])
+        datasetLookupTable[] <- lapply(datasetLookupTable, as.character)
+        missingNames <- datasetLookupTable$Dataset[datasetLookupTable$DatasetKey %in% noNameKeys] # Pulls missing names
+
+        print(paste0(
+          "NOTE: ", length(BIENdatasetKeys) - nrow(BIENsources),
+          " BIEN dataset(s) for ", sp,
+          " is/are missing citation data. Key(s) missing citations are: ",
+          paste(as.character(noNameKeys), collapse = ", "), ". ",
+          "Source(s) are identified as: ",
+          paste(as.character(unlist(missingNames)), collapse = ", "), "."
+        ))
+        # TO FIX: INSERT NA ROW(s) FOR MISSING CITATION DATA
+        BIENsources[nrow(BIENsources)+(length(BIENdatasetKeys) - nrow(BIENsources)),] <- NA
+        BIENsources$source_name[which(BIENsources$datasource_id %in% noNameKeys)] <- missingNames
+      }
     }
 
     # Columns: UUID, Citation, Access date, number of records
