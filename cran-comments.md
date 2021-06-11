@@ -18,12 +18,11 @@ This is a package update. In this version, I have:
 
 R Under development (unstable) (2021-06-07 r80458)
 
-* A NOTE occurred on windows-latest:
-
-Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
+* A NOTE occurred on win-builder release and windows-latest on GitHub Actions:
   
 Version contains large components (0.4.8)
 
+"Very large components" are necessary for checks, testthat, and vignettes to run in reasonable time.
 
 * A PREPERROR failure occurred when using rhub to check the Windows Server 2008 R2 SP1, R-devel, 32/64 bit and Fedora Linux, R-devel, clang, gfortran platforms. The message reads: "Error: Bioconductor does not yet build and check packages for R version 4.2; see https://bioconductor.org/install". Bioconductor is not a downstream dependency of occCite, so I am unsure how to proceed.
 
