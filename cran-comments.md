@@ -1,9 +1,7 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Made internal logic made more robust to various error scenarios.
-* Written in warnings to user if no taxonomic matches exist for a given name
-* If at least one search name has a valid taxonomic match, a search loop will not crash
+* Fixed a failure in testthat which occurred when BIEN dataset keys had no associated citation provided by BIEN
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2
