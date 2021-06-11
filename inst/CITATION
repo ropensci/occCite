@@ -12,4 +12,4 @@ bibentry(bibtype = "Manual",
          year = year,
          note = note,
          url = "https://CRAN.R-project.org/package=occCite",
-         doi = "https://doi.org/10.5281/zenodo.4726676")
+         doi = "10.5281/zenodo.4726676")
