@@ -1,3 +1,7 @@
+# occCite 0.4.8.9000
+
+* In gbifRetriever, changed rgbif::name_suggests to rgbif::name_backbone. More robust for our purposes.
+
 # occCite 0.4.8
 
 * Fixed problem with occCitation that caused an error when dataset keys had no associated BIEN data.
