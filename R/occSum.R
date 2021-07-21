@@ -55,7 +55,8 @@ summary.occCiteData <- function(object, ...) {
     print(x@cleanedTaxonomy)
   }
 
-  if (length(x@occResults) > 0) {
+  if (!is.null(x@occResults)) {
+    if (length(x@occResults) > 0) {
     cat(
       "\t\n",
       sprintf(
@@ -126,31 +127,34 @@ summary.occCiteData <- function(object, ...) {
       "Sources"
     )
     print(sumTab)
+    }
   }
 
   if ("gbif" %in% x@occSources) {
-    cat(
-      "\t\n",
-      sprintf("GBIF dataset DOIs: %s\n", "\t\n")
-    )
+    if(length(x@occResults) > 0){
+      cat(
+        "\t\n",
+        sprintf("GBIF dataset DOIs: %s\n", "\t\n")
+      )
 
-    # Tabulate DOIs
-    GBIFdoi <- vector(mode = "numeric", length = length(x@occResults))
-    GBIFaccessDate <- vector(mode = "numeric", length = length(x@occResults))
-    for (i in 1:length(x@occResults)) {
-      if (as.numeric(sumTab$Occurrences[[i]]) > 0) {
-        GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
-        GBIFaccessDate[[i]] <- strsplit(
-          x@occResults[[i]]$GBIF$Metadata$modified,
-          "T"
-        )[[1]][1]
-      } else {
-        GBIFdoi[[i]] <- NA
-        GBIFaccessDate[[i]] <- NA
+      # Tabulate DOIs
+      GBIFdoi <- vector(mode = "numeric", length = length(x@occResults))
+      GBIFaccessDate <- vector(mode = "numeric", length = length(x@occResults))
+      for (i in 1:length(x@occResults)) {
+        if (as.numeric(sumTab$Occurrences[[i]]) > 0) {
+          GBIFdoi[[i]] <- x@occResults[[i]]$GBIF$Metadata$doi
+          GBIFaccessDate[[i]] <- strsplit(
+            x@occResults[[i]]$GBIF$Metadata$modified,
+            "T"
+          )[[1]][1]
+        } else {
+          GBIFdoi[[i]] <- NA
+          GBIFaccessDate[[i]] <- NA
+        }
       }
+      doiTab <- as.data.frame(cbind(names(x@occResults), GBIFaccessDate, GBIFdoi))
+      colnames(doiTab) <- c("Species", "GBIF Access Date", "GBIF DOI")
+      print(doiTab)
     }
-    doiTab <- as.data.frame(cbind(names(x@occResults), GBIFaccessDate, GBIFdoi))
-    colnames(doiTab) <- c("Species", "GBIF Access Date", "GBIF DOI")
-    print(doiTab)
   }
 }

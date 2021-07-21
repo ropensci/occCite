@@ -55,6 +55,7 @@ GBIFtableCleanup <- function(GBIFtable) {
       GBIFtable["Dataset"] <- as.factor(unlist(GBIFtable["Dataset"]))
       GBIFtable["DatasetKey"] <- as.factor(unlist(GBIFtable["DatasetKey"]))
       GBIFtable["DataService"] <- as.factor(unlist(GBIFtable["DataService"]))
+      return(GBIFtable)
     } else {
       GBIFtable <- NULL
       GBIFtable["name"] <- NA
@@ -67,7 +68,7 @@ GBIFtableCleanup <- function(GBIFtable) {
       GBIFtable["DatasetKey"] <- NA
       GBIFtable["DataService"] <- NA
       GBIFtable <- as.data.frame(as.list(GBIFtable))
+      return(GBIFtable)
     }
-    return(GBIFtable)
   }
 }

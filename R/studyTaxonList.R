@@ -40,7 +40,7 @@
 #'                datasources = c("National Center for Biotechnology Information"))
 #' @export
 studyTaxonList <- function(x = NULL,
-                           datasources = c("National Center for Biotechnology Information")) {
+                           datasources = "GBIF Backbone Taxonomy") {
   # Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x)) && class(x) == "character")) {
     warning(paste0("Target input invalid. Input must be of class\n",
