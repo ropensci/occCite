@@ -35,11 +35,11 @@ Suggests:
     testthat,
     covr,
     ape,
+    bit64,
     knitr
 Imports:
     bib2df,
     BIEN,
-    bit64,
     dplyr,
     lubridate,
     methods,
