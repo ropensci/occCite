@@ -63,8 +63,7 @@ library("occCite")
 * occCite advanced feature vignette (https://hannahlowens.github.io/occCite/articles/Advanced.html)
 * Function reference https://hannahlowens.github.io/occCite/reference/index.html
 * YouTube tutorial (https://www.youtube.com/watch?v=7qSCULN_VjY&t=17s)
-
-The `occCite` manuscript has been accepted at _Ecography_. Check back soon for the final citation!
+* Software note in _Ecography_ (https://doi.org/10.1111/ecog.05618)
 
 ## Meta
 

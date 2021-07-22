@@ -14,21 +14,25 @@ This is a package update. In this version, I have:
 * rhub
 
 ## R CMD check results
-0 errors | 0 warnings | 2 notes | 1 preperror
+2 errors | 0 warnings | 0 notes | 1 preperror
 
-* A NOTE occurred on win-builder devel:
+* A NOTE occurred on ubuntu-20.04 (devel) on Github Actions:
 
-R Under development (unstable) (2021-06-07 r80458)
+ERROR: dependencies ‘BIEN’, ‘taxize’, ‘RPostgreSQL’ are not available for package ‘occCite’
 
-* A NOTE occurred on win-builder release and windows-latest on GitHub Actions:
-  
-Version contains large components (0.4.8)
+I have verified these packages are available on CRAN.
 
-"Very large components" are necessary for checks, testthat, and vignettes to run in reasonable time.
+* An ERROR occurred on Fedora Linux, R-devel, clang, gfortran on RHub:
 
-* A PREPERROR failure occurred when using rhub to check the Windows Server 2008 R2 SP1, R-devel, 32/64 bit and Fedora Linux, R-devel, clang, gfortran platforms. The message reads: "Error: Bioconductor does not yet build and check packages for R version 4.2; see https://bioconductor.org/install". Bioconductor is not a downstream dependency of occCite, so I am unsure how to proceed.
+ERROR: Bioconductor does not yet build and check packages for R version 4.2; see https://bioconductor.org/install.
 
-* A PREPERROR was signaled when using rhub to check the Ubuntu Linux 20.04.1 LTS, R-release, GCCv platform, but the check still ran successfully.
+This appears to be a setup error, not a problem with occCite, so I am unsure how to proceed.
+
+* A PREPERROR occurred on Ubuntu Linux 20.04.1 LTS, R-release, GCC on RHub:
+
+Checking re-building of vignette outputs ...Build timed out (after 20 minutes). Marking the build as failed. Build was aborted.
+
+This appears to be a setup error, not a problem with occCite, so I am unsure how to proceed.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
