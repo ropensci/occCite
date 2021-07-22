@@ -87,6 +87,9 @@ gbifRetriever <- function(taxon = NULL) {
     occFromGBIF <- tabGBIF(res, taxon = taxon)
     occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]])
 
+    # Fills out "Dataset" column from citation information
+
+
     # Preparing list for return
     outlist <- list()
     outlist[[1]] <- occFromGBIF

@@ -1,7 +1,9 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Fixed a failure in testthat which occurred when BIEN dataset keys had no associated citation provided by BIEN
+* In gbifRetriever, changed rgbif::name_suggests to rgbif::name_backbone. More robust for our purposes.
+* Now fills in "Dataset" column in GBIF search results from GBIF citation information.
+* No longer throws out GBIF occurrences with missing day and month information.
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2

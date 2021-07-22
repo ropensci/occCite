@@ -35,9 +35,6 @@ tabGBIF <- function(GBIFresults, taxon) {
   )
   dataService <- rep("GBIF", nrow(occFromGBIF))
   occFromGBIF <- cbind(occFromGBIF, dataService)
-  # "Dataset" column excluded because not always filled out
-  ## but useful for quick human checks
-  occFromGBIF <- occFromGBIF[stats::complete.cases(occFromGBIF[, -8]), ]
 
   colnames(occFromGBIF) <- c(
     "gbifID", "name", "longitude",
@@ -45,5 +42,13 @@ tabGBIF <- function(GBIFresults, taxon) {
     "year", "Dataset",
     "DatasetKey", "DataService"
   )
+
+  occFromGBIF$Dataset <- unlist(lapply(occFromGBIF$DatasetKey,
+                                       FUN = function(y)
+                                         rgbif::gbif_citation(y)$citation$title))
+
+  # Remove entries with NA values in long, lat, and year
+  occFromGBIF <- occFromGBIF[complete.cases(occFromGBIF[,c("longitude", "latitude", "year")]),]
+
   return(occFromGBIF)
 }

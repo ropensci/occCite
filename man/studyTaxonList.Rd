@@ -4,10 +4,7 @@
 \alias{studyTaxonList}
 \title{Study Taxon List}
 \usage{
-studyTaxonList(
-  x = NULL,
-  datasources = c("National Center for Biotechnology Information")
-)
+studyTaxonList(x = NULL, datasources = "GBIF Backbone Taxonomy")
 }
 \arguments{
 \item{x}{A phylogeny of class 'phylo' or a vector of class 'character'
