@@ -14,13 +14,7 @@ This is a package update. In this version, I have:
 * rhub
 
 ## R CMD check results
-2 errors | 0 warnings | 0 notes | 1 preperror
-
-* A NOTE occurred on ubuntu-20.04 (devel) on Github Actions:
-
-ERROR: dependencies ‘BIEN’, ‘taxize’, ‘RPostgreSQL’ are not available for package ‘occCite’
-
-I have verified these packages are available on CRAN.
+1 error | 0 warnings | 0 notes | 1 preperror
 
 * An ERROR occurred on Fedora Linux, R-devel, clang, gfortran on RHub:
 
@@ -30,9 +24,9 @@ This appears to be a setup error, not a problem with occCite, so I am unsure how
 
 * A PREPERROR occurred on Ubuntu Linux 20.04.1 LTS, R-release, GCC on RHub:
 
-Checking re-building of vignette outputs ...Build timed out (after 20 minutes). Marking the build as failed. Build was aborted.
+Error: No such container: occCite_0.4.9.tar.gz-cdaf7baecae8454a9f6c7a13314760e6-3
 
-This appears to be a setup error, not a problem with occCite, so I am unsure how to proceed.
+Build result was still SUCCESS.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
