@@ -46,5 +46,5 @@ phylogeny <- ape::read.nexus(
 )
 phylogeny <- ape::extract.clade(phylogeny, 18)
 studyTaxonList(x = phylogeny,
-               datasources = c("National Center for Biotechnology Information"))
+               datasources = c("GBIF Backbone Taxonomy"))
 }
