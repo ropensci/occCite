@@ -44,8 +44,8 @@ citation(package = "occCite")
     ## Owens H, Merow C, Maitner B, Kass J, Barve V, Guralnick R (2021).
     ## _occCite: Querying and Managing Large Biodiversity Occurrence
     ## Datasets_. doi: 10.5281/zenodo.4726676 (URL:
-    ## https://doi.org/10.5281/zenodo.4726676), R package version 0.4.7.9000,
-    ## <URL: https://CRAN.R-project.org/package=occCite>.
+    ## https://doi.org/10.5281/zenodo.4726676), R package version 0.4.9, <URL:
+    ## https://CRAN.R-project.org/package=occCite>.
     ## 
     ## A BibTeX entry for LaTeX users is
     ## 
@@ -53,9 +53,9 @@ citation(package = "occCite")
     ##     title = {occCite: Querying and Managing Large Biodiversity Occurrence Datasets},
     ##     author = {Hannah Owens and Cory Merow and Brian Maitner and Jamie Kass and Vijay Barve and Robert Guralnick},
     ##     year = {2021},
-    ##     note = {R package version 0.4.7.9000},
+    ##     note = {R package version 0.4.9},
     ##     url = {https://CRAN.R-project.org/package=occCite},
-    ##     doi = {https://doi.org/10.5281/zenodo.4726676},
+    ##     doi = {10.5281/zenodo.4726676},
     ##   }
 
 ## Installation
@@ -84,9 +84,7 @@ library("occCite")
     <https://hannahlowens.github.io/occCite/reference/index.html>
 -   YouTube tutorial
     (<https://www.youtube.com/watch?v=7qSCULN_VjY&t=17s>)
-
-The `occCite` manuscript has been accepted at *Ecography*. Check back
-soon for the final citation!
+-   Software note in *Ecography* (<https://doi.org/10.1111/ecog.05618>)
 
 ## Meta
 
