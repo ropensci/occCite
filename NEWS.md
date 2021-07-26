@@ -1,3 +1,7 @@
+# occCite 0.4.9.9000
+
+* Development version
+
 # occCite 0.4.9
 
 * In gbifRetriever, changed rgbif::name_suggests to rgbif::name_backbone. More robust for our purposes.
