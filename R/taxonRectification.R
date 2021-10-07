@@ -23,7 +23,15 @@
 #' @export
 #'
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
-  sources <- taxize::gnr_datasources() # Populates the list of data sources
+
+  # Checks for source connectivity
+  if (httr::http_error("https://resolver.globalnames.org/data_sources.json")) {
+    message("No internet connection or data source broken.")
+    return(NULL)
+  } else { # network is up = proceed to download via curl
+    sources <- taxize::gnr_datasources() # Populates the list of data sources
+  }
+
   # Are user-input databases included in list of data sources for Global Names Resolver?
   if (!is.null(datasources)) {
     for (db in datasources) {

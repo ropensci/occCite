@@ -43,7 +43,7 @@ studyTaxonList <- function(x = NULL,
                            datasources = "GBIF Backbone Taxonomy") {
   # Error check inputs (x).
   if (!class(x) == "phylo" & !(is.vector(class(x)) && class(x) == "character")) {
-    warning(paste0("Target input invalid. Input must be of class\n",
+    warning(message("Target input invalid. Input must be of class\n",
                    "'phylo' or a vector of class 'character'.\n"))
     return(NULL)
   }

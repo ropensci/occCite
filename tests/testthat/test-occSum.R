@@ -1,10 +1,8 @@
-context("Testing summary method")
-
 library(occCite)
 
-test_that("summary behaves as expected", {
-  data("myOccCiteObject")
+data("myOccCiteObject")
 
+test_that("input data object for summary behaves as expected", {
   expect_true(class(myOccCiteObject) == "occCiteData")
 
   expect_true("userQueryType" %in% slotNames(myOccCiteObject))
@@ -41,4 +39,12 @@ test_that("summary behaves as expected", {
     "Dataset", "DatasetKey", "DataService"
   )
   %in% colnames(myOccCiteObject@occResults[[1]][[2]][[1]])))
+})
+
+test_that("summary behaves as expected", {
+  expect_error(occCite:::summary.occCiteData())
+  expect_error(occCite:::summary.occCiteData("a"))
+
+  testObject <- occCite:::summary.occCiteData(myOccCiteObject)
+  expect_true(class(testObject) == "data.frame")
 })
