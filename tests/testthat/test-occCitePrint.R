@@ -16,9 +16,9 @@ myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject,
 myPhyOccCitations <- occCitation(myPhyOccCiteObject)
 
 test_that("regular print", {
-  temp<- print(myPhyOccCitations)
+  expect_output(print(myPhyOccCitations))
 })
 
 test_that("print by species", {
-  print(myPhyOccCitations, bySpecies = TRUE)
+  expect_output(print(myPhyOccCitations, bySpecies = TRUE))
 })
