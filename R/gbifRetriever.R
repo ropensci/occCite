@@ -39,7 +39,15 @@ gbifRetriever <- function(taxon = NULL) {
   matchIndex <- NULL
   matchDate <- NULL
   for (i in 1:length(keys)) {
-    metadata <- rgbif::occ_download_meta(key = keys[[i]])
+    tryCatch(expr = metadata <- rgbif::occ_download_meta(key = keys[[i]]),
+             error = function(e) {
+               message(paste("GBIF unreachable at the moment, please try again later. \n"))
+             })
+
+    if(!exists("metadata")){
+      return(invisible(NULL))
+    }
+
     if (metadata$totalRecords > 0) {
       if (!is.na(match(table = unlist(metadata$request), "TAXON_KEY")) &
         taxon_key %in% unlist(metadata$request)) {
@@ -85,10 +93,16 @@ gbifRetriever <- function(taxon = NULL) {
     )
     rawOccs <- res
     occFromGBIF <- tabGBIF(res, taxon = taxon)
-    occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]])
+    for (i in 1:length(keys)) {
+      tryCatch(expr = occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]]),
+               error = function(e) {
+                 message(paste("GBIF unreachable at the moment, please try again later. \n"))
+               })
 
-    # Fills out "Dataset" column from citation information
-
+      if(!exists("occMetadata")){
+        return(invisible(NULL))
+      }
+    }
 
     # Preparing list for return
     outlist <- list()
