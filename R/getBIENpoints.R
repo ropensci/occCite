@@ -19,6 +19,12 @@
 #'
 #' @export
 getBIENpoints <- function(taxon) {
+  # BIEN can't handle taxonomic authority in the search string.
+  taxon <- stringr::str_extract(
+    string = taxon,
+    pattern = "(\\w+\\s\\w+)"
+  )
+
   occs <- BIEN::BIEN_occurrence_species(
     species = taxon, cultivated = T,
     only.new.world = F, native.status = F,
