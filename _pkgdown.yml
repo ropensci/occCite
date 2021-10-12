@@ -8,7 +8,7 @@ template:
   opengraph:
     image:
       src: man/figures/occHex.png
-      alt: "Hex logo of a museum map icon with 'occCite' written below it""
+      alt: "Hex logo of a museum map icon with 'occCite' written below it"
     twitter:
       creator: "@hannahOish"
       card: summary_large_image
