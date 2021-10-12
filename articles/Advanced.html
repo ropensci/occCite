@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Advanced execution of occurrence searches and citations generation • occCite</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -274,11 +280,11 @@
 <p>When you have results for multiple species, as in this case, you can also plot the summary figures either for the whole search…</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span></code></pre></div>
-<p><img src="Advanced_files/figure-html/plotting%20all%20species-1.png" width="33%"><img src="Advanced_files/figure-html/plotting%20all%20species-2.png" width="33%"><img src="Advanced_files/figure-html/plotting%20all%20species-3.png" width="33%"></p>
+<p><img src="Advanced_files/figure-html/plotting%20all%20species-1.png" width="100%"><img src="Advanced_files/figure-html/plotting%20all%20species-2.png" width="100%"><img src="Advanced_files/figure-html/plotting%20all%20species-3.png" width="100%"></p>
 <p><em>or</em> you can plot the results by species!</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span>, bySpecies <span class="op">=</span> <span class="cn">T</span>, plotTypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"yearHistogram"</span>, <span class="st">"source"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-1.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-2.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-3.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-4.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-5.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-6.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-7.png" width="33%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-8.png" width="33%"></p>
+<p><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-1.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-2.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-3.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-4.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-5.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-6.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-7.png" width="100%"><img src="Advanced_files/figure-html/plotting%20phylogenetic%20search%20by%20species-8.png" width="100%"></p>
 <p>And then you can print out the citations, separated by species (or not, but in this example, they’re separate).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Get citations</span>
