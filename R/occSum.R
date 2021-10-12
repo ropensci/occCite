@@ -101,7 +101,7 @@ summary.occCiteData <- function(object, ...) {
         )
       }
       # BIEN counts
-      if (any(x@occSources == "gbif" && length(x@occSources) == 1,
+      if (any(all(x@occSources == "gbif", length(x@occSources) == 1),
         is.null(x@occResults[[i]]$BIEN$OccurrenceTable),
         na.rm = T
       )) {
