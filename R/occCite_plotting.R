@@ -332,6 +332,9 @@ occCiteMap <- function(occCiteData,
 #' @export
 #'
 plot.occCiteData <- function(x, ...) {
+  # Function to wrap labels
+  occ_strwrap <- function(x) {unlist(lapply(strwrap(x, width = 30, simplify= FALSE), paste, collapse = "\n"))}
+
   args <- list(...)
 
   if ("bySpecies" %in% names(args)) {
@@ -422,8 +425,9 @@ plot.occCiteData <- function(x, ...) {
       datasetTab <- sort(table(d$Dataset), decreasing = T)
       pct <- round(datasetTab / sum(datasetTab) * 100)
       lbls <- names(datasetTab)
-      lbls <- paste(lbls, pct) # add percents to labels
+      lbls <- paste0(lbls, " ", pct) # add percents to labels
       lbls <- paste(lbls, "%", sep = "") # add % to labels
+      lbls <- occ_strwrap(lbls)
       names(pct) <- lbls
       pct <- pct[pct > 1]
       if (sum(pct) < 100) {
