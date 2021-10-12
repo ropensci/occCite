@@ -51,11 +51,18 @@ occCitation <- function(x = NULL) {
         ### supplied date from rgbif is date citation was sought
         ### not the date the data was accessed
         for (j in GBIFdatasetKeys) {
-          temp <- gsub(rgbif::gbif_citation(j)$citation$text,
-            pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.",
-            replacement = "",
-            useBytes = T
-          )
+          tryCatch(expr = temp <- gsub(rgbif::gbif_citation(j)$citation$text,
+                                       pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.",
+                                       replacement = "",
+                                       useBytes = T),
+                   error = function(e) {
+                     message(paste("GBIF unreachable at the moment, please try again later. \n"))
+                   })
+
+          if(!exists("temp")){
+            return(invisible(NULL))
+          }
+
           temp <- gsub(temp, pattern = "Occurrence dataset ", replacement = "")
           temp <- paste0(temp, ".")
           GBIFCitationList <- append(GBIFCitationList, temp)
@@ -109,16 +116,22 @@ occCitation <- function(x = NULL) {
       # Name the database type that will be used
       drv <- DBI::dbDriver("PostgreSQL")
       # establish connection with database
-      con <- DBI::dbConnect(drv,
-        host = host,
-        dbname = dbname,
-        user = user,
-        password = password
-      )
+      tryCatch(expr = con <- DBI::dbConnect(drv,
+                                            host = host,
+                                            dbname = dbname,
+                                            user = user,
+                                            password = password),
+               error = function(e) {
+                 message(paste("BIEN unreachable at the moment, please try again later. \n"))
+               })
+
+      if(!exists("con")){
+        return(invisible(NULL))
+      }
 
       BIENsources <- DBI::dbGetQuery(con, statement = query)
-
       DBI::dbDisconnect(con)
+      rm(con)
 
       # bien sql replacement
 
