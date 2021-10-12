@@ -25,11 +25,20 @@ getBIENpoints <- function(taxon) {
     pattern = "(\\w+\\s\\w+)"
   )
 
-  occs <- BIEN::BIEN_occurrence_species(
-    species = taxon, cultivated = T,
-    only.new.world = F, native.status = F,
-    collection.info = T, natives.only = F
-  )
+  tryCatch(expr = try(occs <- BIEN::BIEN_occurrence_species(species = taxon,
+                                                            cultivated = T,
+                                                            only.new.world = F,
+                                                            native.status = F,
+                                                            collection.info = T,
+                                                            natives.only = F),
+                      silent = T),
+           error = function(e) {
+             message(paste("BIEN unreachable at the moment, please try again later. \n"))
+           })
+
+  if(!exists("occs")){
+    return(invisible(NULL))
+  }
 
   if (nrow(occs) == 0) {
     print(paste("There are no BIEN points for ",
