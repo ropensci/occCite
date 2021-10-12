@@ -71,7 +71,13 @@ studyTaxonList <- function(x = NULL,
         invokeRestart("muffleWarning")
       }
     )
-    resolvedNames <- rbind(resolvedNames, newResName)
+    if(is.null(newResName)){
+      warning(message(i, " could not be resolved at this time.\n",
+                      "Please check internet connection and/or try again later.\n"))
+      return(NULL)
+    } else{
+      resolvedNames <- rbind(resolvedNames, newResName)
+    }
   }
 
   colnames(resolvedNames) <- c(

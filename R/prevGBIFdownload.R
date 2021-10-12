@@ -29,11 +29,19 @@
 #' @export
 #'
 prevGBIFdownload <- function(taxonKey = "No key", GBIFLogin) {
-  dl <- rgbif::occ_download_list(
-    user = GBIFLogin@username,
-    pwd = GBIFLogin@pwd,
-    limit = 1000
-  )
+
+
+  tryCatch(expr = dl <- rgbif::occ_download_list(user = GBIFLogin@username,
+                                                 pwd = GBIFLogin@pwd,
+                                                 limit = 1000),
+           error = function(e) {
+             message(paste("GBIF unreachable at the moment, please try again later. \n"))
+           })
+
+  if(!exists("dl")){
+    return(invisible(NULL))
+  }
+
   recKey <- NULL
   retmat <- NULL
   for (i in 1:dim(dl$results)[1]) {

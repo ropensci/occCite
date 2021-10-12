@@ -26,7 +26,7 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
 
   # Checks for source connectivity
   if (httr::http_error("https://resolver.globalnames.org/data_sources.json")) {
-    message("No internet connection or data source broken.")
+    message("Cannot connect to Global Names Resolver at this time.")
     return(NULL)
   } else { # network is up = proceed to download via curl
     sources <- taxize::gnr_datasources() # Populates the list of data sources
