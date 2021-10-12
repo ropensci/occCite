@@ -31,6 +31,8 @@ knitr::opts_knit$set(root.dir = paste0(path.package("occCite"), "/extdata/"))
 
 <!-- badges: end -->
 
+# occCite <img src='man/figures/logo.png' align="right" height="138" />
+
 ## Summary
 
 The `occCite` workflow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). `occCite` then rectifies these names by checking them against one or more taxonomic databases, which can be specified by the user (see the [Global Names List](http://gni.globalnames.org/data_sources)). The results of the taxonomic rectification are then kept in an `occCiteData` object in local memory. Next, `occCite` takes the `occCiteData` object and user-defined search parameters to query BIEN (through `rbien`) and/or GBIF(through `rGBIF`) for records. The results are appended to the `occCiteData` object, along with metadata on the search. Finally, the user can pass the `occCiteData` object to `occCitation`, which compiles citations for the primary providers, database aggregators, and `R` packages used to build the dataset.

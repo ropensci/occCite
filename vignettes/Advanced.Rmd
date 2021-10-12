@@ -97,13 +97,13 @@ summary(myPhyOccCiteObject)
 
 When you have results for multiple species, as in this case, you can also plot the summary figures either for the whole search...
 
-```{r plotting all species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+```{r plotting all species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="100%"}
 plot(myPhyOccCiteObject)
 ```
 
 *or* you can plot the results by species!
 
-```{r plotting phylogenetic search by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="33%"}
+```{r plotting phylogenetic search by species, eval=T, message=FALSE, warning=FALSE, paged.print=FALSE, results='hide', fig.hold='hold', out.width="100%"}
 plot(myPhyOccCiteObject, bySpecies = T, plotTypes = c("yearHistogram", "source"))
 ```
 
