@@ -47,4 +47,12 @@ test_that("summary behaves as expected", {
 
   testObject <- occCite:::summary.occCiteData(myOccCiteObject)
   expect_true(class(testObject) == "data.frame")
+
+  myOccCiteObject@occSources <- "gbif"
+  testObject <- occCite:::summary.occCiteData(myOccCiteObject)
+  expect_true(class(testObject) == "data.frame")
+
+  myOccCiteObject@occSources <- "bien"
+  testObject <- occCite:::summary.occCiteData(myOccCiteObject)
+  expect_null(testObject)
 })
