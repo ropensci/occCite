@@ -7,8 +7,8 @@ template:
     params: litera
   opengraph:
     image:
-      src: man/figures/occTag.png
-      alt: "Gray specimen tag that says 'occCite: Tools for querying and citing large occurrence datasets'"
+      src: man/figures/occHex.png
+      alt: "Hex logo of a museum map icon with 'occCite' written below it""
     twitter:
       creator: "@hannahOish"
       card: summary_large_image
