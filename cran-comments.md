@@ -1,9 +1,8 @@
 ## Update
 This is a package update. In this version, I have:
 
-* In gbifRetriever, changed rgbif::name_suggests to rgbif::name_backbone. More robust for our purposes.
-* Now fills in "Dataset" column in GBIF search results from GBIF citation information.
-* No longer throws out GBIF occurrences with missing day and month information.
+* Legends for source waffle plots are now wrapped to enhance readability.
+* Now fails more gracefully if servers cannot be reached.
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2
@@ -14,19 +13,25 @@ This is a package update. In this version, I have:
 * rhub
 
 ## R CMD check results
-1 error | 0 warnings | 0 notes | 1 preperror
+0 errors | 0 warnings | 1 note | 2 preperrors
 
-* An ERROR occurred on Fedora Linux, R-devel, clang, gfortran on RHub:
+* A NOTE occurred on Windows Server 2008 R2 SP1, R-devel, 32/64 bit on Rhub:
 
-ERROR: Bioconductor does not yet build and check packages for R version 4.2; see https://bioconductor.org/install.
+NOTE: Examples with CPU (user + system) or elapsed time > 5s
 
-This appears to be a setup error, not a problem with occCite, so I am unsure how to proceed.
+The time it takes for this example to run is variable and dependent on server response time. Elapsed time: 6.2s
+
+* A PREPERROR occurred on Fedora Linux, R-devel, clang, gfortran on RHub:
+
+Error : Bioconductor does not yet build and check packages for R version 4.2
+
+This is not a problem with the package.
 
 * A PREPERROR occurred on Ubuntu Linux 20.04.1 LTS, R-release, GCC on RHub:
 
-Error: No such container: occCite_0.4.9.tar.gz-cdaf7baecae8454a9f6c7a13314760e6-3
+Failed with error: ‘there is no package called ‘shiny’’.
 
-Build result was still SUCCESS.
+The package still built successfully.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
