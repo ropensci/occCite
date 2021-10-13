@@ -25,11 +25,13 @@
 taxonRectification <- function(taxName = NULL, datasources = NULL) {
 
   # Checks for source connectivity
-  if (httr::http_error("https://resolver.globalnames.org/data_sources.json")) {
-    message("Cannot connect to Global Names Resolver at this time.")
-    return(NULL)
-  } else { # network is up = proceed to download via curl
-    sources <- taxize::gnr_datasources() # Populates the list of data sources
+  tryCatch(expr = sources <- taxize::gnr_datasources(),
+    error = function(e) {
+      message(paste("GNR server unreachable at the moment, please try again later. \n"))
+    })
+
+  if(!exists("sources")){
+    return(invisible(NULL))
   }
 
   # Are user-input databases included in list of data sources for Global Names Resolver?

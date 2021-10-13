@@ -59,25 +59,21 @@ studyTaxonList <- function(x = NULL,
   # Building the results table
   resolvedNames <- data.frame()
   for (i in 1:length(targets)) {
-    newResName <- withCallingHandlers(
-      {
-        taxonRectification(
-          taxName = targets[[i]],
-          datasources = datasources
-        )
-      },
+    tryCatch(expr = newResName <- withCallingHandlers({
+      taxonRectification(
+        taxName = targets[[i]],
+        datasources = datasources)},
       warning = function(w) {
         message("handled warning: ", conditionMessage(w))
-        invokeRestart("muffleWarning")
-      }
-    )
-    if(is.null(newResName)){
-      warning(message(i, " could not be resolved at this time.\n",
-                      "Please check internet connection and/or try again later.\n"))
-      return(NULL)
-    } else {
-      resolvedNames <- rbind(resolvedNames, newResName)
+        invokeRestart("muffleWarning")}),
+             error = function(e) {
+               message(paste("GNR server unreachable at the moment, please try again later. \n"))
+             })
+
+    if(!exists("newResName")){
+      return(invisible(NULL))
     }
+    resolvedNames <- rbind(resolvedNames, newResName)
   }
 
   colnames(resolvedNames) <- c(
