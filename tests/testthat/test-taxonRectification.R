@@ -42,4 +42,9 @@ test_that("taxonRectification performs as expected", {
   expect_true(testResult$`Input Name`[1] == "Buteo buteo hartedi")
   expect_true(testResult$`Best Match`[1] == "Buteo buteo harterti")
   expect_true(testResult$`Searched Taxonomic Databases w/ Matches` == "National Center for Biotechnology Information")
+
+  expect_warning(taxonRectification(
+    taxName = "Buteo buteo hartedi",
+    datasources = "cheese"
+  ))
 })
