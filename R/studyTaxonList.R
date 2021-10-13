@@ -75,7 +75,7 @@ studyTaxonList <- function(x = NULL,
       warning(message(i, " could not be resolved at this time.\n",
                       "Please check internet connection and/or try again later.\n"))
       return(NULL)
-    } else{
+    } else {
       resolvedNames <- rbind(resolvedNames, newResName)
     }
   }
