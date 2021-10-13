@@ -15,6 +15,9 @@
 #' @param checkPreviousGBIFDownload A logical operator specifying whether the
 #' user wishes to check their existing prepared downloads on the GBIF website.
 #'
+#' @details `getGBIFpoints` only returns records from GBIF that have
+#' coordinates and that aren't flagged as having geospatial issues.
+#'
 #' @return A list containing \enumerate{ \item a data frame of occurrence data;
 #' \item GBIF search metadata; \item a data frame containing the raw results of
 #'  a query to `rgbif::occ_download_get()`.}

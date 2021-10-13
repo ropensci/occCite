@@ -33,6 +33,10 @@ a query to \code{rgbif::occ_download_get()}.}
 Downloads occurrence points and useful related information
 for processing within other occCite functions
 }
+\details{
+\code{getGBIFpoints} only returns records from GBIF that have
+coordinates and that aren't flagged as having geospatial issues.
+}
 \examples{
 \dontrun{
 getGBIFpoints(

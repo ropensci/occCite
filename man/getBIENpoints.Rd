@@ -19,6 +19,10 @@ the raw results of a query to \code{BIEN::BIEN_occurrence_species()}.}
 Downloads occurrence points and useful related
 information for processing within other occCite functions
 }
+\details{
+\code{getBIENpoints} only returns all BIEN records, including non-
+native and cultivated occurrences.
+}
 \examples{
 \dontrun{
 getBIENpoints(taxon = "Protea cynaroides")

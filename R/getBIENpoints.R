@@ -5,6 +5,9 @@
 #'
 #' @param taxon A single plant species or vector of plant species
 #'
+#' @details `getBIENpoints` only returns all BIEN records, including non-
+#' native and cultivated occurrences.
+#'
 #' @return A list containing \enumerate{ \item a data frame of occurrence data;
 #' \item a list containing: i notes on usage, ii bibtex citations,
 #' and iii acknowledgment information; \item a data frame containing
