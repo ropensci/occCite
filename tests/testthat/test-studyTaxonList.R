@@ -72,3 +72,7 @@ test_that("studyTaxonList works with a vector of species", {
   expect_true(length(testResult@occCiteSearchDate) == 0)
   expect_true(length(testResult@occResults) == 0)
 })
+
+test_that("studyTaxonList input errors perform as expected", {
+  expect_warning(studyTaxonList(x = 2, datasources = "National Center for Biotechnology Information"))
+})
