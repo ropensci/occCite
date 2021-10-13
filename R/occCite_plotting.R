@@ -333,7 +333,11 @@ occCiteMap <- function(occCiteData,
 #'
 plot.occCiteData <- function(x, ...) {
   # Function to wrap labels
-  occ_strwrap <- function(x) {unlist(lapply(strwrap(x, width = 30, simplify= FALSE), paste, collapse = "\n"))}
+  occ_strwrap <- function(x) {
+    x <- unlist(lapply(strwrap(x, width = 30, simplify= FALSE),
+                  paste, collapse = "\n"))
+    return(x)
+    }
 
   args <- list(...)
 
@@ -506,6 +510,7 @@ plot.occCiteData <- function(x, ...) {
         lbls <- names(datasetTab)
         lbls <- paste(lbls, pct) # add percents to labels
         lbls <- paste(lbls, "%", sep = "") # ad % to labels
+        lbls <- occ_strwrap(lbls)
         names(pct) <- lbls
         pct <- pct[pct > 1]
         if (sum(pct) < 100) {
