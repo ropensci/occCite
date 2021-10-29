@@ -3,7 +3,7 @@ library(ape)
 
 treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite')
 phylogeny <- ape::read.nexus(treeFile)
-tree <- ape::extract.clade(phylogeny, 21)
+tree <- ape::extract.clade(phylogeny, 22)
 #Query databases for names
 myPhyOccCiteObject <- studyTaxonList(x = tree,
                                      datasources = "GBIF Backbone Taxonomy")

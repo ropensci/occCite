@@ -95,7 +95,7 @@ test_that("getGBIFpoints behaves as expected", {
     user = GBIFLogin@username,
     email = GBIFLogin@email,
     pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
+    rgbif::pred("catalogNumber", 2397951)
   ),
   silent = T
   )

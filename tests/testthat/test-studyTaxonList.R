@@ -18,7 +18,7 @@ test_that("studyTaxonList works with a phylogeny", {
   phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
     package = "occCite"
   ))
-  phylogeny <- ape::extract.clade(phylogeny, 18)
+  phylogeny <- ape::extract.clade(phylogeny, 22)
   testResult <- studyTaxonList(x = phylogeny, datasources = c("National Center for Biotechnology Information"))
 
   expect_true(class(testResult) == "occCiteData")
