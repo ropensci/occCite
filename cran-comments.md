@@ -1,8 +1,7 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Legends for source waffle plots are now wrapped to enhance readability.
-* Now fails more gracefully if servers cannot be reached.
+* Fix server connection-based ERRORs that led to the package's removal from CRAN.
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2

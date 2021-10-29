@@ -6,10 +6,10 @@ test_that("phylogeny can be read and manipulated as expected", {
   phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
     package = "occCite"
   ))
-  phylogeny <- ape::extract.clade(phylogeny, 18)
+  phylogeny <- ape::extract.clade(phylogeny, 22)
 
   expect_true(class(phylogeny) == "phylo")
-  expect_true(length(phylogeny$tip.label) == 7)
+  expect_true(length(phylogeny$tip.label) == 3)
 })
 
 test_that("studyTaxonList works with a phylogeny", {
@@ -33,7 +33,7 @@ test_that("studyTaxonList works with a phylogeny", {
   expect_true(testResult@userSpecTaxonomy == "National Center for Biotechnology Information")
 
   expect_true(class(testResult@cleanedTaxonomy) == "data.frame")
-  expect_true(nrow(testResult@cleanedTaxonomy) == 7)
+  expect_true(nrow(testResult@cleanedTaxonomy) == 3)
   expect_true("Input Name" %in% colnames(testResult@cleanedTaxonomy))
   expect_true("Best Match" %in% colnames(testResult@cleanedTaxonomy))
   expect_true("Taxonomic Databases w/ Matches"
