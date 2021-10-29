@@ -14,17 +14,26 @@ This is a package update. In this version, I have:
 ## R CMD check results
 0 errors | 0 warnings | 1 note | 2 preperrors
 
-* A NOTE occurred on Windows Server 2008 R2 SP1, R-devel, 32/64 bit on Rhub:
+* A NOTE occurred on Windows Server 2008 R2 SP1, R-devel, 32/64 bit on Rhub, and Ubuntu Linux 20.04.1 LTS, R-release, GCC on Rhub, and x86_64-w64-mingw32 (64-bit):
 
-NOTE: Examples with CPU (user + system) or elapsed time > 5s
+NOTE: Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
+  
+  New submission
+  
+  Package was archived on CRAN
+  
+  CRAN repository db overrides:
+    X-CRAN-Comment: Archived on 2021-10-22 for policy violation.
+  
+    On Internet access: site has broken CA trust chain.
 
-The time it takes for this example to run is variable and dependent on server response time. Elapsed time: 6.2s
+I have revised the package to fail gracefully in cases such as these.
 
 * A PREPERROR occurred on Fedora Linux, R-devel, clang, gfortran on RHub:
 
-Error : Bioconductor does not yet build and check packages for R version 4.2
+ERROR : dependencies ‘BIEN’, ‘RPostgreSQL’ are not available for package ‘occCite’
 
-This is not a problem with the package.
+This is not a problem with the package. These packages are available on CRAN.
 
 * A PREPERROR occurred on Ubuntu Linux 20.04.1 LTS, R-release, GCC on RHub:
 
