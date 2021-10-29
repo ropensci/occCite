@@ -1,6 +1,10 @@
-# occCite 0.5.0.9000
+# occCite 0.5.1.9000
 
 * Development version
+
+# occCite 0.5.1
+
+* Minor update to fix a server connection timeout error.
 
 # occCite 0.5.0
 
