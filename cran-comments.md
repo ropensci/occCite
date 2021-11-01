@@ -8,13 +8,13 @@ This is a package update. In this version, I have:
 * win-builder (devel and release)
 * ubuntu 20.04 (devel and release; on GitHub Actions), R 4.1.0
 * windows-latest (on GitHub Actions), R 4.1.0
-* mac-latest (on GitHub Actions), R 4.1.0
+* macOS-latest (on GitHub Actions), R 4.1.0
 * rhub
 
 ## R CMD check results
-0 errors | 0 warnings | 1 note | 2 preperrors
+0 errors | 0 warnings | 1 note
 
-* A NOTE occurred on Windows Server 2008 R2 SP1, R-devel, 32/64 bit on Rhub, and Ubuntu Linux 20.04.1 LTS, R-release, GCC on Rhub, and x86_64-w64-mingw32 (64-bit):
+* A NOTE occurred on Windows Server 2008 R2 SP1, R-devel, 32/64 bit on Rhub, and x86_64-w64-mingw32 (64-bit):
 
 NOTE: Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
   
@@ -28,18 +28,6 @@ NOTE: Maintainer: 'Hannah L. Owens <hannah.owens@gmail.com>'
     On Internet access: site has broken CA trust chain.
 
 I have revised the package to fail gracefully in cases such as these.
-
-* A PREPERROR occurred on Fedora Linux, R-devel, clang, gfortran on RHub:
-
-ERROR : dependencies ‘BIEN’, ‘RPostgreSQL’ are not available for package ‘occCite’
-
-This is not a problem with the package. These packages are available on CRAN.
-
-* A PREPERROR occurred on Ubuntu Linux 20.04.1 LTS, R-release, GCC on RHub:
-
-Failed with error: ‘there is no package called ‘shiny’’.
-
-The package still built successfully.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
