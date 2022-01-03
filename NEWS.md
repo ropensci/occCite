@@ -2,6 +2,10 @@
 
 * Development version
 
+# occCite 0.5.2
+
+* Resubmission after archiving due to dependency archiving.
+
 # occCite 0.5.1
 
 * Minor update to fix a server connection timeout error.
