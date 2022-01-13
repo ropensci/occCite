@@ -76,18 +76,22 @@ studyTaxonList <- function(x = NULL,
     resolvedNames <- rbind(resolvedNames, newResName)
   }
 
-  colnames(resolvedNames) <- c(
-    "Input Name",
-    "Best Match",
-    "Taxonomic Databases w/ Matches"
-  )
-  resolvedNames <- as.data.frame(resolvedNames)
+  if(ncol(resolvedNames == 3)){
+    colnames(resolvedNames) <- c(
+      "Input Name",
+      "Best Match",
+      "Taxonomic Databases w/ Matches"
+    )
+    resolvedNames <- as.data.frame(resolvedNames)
 
-  # Populating an instance of class occCiteData
-  occCiteInstance <- methods::new("occCiteData",
-    userQueryType = dataFrom,
-    userSpecTaxonomy = datasources,
-    cleanedTaxonomy = resolvedNames
+    # Populating an instance of class occCiteData
+    occCiteInstance <- methods::new("occCiteData",
+                                    userQueryType = dataFrom,
+                                    userSpecTaxonomy = datasources,
+                                    cleanedTaxonomy = resolvedNames
+    )
+    return(occCiteInstance)
+  } else(
+    return(invisible(NULL))
   )
-  return(occCiteInstance)
 }

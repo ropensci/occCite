@@ -10,6 +10,7 @@
 #' in the list has citation information for occurrences.
 #'
 #' @importFrom stats na.omit
+#' @importFrom curl has_internet
 #' @import RPostgreSQL
 #'
 #' @examples
@@ -40,6 +41,12 @@ occCitation <- function(x = NULL) {
 
     # GBIF
     if (!is.null(occResults$GBIF)) {
+      test <- try(rgbif::occ_count(country='DK'),
+                  silent = T)
+      if(class(test) != "numeric"){
+        warning("GBIF connection unsuccessful")
+        return(NULL)
+      }
       ## Pull dataset keys from occurrence table
       datasetKeys <- stats::na.exclude(unlist(as.character(occResults$GBIF$OccurrenceTable$DatasetKey)))
       if (length(datasetKeys) > 0) {
@@ -115,6 +122,12 @@ occCitation <- function(x = NULL) {
       password <- "bien_public"
       # Name the database type that will be used
       drv <- DBI::dbDriver("PostgreSQL")
+
+      # Test internet connection
+      if(!curl::has_internet()){
+        warning("No internet connection available, please try again later. \n")
+        return(NULL)
+      }
       # establish connection with database
       tryCatch(expr = con <- DBI::dbConnect(drv,
                                             host = host,

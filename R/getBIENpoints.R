@@ -28,6 +28,11 @@ getBIENpoints <- function(taxon) {
     pattern = "(\\w+\\s\\w+)"
   )
 
+  if(!curl::has_internet()){
+    warning("No internet connection available, please try again later. \n")
+    return(NULL)
+  }
+
   tryCatch(expr = try(occs <- BIEN::BIEN_occurrence_species(species = taxon,
                                                             cultivated = T,
                                                             only.new.world = F,

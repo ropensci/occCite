@@ -13,6 +13,7 @@ test_that("phylogeny can be read and manipulated as expected", {
 })
 
 test_that("studyTaxonList works with a phylogeny", {
+  skip_if(!curl::has_internet(), "internet connection unsuccessful")
   skip_if(httr::http_error("https://resolver.globalnames.org/data_sources.json"))
 
   phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
@@ -45,6 +46,7 @@ test_that("studyTaxonList works with a phylogeny", {
 })
 
 test_that("studyTaxonList works with a vector of species", {
+  skip_if(!curl::has_internet(), "internet connection unsuccessful")
   skip_if(httr::http_error("https://resolver.globalnames.org/data_sources.json"))
 
   taxVector <- c("Buteo buteo", "Buteo buteo hartedi", "Buteo japonicus")

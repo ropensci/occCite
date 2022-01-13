@@ -3,6 +3,10 @@ context("Testing gbifRetriever")
 library(occCite)
 
 test_that("inputs to gbifRetriever are as expected", {
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+
   expect_equal(
     class(rgbif::name_suggest(
       q = "Protea cynaroides",
@@ -26,6 +30,11 @@ test_that("gbifRetriever behaves as expected", {
   on.exit(setwd(oldwd))
   setwd(dir = system.file("extdata/", package = "occCite"))
   taxon <- "Protea cynaroides"
+
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+
   testResult <- occCite:::gbifRetriever(taxon)
 
   expect_equal(class(testResult), "list")
@@ -35,4 +44,17 @@ test_that("gbifRetriever behaves as expected", {
   expect_equal(names(testResult)[[2]], "Metadata")
   expect_equal(class(testResult[[3]]), "occ_download_get")
   expect_equal(names(testResult)[[3]], "RawOccurrences")
+})
+
+test_that("gbifRetriever warns when there's no internet connection", {
+  oldwd <- getwd()
+  on.exit(setwd(oldwd))
+  setwd(dir = system.file("extdata/", package = "occCite"))
+  taxon <- "Protea cynaroides"
+
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) == "numeric", "GBIF connection successful")
+
+  expect_warning(occCite:::gbifRetriever(taxon))
 })

@@ -6,6 +6,10 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+
   setwd(dir = system.file("extdata/", package = "occCite"))
   taxon <- "Protea cynaroides"
   testResult <- occCite:::gbifRetriever(taxon)
@@ -17,15 +21,9 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
 test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   skip_on_cran()
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   oldwd <- getwd()
   on.exit(setwd(oldwd))
@@ -49,6 +47,10 @@ test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
 test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
+
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   setwd(dir = system.file("extdata/", package = "occCite"))
   taxon <- "Protea cynaroides"
@@ -74,15 +76,9 @@ test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF tab
     "GBIF Login information not available"
   )
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   oldwd <- getwd()
   on.exit(setwd(oldwd))

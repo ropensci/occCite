@@ -4,6 +4,11 @@ library(occCite)
 
 test_that("BIEN behaves as expected", {
   skip_on_cran()
+  skip_if(!curl::has_internet(), "internet connection unsuccessful")
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+
   testResult <- BIEN::BIEN_occurrence_species(
     species = "Protea cynaroides",
     cultivated = T,
@@ -24,6 +29,7 @@ test_that("BIEN behaves as expected", {
 
 test_that("getBIENpoints behaves as expected", {
   skip_on_cran()
+  skip_if(!curl::has_internet(), "internet connection unsuccessful")
   testResult <- getBIENpoints(taxon = "Protea cynaroides")
   expect_equal(class(testResult), "list")
   expect_equal(length(testResult), 3)

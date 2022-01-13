@@ -64,18 +64,17 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
                                                   email = email,
                                                   pwd = pwd,
                                                   rgbif::pred("catalogNumber", 217880)),
-                              silent = T)
-,
+                              silent = T),
            error = function(e) {
              message(paste("GBIF unreachable at the moment, please try again later. \n"))
            })
 
-  if(!exists("test")){
-    return(invisible(NULL))
-  }
-
-  if (class(test) != "occ_download") {
-    warning("GBIF user login data incorrect.\n")
+  if(class(test) == "try-error"){
+    if(grepl(unlist(test)[1], pattern = "401")){
+      warning("GBIF user login data incorrect.\n")
+    } else{
+      warning("GBIF unreachable at the moment, please try again later. \n")
+    }
     return(NULL)
   }
 

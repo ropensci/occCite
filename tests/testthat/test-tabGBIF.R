@@ -9,6 +9,10 @@ test_that("data entered into tabGBIF is as expected", {
     "GBIF Login information not available"
   )
 
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+
   test <- try(rgbif::occ_download(
     user = GBIFLogin@username,
     email = GBIFLogin@email,
@@ -39,6 +43,10 @@ test_that("verify occ_download_import results have expected columns", {
     nchar(Sys.getenv("GBIF_EMAIL")) < 1,
     "GBIF Login information not available"
   )
+
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   test <- try(rgbif::occ_download(
     user = GBIFLogin@username,

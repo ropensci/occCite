@@ -9,15 +9,9 @@ test_that("GBIF retrieval from server behaves as expected", {
     "GBIF Login information not available"
   )
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   GBIFLogin <- GBIFLoginManager()
 
@@ -30,8 +24,7 @@ test_that("GBIF retrieval from server behaves as expected", {
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
     file.path(system.file("extdata/",
-      package = "occCite"
-    ))
+      package = "occCite"))
   )
 
   expect_equal(class(res), "occ_download_get")
@@ -44,15 +37,9 @@ test_that("new GBIF search behaves as expected", {
     "GBIF Login information not available"
   )
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   GBIFLogin <- GBIFLoginManager()
 
@@ -91,15 +78,9 @@ test_that("getGBIFpoints behaves as expected", {
     "GBIF Login information not available"
   )
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 2397951)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  test <- try(rgbif::occ_count(country='DK'),
+              silent = T)
+  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   GBIFLogin <- GBIFLoginManager()
 

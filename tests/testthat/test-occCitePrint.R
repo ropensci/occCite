@@ -8,17 +8,19 @@ tree <- ape::extract.clade(phylogeny, 22)
 myPhyOccCiteObject <- studyTaxonList(x = tree,
                                      datasources = "GBIF Backbone Taxonomy")
 #Query GBIF for occurrence data
-myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject,
-                               datasources = "gbif",
-                               GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
-                               loadLocalGBIFDownload = T,
-                               checkPreviousGBIFDownload = F)
-myPhyOccCitations <- occCitation(myPhyOccCiteObject)
+if(!is.null(myPhyOccCiteObject)){
+  myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject,
+                                 datasources = "gbif",
+                                 GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
+                                 loadLocalGBIFDownload = T,
+                                 checkPreviousGBIFDownload = F)
+  myPhyOccCitations <- occCitation(myPhyOccCiteObject)
 
-test_that("regular print", {
-  expect_output(print(myPhyOccCitations))
-})
+  test_that("regular print", {
+    expect_output(print(myPhyOccCitations))
+  })
 
-test_that("print by species", {
-  expect_output(print(myPhyOccCitations, bySpecies = TRUE))
-})
+  test_that("print by species", {
+    expect_output(print(myPhyOccCitations, bySpecies = TRUE))
+  })
+}

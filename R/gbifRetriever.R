@@ -23,7 +23,20 @@ gbifRetriever <- function(taxon = NULL) {
     pattern = "(\\w+\\s\\w+)"
   ) # Remove problem characters, i.e. "æ"
 
-  taxon_key <- as.numeric(rgbif::name_backbone(cleanTaxon)$usageKey)
+  tryCatch(expr = taxon_key <- try(as.numeric(rgbif::name_backbone(cleanTaxon)$usageKey),
+                                   silent = T),
+           error = function(e) {
+             message(paste("GBIF unreachable at the moment, please try again later. \n"))
+           })
+
+  if(class(taxon_key) == "try-error"){
+    if(grepl(unlist(taxon_key)[1], pattern = "401")){
+      warning("GBIF user login data incorrect.\n")
+    } else{
+      warning("GBIF unreachable at the moment, please try again later. \n")
+    }
+    return(NULL)
+  }
   if (is.null(taxon_key)) {
     warning(paste0(" Taxon ", taxon, " could not be resolved."))
     return(NULL)
