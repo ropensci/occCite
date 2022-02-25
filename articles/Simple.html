@@ -100,7 +100,7 @@
                         <h4 data-toc-skip class="author">Vijay Barve</h4>
                         <h4 data-toc-skip class="author">Robert Guralnick</h4>
             
-            <h4 data-toc-skip class="date">2022-01-03</h4>
+            <h4 data-toc-skip class="date">2022-02-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hannahlowens/occCite/blob/HEAD/vignettes/Simple.Rmd" class="external-link"><code>vignettes/Simple.Rmd</code></a></small>
       <div class="hidden name"><code>Simple.Rmd</code></div>
@@ -109,16 +109,16 @@
 
     
     
-<div class="section level1">
-<h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h1>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>We have entered the age of data-intensive scientific discovery. As data sets increase in complexity and heterogeneity, we must preserve the cycle of data citation from primary data sources to aggregating databases to research products and back to primary data sources. The citation cycle keeps science transparent, but it is also key to supporting primary providers by documenting the use of their data. The Global Biodiversity Information Facility (GBIF), Botanical Information and Ecology Network (BIEN), and other data aggregators have made great strides in harvesting citation data from research products and linking them back to primary data providers. However, this only works if those that publish research products cite primary data sources in the first place. We developed <code>occCite</code>, a set of <code>R</code>-based tools for downloading, managing, and citing biodiversity data, to advance toward the goal of closing the data provenance cycle. These tools preserve links between occurrence data and primary providers once researchers download aggregated data, and facilitate the citation of primary data providers in research papers.</p>
 <p>The <code>occCite</code> workflow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). <code>occCite</code> then rectifies these names by checking them against one or more taxonomic databases, which can be specified by the user (see the <a href="http://gni.globalnames.org/data_sources" class="external-link">Global Names List</a>). The results of the taxonomic rectification are then kept in an <code>occCiteData</code> object in local memory. Next, <code>occCite</code> takes the <code>occCiteData</code> object and user-defined search parameters to query BIEN (through <code>rbien</code>) and/or GBIF(through <code>rGBIF</code>) for records. The results are appended to the <code>occCiteData</code> object, along with metadata on the search. Finally, the user can pass the <code>occCiteData</code> object to <code>occCitation</code>, which compiles citations for the primary providers, database aggregators, and <code>R</code> packages used to build the dataset.</p>
 <p>Future iterations of <code>occCite</code> will track citation data through the data cleaning process and provide a series of visualizations on raw query results and final data sets. It will also provide data citations in a format congruent with best-practice recommendations for large biodiversity data sets. Based on these data citation tools, we will also propose a new set of standards for citing primary biodiversity data in published research articles that provides due credit to contributors and allows them to track the use of their work. Keep checking back!</p>
 </div>
-<div class="section level1">
-<h1 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
-</h1>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <p>If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below to show you the format. <em>You will need to provide actual account information.</em> This is because you will actually be downloading <em>all</em> of the records available for the species using <code>occ_download()</code>, instead of getting results from <code>occ_search()</code>, which has a hard limit of 100,000 occurrences.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://hannahlowens.github.io/occCite/" class="external-link">occCite</a></span><span class="op">)</span>;
@@ -127,12 +127,12 @@
                               email <span class="op">=</span> <span class="st">"****@yahoo.com"</span>,
                               pwd <span class="op">=</span> <span class="st">"12345"</span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="performing-a-simple-search">Performing a simple search<a class="anchor" aria-label="anchor" href="#performing-a-simple-search"></a>
-</h1>
 <div class="section level2">
-<h2 id="the-basics">The basics<a class="anchor" aria-label="anchor" href="#the-basics"></a>
+<h2 id="performing-a-simple-search">Performing a simple search<a class="anchor" aria-label="anchor" href="#performing-a-simple-search"></a>
 </h2>
+<div class="section level3">
+<h3 id="the-basics">The basics<a class="anchor" aria-label="anchor" href="#the-basics"></a>
+</h3>
 <p>At its simplest, <code>occCite</code> allows you to search for occurrences for a single species. The taxonomy of the user-specified species will be verified using EOL and NCBI taxonomies by default.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Simple search</span>
@@ -215,9 +215,9 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mySimpleOccCiteObject</span><span class="op">)</span></code></pre></div>
 <p><img src="Simple_files/figure-html/plotting%20a%20simple%20search-1.png" width="33%"><img src="Simple_files/figure-html/plotting%20a%20simple%20search-2.png" width="33%"><img src="Simple_files/figure-html/plotting%20a%20simple%20search-3.png" width="33%"></p>
 </div>
-<div class="section level2">
-<h2 id="simple-citations">Simple citations<a class="anchor" aria-label="anchor" href="#simple-citations"></a>
-</h2>
+<div class="section level3">
+<h3 id="simple-citations">Simple citations<a class="anchor" aria-label="anchor" href="#simple-citations"></a>
+</h3>
 <p>After doing a search for occurrence points, you can use <code><a href="../reference/occCitation.html">occCitation()</a></code> to generate citations for primary biodiversity databases, as well as database aggregators. <strong>Note:</strong> Currently, GBIF and BIEN are the only aggregators for which citations are supported.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Get citations</span>
@@ -235,18 +235,18 @@
 <span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span></code></pre>
 <pre><code><span class="co">## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet automatically identified occurrences. Version 1.2. Pl@ntNet. https://doi.org/10.15468/mma2ec. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, BONNET P (2020). Pl@ntNet observations. Version 1.2. Pl@ntNet. https://doi.org/10.15468/gtebaa. Accessed via GBIF on 2020-11-23.</span>
-<span class="co">## Cameron E, Auckland Museum A M (2021). Auckland Museum Botany Collection. Version 1.68. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2020-11-23.</span>
+<span class="co">## Cameron E, Auckland Museum A M (2022). Auckland Museum Botany Collection. Version 1.70. Auckland War Memorial Museum. https://doi.org/10.15468/mnjkvv. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## Capers R (2014). CONN. University of Connecticut. https://doi.org/10.15468/w35jmd. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## CEN Limousin &amp; MAÃ‡ONNERIE Delphine. Accessed via BIEN on NA.</span>
-<span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2022). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.6.0. https://CRAN.R-project.org/package=rgbif.</span>
+<span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2022). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.7.0. https://CRAN.R-project.org/package=rgbif.</span>
 <span class="co">## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.</span>
 <span class="co">## de Vries H, Lemmens M (2021). Observation.org, Nature data from around the World. Observation.org. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## Department of Agriculture and Fisheries. Accessed via BIEN on NA.</span>
 <span class="co">## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2020-11-23.</span>
-<span class="co">## iNaturalist contributors, iNaturalist (2021). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2020-11-23.</span>
+<span class="co">## iNaturalist contributors, iNaturalist (2022). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## ITA327. Accessed via BIEN on NA.</span>
-<span class="co">## Maitner, B. (2020). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.4. https://CRAN.R-project.org/package=BIEN.</span>
-<span class="co">## MNHN, Chagnoux S (2021). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.242. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2020-11-23.</span>
+<span class="co">## Maitner, B. (2022). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.5. https://CRAN.R-project.org/package=BIEN.</span>
+<span class="co">## MNHN, Chagnoux S (2022). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.249. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## NA. Accessed via BIEN on NA.</span>
 <span class="co">## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2022). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.2. https://CRAN.R-project.org/package=occCite.</span>
@@ -256,9 +256,9 @@
 <span class="co">## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2020-11-23.</span>
 <span class="co">## UPRM. Accessed via BIEN on NA.</span></code></pre>
 </div>
-<div class="section level2">
-<h2 id="simple-taxonomic-rectification">Simple Taxonomic Rectification<a class="anchor" aria-label="anchor" href="#simple-taxonomic-rectification"></a>
-</h2>
+<div class="section level3">
+<h3 id="simple-taxonomic-rectification">Simple Taxonomic Rectification<a class="anchor" aria-label="anchor" href="#simple-taxonomic-rectification"></a>
+</h3>
 <p>In the simplest of searches, such as the one above, the taxonomy of your input species name is automatically rectified through the <code>occCite</code> function <code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> using <code>gnr_resolve()</code> from the <code>taxize</code> <code>R</code> package. If you would like to change the source of the taxonomy being used to rectify your species names, you can specify as many taxonomic repositories as you like from the Global Names Index (GNI). The complete list of GNI repositories can be found <a href="http://gni.globalnames.org/data_sources" class="external-link">here</a>.</p>
 <p><code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> chooses the taxonomic names closest to those being input and documents which taxonomic repositories agreed with those names. <code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> instantiates an <code>occCiteData</code> object the same way <code><a href="../reference/occQuery.html">occQuery()</a></code> does. This object can be passed into <code><a href="../reference/occQuery.html">occQuery()</a></code> to perform your occurrence data search.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -294,7 +294,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
