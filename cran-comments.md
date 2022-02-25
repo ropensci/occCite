@@ -2,6 +2,7 @@
 This is a package update. In this version, I have:
 
 * Fix server connection-based ERRORs that led to the package's removal from CRAN.
+* Added more informative warnings and NULL returns for functions connect to servers via the internet.
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.0.2 (with and without internet connection)
