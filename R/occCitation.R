@@ -63,7 +63,7 @@ occCitation <- function(x = NULL) {
                                        replacement = "",
                                        useBytes = T),
                    error = function(e) {
-                     message(paste("GBIF unreachable at the moment, please try again later. \n"))
+                     message(paste("GBIF unreachable; please try again later. \n"))
                    })
 
           if(!exists("temp")){
@@ -135,7 +135,7 @@ occCitation <- function(x = NULL) {
                                             user = user,
                                             password = password),
                error = function(e) {
-                 message(paste("BIEN unreachable at the moment, please try again later. \n"))
+                 message(paste("BIEN unreachable; please try again later. \n"))
                })
 
       if(!exists("con")){
@@ -150,10 +150,12 @@ occCitation <- function(x = NULL) {
 
       # Handle keys without citations
       if (nrow(BIENsources) < length(BIENdatasetKeys)) {
-        noNameKeys <- unlist(BIENdatasetKeys[!BIENdatasetKeys %in% BIENsources$datasource_id]) # Gets keys that are missing names
+        noNameKeys <- unlist(BIENdatasetKeys[!BIENdatasetKeys %in%
+                                               BIENsources$datasource_id]) # Gets keys missing names
         datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[,c("DatasetKey", "Dataset")])
         datasetLookupTable[] <- lapply(datasetLookupTable, as.character)
-        missingNames <- datasetLookupTable$Dataset[datasetLookupTable$DatasetKey %in% noNameKeys] # Pulls missing names
+        missingNames <- datasetLookupTable$Dataset[datasetLookupTable$DatasetKey %in%
+                                                     noNameKeys] # Pulls missing names
 
         print(paste0(
           "NOTE: ", length(BIENdatasetKeys) - nrow(BIENsources),
@@ -164,8 +166,10 @@ occCitation <- function(x = NULL) {
           paste(as.character(unlist(missingNames)), collapse = ", "), "."
         ))
         # TO FIX: INSERT NA ROW(s) FOR MISSING CITATION DATA
-        BIENsources[nrow(BIENsources)+(length(BIENdatasetKeys) - nrow(BIENsources)),] <- NA
-        BIENsources$source_name[which(BIENsources$datasource_id %in% noNameKeys)] <- missingNames
+        BIENsources[nrow(BIENsources) +
+                      (length(BIENdatasetKeys) - nrow(BIENsources)),] <- NA
+        BIENsources$source_name[which(BIENsources$datasource_id %in%
+                                        noNameKeys)] <- missingNames
       }
     }
 

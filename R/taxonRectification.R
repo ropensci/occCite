@@ -27,14 +27,14 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
   # Checks for source connectivity
   tryCatch(expr = sources <- taxize::gnr_datasources(),
     error = function(e) {
-      message(paste("GNR server unreachable at the moment, please try again later. \n"))
+      message(paste("GNR server unreachable; please try again later. \n"))
     })
 
   if(!exists("sources")){
     return(invisible(NULL))
   }
 
-  # Are user-input databases included in list of data sources for Global Names Resolver?
+  # Are user-input databases included in data sources for Global Names Resolver?
   if (!is.null(datasources)) {
     for (db in datasources) {
       notInDB <- character()

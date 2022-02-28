@@ -109,7 +109,7 @@ gbifRetriever <- function(taxon = NULL) {
     for (i in 1:length(keys)) {
       tryCatch(expr = occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]]),
                error = function(e) {
-                 message(paste("GBIF unreachable at the moment, please try again later. \n"))
+                 message(paste("GBIF unreachable; please try again later. \n"))
                })
 
       if(!exists("occMetadata")){

@@ -106,8 +106,9 @@ occQuery <- function(x = NULL,
   }
 
   # Error check input GBIF directory.
-  if ("gbif" %in% datasources && !is.null(GBIFDownloadDirectory) && !is(GBIFDownloadDirectory,
-                                                                        "character")) {
+  if ("gbif" %in% datasources &&
+      !is.null(GBIFDownloadDirectory) &&
+      !is(GBIFDownloadDirectory, "character")) {
     warning("Input GBIFDownload directory is not of class 'character'.\n")
     return(NULL)
   }
@@ -156,7 +157,9 @@ occQuery <- function(x = NULL,
   }
 
   # If GBIF was selected, check to see if GBIF login information is supplied.
-  if ("gbif" %in% datasources && !is(GBIFLogin, "GBIFLogin") && !loadLocalGBIFDownload) {
+  if ("gbif" %in% datasources &&
+      !is(GBIFLogin, "GBIFLogin") &&
+      !loadLocalGBIFDownload) {
     warning(paste0("You have chosen GBIF as a datasource,\n",
                    "but have not supplied GBIF login information.\n",
                    "Please create a GBIFLogin object using GBIFLoginManager().\n"))

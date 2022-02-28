@@ -42,7 +42,9 @@
 studyTaxonList <- function(x = NULL,
                            datasources = "GBIF Backbone Taxonomy") {
   # Error check inputs (x).
-  if (!class(x) == "phylo" & !(is.vector(class(x)) && class(x) == "character")) {
+  if (!class(x) == "phylo" &
+      !(is.vector(class(x)) &&
+        class(x) == "character")) {
     warning(message("Target input invalid. Input must be of class\n",
                    "'phylo' or a vector of class 'character'.\n"))
     return(NULL)
@@ -58,7 +60,7 @@ studyTaxonList <- function(x = NULL,
 
   # Building the results table
   resolvedNames <- data.frame()
-  for (i in 1:length(targets)) {
+  for (i in seq(to = length(targets))) {
     tryCatch(expr = newResName <- withCallingHandlers({
       taxonRectification(
         taxName = targets[[i]],
@@ -67,7 +69,7 @@ studyTaxonList <- function(x = NULL,
         message("handled warning: ", conditionMessage(w))
         invokeRestart("muffleWarning")}),
              error = function(e) {
-               message(paste("GNR server unreachable at the moment, please try again later. \n"))
+               message(paste("GNR server unreachable; please try again later. \n"))
              })
 
     if(!exists("newResName")){

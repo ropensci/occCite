@@ -35,7 +35,7 @@ prevGBIFdownload <- function(taxonKey = "No key", GBIFLogin) {
                                                  pwd = GBIFLogin@pwd,
                                                  limit = 1000),
            error = function(e) {
-             message(paste("GBIF unreachable at the moment, please try again later. \n"))
+             message(paste("GBIF unreachable; please try again later. \n"))
            })
 
   if(!exists("dl")){
@@ -48,7 +48,8 @@ prevGBIFdownload <- function(taxonKey = "No key", GBIFLogin) {
     if (!is.na(dl$results$request.predicate.key[i]) &
       dl$results$request.predicate.key[i] == "TAXON_KEY") {
       recKey <- dl$results$request.predicate.value[i]
-    } else if (any(na.omit(dl$results$request.predicate.predicates[[i]]$key == "TAXON_KEY"))) {
+    } else if (any(na.omit(dl$results$
+                           request.predicate.predicates[[i]]$key == "TAXON_KEY"))) {
       recKey <- dl$results$request.predicate.predicates[[i]][
         dl$results$request.predicate.predicates[[i]]$key == "TAXON_KEY",
       ]$value

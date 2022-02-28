@@ -130,7 +130,8 @@ occCiteMap <- function(occCiteData,
       stop(paste0("Number of species colors provided must\n",
                   "match number of species mapped."))
     }
-    if (awesomeMarkers == TRUE & !all(species_colors %in% awesomeMarkers.cols)) {
+    if (awesomeMarkers == TRUE & !all(species_colors %in%
+                                      awesomeMarkers.cols)) {
       stop(paste0("If mapping awesomeMarkers, please specify species\n",
                   "colors from those available (see Details in ?occCiteMap)"))
     }
@@ -235,7 +236,8 @@ occCiteMap <- function(occCiteData,
     clusterOpts <- NULL
   }
 
-  m <- leaflet::leaflet() %>% leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical)
+  m <- leaflet::leaflet() %>%
+    leaflet::addProviderTiles(leaflet::providers$Esri.WorldPhysical)
 
   if (awesomeMarkers == TRUE) {
     makeIconList <- function(sp) {

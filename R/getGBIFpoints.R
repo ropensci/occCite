@@ -49,7 +49,7 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
   tryCatch(expr = key <- rgbif::name_suggest(q = cleanTaxon,
                                              rank = "species")$data$key[1],
            error = function(e) {
-             message(paste("GBIF unreachable at the moment, please try again later. \n"))
+             message(paste("GBIF unreachable; please try again later. \n"))
            })
 
   if(!exists("key")){
@@ -79,12 +79,15 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
   if (checkPreviousGBIFDownload == F |
     (checkPreviousGBIFDownload == T && is.null(occD))) {
     tryCatch(expr = occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
-                                                rgbif::pred("hasCoordinate", TRUE),
-                                                rgbif::pred("hasGeospatialIssue", FALSE),
-                                                user = GBIFLogin@username, email = GBIFLogin@email,
+                                                rgbif::pred("hasCoordinate",
+                                                            TRUE),
+                                                rgbif::pred("hasGeospatialIssue",
+                                                            FALSE),
+                                                user = GBIFLogin@username,
+                                                email = GBIFLogin@email,
                                                 pwd = GBIFLogin@pwd),
              error = function(e) {
-               message(paste("GBIF unreachable at the moment, please try again later. \n"))
+               message(paste("GBIF unreachable; please try again later. \n"))
              })
 
     if(!exists("occD")){
@@ -98,7 +101,7 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
     ))
     tryCatch(expr = prepSuccess <- rgbif::occ_download_meta(occD[1])$status,
              error = function(e) {
-               message(paste("GBIF unreachable at the moment, please try again later. \n"))
+               message(paste("GBIF unreachable; please try again later. \n"))
              })
     if(!exists("prepSuccess")){
       return(invisible(NULL))
@@ -112,7 +115,7 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
         format(Sys.time(), format = "%H:%M:%S")))
       tryCatch(expr = prepSuccess <- rgbif::occ_download_meta(occD[1])$status,
                error = function(e) {
-                 message(paste("GBIF unreachable at the moment, please try again later. \n"))
+                 message(paste("GBIF unreachable; please try again later. \n"))
                })
       if(!exists("prepSuccess")){
         return(invisible(NULL))
@@ -138,7 +141,7 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
                                                  file.path(getwd(),
                                                            fileTax)),
            error = function(e) {
-             message(paste("GBIF unreachable at the moment, please try again later. \n"))
+             message(paste("GBIF unreachable; please try again later. \n"))
            })
   if(!exists("res")){
     return(invisible(NULL))
@@ -149,7 +152,7 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
 
   tryCatch(expr = occMetadata <- rgbif::occ_download_meta(occD[1]),
            error = function(e) {
-             message(paste("GBIF unreachable at the moment, please try again later. \n"))
+             message(paste("GBIF unreachable; please try again later. \n"))
            })
 
   if(!exists("occMetadata")){

@@ -86,8 +86,10 @@ summary.occCiteData <- function(object, ...) {
       # GBIF counts
       if (any(all(x@occSources == "bien", length(x@occSources) == 1),
               is.null(x@occResults[[i]]$GBIF$OccurrenceTable),
-              nrow(x@occResults[[i]]$GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey),
-                                                          ]) == 0,
+              nrow(x@occResults[[i]]$
+                   GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$
+                                               GBIF$OccurrenceTable$
+                                               DatasetKey),]) == 0,
               na.rm = T)){
         occurrenceCountGBIF[[i]] <- 0
         sourceCountGBIF[[i]] <- 0
@@ -152,7 +154,8 @@ summary.occCiteData <- function(object, ...) {
           GBIFaccessDate[[i]] <- NA
         }
       }
-      doiTab <- as.data.frame(cbind(names(x@occResults), GBIFaccessDate, GBIFdoi))
+      doiTab <- as.data.frame(cbind(names(x@occResults),
+                                    GBIFaccessDate, GBIFdoi))
       colnames(doiTab) <- c("Species", "GBIF Access Date", "GBIF DOI")
       print(doiTab)
     }
