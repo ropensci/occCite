@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced execution of occurrence searches and citations generation • occCite</title>
+<title>Advanced search and citation of occurrences • occCite</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Advanced execution of occurrence searches and citations generation">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Advanced search and citation of occurrences">
 <meta property="og:description" content="occCite">
 <meta property="og:image" content="/reference/figures/occHex.png">
 <meta property="og:image:alt" content="Hex logo of a museum map icon with 'occCite' written below it">
@@ -61,10 +61,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Advanced.html">Advanced execution of occurrence searches and citations generation</a>
+      <a href="../articles/Advanced.html">Advanced search and citation of occurrences</a>
     </li>
     <li>
-      <a href="../articles/Simple.html">Simple execution of occurrence searches and citation generation</a>
+      <a href="../articles/Simple.html">Simple search and citation of occurrences</a>
     </li>
   </ul>
 </li>
@@ -92,7 +92,7 @@
       </header><script src="Advanced_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Advanced execution of occurrence searches and citations generation</h1>
+      <h1 data-toc-skip>Advanced search and citation of occurrences</h1>
                         <h4 data-toc-skip class="author">Hannah L. Owens</h4>
                         <h4 data-toc-skip class="author">Cory Merow</h4>
                         <h4 data-toc-skip class="author">Brian Maitner</h4>
@@ -100,7 +100,7 @@
                         <h4 data-toc-skip class="author">Vijay Barve</h4>
                         <h4 data-toc-skip class="author">Robert Guralnick</h4>
             
-            <h4 data-toc-skip class="date">2022-02-25</h4>
+            <h4 data-toc-skip class="date">2022-02-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hannahlowens/occCite/blob/HEAD/vignettes/Advanced.Rmd" class="external-link"><code>vignettes/Advanced.Rmd</code></a></small>
       <div class="hidden name"><code>Advanced.Rmd</code></div>
@@ -154,7 +154,7 @@
 <code class="sourceCode R"><span class="co">#The full summary</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">myOldOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##  </span>
-<span class="co">##  OccCite query occurred on: 25 February, 2022</span>
+<span class="co">##  OccCite query occurred on: 28 February, 2022</span>
 <span class="co">##  </span>
 <span class="co">##  User query type: User-supplied list of taxa.</span>
 <span class="co">##  </span>
@@ -171,7 +171,7 @@
 <span class="co">##  Sources for occurrence data: gbif, bien</span>
 <span class="co">##      </span>
 <span class="co">##                             Species Occurrences Sources</span>
-<span class="co">## 1 Protea cynaroides (L.) L. L. (L.)        2121      13</span>
+<span class="co">## 1 Protea cynaroides (L.) L. L. (L.)        2266      17</span>
 <span class="co">##  </span>
 <span class="co">##  GBIF dataset DOIs:  </span>
 <span class="co">## </span>
@@ -182,7 +182,7 @@
 <code class="sourceCode R"><span class="co">#Get citations</span>
 <span class="va">myOldOccCitations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/occCitation.html">occCitation</a></span><span class="op">(</span><span class="va">myOldOccCiteObject</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">myOldOccCitations</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Writing 4 Bibtex entries ... OK</span>
+<pre><code><span class="co">## Writing 5 Bibtex entries ... OK</span>
 <span class="co">## Results written to file 'temp.bib'</span></code></pre>
 <pre><code><span class="co">## Warning: `as_data_frame()` was deprecated in tibble 2.0.0.</span>
 <span class="co">## Please use `as_tibble()` instead.</span>
@@ -197,15 +197,20 @@
 <span class="co">## de Vries H, Lemmens M (2021). Observation.org, Nature data from around the World. Observation.org. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2022-01-13.</span>
 <span class="co">## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2022-01-13.</span>
 <span class="co">## iNaturalist contributors, iNaturalist (2022). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2022-01-13.</span>
+<span class="co">## Maitner, B. (2022). BIEN: Tools for Accessing the Botanical Information and Ecology. R package version 1.2.5. https://CRAN.R-project.org/package=BIEN.</span>
+<span class="co">## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.</span>
 <span class="co">## MNHN, Chagnoux S (2022). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.249. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2022-01-13.</span>
+<span class="co">## MNHN. Accessed via BIEN on NA.</span>
 <span class="co">## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-01-13.</span>
 <span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2022). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.2. https://CRAN.R-project.org/package=occCite.</span>
 <span class="co">## R Core Team. (2021). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.</span>
 <span class="co">## Ranwashe F (2021). BODATSA: Botanical Collections. Version 1.6. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-01-13.</span>
 <span class="co">## Rob Cubey (2022). Royal Botanic Garden Edinburgh Living Plant Collections (E). Royal Botanic Garden Edinburgh. https://doi.org/10.15468/bkzv1l. Accessed via GBIF on 2022-01-13.</span>
+<span class="co">## SANBI. Accessed via BIEN on NA.</span>
 <span class="co">## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2022-01-13.</span>
 <span class="co">## Solomon J, Stimmel H (2021). Tropicos Specimen Data. Missouri Botanical Garden. https://doi.org/10.15468/hja69f. Accessed via GBIF on 2022-01-13.</span>
-<span class="co">## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2022-01-13.</span></code></pre>
+<span class="co">## Tela Botanica. Carnet en Ligne. https://doi.org/10.15468/rydcn2. Accessed via GBIF on 2022-01-13.</span>
+<span class="co">## UConn. Accessed via BIEN on NA.</span></code></pre>
 <p>Note that you can also load multiple species using either a vector of species names or a phylogeny (provided you have previously downloaded data for all of the species of interest), and you can load occurrences from non-GBIF data sources (e.g. BIEN) in the same query.</p>
 <hr>
 </div>
@@ -236,7 +241,7 @@
 <span class="co"># What does a multispecies query look like?</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##  </span>
-<span class="co">##  OccCite query occurred on: 25 February, 2022</span>
+<span class="co">##  OccCite query occurred on: 28 February, 2022</span>
 <span class="co">##  </span>
 <span class="co">##  User query type: User-supplied phylogeny.</span>
 <span class="co">##  </span>
