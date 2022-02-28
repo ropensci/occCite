@@ -12,7 +12,7 @@ test_that("BIEN behaves as expected", {
   testResult <- BIEN::BIEN_occurrence_species(
     species = "Protea cynaroides",
     cultivated = T,
-    only.new.world = F, native.status = F,
+    new.world = F, native.status = F,
     collection.info = T, natives.only = F
   )
   expect_equal(class(testResult), "data.frame")
