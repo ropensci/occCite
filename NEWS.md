@@ -2,7 +2,6 @@
 
 * Resubmission after archiving due to dependency archiving.
 * Functions that rely on getting data from servers via an internet connection now behave more gracefully and informatively when the server cannot be reached.
-* Includes Code of Conduct
 
 # occCite 0.5.1
 
