@@ -1,5 +1,5 @@
 ---
-title: "Simple execution of occurrence searches and citation generation"
+title: "Simple search and citation of occurrences"
 author:
 - Hannah L. Owens
 - Cory Merow
