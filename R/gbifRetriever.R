@@ -29,7 +29,7 @@ gbifRetriever <- function(taxon = NULL) {
              message(paste("GBIF unreachable at the moment, please try again later. \n"))
            })
 
-  if(class(taxon_key) == "try-error"){
+  if(is(taxon_key, "try-error")){
     if(grepl(unlist(taxon_key)[1], pattern = "401")){
       warning("GBIF user login data incorrect.\n")
     } else{

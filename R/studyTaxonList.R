@@ -42,18 +42,18 @@
 studyTaxonList <- function(x = NULL,
                            datasources = "GBIF Backbone Taxonomy") {
   # Error check inputs (x).
-  if (!class(x) == "phylo" &
+  if (!is(x, "phylo") &
       !(is.vector(class(x)) &&
-        class(x) == "character")) {
+        is(x, "character"))) {
     warning(message("Target input invalid. Input must be of class\n",
                    "'phylo' or a vector of class 'character'.\n"))
     return(NULL)
   }
-  else if (is.vector(class(x)) && class(x) == "character") {
+  else if (is.vector(class(x)) && is(x, "character")) {
     targets <- x
     dataFrom <- "User-supplied list of taxa." # Keeping track of metadata
   }
-  else if (class(x) == "phylo") {
+  else if (is(x, "phylo")) {
     targets <- x$tip.label
     dataFrom <- "User-supplied phylogeny." # Keeping track of metadata
   }

@@ -70,7 +70,7 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
              message(paste("GBIF unreachable at the moment, please try again later. \n"))
            })
 
-  if(class(test) == "try-error"){
+  if(is(test, "try-error")){
     if(grepl(unlist(test)[1], pattern = "401")){
       warning("GBIF user login data incorrect.\n")
     } else{
