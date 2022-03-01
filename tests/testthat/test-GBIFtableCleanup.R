@@ -21,6 +21,7 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
 test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   skip_on_cran()
 
+  # This is here to make the test robust to internet connectivity problems
   test <- try(rgbif::occ_count(country='DK'),
               silent = T)
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
