@@ -35,12 +35,12 @@ at a default of 1000 randomly selected records; users can specify a
 higher number, but be aware that leaflet can lag or crash when too many
 points are plotted.}
 
-\item{awesomeMarkers}{Logical; if \code{TRUE} (default), mapped points will
-be \code{awesomeMarkers} attributed with an icon for a globe for GBIF, a leaf
+\item{awesomeMarkers}{Logical; if `TRUE` (default), mapped points will
+be `awesomeMarkers` attributed with an icon for a globe for GBIF, a leaf
 for BIEN, or a database if records from both databases have the same
-coordinates; if \code{FALSE}, mapped points will be leaflet \code{circleMarkers}}
+coordinates; if `FALSE`, mapped points will be leaflet `circleMarkers`}
 
-\item{cluster}{Logical; if \code{TRUE} (default is \code{FALSE}) turns on marker
+\item{cluster}{Logical; if `TRUE` (default is `FALSE`) turns on marker
 clustering, which does not preserve color differences between species}
 }
 \value{
@@ -51,12 +51,12 @@ Makes maps for each individual species in an
 \code{\link{occCiteData}} object.
 }
 \details{
-When mapping using \code{awesomeMarkers} (default), the parameter
+When mapping using `awesomeMarkers` (default), the parameter
 species_colors must match those in a specified color library, currently:
 c("red", "lightred", "orange", "beige", "green", "lightgreen", "blue",
 "lightblue", "purple", "pink", "cadetblue", "white", "gray", "lightgray").
-When \code{awesomeMarkers} is \code{FALSE} and species_colors are not specified,
-random colors from the \code{RColorBrewer} Set1 palette are used.
+When `awesomeMarkers` is `FALSE` and species_colors are not specified,
+random colors from the `RColorBrewer` Set1 palette are used.
 }
 \examples{
 data(myOccCiteObject)

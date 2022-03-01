@@ -2,7 +2,7 @@
 % Please edit documentation in R/getGBIFpoints.R
 \name{getGBIFpoints}
 \alias{getGBIFpoints}
-\title{Download occurrence points from GBIF}
+\title{Download occurrences from GBIF}
 \usage{
 getGBIFpoints(
   taxon,
@@ -27,15 +27,16 @@ user wishes to check their existing prepared downloads on the GBIF website.}
 \value{
 A list containing \enumerate{ \item a data frame of occurrence data;
 \item GBIF search metadata; \item a data frame containing the raw results of
-a query to \code{rgbif::occ_download_get()}.}
+ a query to `rgbif::occ_download_get()`.}
 }
 \description{
-Downloads occurrence points and useful related information
-for processing within other occCite functions
+Downloads GBIF occurrence points and useful related
+information for processing within other occCite functions
 }
 \details{
-\code{getGBIFpoints} only returns records from GBIF that have
-coordinates and that aren't flagged as having geospatial issues.
+`getGBIFpoints` only returns records from GBIF that have
+coordinates, aren't flagged as having geospatial issues, and have an
+occurrence status flagged as "PRESENT".
 }
 \examples{
 \dontrun{

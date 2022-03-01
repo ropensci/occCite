@@ -17,7 +17,7 @@ logging in to GBIF.}
 }
 \value{
 An object of class \code{\link{GBIFLogin}} containing the user's
-GBIF login data.
+ GBIF login data.
 }
 \description{
 Takes users GBIF login particulars and turns it
