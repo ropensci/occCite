@@ -10,16 +10,16 @@
 #' @return A table that can be more easily mapped and used
 #' for summary plots.
 #'
-#' @keywords Internal
+#' @keywords internal
 #'
 #' @examples
 #' data(myOccCiteObject)
 #' tabulate.occResults(myOccCiteObject@occResults,
 #'   sp.name = "Protea cynaroides"
 #' )
-#' @importFrom dplyr "%>%" filter
+#' @importFrom dplyr "%>%" filter mutate_if mutate bind_rows
 #'
-#' @export
+#' @noRd
 
 tabulate.occResults <- function(x, sp.name) {
   sp.name <- stringr::str_extract(
@@ -30,10 +30,10 @@ tabulate.occResults <- function(x, sp.name) {
   occTbls.nulls <- sapply(occTbls, is.null)
   occTbls.char <- lapply(occTbls[!occTbls.nulls], function(tbl) {
     tbl %>%
-      dplyr::mutate_if(is.factor, as.character) %>%
-      dplyr::mutate(name = sp.name)
+      mutate_if(is.factor, as.character) %>%
+      mutate(name = sp.name)
   })
-  occTbls.bind <- dplyr::bind_rows(occTbls.char)
+  occTbls.bind <- bind_rows(occTbls.char)
   return(occTbls.bind)
 }
 
@@ -86,6 +86,7 @@ tabulate.occResults <- function(x, sp.name) {
 #' @importFrom rlang .data
 #' @importFrom stats complete.cases
 #' @importFrom RColorBrewer brewer.pal
+#' @import leaflet
 #'
 #' @export
 #'

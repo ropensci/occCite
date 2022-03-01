@@ -28,8 +28,7 @@
 #'
 #' @export
 #'
-prevGBIFdownload <- function(taxonKey = "No key", GBIFLogin) {
-
+prevGBIFdownload <- function(taxonKey, GBIFLogin) {
 
   tryCatch(expr = dl <- rgbif::occ_download_list(user = GBIFLogin@username,
                                                  pwd = GBIFLogin@pwd,

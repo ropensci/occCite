@@ -1,7 +1,7 @@
-#' @title Download occurrence points from GBIF
+#' @title Download occurrences from GBIF
 #'
-#' @description Downloads occurrence points and useful related information
-#' for processing within other occCite functions
+#' @description Downloads GBIF occurrence points and useful related
+#' information for processing within other occCite functions
 #'
 #' @param taxon A single species
 #'
@@ -16,7 +16,8 @@
 #' user wishes to check their existing prepared downloads on the GBIF website.
 #'
 #' @details `getGBIFpoints` only returns records from GBIF that have
-#' coordinates and that aren't flagged as having geospatial issues.
+#' coordinates, aren't flagged as having geospatial issues, and have an
+#' occurrence status flagged as "PRESENT".
 #'
 #' @return A list containing \enumerate{ \item a data frame of occurrence data;
 #' \item GBIF search metadata; \item a data frame containing the raw results of
@@ -30,6 +31,8 @@
 #'   GBIFDownloadDirectory = NULL
 #' )
 #' }
+#'
+#' @import rgbif
 #'
 #' @export
 getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
@@ -76,19 +79,21 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
     }
   }
 
-  if (checkPreviousGBIFDownload == F |
-    (checkPreviousGBIFDownload == T && is.null(occD))) {
+  if (checkPreviousGBIFDownload == F ||
+      (checkPreviousGBIFDownload == T && is.null(occD))) {
     tryCatch(expr = occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
                                                 rgbif::pred("hasCoordinate",
                                                             TRUE),
                                                 rgbif::pred("hasGeospatialIssue",
                                                             FALSE),
+                                                rgbif::pred("occurrenceStatus",
+                                                            "PRESENT"),
                                                 user = GBIFLogin@username,
                                                 email = GBIFLogin@email,
                                                 pwd = GBIFLogin@pwd),
-             error = function(e) {
-               message(paste("GBIF unreachable; please try again later. \n"))
-             })
+               error = function(e) {
+                 message(paste("GBIF unreachable; please try again later. \n"))
+               })
 
     if(!exists("occD")){
       return(invisible(NULL))
@@ -138,8 +143,8 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
   # Getting the download from GBIF and loading it into R
   tryCatch(expr = res <- rgbif::occ_download_get(key = occD[1],
                                                  overwrite = TRUE,
-                                                 file.path(getwd(),
-                                                           fileTax)),
+                                                 path = file.path(getwd(),
+                                                                  fileTax)),
            error = function(e) {
              message(paste("GBIF unreachable; please try again later. \n"))
            })
