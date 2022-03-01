@@ -60,11 +60,9 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   pwd <- check_pwd(pwd)
 
   # Test login
-  tryCatch(expr = test <- try(rgbif::occ_download(user = user,
-                                                  email = email,
-                                                  pwd = pwd,
-                                                  rgbif::pred("catalogNumber",
-                                                              217880)),
+  tryCatch(expr = test <- try(rgbif::occ_download_list(user = user,
+                                                       pwd = pwd,
+                                                       limit = 1),
                               silent = T),
            error = function(e) {
              message(paste("GBIF unreachable at the moment, please try again later. \n"))
@@ -79,7 +77,7 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
     return(NULL)
   }
 
-  # Populating an instance of class occCiteData
+  # Populating an instance of class GBIFLogin
   loginInstance <- methods::new("GBIFLogin",
     username = user,
     email = email,
