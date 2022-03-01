@@ -9,6 +9,7 @@ test_that("download list retrievable from GBIF.org", {
     "GBIF Login information not available"
   )
 
+  GBIFLogin <- GBIFLoginManager()
   test <- try(rgbif::occ_download(
     user = GBIFLogin@username,
     email = GBIFLogin@email,
@@ -36,6 +37,7 @@ test_that("download list parseable by prevGBIFdownload", {
     "GBIF Login information not available"
   )
 
+  GBIFLogin <- GBIFLoginManager()
   test <- try(rgbif::occ_download(
     user = GBIFLogin@username,
     email = GBIFLogin@email,

@@ -52,9 +52,10 @@ test_that("gbifRetriever warns when there's no internet connection", {
   setwd(dir = system.file("extdata/", package = "occCite"))
   taxon <- "Protea cynaroides"
 
+  GBIFLogin <- GBIFLoginManager()
   test <- try(rgbif::occ_count(country='DK'),
               silent = T)
-  skip_if(class(test) == "numeric", "GBIF connection successful")
+  skip_if(is(test, "numeric"), "GBIF connection successful")
 
   expect_warning(occCite:::gbifRetriever(taxon))
 })

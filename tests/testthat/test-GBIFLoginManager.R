@@ -10,8 +10,7 @@ test_that("GBIFLoginManager error messaging behaves as expected", {
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   expect_warning(
-    GBIFLoginManager("testing", "the", "login"),
-    "GBIF user login data incorrect."
+    GBIFLoginManager("testing", "the", "login")
   )
 })
 
