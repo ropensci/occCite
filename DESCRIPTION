@@ -18,7 +18,13 @@ Authors@R: c(
   person(given = "Damiano", family = "Oldoni",,,role="rev",
     comment = c(ORCID = "0000-0003-3445-7562"))
   )
-Author: Hannah L. Owens [aut, cre] (<https://orcid.org/0000-0003-0071-1745>), Cory Merow [aut] (<https://orcid.org/0000-0003-0561-053X>), Brian Maitner [aut] (<https://orcid.org/0000-0002-2118-9880>), Jamie M. Kass [aut] (<https://orcid.org/0000-0002-9432-895X>), Vijay Barve [aut] (<https://orcid.org/0000-0002-4852-2567>), Robert P. Guralnick [aut] (<https://orcid.org/0000-0001-6682-1504>)
+Author: Hannah L. Owens [aut, cre] (<https://orcid.org/0000-0003-0071-1745>), 
+  Cory Merow [aut] (<https://orcid.org/0000-0003-0561-053X>), 
+  Brian Maitner [aut] (<https://orcid.org/0000-0002-2118-9880>), 
+  Jamie M. Kass [aut] (<https://orcid.org/0000-0002-9432-895X>), 
+  Vijay Barve [aut] (<https://orcid.org/0000-0002-4852-2567>), 
+  Robert P. Guralnick [aut] (<https://orcid.org/0000-0001-6682-1504>),
+  Damiano Oldoni [rev] (<https://orcid.org/0000-0003-3445-7562>)
 Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
 Description: Facilitates the gathering of biodiversity occurrence data 
   from disparate sources. Metadata is managed throughout the process to facilitate 
