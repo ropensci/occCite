@@ -28,7 +28,7 @@ gbifRetriever <- function(taxon = NULL) {
       silent = T
     ),
     error = function(e) {
-      message(paste("GBIF unreachable at the moment, please try again later. \n"))
+      message(paste("GBIF unreachable; please try again later. \n"))
     }
   )
 
@@ -36,7 +36,7 @@ gbifRetriever <- function(taxon = NULL) {
     if (grepl(unlist(taxon_key)[1], pattern = "401")) {
       warning("GBIF user login data incorrect.\n")
     } else {
-      warning("GBIF unreachable at the moment, please try again later. \n")
+      warning("GBIF unreachable; please try again later. \n")
     }
     return(NULL)
   }
@@ -59,7 +59,7 @@ gbifRetriever <- function(taxon = NULL) {
     tryCatch(
       expr = metadata <- rgbif::occ_download_meta(key = keys[[i]]),
       error = function(e) {
-        message(paste("GBIF unreachable at the moment, please try again later. \n"))
+        message(paste("GBIF unreachable; please try again later. \n"))
       }
     )
 

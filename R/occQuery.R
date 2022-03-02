@@ -190,7 +190,8 @@ occQuery <- function(x = NULL,
   ) | is.null(searchTaxa)) {
     warning(paste0(
       "There was no taxonomic match for ",
-      queryResults@cleanedTaxonomy[queryResults@cleanedTaxonomy$`Best Match` == "No match", 1],
+      queryResults@cleanedTaxonomy[queryResults@cleanedTaxonomy$`Best Match` ==
+                                     "No match", 1],
       ". This/these species have been removed from your search.\n"
     ))
     searchTaxa <- searchTaxa[searchTaxa != "No match"]

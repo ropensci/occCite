@@ -66,7 +66,7 @@ taxonRectification <- function(taxName = NULL, datasources = NULL) {
 
   # Resolving the user-input taxonomic names
   sourceIDs <- sources$id[sources$title %in% datasources]
-  # Protects against error thrown when giving gnr_resolve a complete list of data sources
+  # Protects from error when gnr_resolve gets complete list of data sources
   if (nrow(sources) == length(sourceIDs)) {
     sourceIDs <- NULL
   }

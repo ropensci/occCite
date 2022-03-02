@@ -3,7 +3,7 @@
 #' @description Downloads GBIF occurrence points and useful related
 #' information for processing within other occCite functions
 #'
-#' @param taxon A single species
+#' @param taxon A string with a single species name
 #'
 #' @param GBIFLogin An object of class \code{\link{GBIFLogin}} to log in to
 #' GBIF to begin the download.
@@ -39,7 +39,7 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
                           GBIFDownloadDirectory = NULL,
                           checkPreviousGBIFDownload = T) {
 
-  # File hygene
+  # File hygiene
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
@@ -86,7 +86,8 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
   if (checkPreviousGBIFDownload == F ||
     (checkPreviousGBIFDownload == T && is.null(occD))) {
     tryCatch(
-      expr = occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
+      expr = occD <- rgbif::occ_download(rgbif::pred("taxonKey",
+                                                     value = key),
         rgbif::pred(
           "hasCoordinate",
           TRUE

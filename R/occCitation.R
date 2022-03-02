@@ -161,7 +161,9 @@ occCitation <- function(x = NULL) {
       if (nrow(BIENsources) < length(BIENdatasetKeys)) {
         noNameKeys <- unlist(BIENdatasetKeys[!BIENdatasetKeys %in%
           BIENsources$datasource_id]) # Gets keys missing names
-        datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[, c("DatasetKey", "Dataset")])
+        datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[,
+                                                                     c("DatasetKey",
+                                                                       "Dataset")])
         datasetLookupTable[] <- lapply(datasetLookupTable, as.character)
         missingNames <- datasetLookupTable$Dataset[datasetLookupTable$DatasetKey %in%
           noNameKeys] # Pulls missing names

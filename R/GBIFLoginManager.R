@@ -75,7 +75,7 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
     silent = T
     ),
     error = function(e) {
-      message(paste("GBIF unreachable at the moment, please try again later. \n"))
+      message(paste("GBIF unreachable; please try again later. \n"))
     }
   )
 
@@ -83,7 +83,7 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
     if (grepl(unlist(test)[1], pattern = "401")) {
       warning("GBIF user login data incorrect.\n")
     } else {
-      warning("GBIF unreachable at the moment, please try again later. \n")
+      warning("GBIF unreachable; please try again later. \n")
     }
     return(NULL)
   }
@@ -101,15 +101,18 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
 # (adapted from occ_download in rgbif)
 check_user <- function(x) {
   z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x
-  if (z == "") getOption("gbif_user", stop("supply a username")) else z
+  if (z == "") getOption("gbif_user",
+                         stop("supply a username")) else z
 }
 
 check_pwd <- function(x) {
   z <- if (is.null(x)) Sys.getenv("GBIF_PWD", "") else x
-  if (z == "") getOption("gbif_pwd", stop("supply a password")) else z
+  if (z == "") getOption("gbif_pwd",
+                         stop("supply a password")) else z
 }
 
 check_email <- function(x) {
   z <- if (is.null(x)) Sys.getenv("GBIF_EMAIL", "") else x
-  if (z == "") getOption("gbif_email", stop("supply an email address")) else z
+  if (z == "") getOption("gbif_email",
+                         stop("supply an email address")) else z
 }

@@ -17,7 +17,7 @@
 #' tabulate.occResults(myOccCiteObject@occResults,
 #'   sp.name = "Protea cynaroides"
 #' )
-#' @importFrom dplyr "%>%" filter mutate_if mutate bind_rows
+#' @importFrom dplyr "%>%" mutate_if mutate bind_rows
 #'
 #' @noRd
 
