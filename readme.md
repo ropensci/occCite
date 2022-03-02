@@ -90,8 +90,13 @@ library("occCite")
 
 ## Meta
 
--   Please [report any issues or
-    bugs](https://github.com/hannahlowens/occCite/issues).
+-   Please adhere to the [code of 
+conduct](<https://hannahlowens.github.io/occCite/CODE_OF_CONDUCT.html>).
+-   Please [report any issues or 
+bugs](<https://github.com/hannahlowens/occCite/issues>).
+-   We encourage you to contribute to `occCite`! See the 
+[contributor guide](<https://hannahlowens.github.io/occCite/CONTRIBUTING.html>) 
+for more information.
 -   License: GPL-3
 -   Get citation information for `occCite` in R using
     `citation(package = 'occCite')`
