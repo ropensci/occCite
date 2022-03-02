@@ -22,11 +22,17 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
 test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   skip_on_cran()
 
-  # This is here to make the test robust to internet connectivity problems
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
+  # This is here to make the test robust to internet connectivity and login information
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"))
+
+  test <- try(rgbif::occ_download_list(
+    user = GBIFLogin@username,
+    pwd = GBIFLogin@pwd, limit = 1,
+  ),
+  silent = T
   )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
 
   oldwd <- getwd()
   on.exit(setwd(oldwd))
@@ -51,10 +57,16 @@ test_that("behaves as expected when given a stored GBIF table", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"))
+
+  test <- try(rgbif::occ_download_list(
+    user = GBIFLogin@username,
+    pwd = GBIFLogin@pwd, limit = 1,
+  ),
+  silent = T
   )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
+  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
 
   setwd(dir = system.file("extdata/", package = "occCite"))
   taxon <- "Protea cynaroides"

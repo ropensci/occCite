@@ -14,7 +14,9 @@ test_that("data entered into tabGBIF is as expected", {
   )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
-  GBIFLogin <- GBIFLoginManager()
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"))
+
   test <- try(rgbif::occ_download(
     user = GBIFLogin@username,
     email = GBIFLogin@email,
@@ -24,8 +26,6 @@ test_that("data entered into tabGBIF is as expected", {
   silent = T
   )
   skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
-
-  GBIFLogin <- GBIFLoginManager()
 
   key <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$data$key[1]
   occD <- prevGBIFdownload(key, GBIFLogin)
@@ -51,7 +51,9 @@ test_that("verify occ_download_import results have expected columns", {
   )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
-  GBIFLogin <- GBIFLoginManager()
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"))
+
   test <- try(rgbif::occ_download(
     user = GBIFLogin@username,
     email = GBIFLogin@email,
@@ -61,8 +63,6 @@ test_that("verify occ_download_import results have expected columns", {
   silent = T
   )
   skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
-
-  GBIFLogin <- GBIFLoginManager()
 
   key <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$data$key
   occD <- prevGBIFdownload(key, GBIFLogin)
@@ -92,7 +92,9 @@ test_that("tabGBIF results as expected", {
     "GBIF Login information not available"
   )
 
-  GBIFLogin <- GBIFLoginManager()
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"))
+
   test <- try(rgbif::occ_download_list(
     user = GBIFLogin@username,
     pwd = GBIFLogin@pwd, limit = 1,
@@ -100,8 +102,6 @@ test_that("tabGBIF results as expected", {
   silent = T
   )
   skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
-
-  GBIFLogin <- GBIFLoginManager()
 
   key <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$data$key
   occD <- prevGBIFdownload(key, GBIFLogin)

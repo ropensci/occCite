@@ -26,7 +26,10 @@ test_that("GBIFLoginManager actually picks up login information", {
   )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
-  GBIFLogin <- GBIFLoginManager()
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"),
+          message = "GBIF login unsuccessful")
+
   test <- try(rgbif::occ_download_list(
     user = GBIFLogin@username,
     pwd = GBIFLogin@pwd, limit = 1,
