@@ -28,23 +28,28 @@ getBIENpoints <- function(taxon) {
     pattern = "(\\w+\\s\\w+)"
   )
 
-  if(!curl::has_internet()){
+  if (!curl::has_internet()) {
     warning("No internet connection available; please try again later. \n")
     return(NULL)
   }
 
-  tryCatch(expr = try(occs <- BIEN::BIEN_occurrence_species(species = taxon,
-                                                            cultivated = T,
-                                                            new.world = F,
-                                                            native.status = F,
-                                                            collection.info = T,
-                                                            natives.only = F),
-                      silent = T),
-           error = function(e) {
-             message(paste("BIEN unreachable; please try again later. \n"))
-           })
+  tryCatch(
+    expr = try(occs <- BIEN::BIEN_occurrence_species(
+      species = taxon,
+      cultivated = T,
+      new.world = F,
+      native.status = F,
+      collection.info = T,
+      natives.only = F
+    ),
+    silent = T
+    ),
+    error = function(e) {
+      message(paste("BIEN unreachable; please try again later. \n"))
+    }
+  )
 
-  if(!exists("occs")){
+  if (!exists("occs")) {
     return(invisible(NULL))
   }
 

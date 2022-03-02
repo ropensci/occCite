@@ -128,13 +128,17 @@ occCiteMap <- function(occCiteData,
 
   if (!is.null(species_colors)) {
     if (length(species_colors) != length(sp.names)) {
-      stop(paste0("Number of species colors provided must\n",
-                  "match number of species mapped."))
+      stop(paste0(
+        "Number of species colors provided must\n",
+        "match number of species mapped."
+      ))
     }
     if (awesomeMarkers == TRUE & !all(species_colors %in%
-                                      awesomeMarkers.cols)) {
-      stop(paste0("If mapping awesomeMarkers, please specify species\n",
-                  "colors from those available (see Details in ?occCiteMap)"))
+      awesomeMarkers.cols)) {
+      stop(paste0(
+        "If mapping awesomeMarkers, please specify species\n",
+        "colors from those available (see Details in ?occCiteMap)"
+      ))
     }
   }
 
@@ -143,10 +147,14 @@ occCiteMap <- function(occCiteData,
     function(x) tabulate.occResults(d.res[[x]], names(d.res)[x])
   )
   for (i in 1:length(d.tbl)) {
-    if (nrow(d.tbl[[i]]) > 0){
-      d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,
-                                                         c("longitude",
-                                                           "latitude")]), ]
+    if (nrow(d.tbl[[i]]) > 0) {
+      d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][
+        ,
+        c(
+          "longitude",
+          "latitude"
+        )
+      ]), ]
     }
     d.tbl.n <- nrow(d.tbl[[i]])
     if (d.tbl.n > map_limit) {
@@ -337,10 +345,12 @@ occCiteMap <- function(occCiteData,
 plot.occCiteData <- function(x, ...) {
   # Function to wrap labels
   occ_strwrap <- function(x) {
-    x <- unlist(lapply(strwrap(x, width = 30, simplify= FALSE),
-                  paste, collapse = "\n"))
+    x <- unlist(lapply(strwrap(x, width = 30, simplify = FALSE),
+      paste,
+      collapse = "\n"
+    ))
     return(x)
-    }
+  }
 
   args <- list(...)
 
@@ -376,8 +386,7 @@ plot.occCiteData <- function(x, ...) {
       plotTypes[!plotTypes %in% plots]
     ))
     return(NULL)
-  }
-  else if (is.null(plotTypes)) { # Fills in NULL
+  } else if (is.null(plotTypes)) { # Fills in NULL
     plotTypes <- plots
   }
 
@@ -387,9 +396,13 @@ plot.occCiteData <- function(x, ...) {
     function(x) tabulate.occResults(d.res[[x]], names(d.res)[x])
   )
   for (i in 1:length(d.tbl)) {
-    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][,
-                                                       c("longitude",
-                                                         "latitude")]), ]
+    d.tbl[[i]] <- d.tbl[[i]][complete.cases(d.tbl[[1]][
+      ,
+      c(
+        "longitude",
+        "latitude"
+      )
+    ]), ]
     d.tbl.n <- nrow(d.tbl[[i]])
     if (d.tbl.n == 0) {
       d.tbl[[i]] <- NULL
@@ -445,8 +458,7 @@ plot.occCiteData <- function(x, ...) {
           title = "All Occurrence Records by Primary Data Source",
           xlab = "*Sources contributing <2% not shown."
         )
-      }
-      else {
+      } else {
         source <- waffle::waffle(pct,
           rows = 10,
           colors = viridis::viridis(length(pct)),
@@ -456,8 +468,7 @@ plot.occCiteData <- function(x, ...) {
       source <- ggplot_build(source)
       if ("yearHistogram" %in% plotTypes) {
         allPlots[[2]] <- source
-      }
-      else {
+      } else {
         allPlots[[1]] <- source
       }
     }
@@ -478,8 +489,7 @@ plot.occCiteData <- function(x, ...) {
     }
     names(allPlots) <- plotTypes
     return(allPlots)
-  }
-  else {
+  } else {
     spList <- unique(d$name)
     spList <- spList[!is.na(spList)]
     spPlotList <- vector(mode = "list", length = length(spList))
@@ -524,8 +534,7 @@ plot.occCiteData <- function(x, ...) {
             title = paste0(sp, " Occurrence Records by Primary Data Source"),
             xlab = "*Sources contributing <2% not shown."
           )
-        }
-        else {
+        } else {
           source <- waffle::waffle(pct,
             rows = 10,
             colors = viridis::viridis(length(pct)),
@@ -538,8 +547,7 @@ plot.occCiteData <- function(x, ...) {
         source <- ggplot_build(source)
         if ("yearHistogram" %in% plotTypes) {
           allPlots[[2]] <- source
-        }
-        else {
+        } else {
           allPlots[[1]] <- source
         }
       }

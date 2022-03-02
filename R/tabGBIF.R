@@ -44,13 +44,17 @@ tabGBIF <- function(GBIFresults, taxon) {
   )
 
   occFromGBIF$Dataset <- unlist(lapply(occFromGBIF$DatasetKey,
-                                       FUN = function(y)
-                                         rgbif::gbif_citation(y)$citation$title))
+    FUN = function(y) {
+      rgbif::gbif_citation(y)$citation$title
+    }
+  ))
 
   # Remove entries with NA values in long, lat, and year
-  occFromGBIF <- occFromGBIF[complete.cases(occFromGBIF[,c("longitude",
-                                                           "latitude",
-                                                           "year")]),]
+  occFromGBIF <- occFromGBIF[complete.cases(occFromGBIF[, c(
+    "longitude",
+    "latitude",
+    "year"
+  )]), ]
 
   return(occFromGBIF)
 }

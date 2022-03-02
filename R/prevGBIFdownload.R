@@ -18,8 +18,10 @@
 #'   email = "ireneAdler@@laScala.org",
 #'   pwd = "sh3r"
 #' )
-#' taxKey <- rgbif::name_suggest(q = "Protea cynaroides",
-#'                               rank = "species")$key[1]
+#' taxKey <- rgbif::name_suggest(
+#'   q = "Protea cynaroides",
+#'   rank = "species"
+#' )$key[1]
 #' prevGBIFdownload(
 #'   taxonKey = taxKey,
 #'   GBIFLogin = myGBIFLogin
@@ -29,15 +31,18 @@
 #' @export
 #'
 prevGBIFdownload <- function(taxonKey, GBIFLogin) {
+  tryCatch(
+    expr = dl <- rgbif::occ_download_list(
+      user = GBIFLogin@username,
+      pwd = GBIFLogin@pwd,
+      limit = 1000
+    ),
+    error = function(e) {
+      message(paste("GBIF unreachable; please try again later. \n"))
+    }
+  )
 
-  tryCatch(expr = dl <- rgbif::occ_download_list(user = GBIFLogin@username,
-                                                 pwd = GBIFLogin@pwd,
-                                                 limit = 1000),
-           error = function(e) {
-             message(paste("GBIF unreachable; please try again later. \n"))
-           })
-
-  if(!exists("dl")){
+  if (!exists("dl")) {
     return(invisible(NULL))
   }
 
@@ -48,7 +53,7 @@ prevGBIFdownload <- function(taxonKey, GBIFLogin) {
       dl$results$request.predicate.key[i] == "TAXON_KEY") {
       recKey <- dl$results$request.predicate.value[i]
     } else if (any(na.omit(dl$results$
-                           request.predicate.predicates[[i]]$key == "TAXON_KEY"))) {
+      request.predicate.predicates[[i]]$key == "TAXON_KEY"))) {
       recKey <- dl$results$request.predicate.predicates[[i]][
         dl$results$request.predicate.predicates[[i]]$key == "TAXON_KEY",
       ]$value
@@ -59,8 +64,7 @@ prevGBIFdownload <- function(taxonKey, GBIFLogin) {
   }
   if (is.null(retmat)) {
     return(NULL)
-  }
-  else {
+  } else {
     return(retmat[retmat$modified == rev(sort(retmat$modified))[1], ]$key)
   }
 }

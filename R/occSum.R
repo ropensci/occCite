@@ -57,83 +57,82 @@ summary.occCiteData <- function(object, ...) {
 
   if (!is.null(x@occResults)) {
     if (length(x@occResults) > 0) {
-    cat(
-      "\t\n",
-      sprintf(
-        "Sources for occurrence data: %s\n",
-        paste0(x@occSources, collapse = ", ")
-      ), "\t\n"
-    )
-    # Tabulate search results
-    occurrenceCountGBIF <- vector(
-      mode = "numeric",
-      length = length(x@occResults)
-    )
-    occurrenceCountBIEN <- vector(
-      mode = "numeric",
-      length = length(x@occResults)
-    )
-    sourceCountGBIF <- vector(
-      mode = "numeric",
-      length = length(x@occResults)
-    )
-    sourceCountBIEN <- vector(
-      mode = "numeric",
-      length = length(x@occResults)
-    )
+      cat(
+        "\t\n",
+        sprintf(
+          "Sources for occurrence data: %s\n",
+          paste0(x@occSources, collapse = ", ")
+        ), "\t\n"
+      )
+      # Tabulate search results
+      occurrenceCountGBIF <- vector(
+        mode = "numeric",
+        length = length(x@occResults)
+      )
+      occurrenceCountBIEN <- vector(
+        mode = "numeric",
+        length = length(x@occResults)
+      )
+      sourceCountGBIF <- vector(
+        mode = "numeric",
+        length = length(x@occResults)
+      )
+      sourceCountBIEN <- vector(
+        mode = "numeric",
+        length = length(x@occResults)
+      )
 
-    for (i in 1:length(x@occResults)) {
-      # GBIF counts
-      if (any(all(x@occSources == "bien", length(x@occSources) == 1),
-              is.null(x@occResults[[i]]$GBIF$OccurrenceTable),
-              nrow(x@occResults[[i]]$
-                   GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$
-                                               GBIF$OccurrenceTable$
-                                               DatasetKey),]) == 0,
-              na.rm = T)){
-        occurrenceCountGBIF[[i]] <- 0
-        sourceCountGBIF[[i]] <- 0
+      for (i in 1:length(x@occResults)) {
+        # GBIF counts
+        if (any(all(x@occSources == "bien", length(x@occSources) == 1),
+          is.null(x@occResults[[i]]$GBIF$OccurrenceTable),
+          nrow(x@occResults[[i]]$
+            GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$
+            GBIF$OccurrenceTable$
+            DatasetKey), ]) == 0,
+          na.rm = T
+        )) {
+          occurrenceCountGBIF[[i]] <- 0
+          sourceCountGBIF[[i]] <- 0
+        } else {
+          occurrenceCountGBIF[[i]] <- nrow(
+            x@occResults[[i]]$GBIF$OccurrenceTable
+          )
+          sourceCountGBIF[[i]] <- length(
+            unique(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey)
+          )
+        }
+        # BIEN counts
+        if (any(all(x@occSources == "gbif", length(x@occSources) == 1),
+          is.null(x@occResults[[i]]$BIEN$OccurrenceTable),
+          na.rm = T
+        )) {
+          occurrenceCountBIEN[[i]] <- 0
+          sourceCountBIEN[[i]] <- 0
+        } else {
+          occurrenceCountBIEN[[i]] <- nrow(
+            x@occResults[[i]]$BIEN$OccurrenceTable
+          )
+          sourceCountBIEN[[i]] <- length(
+            unique(x@occResults[[i]]$BIEN$OccurrenceTable$DatasetKey)
+          )
+        }
       }
-      else {
-        occurrenceCountGBIF[[i]] <- nrow(
-          x@occResults[[i]]$GBIF$OccurrenceTable
-        )
-        sourceCountGBIF[[i]] <- length(
-          unique(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey)
-        )
-      }
-      # BIEN counts
-      if (any(all(x@occSources == "gbif", length(x@occSources) == 1),
-        is.null(x@occResults[[i]]$BIEN$OccurrenceTable),
-        na.rm = T
-      )) {
-        occurrenceCountBIEN[[i]] <- 0
-        sourceCountBIEN[[i]] <- 0
-      }
-      else {
-        occurrenceCountBIEN[[i]] <- nrow(
-          x@occResults[[i]]$BIEN$OccurrenceTable
-        )
-        sourceCountBIEN[[i]] <- length(
-          unique(x@occResults[[i]]$BIEN$OccurrenceTable$DatasetKey)
-        )
-      }
-    }
-    sumTab <- as.data.frame(cbind(
-      names(x@occResults),
-      (occurrenceCountGBIF + occurrenceCountBIEN),
-      (sourceCountGBIF + sourceCountBIEN)
-    ))
-    colnames(sumTab) <- c(
-      "Species", "Occurrences",
-      "Sources"
-    )
-    print(sumTab)
+      sumTab <- as.data.frame(cbind(
+        names(x@occResults),
+        (occurrenceCountGBIF + occurrenceCountBIEN),
+        (sourceCountGBIF + sourceCountBIEN)
+      ))
+      colnames(sumTab) <- c(
+        "Species", "Occurrences",
+        "Sources"
+      )
+      print(sumTab)
     }
   }
 
   if ("gbif" %in% x@occSources) {
-    if(length(x@occResults) > 0){
+    if (length(x@occResults) > 0) {
       cat(
         "\t\n",
         sprintf("GBIF dataset DOIs: %s\n", "\t\n")
@@ -154,8 +153,10 @@ summary.occCiteData <- function(object, ...) {
           GBIFaccessDate[[i]] <- NA
         }
       }
-      doiTab <- as.data.frame(cbind(names(x@occResults),
-                                    GBIFaccessDate, GBIFdoi))
+      doiTab <- as.data.frame(cbind(
+        names(x@occResults),
+        GBIFaccessDate, GBIFdoi
+      ))
       colnames(doiTab) <- c("Species", "GBIF Access Date", "GBIF DOI")
       print(doiTab)
     }

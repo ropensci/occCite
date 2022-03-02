@@ -6,8 +6,9 @@ test_that("inputs to GBIFtableCleanup from gbifRetriever as expected", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
-  test <- try(rgbif::occ_count(country='DK'),
-              silent = T)
+  test <- try(rgbif::occ_count(country = "DK"),
+    silent = T
+  )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   setwd(dir = system.file("extdata/", package = "occCite"))
@@ -22,8 +23,9 @@ test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   skip_on_cran()
 
   # This is here to make the test robust to internet connectivity problems
-  test <- try(rgbif::occ_count(country='DK'),
-              silent = T)
+  test <- try(rgbif::occ_count(country = "DK"),
+    silent = T
+  )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   oldwd <- getwd()
@@ -49,8 +51,9 @@ test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table",
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
-  test <- try(rgbif::occ_count(country='DK'),
-              silent = T)
+  test <- try(rgbif::occ_count(country = "DK"),
+    silent = T
+  )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   setwd(dir = system.file("extdata/", package = "occCite"))
@@ -77,8 +80,9 @@ test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF tab
     "GBIF Login information not available"
   )
 
-  test <- try(rgbif::occ_count(country='DK'),
-              silent = T)
+  test <- try(rgbif::occ_count(country = "DK"),
+    silent = T
+  )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   oldwd <- getwd()

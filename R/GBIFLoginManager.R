@@ -37,20 +37,26 @@
 GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   # Error checking inputs
   if (!is.null(user) & class(user) != "character") {
-    warning(paste0("Input user name is invalid;\n",
-                   "it must be a vector of class 'character'.\n"))
+    warning(paste0(
+      "Input user name is invalid;\n",
+      "it must be a vector of class 'character'.\n"
+    ))
     return(NULL)
   }
 
   if (!is.null(email) & class(email) != "character") {
-    warning(paste0("Input email is invalid;\n",
-                   "it must be a vector of class 'character'.\n"))
+    warning(paste0(
+      "Input email is invalid;\n",
+      "it must be a vector of class 'character'.\n"
+    ))
     return(NULL)
   }
 
   if (!is.null(pwd) & class(pwd) != "character") {
-    warning(paste0("Input password is invalid;\n",
-            "it must be a vector of class 'character'.\n"))
+    warning(paste0(
+      "Input password is invalid;\n",
+      "it must be a vector of class 'character'.\n"
+    ))
     return(NULL)
   }
 
@@ -60,18 +66,23 @@ GBIFLoginManager <- function(user = NULL, email = NULL, pwd = NULL) {
   pwd <- check_pwd(pwd)
 
   # Test login
-  tryCatch(expr = test <- try(rgbif::occ_download_list(user = user,
-                                                       pwd = pwd,
-                                                       limit = 1),
-                              silent = T),
-           error = function(e) {
-             message(paste("GBIF unreachable at the moment, please try again later. \n"))
-           })
+  tryCatch(
+    expr = test <- try(rgbif::occ_download_list(
+      user = user,
+      pwd = pwd,
+      limit = 1
+    ),
+    silent = T
+    ),
+    error = function(e) {
+      message(paste("GBIF unreachable at the moment, please try again later. \n"))
+    }
+  )
 
-  if(is(test, "try-error")){
-    if(grepl(unlist(test)[1], pattern = "401")){
+  if (is(test, "try-error")) {
+    if (grepl(unlist(test)[1], pattern = "401")) {
       warning("GBIF user login data incorrect.\n")
-    } else{
+    } else {
       warning("GBIF unreachable at the moment, please try again later. \n")
     }
     return(NULL)

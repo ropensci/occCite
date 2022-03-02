@@ -23,8 +23,10 @@
 occCitation <- function(x = NULL) {
   # Error check input x.
   if (!class(x) == "occCiteData") {
-    warning(paste0("Input x is not of class 'occCiteData'.\n",
-                   "Input x must be result of a studyTaxonList() search.\n"))
+    warning(paste0(
+      "Input x is not of class 'occCiteData'.\n",
+      "Input x must be result of a studyTaxonList() search.\n"
+    ))
     return(NULL)
   }
 
@@ -41,9 +43,10 @@ occCitation <- function(x = NULL) {
 
     # GBIF
     if (!is.null(occResults$GBIF)) {
-      test <- try(rgbif::occ_count(country='DK'),
-                  silent = T)
-      if(class(test) != "numeric"){
+      test <- try(rgbif::occ_count(country = "DK"),
+        silent = T
+      )
+      if (class(test) != "numeric") {
         warning("GBIF connection unsuccessful")
         return(NULL)
       }
@@ -58,15 +61,18 @@ occCitation <- function(x = NULL) {
         ### supplied date from rgbif is date citation was sought
         ### not the date the data was accessed
         for (j in GBIFdatasetKeys) {
-          tryCatch(expr = temp <- gsub(rgbif::gbif_citation(j)$citation$text,
-                                       pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.",
-                                       replacement = "",
-                                       useBytes = T),
-                   error = function(e) {
-                     message(paste("GBIF unreachable; please try again later. \n"))
-                   })
+          tryCatch(
+            expr = temp <- gsub(rgbif::gbif_citation(j)$citation$text,
+              pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.",
+              replacement = "",
+              useBytes = T
+            ),
+            error = function(e) {
+              message(paste("GBIF unreachable; please try again later. \n"))
+            }
+          )
 
-          if(!exists("temp")){
+          if (!exists("temp")) {
             return(invisible(NULL))
           }
 
@@ -124,21 +130,24 @@ occCitation <- function(x = NULL) {
       drv <- DBI::dbDriver("PostgreSQL")
 
       # Test internet connection
-      if(!curl::has_internet()){
+      if (!curl::has_internet()) {
         warning("No internet connection available, please try again later. \n")
         return(NULL)
       }
       # establish connection with database
-      tryCatch(expr = con <- DBI::dbConnect(drv,
-                                            host = host,
-                                            dbname = dbname,
-                                            user = user,
-                                            password = password),
-               error = function(e) {
-                 message(paste("BIEN unreachable; please try again later. \n"))
-               })
+      tryCatch(
+        expr = con <- DBI::dbConnect(drv,
+          host = host,
+          dbname = dbname,
+          user = user,
+          password = password
+        ),
+        error = function(e) {
+          message(paste("BIEN unreachable; please try again later. \n"))
+        }
+      )
 
-      if(!exists("con")){
+      if (!exists("con")) {
         return(invisible(NULL))
       }
 
@@ -151,11 +160,11 @@ occCitation <- function(x = NULL) {
       # Handle keys without citations
       if (nrow(BIENsources) < length(BIENdatasetKeys)) {
         noNameKeys <- unlist(BIENdatasetKeys[!BIENdatasetKeys %in%
-                                               BIENsources$datasource_id]) # Gets keys missing names
-        datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[,c("DatasetKey", "Dataset")])
+          BIENsources$datasource_id]) # Gets keys missing names
+        datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[, c("DatasetKey", "Dataset")])
         datasetLookupTable[] <- lapply(datasetLookupTable, as.character)
         missingNames <- datasetLookupTable$Dataset[datasetLookupTable$DatasetKey %in%
-                                                     noNameKeys] # Pulls missing names
+          noNameKeys] # Pulls missing names
 
         print(paste0(
           "NOTE: ", length(BIENdatasetKeys) - nrow(BIENsources),
@@ -167,9 +176,9 @@ occCitation <- function(x = NULL) {
         ))
         # TO FIX: INSERT NA ROW(s) FOR MISSING CITATION DATA
         BIENsources[nrow(BIENsources) +
-                      (length(BIENdatasetKeys) - nrow(BIENsources)),] <- NA
+          (length(BIENdatasetKeys) - nrow(BIENsources)), ] <- NA
         BIENsources$source_name[which(BIENsources$datasource_id %in%
-                                        noNameKeys)] <- missingNames
+          noNameKeys)] <- missingNames
       }
     }
 
@@ -177,8 +186,10 @@ occCitation <- function(x = NULL) {
     if (!is.null(occResults$GBIF)) {
       # Assumes all species queries occurred at same time (may not be)
       # FIX LATER
-      GBIFaccessDate <- strsplit(occResults$GBIF$Metadata$modified,
-                                 "T")[[1]][1]
+      GBIFaccessDate <- strsplit(
+        occResults$GBIF$Metadata$modified,
+        "T"
+      )[[1]][1]
       if (length(stats::na.exclude(GBIFCitationList)) > 0) {
         gbifTable <- data.frame(rep("GBIF", length(GBIFdatasetKeys)),
           GBIFdatasetKeys, unlist(GBIFCitationList),
@@ -250,11 +261,9 @@ occCitation <- function(x = NULL) {
 
     if (!is.null(occResults$GBIF) & !is.null(occResults$BIEN)) {
       citationTable <- rbind(gbifTable, bienTable)
-    }
-    else if (!is.null(occResults$BIEN)) {
+    } else if (!is.null(occResults$BIEN)) {
       citationTable <- bienTable
-    }
-    else {
+    } else {
       citationTable <- gbifTable
     }
 

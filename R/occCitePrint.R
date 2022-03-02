@@ -36,9 +36,11 @@ print.occCiteCitation <- function(x, ...) {
   stopifnot(is(x, "occCiteCitation"))
 
   if (!requireNamespace("RefManageR", quietly = TRUE)) {
-    stop(paste0("Package \"RefManageR\" needed for this\n",
-                "function to work. Please install it."),
-      call. = FALSE
+    stop(paste0(
+      "Package \"RefManageR\" needed for this\n",
+      "function to work. Please install it."
+    ),
+    call. = FALSE
     )
   }
 
@@ -133,8 +135,7 @@ print.occCiteCitation <- function(x, ...) {
           i$NOTE, ". ",
           i$URL, "."
         )
-      }
-      else {
+      } else {
         packageCitations[j] <- paste0(
           paste(apply(i$AUTHOR[[1]],
             MARGIN = 1,

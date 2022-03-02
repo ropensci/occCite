@@ -23,16 +23,19 @@ gbifRetriever <- function(taxon = NULL) {
     pattern = "(\\w+\\s\\w+)"
   ) # Remove problem characters, i.e. "æ"
 
-  tryCatch(expr = taxon_key <- try(as.numeric(rgbif::name_backbone(cleanTaxon)$usageKey),
-                                   silent = T),
-           error = function(e) {
-             message(paste("GBIF unreachable at the moment, please try again later. \n"))
-           })
+  tryCatch(
+    expr = taxon_key <- try(as.numeric(rgbif::name_backbone(cleanTaxon)$usageKey),
+      silent = T
+    ),
+    error = function(e) {
+      message(paste("GBIF unreachable at the moment, please try again later. \n"))
+    }
+  )
 
-  if(is(taxon_key, "try-error")){
-    if(grepl(unlist(taxon_key)[1], pattern = "401")){
+  if (is(taxon_key, "try-error")) {
+    if (grepl(unlist(taxon_key)[1], pattern = "401")) {
       warning("GBIF user login data incorrect.\n")
-    } else{
+    } else {
       warning("GBIF unreachable at the moment, please try again later. \n")
     }
     return(NULL)
@@ -43,8 +46,9 @@ gbifRetriever <- function(taxon = NULL) {
   }
 
   paths <- list.files(getwd(),
-                      pattern = "\\d{7}-\\d{15}.zip",
-                      recursive = T, full.names = T)
+    pattern = "\\d{7}-\\d{15}.zip",
+    recursive = T, full.names = T
+  )
   keys <- as.vector(stringr::str_match(paths, pattern = "\\d{7}-\\d{15}"))
   paths <- stringr::str_remove(paths, pattern = "\\d{7}-\\d{15}.zip")
 
@@ -52,12 +56,14 @@ gbifRetriever <- function(taxon = NULL) {
   matchIndex <- NULL
   matchDate <- NULL
   for (i in 1:length(keys)) {
-    tryCatch(expr = metadata <- rgbif::occ_download_meta(key = keys[[i]]),
-             error = function(e) {
-               message(paste("GBIF unreachable at the moment, please try again later. \n"))
-             })
+    tryCatch(
+      expr = metadata <- rgbif::occ_download_meta(key = keys[[i]]),
+      error = function(e) {
+        message(paste("GBIF unreachable at the moment, please try again later. \n"))
+      }
+    )
 
-    if(!exists("metadata")){
+    if (!exists("metadata")) {
       return(invisible(NULL))
     }
 
@@ -95,8 +101,7 @@ gbifRetriever <- function(taxon = NULL) {
     outlist[[3]] <- NA
     names(outlist) <- c("OccurrenceTable", "Metadata", "RawOccurrences")
     return(outlist)
-  }
-  else {
+  } else {
     # Gets the downloaded data for the most recent match and returns it
     newestTaxonomicMatch <- matchIndex[order(matchDate,
       decreasing = T
@@ -107,12 +112,14 @@ gbifRetriever <- function(taxon = NULL) {
     rawOccs <- res
     occFromGBIF <- tabGBIF(res, taxon = taxon)
     for (i in 1:length(keys)) {
-      tryCatch(expr = occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]]),
-               error = function(e) {
-                 message(paste("GBIF unreachable; please try again later. \n"))
-               })
+      tryCatch(
+        expr = occMetadata <- rgbif::occ_download_meta(keys[[newestTaxonomicMatch]]),
+        error = function(e) {
+          message(paste("GBIF unreachable; please try again later. \n"))
+        }
+      )
 
-      if(!exists("occMetadata")){
+      if (!exists("occMetadata")) {
         return(invisible(NULL))
       }
     }

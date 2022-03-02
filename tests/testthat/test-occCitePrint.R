@@ -1,19 +1,23 @@
 library(occCite)
 library(ape)
 
-treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package='occCite')
+treeFile <- system.file("extdata/Fish_12Tax_time_calibrated.tre", package = "occCite")
 phylogeny <- ape::read.nexus(treeFile)
 tree <- ape::extract.clade(phylogeny, 22)
-#Query databases for names
-myPhyOccCiteObject <- studyTaxonList(x = tree,
-                                     datasources = "GBIF Backbone Taxonomy")
-#Query GBIF for occurrence data
-if(!is.null(myPhyOccCiteObject)){
-  myPhyOccCiteObject <- occQuery(x = myPhyOccCiteObject,
-                                 datasources = "gbif",
-                                 GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
-                                 loadLocalGBIFDownload = T,
-                                 checkPreviousGBIFDownload = F)
+# Query databases for names
+myPhyOccCiteObject <- studyTaxonList(
+  x = tree,
+  datasources = "GBIF Backbone Taxonomy"
+)
+# Query GBIF for occurrence data
+if (!is.null(myPhyOccCiteObject)) {
+  myPhyOccCiteObject <- occQuery(
+    x = myPhyOccCiteObject,
+    datasources = "gbif",
+    GBIFDownloadDirectory = system.file("extdata/", package = "occCite"),
+    loadLocalGBIFDownload = T,
+    checkPreviousGBIFDownload = F
+  )
   myPhyOccCitations <- occCitation(myPhyOccCiteObject)
 
   test_that("regular print", {
