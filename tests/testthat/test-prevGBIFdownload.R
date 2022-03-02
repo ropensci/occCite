@@ -10,11 +10,9 @@ test_that("download list retrievable from GBIF.org", {
   )
 
   GBIFLogin <- GBIFLoginManager()
-  test <- try(rgbif::occ_download(
+  test <- try(rgbif::occ_download_list(
     user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
+    pwd = GBIFLogin@pwd, limit = 1,
   ),
   silent = T
   )
@@ -38,11 +36,9 @@ test_that("download list parseable by prevGBIFdownload", {
   )
 
   GBIFLogin <- GBIFLoginManager()
-  test <- try(rgbif::occ_download(
+  test <- try(rgbif::occ_download_list(
     user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
+    pwd = GBIFLogin@pwd, limit = 1,
   ),
   silent = T
   )

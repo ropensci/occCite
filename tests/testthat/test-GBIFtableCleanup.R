@@ -47,7 +47,7 @@ test_that("inputs to GBIFtableCleanup from getGBIFpoints as expected", {
   unlink("temp/", recursive = T)
 })
 
-test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table", {
+test_that("behaves as expected when given a stored GBIF table", {
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 
@@ -73,7 +73,7 @@ test_that("GBIFtableCleanup behaves as expected when given a stored GBIF table",
   expect_true("DataService" %in% colnames(testResult))
 })
 
-test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF table", {
+test_that("behaves as expected when given a downloaded GBIF table", {
   skip_on_cran()
   skip_if(
     nchar(Sys.getenv("GBIF_EMAIL")) < 1,
@@ -111,7 +111,7 @@ test_that("GBIFtableCleanup behaves as expected when given a downloaded GBIF tab
   expect_true("DataService" %in% colnames(testResult))
 })
 
-test_that("GBIFtableCleanup behaves as expected when given a GBIF table that is empty", {
+test_that("behaves as expected when given an empty GBIF table", {
   expect_equal(nrow(occCite:::GBIFtableCleanup(NULL)), 1)
   expect_equal(ncol(occCite:::GBIFtableCleanup(NULL)), 9)
   expect_true(all(is.na(occCite:::GBIFtableCleanup(NULL))))

@@ -94,8 +94,10 @@ GBIF to begin the download.</p></dd>
 <span class="r-in">  email <span class="op">=</span> <span class="st">"ireneAdler@laScala.org"</span>,</span>
 <span class="r-in">  pwd <span class="op">=</span> <span class="st">"sh3r"</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">taxKey</span> <span class="op">&lt;-</span> <span class="fu">rgbif</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rgbif/reference/name_suggest.html" class="external-link">name_suggest</a></span><span class="op">(</span>q <span class="op">=</span> <span class="st">"Protea cynaroides"</span>,</span>
-<span class="r-in">                              rank <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span><span class="op">$</span><span class="va">key</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span class="r-in"><span class="va">taxKey</span> <span class="op">&lt;-</span> <span class="fu">rgbif</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rgbif/reference/name_suggest.html" class="external-link">name_suggest</a></span><span class="op">(</span></span>
+<span class="r-in">  q <span class="op">=</span> <span class="st">"Protea cynaroides"</span>,</span>
+<span class="r-in">  rank <span class="op">=</span> <span class="st">"species"</span></span>
+<span class="r-in"><span class="op">)</span><span class="op">$</span><span class="va">key</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span class="r-in"><span class="fu">prevGBIFdownload</span><span class="op">(</span></span>
 <span class="r-in">  taxonKey <span class="op">=</span> <span class="va">taxKey</span>,</span>
 <span class="r-in">  GBIFLogin <span class="op">=</span> <span class="va">myGBIFLogin</span></span>

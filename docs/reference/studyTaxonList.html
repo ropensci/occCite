@@ -139,8 +139,10 @@ contain the matching name.</p>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">phylogeny</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html" class="external-link">extract.clade</a></span><span class="op">(</span><span class="va">phylogeny</span>, <span class="fl">18</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">studyTaxonList</span><span class="op">(</span>x <span class="op">=</span> <span class="va">phylogeny</span>,</span>
-<span class="r-in">               datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">studyTaxonList</span><span class="op">(</span></span>
+<span class="r-in">  x <span class="op">=</span> <span class="va">phylogeny</span>,</span>
+<span class="r-in">  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An object of class "occCiteData"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "userQueryType":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "User-supplied phylogeny."</span>

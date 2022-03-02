@@ -12,7 +12,7 @@ getGBIFpoints(
 )
 }
 \arguments{
-\item{taxon}{A single species}
+\item{taxon}{A string with a single species name}
 
 \item{GBIFLogin}{An object of class \code{\link{GBIFLogin}} to log in to
 GBIF to begin the download.}
