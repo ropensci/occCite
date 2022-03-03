@@ -29,6 +29,8 @@ test_that("outputs for GBIF results are as expected", {
   )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
+  expect_warning(occCitation())
+
   data("myOccCiteObject")
   myOccCiteObject@occResults[[1]]$BIEN <- NULL
   testResults <- occCitation(myOccCiteObject)

@@ -4,23 +4,11 @@ library(occCite)
 
 test_that("GBIF retrieval from server behaves as expected", {
   skip_on_cran()
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"),
+          message = "GBIF login unsuccessful")
 
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
-  )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
-
-  GBIFLogin <- GBIFLoginManager()
-
-  cleanTaxon <- stringr::str_extract(
-    string = "Protea cynaroides",
-    pattern = "(\\w+\\s\\w+)"
-  )
-  key <- rgbif::name_suggest(q = cleanTaxon, rank = "species")$data$key[1]
+  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin = GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
@@ -32,61 +20,13 @@ test_that("GBIF retrieval from server behaves as expected", {
   expect_equal(class(res), "occ_download_get")
 })
 
-test_that("new GBIF search behaves as expected", {
-  skip_on_cran()
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
-
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
-  )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
-
-  GBIFLogin <- GBIFLoginManager()
-
-  cleanTaxon <- stringr::str_extract(
-    string = "Protea cynaroides",
-    pattern = "(\\w+\\s\\w+)"
-  )
-  key <- rgbif::name_suggest(q = cleanTaxon, rank = "species")$data$key[1]
-  occD <- rgbif::occ_download(rgbif::pred("taxonKey", value = key),
-    rgbif::pred("hasCoordinate", TRUE),
-    rgbif::pred("hasGeospatialIssue", FALSE),
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd
-  )
-  while (rgbif::occ_download_meta(occD[1])$status != "SUCCEEDED") {
-    Sys.sleep(60)
-    print(paste(
-      "Still waiting for test download preparation to be completed. Time: ",
-      format(Sys.time(), format = "%H:%M:%S")
-    ))
-  }
-  res <- rgbif::occ_download_get(
-    key = occD, overwrite = TRUE,
-    file.path(system.file("extdata/",
-      package = "occCite"
-    ))
-  )
-  expect_equal(class(res), "occ_download_get")
-})
-
 test_that("getGBIFpoints behaves as expected", {
   skip_on_cran()
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
+  GBIFLogin <- try(GBIFLoginManager(), silent = T)
+  skip_if(is(GBIFLogin, "try-error"),
+          message = "GBIF login unsuccessful")
 
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
-  )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
-
-  GBIFLogin <- GBIFLoginManager()
+  expect_error(getGBIFpoints())
 
   testResult <- getGBIFpoints(
     taxon = "Protea cynaroides", GBIFLogin,

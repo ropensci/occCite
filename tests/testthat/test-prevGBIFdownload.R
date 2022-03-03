@@ -32,13 +32,9 @@ test_that("download list retrievable from GBIF.org", {
 
 test_that("download list parseable by prevGBIFdownload", {
   skip_on_cran()
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
 
   GBIFLogin <- try(GBIFLoginManager(), silent = T)
-  skip_if(is(GBIFLogin, "try-error"))
+  skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
   test <- try(rgbif::occ_download_list(
     user = GBIFLogin@username,

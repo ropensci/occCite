@@ -17,6 +17,9 @@ test_that("inputs to tabulate.occResults are as expected", {
 })
 
 test_that("outputs to tablulate.occResults are as expected", {
+
+  expect_error(tabulate.occResults())
+
   data("myOccCiteObject")
   sp.name <- names(myOccCiteObject@occResults)[[1]]
   x <- myOccCiteObject@occResults[[1]]

@@ -24,12 +24,19 @@ test_that("inputs to map are as expected", {
 
 test_that("default occCiteMap settings work", {
   data("myOccCiteObject")
+
+  expect_error(occCiteMap())
+
   test <- occCiteMap(myOccCiteObject)
   expect_true(all(c("leaflet", "htmlwidget") %in% class(test)))
 })
 
 test_that("occCiteMap works with species specified", {
   data("myOccCiteObject")
+
+  expect_error(occCiteMap(myOccCiteObject, "Protea cynaroides",
+                          species_colors = "red", "blue"))
+
   test <- occCiteMap(myOccCiteObject, "Protea cynaroides")
   expect_true(all(c("leaflet", "htmlwidget") %in% class(test)))
 })

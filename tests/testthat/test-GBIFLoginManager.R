@@ -16,10 +16,7 @@ test_that("GBIFLoginManager error messaging behaves as expected", {
 })
 
 test_that("GBIFLoginManager actually picks up login information", {
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
+  skip_on_cran()
 
   test <- try(rgbif::occ_count(country = "DK"),
     silent = T

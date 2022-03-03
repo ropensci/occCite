@@ -4,30 +4,11 @@ library(occCite)
 
 test_that("data entered into tabGBIF is as expected", {
   skip_on_cran() # Requires GBIF login information
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
-
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
-  )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   GBIFLogin <- try(GBIFLoginManager(), silent = T)
-  skip_if(is(GBIFLogin, "try-error"))
+  skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
-
-  key <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$data$key[1]
+  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
@@ -41,30 +22,11 @@ test_that("data entered into tabGBIF is as expected", {
 
 test_that("verify occ_download_import results have expected columns", {
   skip_on_cran() # Requires GBIF login information
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
-
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
-  )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
   GBIFLogin <- try(GBIFLoginManager(), silent = T)
-  skip_if(is(GBIFLogin, "try-error"))
+  skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
-  test <- try(rgbif::occ_download(
-    user = GBIFLogin@username,
-    email = GBIFLogin@email,
-    pwd = GBIFLogin@pwd,
-    rgbif::pred("catalogNumber", 217880)
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
-
-  key <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$data$key
+  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
@@ -87,23 +49,11 @@ test_that("verify occ_download_import results have expected columns", {
 
 test_that("tabGBIF results as expected", {
   skip_on_cran() # Requires GBIF login information
-  skip_if(
-    nchar(Sys.getenv("GBIF_EMAIL")) < 1,
-    "GBIF Login information not available"
-  )
 
   GBIFLogin <- try(GBIFLoginManager(), silent = T)
-  skip_if(is(GBIFLogin, "try-error"))
+  skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
-  test <- try(rgbif::occ_download_list(
-    user = GBIFLogin@username,
-    pwd = GBIFLogin@pwd, limit = 1,
-  ),
-  silent = T
-  )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
-
-  key <- rgbif::name_suggest(q = "Protea cynaroides", rank = "species")$data$key
+  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
