@@ -3,6 +3,7 @@ context("Testing gbifRetriever")
 library(occCite)
 
 test_that("gbifRetriever behaves as expected", {
+  skip_on_cran()
   test <- try(rgbif::occ_count(country = "DK"),
               silent = T
   )
@@ -25,7 +26,7 @@ test_that("gbifRetriever behaves as expected", {
 })
 
 test_that("gbifRetriever warns when there's no internet connection", {
-
+  skip_on_cran()
   test <- try(rgbif::occ_count(country = "DK"),
               silent = T
   )
