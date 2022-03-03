@@ -37,14 +37,20 @@ This vignette demonstrates more advanced features and customization available in
 
 Querying GBIF can take quite a bit of time, especially for multiple species and/or well-known species. In this case, you may wish to access previously-downloaded data sets from your computer by specifying the general location of your downloaded `.zip` files. `occQuery` will crawl through your specified `GBIFDownloadDirectory` to collect all the `.zip` files contained in that folder and its subfolders. It will then import the most recent downloads that match your taxon list. These GBIF data will be appended to a BIEN search the same as if you do the simple real-time search (if you chose BIEN as well as GBIF), as was shown above. `checkPreviousGBIFDownload` is `TRUE` by default, but if `loadLocalGBIFDownload` is `TRUE`, `occQuery` will ignore `checkPreviousDownload`. It is also worth noting that `occCite` does not currently support mixed data download sources. That is, you cannot do GBIF queries for some taxa, download previously-prepared data sets for others, and load the rest from local data sets on your computer.
 
-```{r simple_load}
-# Simple load
-myOldOccCiteObject <- occQuery(x = "Protea cynaroides", 
-                                  datasources = c("gbif", "bien"), 
-                                  GBIFLogin = NULL, 
-                                  GBIFDownloadDirectory = system.file('extdata/', package='occCite'),
-                                  loadLocalGBIFDownload = T,
-                                  checkPreviousGBIFDownload = F)
+```{r simple_search, eval=F}
+# Simple search
+myOldOccCiteObject <- occQuery(x = "Protea cynaroides",
+                                  datasources = c("gbif", "bien"),
+                                  GBIFLogin = GBIFLogin, 
+                                  GBIFDownloadDirectory = 
+                                    system.file('extdata/', package='occCite'),
+                                  checkPreviousGBIFDownload = T)
+```
+
+```{r simple_search sssssecret cooking show, eval=T, echo = F}
+# Simple search
+data(myOccCiteObject)
+myOldOccCiteObject <- myOccCiteObject
 ```
 
 Here is the result. Look familiar?
