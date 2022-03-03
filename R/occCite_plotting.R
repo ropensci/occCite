@@ -80,8 +80,11 @@ tabulate.occResults <- function(x, sp.name) {
 #' @return A leaflet map
 #'
 #' @examples
+#' \dontrun{
 #' data(myOccCiteObject)
 #' occCiteMap(myOccCiteObject, cluster = FALSE)
+#' }
+#'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
 #' @importFrom stats complete.cases

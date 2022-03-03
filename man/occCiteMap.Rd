@@ -59,6 +59,9 @@ When `awesomeMarkers` is `FALSE` and species_colors are not specified,
 random colors from the `RColorBrewer` Set1 palette are used.
 }
 \examples{
+\dontrun{
 data(myOccCiteObject)
 occCiteMap(myOccCiteObject, cluster = FALSE)
+}
+
 }
