@@ -14,7 +14,7 @@ output:
     toc: true
     toc_depth: 3
 vignette: >
-  %\VignetteIndexEntry{Simple execution of occurrence searches and citation generation}
+  %\VignetteIndexEntry{Simple search and citation of occurrences}
   \usepackage[utf8]{inputenc}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
