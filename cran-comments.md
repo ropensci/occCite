@@ -1,11 +1,10 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Fix server connection-based ERRORs that led to the package's removal from CRAN.
-* Added more informative warnings and NULL returns for functions connect to servers via the internet.
+* Adjustment to testing strategy to comply with CRAN policies.
 
 ## Test environments
-* local OS X 10.15.7 install, R 4.0.2 (with and without internet connection)
+* local OS X 10.15.7 install, R 4.1.2 (with and without internet connection)
 * win-builder (devel and release)
 * ubuntu 20.04 (devel and release; on GitHub Actions), R 4.1.0
 * windows-latest (on GitHub Actions), R 4.1.0
