@@ -1,6 +1,6 @@
-# occCite 0.5.2.9000
+# occCite 0.5.3
 
-* In development
+* Adjustment to testing strategy to comply with CRAN policies.
 
 # occCite 0.5.2
 
