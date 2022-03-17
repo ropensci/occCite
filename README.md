@@ -1,4 +1,6 @@
 
+# occCite <img src='man/figures/logo.png' align="right" height="138" />
+
 <!-- badges: start -->
 
 [![R build
@@ -17,8 +19,6 @@ status](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci
 [![DOI](https://zenodo.org/badge/151783900.svg)](https://zenodo.org/badge/latestdoi/151783900)
 
 <!-- badges: end -->
-
-# occCite <img src='man/figures/logo.png' align="right" height="138" />
 
 ## Summary
 
