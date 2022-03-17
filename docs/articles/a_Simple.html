@@ -121,7 +121,7 @@
 </h2>
 <p>If you plan to query GBIF, you will need to provide them with your user login information. We have provided a dummy login below to show you the format. <em>You will need to provide actual account information.</em> This is because you will actually be downloading <em>all</em> of the records available for the species using <code>occ_download()</code>, instead of getting results from <code>occ_search()</code>, which has a hard limit of 100,000 occurrences.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/occCite/" class="external-link">occCite</a></span><span class="op">)</span>;
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/occCite" class="external-link">occCite</a></span><span class="op">)</span>;
 <span class="co">#Creating a GBIF login</span>
 <span class="va">GBIFLogin</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/GBIFLoginManager.html">GBIFLoginManager</a></span><span class="op">(</span>user <span class="op">=</span> <span class="st">"occCiteTester"</span>,
                               email <span class="op">=</span> <span class="st">"****@yahoo.com"</span>,
