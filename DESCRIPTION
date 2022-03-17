@@ -23,7 +23,7 @@ Description: Facilitates the gathering of biodiversity occurrence data
   from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced ability to repeat analyses.
 License: GPL-3
-URL: https://ropensci.github.io/occCite/
+URL: https://ropensci.github.io/occCite
 BugReports: https://github.com/ropensci/occCite/issues
 Encoding: UTF-8
 LazyData: true
