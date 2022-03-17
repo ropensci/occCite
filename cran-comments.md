@@ -13,13 +13,7 @@ This is a package update. In this version, I have:
 * rhub
 
 ## R CMD check results
-0 errors | 0 warnings | 1 note
-
-* A NOTE occurred on Windows Server 2008 R2 SP1, R-devel, 32/64 bit on Rhub, and x86_64-w64-mingw32 (64-bit):
-
-
-
-The additional comment in Authors@R acknowledges reviewer contributions.
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
