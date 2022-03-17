@@ -1,7 +1,7 @@
 Package: occCite
 Type: Package
 Title: Querying and Managing Large Biodiversity Occurrence Datasets
-Version: 0.5.3
+Version: 0.5.4
 Authors@R: c(
   person(given = "Hannah L.", family = "Owens", ,"hannah.owens@gmail.com", role=c("aut","cre"),
     comment = c(ORCID = "0000-0003-0071-1745")),
@@ -16,22 +16,15 @@ Authors@R: c(
   person(given = "Robert P.", family = "Guralnick",,,role="aut",
     comment = c(ORCID = "0000-0001-6682-1504")),
   person(given = "Damiano", family = "Oldoni",,,role="rev",
-    comment = c(ORCID = "0000-0003-3445-7562"))
+    comment = c(ORCID = "0000-0003-3445-7562", "Damiano reviewed the package (v. 0.5.2) for rOpenSci, see <https://github.com/ropensci/software-review/issues/407>"))
   )
-Author: Hannah L. Owens [aut, cre] (<https://orcid.org/0000-0003-0071-1745>), 
-  Cory Merow [aut] (<https://orcid.org/0000-0003-0561-053X>), 
-  Brian Maitner [aut] (<https://orcid.org/0000-0002-2118-9880>), 
-  Jamie M. Kass [aut] (<https://orcid.org/0000-0002-9432-895X>), 
-  Vijay Barve [aut] (<https://orcid.org/0000-0002-4852-2567>), 
-  Robert P. Guralnick [aut] (<https://orcid.org/0000-0001-6682-1504>),
-  Damiano Oldoni [rev] (<https://orcid.org/0000-0003-3445-7562>)
 Maintainer: Hannah L. Owens <hannah.owens@gmail.com>
 Description: Facilitates the gathering of biodiversity occurrence data 
   from disparate sources. Metadata is managed throughout the process to facilitate 
   reporting and enhanced ability to repeat analyses.
 License: GPL-3
-URL: https://hannahlowens.github.io/occCite/
-BugReports: https://github.com/hannahlowens/occCite/issues
+URL: https://ropensci.github.io/occCite/
+BugReports: https://github.com/ropensci/occCite/issues
 Encoding: UTF-8
 LazyData: true
 Language: en-US

@@ -1,6 +1,11 @@
-# occCite 0.5.3
+# occCite 0.5.5
+
+* Further adjustment in testing to be CRAN-compatible
+
+# occCite 0.5.4
 
 * Adjustment to testing strategy to comply with CRAN policies.
+* Links changed to reflect inclusion on ROpenSci.
 
 # occCite 0.5.2
 

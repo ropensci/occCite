@@ -3,6 +3,7 @@ context("Testing GBIFtableCleanup")
 library(occCite)
 
 test_that("behaves as expected when given a stored GBIF table", {
+  skip_on_cran()
   oldwd <- getwd()
   on.exit(setwd(oldwd))
 

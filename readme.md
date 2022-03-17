@@ -1,7 +1,7 @@
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/hannahlowens/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/hannahlowens/occCite/actions)
+status](https://github.com/ropensci/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/occCite/actions)
 [![cran
 version](https://www.r-pkg.org/badges/version/occCite)](https://cran.r-project.org/package=occCite)
 [![rstudio mirror
@@ -10,7 +10,7 @@ downloads](https://cranlogs.r-pkg.org/badges/occCite)](https://github.com/r-hub/
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Codecov test
-coverage](https://codecov.io/gh/hannahlowens/occCite/branch/main/graph/badge.svg)](https://codecov.io/gh/hannahlowens/occCite?branch=main)
+coverage](https://codecov.io/gh/ropensci/occCite/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/occCite?branch=main)
 [![ROpenSci
 status](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci/software-review/issues/407)
 [![DOI](https://zenodo.org/badge/151783900.svg)](https://zenodo.org/badge/latestdoi/151783900)
@@ -46,7 +46,7 @@ citation(package = "occCite")
     ## Owens H, Merow C, Maitner B, Kass J, Barve V, Guralnick R (2022).
     ## _occCite: Querying and Managing Large Biodiversity Occurrence
     ## Datasets_. doi: 10.5281/zenodo.4726676 (URL:
-    ## https://doi.org/10.5281/zenodo.4726676), R package version 0.5.2,
+    ## https://doi.org/10.5281/zenodo.4726676), R package version 0.5.4,
     ## <URL: https://CRAN.R-project.org/package=occCite>.
     ## 
     ## A BibTeX entry for LaTeX users is
@@ -55,22 +55,30 @@ citation(package = "occCite")
     ##     title = {occCite: Querying and Managing Large Biodiversity Occurrence Datasets},
     ##     author = {Hannah Owens and Cory Merow and Brian Maitner and Jamie Kass and Vijay Barve and Robert Guralnick},
     ##     year = {2022},
-    ##     note = {R package version 0.5.2},
+    ##     note = {R package version 0.5.4},
     ##     url = {https://CRAN.R-project.org/package=occCite},
     ##     doi = {10.5281/zenodo.4726676},
     ##   }
 
-## Installation
+## Installation:
 
 ``` r
 install.packages("occCite")
 ```
 
-Or, install development version
+Or, install via `r-universe`
 
 ``` r
-devtools::install_github("hannahlowens/occCite")
+install.packages("occCite", repos = "https://ropensci.r-universe.dev")
 ```
+
+Or, install github development version:
+
+``` r
+devtools::install_github("ropensci/occCite")
+```
+
+After using one of these options, you can load the package into your environment using:
 
 ``` r
 library("occCite")
@@ -79,23 +87,23 @@ library("occCite")
 ## Getting Started
 
 -   occCite introduction vignette
-    (<https://hannahlowens.github.io/occCite/articles/Simple.html>)
+    (<https://ropensci.github.io/occCite/articles/a_Simple.html>)
 -   occCite advanced feature vignette
-    (<https://hannahlowens.github.io/occCite/articles/Advanced.html>)
+    (<https://ropensci.github.io/occCite/articles/b_Advanced.html>)
 -   Function reference
-    <https://hannahlowens.github.io/occCite/reference/index.html>
+    <https://ropensci.github.io/occCite/reference/index.html>
 -   YouTube tutorial
     (<https://www.youtube.com/watch?v=7qSCULN_VjY&t=17s>)
 -   Software note in *Ecography* (<https://doi.org/10.1111/ecog.05618>)
 
 ## Meta
 
--   Please adhere to the [code of 
-conduct](<https://hannahlowens.github.io/occCite/CODE_OF_CONDUCT.html>).
+-   Please adhere to the [ROpenSci code of 
+conduct](<https://ropensci.org/code-of-conduct/>).
 -   Please [report any issues or 
-bugs](<https://github.com/hannahlowens/occCite/issues>).
+bugs](<https://github.com/ropensci/occCite/issues>).
 -   We encourage you to contribute to `occCite`! See the 
-[contributor guide](<https://hannahlowens.github.io/occCite/CONTRIBUTING.html>) 
+[contributor guide](<https://ropensci.github.io/occCite/CONTRIBUTING.html>) 
 for more information.
 -   License: GPL-3
 -   Get citation information for `occCite` in R using
