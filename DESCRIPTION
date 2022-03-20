@@ -60,5 +60,5 @@ Imports:
     viridis,
     DBI,
     waffle
-VignetteBuilder: knitr
+VignetteBuilder: knitr, rmarkdown
 RoxygenNote: 7.1.2

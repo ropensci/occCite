@@ -10,7 +10,10 @@ This is a package update. In this version, I have:
 * ubuntu 20.04 (devel and release; on GitHub Actions), R 4.1.3
 * windows-latest (on GitHub Actions), R 4.1.3
 * macOS-latest (on GitHub Actions), R 4.1.3
-* rhub
+* Apple Silicon (M1), macOS 11.6 Big Sur, R-release (rhub), R 4.1.2
+* Fedora Linux, R-devel, clang, gfortran (rhub)
+* Ubuntu Linux 20.04.1 LTS, R-release, GCC (rhub)
+* Windows Server 2022, R-devel, 64 bit (rhub)
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes
