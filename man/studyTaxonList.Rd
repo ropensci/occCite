@@ -38,6 +38,7 @@ studyTaxonList(
   datasources = c("National Center for Biotechnology Information")
 )
 
+\donttest{
 ## Inputting a phylogeny
 phylogeny <- ape::read.nexus(
   system.file("extdata/Fish_12Tax_time_calibrated.tre",
@@ -49,4 +50,5 @@ studyTaxonList(
   x = phylogeny,
   datasources = c("GBIF Backbone Taxonomy")
 )
+}
 }
