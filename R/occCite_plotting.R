@@ -529,24 +529,12 @@ plot.occCiteData <- function(x, ...) {
         lbls <- occ_strwrap(lbls)
         names(pct) <- lbls
         pct <- pct[pct > 1]
-        if (sum(pct) < 100) {
-          pct["Other*"] <- (100 - sum(pct))
-          source <- waffle::waffle(pct,
-            rows = 10,
-            colors = viridis::viridis(length(pct)),
-            title = paste0(sp, " Occurrence Records by Primary Data Source"),
-            xlab = "*Sources contributing <2% not shown."
-          )
-        } else {
-          source <- waffle::waffle(pct,
-            rows = 10,
-            colors = viridis::viridis(length(pct)),
-            title = paste0(
-              sp,
-              " Occurrence Records by Primary Data Source"
-            )
-          )
-        }
+        pct["Other*"] <- (100 - sum(pct))
+        source <- waffle::waffle(pct,
+          rows = 10,
+          colors = viridis::viridis(length(pct)),
+          title = paste0(sp, " Occurrence Records by Primary Data Source"),
+          xlab = "*Sources contributing <2% not shown.")
         source <- ggplot_build(source)
         if ("yearHistogram" %in% plotTypes) {
           allPlots[[2]] <- source
