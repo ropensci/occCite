@@ -72,7 +72,7 @@ well as warnings if there are invalid names.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">studyTaxonList</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, datasources <span class="op">=</span> <span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">studyTaxonList</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, datasources <span class="op">=</span> <span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,14 +80,19 @@ well as warnings if there are invalid names.</p>
     <dl><dt>x</dt>
 <dd><p>A phylogeny of class 'phylo' or a vector of class 'character'
 containing the names of taxa of interest</p></dd>
+
+
 <dt>datasources</dt>
 <dd><p>A vector of taxonomic data sources implemented in
 <code>gnr_resolve</code>. You can see the list using
 <code><a href="https://docs.ropensci.org/taxize/reference/gnr_datasources.html" class="external-link">taxize::gnr_datasources()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code><a href="occCiteData-class.html">occCiteData</a></code> containing the type
+    
+
+<p>An object of class <code><a href="occCiteData-class.html">occCiteData</a></code> containing the type
 of inquiry the user has made --a phylogeny or a vector of names-- and a
 data frame containing input taxa names, the closest match according to
 <code>gnr_resolve</code>, and a list of taxonomic data sources that
@@ -96,15 +101,15 @@ contain the matching name.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Inputting a vector of taxon names</span></span>
-<span class="r-in"><span class="fu">studyTaxonList</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="st">"Buteo buteo"</span>,</span>
-<span class="r-in">    <span class="st">"Buteo buteo hartedi"</span>,</span>
-<span class="r-in">    <span class="st">"Buteo japonicus"</span></span>
-<span class="r-in">  <span class="op">)</span>,</span>
-<span class="r-in">  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"National Center for Biotechnology Information"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Inputting a vector of taxon names</span></span></span>
+<span class="r-in"><span><span class="fu">studyTaxonList</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"Buteo buteo"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Buteo buteo hartedi"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Buteo japonicus"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"National Center for Biotechnology Information"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An object of class "occCiteData"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "userQueryType":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "User-supplied list of taxa."</span>
@@ -131,18 +136,19 @@ contain the matching name.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "occResults":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Inputting a phylogeny</span></span>
-<span class="r-in"><span class="va">phylogeny</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.nexus.html" class="external-link">read.nexus</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/Fish_12Tax_time_calibrated.tre"</span>,</span>
-<span class="r-in">    package <span class="op">=</span> <span class="st">"occCite"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">phylogeny</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html" class="external-link">extract.clade</a></span><span class="op">(</span><span class="va">phylogeny</span>, <span class="fl">18</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">studyTaxonList</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">phylogeny</span>,</span>
-<span class="r-in">  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co">## Inputting a phylogeny</span></span></span>
+<span class="r-in"><span><span class="va">phylogeny</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.nexus.html" class="external-link">read.nexus</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/Fish_12Tax_time_calibrated.tre"</span>,</span></span>
+<span class="r-in"><span>    package <span class="op">=</span> <span class="st">"occCite"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">phylogeny</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html" class="external-link">extract.clade</a></span><span class="op">(</span><span class="va">phylogeny</span>, <span class="fl">18</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">studyTaxonList</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">phylogeny</span>,</span></span>
+<span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An object of class "occCiteData"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "userQueryType":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "User-supplied phylogeny."</span>
@@ -177,6 +183,7 @@ contain the matching name.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "occResults":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -191,7 +198,7 @@ contain the matching name.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

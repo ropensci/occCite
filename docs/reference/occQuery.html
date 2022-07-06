@@ -70,15 +70,15 @@ rgbif with metadata."><meta property="og:image" content="/reference/figures/occH
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">occQuery</span><span class="op">(</span>
-  x <span class="op">=</span> <span class="cn">NULL</span>,
-  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,
-  GBIFLogin <span class="op">=</span> <span class="cn">NULL</span>,
-  GBIFDownloadDirectory <span class="op">=</span> <span class="cn">NULL</span>,
-  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">F</span>,
-  checkPreviousGBIFDownload <span class="op">=</span> <span class="cn">T</span>,
-  options <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">occQuery</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span>
+<span>  GBIFLogin <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  GBIFDownloadDirectory <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">F</span>,</span>
+<span>  checkPreviousGBIFDownload <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>  options <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -90,71 +90,86 @@ names. Note: If the latter, taxonomic rectification uses NCBI
 taxonomies. If you want more control than this, use
 <code><a href="studyTaxonList.html">studyTaxonList</a></code> to create a <code><a href="occCiteData-class.html">occCiteData</a></code> object
 first.</p></dd>
+
+
 <dt>datasources</dt>
 <dd><p>A vector of occurrence data sources to search. This is
 currently limited to GBIF and BIEN, but may expand in the future.</p></dd>
+
+
 <dt>GBIFLogin</dt>
 <dd><p>An object of class <code><a href="GBIFLogin-class.html">GBIFLogin</a></code> to log in to
 GBIF to begin the download.</p></dd>
+
+
 <dt>GBIFDownloadDirectory</dt>
 <dd><p>An optional argument that specifies the local
 directory where GBIF downloads will be saved. If this is not specified,
 the downloads will be saved to your current working directory.</p></dd>
+
+
 <dt>loadLocalGBIFDownload</dt>
 <dd><p>If <code>loadLocalGBIFDownload = T</code>, then
 occCite will load occurrences for the specified species that have been
 downloaded by the user and stored in the directory specified by
 <code>GBIFDownloadDirectory</code>.</p></dd>
+
+
 <dt>checkPreviousGBIFDownload</dt>
 <dd><p>If <code>loadLocalGBIFDownload = T</code>,
 occCite will check for previously-prepared GBIF downloads on the user's
 GBIF account. Setting this option to `TRUE` can significantly speed up
 query time if the user has previously queried GBIF for the same taxa.</p></dd>
+
+
 <dt>options</dt>
 <dd><p>A vector of options to pass to <code>occ_download</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The object of class <code><a href="occCiteData-class.html">occCiteData</a></code> supplied by the user
+    
+
+<p>The object of class <code><a href="occCiteData-class.html">occCiteData</a></code> supplied by the user
 as an argument, with occurrence data search results, as well as metadata
 on the occurrence sources queried.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co">## If you have already created a occCite object, and have not previously</span></span>
-<span class="r-in"><span class="co">## downloaded GBIF data.</span></span>
-<span class="r-in"><span class="fu">occQuery</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">myOccCiteObject</span>,</span>
-<span class="r-in">  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span>
-<span class="r-in">  GBIFLogin <span class="op">=</span> <span class="va">myLogin</span>,</span>
-<span class="r-in">  GBIFDownloadDirectory <span class="op">=</span> <span class="st">"./Desktop"</span>,</span>
-<span class="r-in">  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">F</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## If you don't have a occCite object yet</span></span>
-<span class="r-in"><span class="fu">occQuery</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Buteo buteo"</span>, <span class="st">"Protea cynaroides"</span><span class="op">)</span>,</span>
-<span class="r-in">  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span>
-<span class="r-in">  GBIFLogin <span class="op">=</span> <span class="va">myLogin</span>,</span>
-<span class="r-in">  GBIFOverwrite <span class="op">=</span> <span class="cn">T</span>,</span>
-<span class="r-in">  GBIFDownloadDirectory <span class="op">=</span> <span class="st">"./Desktop"</span>,</span>
-<span class="r-in">  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">F</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## If you have previously downloaded occurrence data from GBIF</span></span>
-<span class="r-in"><span class="co">## and saved it in a folder called "GBIFDownloads".</span></span>
-<span class="r-in"><span class="fu">occQuery</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Buteo buteo"</span>, <span class="st">"Protea cynaroides"</span><span class="op">)</span>,</span>
-<span class="r-in">  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span>
-<span class="r-in">  GBIFLogin <span class="op">=</span> <span class="va">myLogin</span>,</span>
-<span class="r-in">  GBIFoverwrite <span class="op">=</span> <span class="cn">T</span>,</span>
-<span class="r-in">  GBIFDownloadDirectory <span class="op">=</span> <span class="st">"./Desktop/GBIFDownloads"</span>,</span>
-<span class="r-in">  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">T</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co">## If you have already created a occCite object, and have not previously</span></span></span>
+<span class="r-in"><span><span class="co">## downloaded GBIF data.</span></span></span>
+<span class="r-in"><span><span class="fu">occQuery</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">myOccCiteObject</span>,</span></span>
+<span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  GBIFLogin <span class="op">=</span> <span class="va">myLogin</span>,</span></span>
+<span class="r-in"><span>  GBIFDownloadDirectory <span class="op">=</span> <span class="st">"./Desktop"</span>,</span></span>
+<span class="r-in"><span>  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">F</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## If you don't have a occCite object yet</span></span></span>
+<span class="r-in"><span><span class="fu">occQuery</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Buteo buteo"</span>, <span class="st">"Protea cynaroides"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  GBIFLogin <span class="op">=</span> <span class="va">myLogin</span>,</span></span>
+<span class="r-in"><span>  GBIFOverwrite <span class="op">=</span> <span class="cn">T</span>,</span></span>
+<span class="r-in"><span>  GBIFDownloadDirectory <span class="op">=</span> <span class="st">"./Desktop"</span>,</span></span>
+<span class="r-in"><span>  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">F</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## If you have previously downloaded occurrence data from GBIF</span></span></span>
+<span class="r-in"><span><span class="co">## and saved it in a folder called "GBIFDownloads".</span></span></span>
+<span class="r-in"><span><span class="fu">occQuery</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Buteo buteo"</span>, <span class="st">"Protea cynaroides"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gbif"</span>, <span class="st">"bien"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  GBIFLogin <span class="op">=</span> <span class="va">myLogin</span>,</span></span>
+<span class="r-in"><span>  GBIFoverwrite <span class="op">=</span> <span class="cn">T</span>,</span></span>
+<span class="r-in"><span>  GBIFDownloadDirectory <span class="op">=</span> <span class="st">"./Desktop/GBIFDownloads"</span>,</span></span>
+<span class="r-in"><span>  loadLocalGBIFDownload <span class="op">=</span> <span class="cn">T</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -169,7 +184,7 @@ on the occurrence sources queried.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
