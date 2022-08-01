@@ -110,7 +110,7 @@ occCiteMap <- function(occCiteData,
   )
 
   # Error check input.
-  if (!class(occCiteData) == "occCiteData") {
+  if (!is(occCiteData, class2 = "occCiteData")) {
     warning("Input is not of class 'occCiteData'.\n")
     return(NULL)
   }

@@ -22,7 +22,7 @@
 
 occCitation <- function(x = NULL) {
   # Error check input x.
-  if (!class(x) == "occCiteData") {
+  if (!is(x, class2 = "occCiteData")) {
     warning(paste0(
       "Input x is not of class 'occCiteData'.\n",
       "Input x must be result of a studyTaxonList() search.\n"
@@ -46,7 +46,7 @@ occCitation <- function(x = NULL) {
       test <- try(rgbif::occ_count(country = "DK"),
         silent = T
       )
-      if (class(test) != "numeric") {
+      if (!is(test, class2 = "numeric")) {
         warning("GBIF connection unsuccessful")
         return(NULL)
       }
