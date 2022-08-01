@@ -1,3 +1,7 @@
+# occCite 0.5.6
+
+* Added "coordinateUncertaintyInMeters" column in processed occurrence results table.
+
 # occCite 0.5.5
 
 * Further adjustment in testing to be CRAN-compatible

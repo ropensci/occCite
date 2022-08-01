@@ -29,16 +29,16 @@ tabGBIF <- function(GBIFresults, taxon) {
     occFromGBIF$gbifID, occFromGBIF$species,
     occFromGBIF$decimalLongitude,
     occFromGBIF$decimalLatitude,
+    occFromGBIF$coordinateUncertaintyInMeters,
     occFromGBIF$day, occFromGBIF$month,
     occFromGBIF$year, occFromGBIF$datasetName,
     as.character(occFromGBIF$datasetKey)
   )
-  dataService <- rep("GBIF", nrow(occFromGBIF))
-  occFromGBIF <- cbind(occFromGBIF, dataService)
+  occFromGBIF$dataService <- "GBIF"
 
   colnames(occFromGBIF) <- c(
     "gbifID", "name", "longitude",
-    "latitude", "day", "month",
+    "latitude", "uncertaintyInMeters", "day", "month",
     "year", "Dataset",
     "DatasetKey", "DataService"
   )

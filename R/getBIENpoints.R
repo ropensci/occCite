@@ -88,15 +88,15 @@ getBIENpoints <- function(taxon) {
   occs <- cbind(occs, dayCollected, monthCollected, yearCollected)
 
   # Tidying up data table
-  outdata <- occs[c(
+  outdata <- cbind(occs[c(
     "scrubbed_species_binomial",
-    "longitude", "latitude", "dayCollected", "monthCollected",
+    "longitude", "latitude")], NA, occs[c("dayCollected", "monthCollected",
     "yearCollected", "dataset", "datasource_id"
-  )]
-  dataService <- rep("BIEN", nrow(outdata))
-  outdata <- cbind(outdata, dataService)
+  )])
+  outdata$dataService <- "BIEN"
   colnames(outdata) <- c(
     "name", "longitude", "latitude",
+    "coordinateUncertaintyInMeters",
     "day", "month", "year",
     "Dataset", "DatasetKey", "DataService"
   )
