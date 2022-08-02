@@ -33,7 +33,7 @@ tabulate.occResults <- function(x, sp.name) {
       mutate_if(is.factor, as.character) %>%
       mutate(name = sp.name)
   })
-  occTbls.bind <- bind_rows(occTbls.char)
+  occTbls.bind <- dplyr::bind_rows(occTbls.char)
   return(occTbls.bind)
 }
 
@@ -121,13 +121,11 @@ occCiteMap <- function(occCiteData,
   }
 
   d.res <- occCiteData@occResults
-  if (!"all" %in% species_map) d.res <- d.res[match(species_map, names(d.res))]
-
   sp.names <- stringr::str_extract(
     string = names(d.res),
     pattern = "(\\w+\\s\\w+)"
   )
-
+  if (!"all" %in% species_map) d.res <- d.res[match(species_map, sp.names)]
 
   if (!is.null(species_colors)) {
     if (length(species_colors) != length(sp.names)) {
