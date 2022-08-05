@@ -54,6 +54,11 @@ Takes rectified list of specimens from
 \code{\link{studyTaxonList}} and returns point data from
 \code{\link{rgbif}} with metadata.
 }
+\details{
+If you are querying GBIF, note that `occQuery()` only returns
+records from GBIF that have coordinates, aren't flagged as having
+geospatial issues, and have an occurrence status flagged as "PRESENT".
+}
 \examples{
 \dontrun{
 ## If you have already created a occCite object, and have not previously

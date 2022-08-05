@@ -103,7 +103,7 @@
 <p>The <code>occCite</code> workflow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). <code>occCite</code> then rectifies these names by checking them against one or more taxonomic databases, which can be specified by the user (see the <a href="http://gni.globalnames.org/data_sources" class="external-link">Global Names List</a>). The results of the taxonomic rectification are then kept in an <code>occCiteData</code> object in local memory. Next, <code>occCite</code> takes the <code>occCiteData</code> object and user-defined search parameters to query BIEN (through <code>rbien</code>) and/or GBIF(through <code>rGBIF</code>) for records. The results are appended to the <code>occCiteData</code> object, along with metadata on the search. Finally, the user can pass the <code>occCiteData</code> object to <code>occCitation</code>, which compiles citations for the primary providers, database aggregators, and <code>R</code> packages used to build the dataset.</p>
 <p>Please cite occCite. Run the following to get the appropriate citation for the version you’re using:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"occCite"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"occCite"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Owens H, Merow C, Maitner B, Kass J, Barve V, Guralnick R (2022).</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## _occCite: Querying and Managing Large Biodiversity Occurrence</span></span>
@@ -126,16 +126,16 @@
 <h2 id="installation">Installation:<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"occCite"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"occCite"</span><span class="op">)</span></span></code></pre></div>
 <p>Or, install via <code>r-universe</code></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"occCite"</span>, repos <span class="op">=</span> <span class="st">"https://ropensci.r-universe.dev"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"occCite"</span>, repos <span class="op">=</span> <span class="st">"https://ropensci.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
 <p>Or, install github development version:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ropensci/occCite"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ropensci/occCite"</span><span class="op">)</span></span></code></pre></div>
 <p>After using one of these options, you can load the package into your environment using:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/occCite/" class="external-link">"occCite"</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/occCite/" class="external-link">"occCite"</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -234,7 +234,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

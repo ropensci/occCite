@@ -1,8 +1,8 @@
 pandoc: '2.18'
-pkgdown: 2.0.3
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   a_Simple: a_Simple.html
   b_Advanced: b_Advanced.html
-last_built: 2022-08-02T16:15Z
+last_built: 2022-08-05T11:03Z
 
