@@ -1,8 +1,7 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Adjustment to testing strategy to comply with CRAN policies.
-* Updated metadata to reflect occCite joining ROpenSci.
+* Added "coordinateUncertaintyInMeters" column in processed occurrence results table.
 
 ## Test environments
 * local OS X 10.15.7 install, R 4.1.2 (with and without internet connection)
