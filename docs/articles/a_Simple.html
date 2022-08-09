@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">occCite</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.7</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@ Barve</h4>
                         <h4 data-toc-skip class="author">Robert
 Guralnick</h4>
             
-            <h4 data-toc-skip class="date">2022-08-05</h4>
+            <h4 data-toc-skip class="date">2022-08-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/occCite/blob/HEAD/vignettes/a_Simple.Rmd" class="external-link"><code>vignettes/a_Simple.Rmd</code></a></small>
       <div class="hidden name"><code>a_Simple.Rmd</code></div>
@@ -198,27 +198,27 @@ species will be verified using EOL and NCBI taxonomies by default.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># GBIF search results</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mySimpleOccCiteObject</span><span class="op">@</span><span class="va">occResults</span><span class="op">$</span><span class="va">`Protea cynaroides`</span><span class="op">$</span><span class="va">GBIF</span><span class="op">$</span><span class="va">OccurrenceTable</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##                name longitude  latitude uncertaintyInMeters day month year</span></span>
-<span><span class="co">## 1 Protea cynaroides  18.43928 -33.95440                   8  17     2 2022</span></span>
-<span><span class="co">## 2 Protea cynaroides  22.12754 -33.91561                   4  11     2 2022</span></span>
-<span><span class="co">## 3 Protea cynaroides  18.43927 -33.95429                   8  17     2 2022</span></span>
-<span><span class="co">## 4 Protea cynaroides  18.43254 -34.29275                  31   6     2 2022</span></span>
-<span><span class="co">## 5 Protea cynaroides  18.42429 -34.02934                2167  10     2 2022</span></span>
-<span><span class="co">## 6 Protea cynaroides  18.43529 -34.10545                   2   8     2 2022</span></span>
-<span><span class="co">##                                   Dataset                           DatasetKey</span></span>
-<span><span class="co">## 1 iNaturalist Research-grade Observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
-<span><span class="co">## 2 iNaturalist Research-grade Observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
-<span><span class="co">## 3 iNaturalist Research-grade Observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
-<span><span class="co">## 4 iNaturalist Research-grade Observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
-<span><span class="co">## 5 iNaturalist Research-grade Observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
-<span><span class="co">## 6 iNaturalist Research-grade Observations 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
-<span><span class="co">##   DataService</span></span>
-<span><span class="co">## 1        GBIF</span></span>
-<span><span class="co">## 2        GBIF</span></span>
-<span><span class="co">## 3        GBIF</span></span>
-<span><span class="co">## 4        GBIF</span></span>
-<span><span class="co">## 5        GBIF</span></span>
-<span><span class="co">## 6        GBIF</span></span></code></pre>
+<pre><code><span><span class="co">##                name longitude  latitude coordinateUncertaintyInMeters day month</span></span>
+<span><span class="co">## 1 Protea cynaroides  18.43928 -33.95440                             8  17     2</span></span>
+<span><span class="co">## 2 Protea cynaroides  22.12754 -33.91561                             4  11     2</span></span>
+<span><span class="co">## 3 Protea cynaroides  18.43927 -33.95429                             8  17     2</span></span>
+<span><span class="co">## 4 Protea cynaroides  18.43254 -34.29275                            31   6     2</span></span>
+<span><span class="co">## 5 Protea cynaroides  18.42429 -34.02934                          2167  10     2</span></span>
+<span><span class="co">## 6 Protea cynaroides  18.43529 -34.10545                             2   8     2</span></span>
+<span><span class="co">##   year                                 Dataset</span></span>
+<span><span class="co">## 1 2022 iNaturalist Research-grade Observations</span></span>
+<span><span class="co">## 2 2022 iNaturalist Research-grade Observations</span></span>
+<span><span class="co">## 3 2022 iNaturalist Research-grade Observations</span></span>
+<span><span class="co">## 4 2022 iNaturalist Research-grade Observations</span></span>
+<span><span class="co">## 5 2022 iNaturalist Research-grade Observations</span></span>
+<span><span class="co">## 6 2022 iNaturalist Research-grade Observations</span></span>
+<span><span class="co">##                             DatasetKey DataService</span></span>
+<span><span class="co">## 1 50c9509d-22c7-4a22-a47d-8c48425ef4a7        GBIF</span></span>
+<span><span class="co">## 2 50c9509d-22c7-4a22-a47d-8c48425ef4a7        GBIF</span></span>
+<span><span class="co">## 3 50c9509d-22c7-4a22-a47d-8c48425ef4a7        GBIF</span></span>
+<span><span class="co">## 4 50c9509d-22c7-4a22-a47d-8c48425ef4a7        GBIF</span></span>
+<span><span class="co">## 5 50c9509d-22c7-4a22-a47d-8c48425ef4a7        GBIF</span></span>
+<span><span class="co">## 6 50c9509d-22c7-4a22-a47d-8c48425ef4a7        GBIF</span></span></code></pre>
 <p>And here are the BIEN results:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#BIEN search results</span></span>
@@ -242,7 +242,7 @@ some basic information about your search.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mySimpleOccCiteObject</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  </span></span>
-<span><span class="co">##  OccCite query occurred on: 01 August, 2022</span></span>
+<span><span class="co">##  OccCite query occurred on: 09 August, 2022</span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">##  User query type: User-supplied list of taxa.</span></span>
 <span><span class="co">##  </span></span>
@@ -307,7 +307,7 @@ the results of <code><a href="../reference/occCitation.html">occCitation()</a></
 <span><span class="co">## MNHN, Chagnoux S (2022). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.270. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## MNHN. Accessed via BIEN on NA.</span></span>
 <span><span class="co">## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-03-02.</span></span>
-<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2022). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.6. https://CRAN.R-project.org/package=occCite.</span></span>
+<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2022). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.7. https://CRAN.R-project.org/package=occCite.</span></span>
 <span><span class="co">## R Core Team. (2021). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.</span></span>
 <span><span class="co">## Ranwashe F (2022). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.14. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## Rob Cubey (2022). Royal Botanic Garden Edinburgh Living Plant Collections (E). Royal Botanic Garden Edinburgh. https://doi.org/10.15468/bkzv1l. Accessed via GBIF on 2022-03-02.</span></span>
