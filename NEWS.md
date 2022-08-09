@@ -1,3 +1,7 @@
+# occCite 0.5.7
+
+* Development version
+
 # occCite 0.5.6
 
 * Added "coordinateUncertaintyInMeters" column in processed occurrence results table.
