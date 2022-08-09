@@ -53,12 +53,11 @@
 #'   loadLocalGBIFDownload = F
 #' )
 #'
-#' ## If you don't have a occCite object yet
+#' ## If you don't have an occCite object yet
 #' occQuery(
 #'   x = c("Buteo buteo", "Protea cynaroides"),
 #'   datasources = c("gbif", "bien"),
 #'   GBIFLogin = myLogin,
-#'   GBIFOverwrite = T,
 #'   GBIFDownloadDirectory = "./Desktop",
 #'   loadLocalGBIFDownload = F
 #' )
@@ -69,7 +68,6 @@
 #'   x = c("Buteo buteo", "Protea cynaroides"),
 #'   datasources = c("gbif", "bien"),
 #'   GBIFLogin = myLogin,
-#'   GBIFoverwrite = T,
 #'   GBIFDownloadDirectory = "./Desktop/GBIFDownloads",
 #'   loadLocalGBIFDownload = T
 #' )
