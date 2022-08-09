@@ -22,6 +22,7 @@ GBIFtableCleanup <- function(GBIFtable) {
     GBIFtable["name"] <- NA
     GBIFtable["longitude"] <- NA
     GBIFtable["latitude"] <- NA
+    GBIFtable["coordinateUncertaintyInMeters"] <- NA
     GBIFtable["day"] <- NA
     GBIFtable["month"] <- NA
     GBIFtable["year"] <- NA
@@ -35,6 +36,7 @@ GBIFtableCleanup <- function(GBIFtable) {
     GBIFtable["name"] <- NA
     GBIFtable["longitude"] <- NA
     GBIFtable["latitude"] <- NA
+    GBIFtable["coordinateUncertaintyInMeters"] <- NA
     GBIFtable["day"] <- NA
     GBIFtable["month"] <- NA
     GBIFtable["year"] <- NA
@@ -49,6 +51,7 @@ GBIFtableCleanup <- function(GBIFtable) {
       GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
       GBIFtable["longitude"] <- as.numeric(unlist(GBIFtable["longitude"]))
       GBIFtable["latitude"] <- as.numeric(unlist(GBIFtable["latitude"]))
+      GBIFtable["coordinateUncertaintyInMeters"] <- as.numeric(unlist(GBIFtable["coordinateUncertaintyInMeters"]))
       GBIFtable["day"] <- as.integer(unlist(GBIFtable["day"]))
       GBIFtable["month"] <- as.integer(unlist(GBIFtable["month"]))
       GBIFtable["year"] <- as.integer(unlist(GBIFtable["year"]))
@@ -61,6 +64,7 @@ GBIFtableCleanup <- function(GBIFtable) {
       GBIFtable["name"] <- NA
       GBIFtable["longitude"] <- NA
       GBIFtable["latitude"] <- NA
+      GBIFtable["coordinateUncertaintyInMeters"] <- NA
       GBIFtable["day"] <- NA
       GBIFtable["month"] <- NA
       GBIFtable["year"] <- NA

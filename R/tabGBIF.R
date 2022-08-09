@@ -38,7 +38,7 @@ tabGBIF <- function(GBIFresults, taxon) {
 
   colnames(occFromGBIF) <- c(
     "gbifID", "name", "longitude",
-    "latitude", "uncertaintyInMeters", "day", "month",
+    "latitude", "coordinateUncertaintyInMeters", "day", "month",
     "year", "Dataset",
     "DatasetKey", "DataService"
   )
