@@ -25,7 +25,6 @@ occCitation <- function(x = NULL) {
   if (!is(x, class2 = "occCiteData")) {
     warning(paste0(
       "Input x is not of class 'occCiteData'.\n",
-      "Input x must be result of a studyTaxonList() search.\n"
     ))
     return(NULL)
   }
