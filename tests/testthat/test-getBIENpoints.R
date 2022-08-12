@@ -45,6 +45,7 @@ test_that("getBIENpoints behaves as expected", {
   expect_true("name" %in% colnames(testResult$OccurrenceTable))
   expect_true("longitude" %in% colnames(testResult$OccurrenceTable))
   expect_true("latitude" %in% colnames(testResult$OccurrenceTable))
+  expect_true("coordinateUncertaintyInMeters" %in% colnames(testResult$OccurrenceTable))
   expect_true("day" %in% colnames(testResult$OccurrenceTable))
   expect_true("month" %in% colnames(testResult$OccurrenceTable))
   expect_true("year" %in% colnames(testResult$OccurrenceTable))
