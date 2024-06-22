@@ -50,7 +50,7 @@ occCitation <- function(x = NULL) {
         return(NULL)
       }
       ## Pull dataset keys from occurrence table
-      datasetKeys <- stats::na.exclude(unlist(as.character(occResults$GBIF$OccurrenceTable$DatasetKey)))
+      datasetKeys <- stats::na.exclude(unlist(as.character(occResults$GBIF$OccurrenceTable$datasetKey)))
       if (length(datasetKeys) > 0) {
         GBIFDatasetCount <- as.data.frame(table(unlist(datasetKeys)))
         GBIFdatasetKeys <- unique(unlist(datasetKeys))
@@ -61,7 +61,7 @@ occCitation <- function(x = NULL) {
         ### not the date the data was accessed
         for (j in GBIFdatasetKeys) {
           tryCatch(
-            expr = temp <- gsub(rgbif::gbif_citation(j)$citation$text,
+            expr = temp <- gsub(rgbif::dataset_get(j)$citation[[1]]$text,
               pattern = " accessed via GBIF.org on \\d+\\-\\d+\\-\\d+.",
               replacement = "",
               useBytes = T
@@ -89,13 +89,13 @@ occCitation <- function(x = NULL) {
       ## Pull dataset keys from occurrence table
       BIENdatasetKeys <- vector(mode = "list")
       BIENKeysNAs <- vector(mode = "list")
-      if (anyNA(occResults$BIEN$OccurrenceTable$DatasetKey)) {
-        BIENKeysNAs <- occResults$BIEN$OccurrenceTable$Dataset[is.na(occResults$BIEN$OccurrenceTable$DatasetKey)]
+      if (anyNA(occResults$BIEN$OccurrenceTable$datasetKey)) {
+        BIENKeysNAs <- occResults$BIEN$OccurrenceTable$datasetName[is.na(occResults$BIEN$OccurrenceTable$datasetKey)]
         BIENKeysNAs <- unique(BIENKeysNAs)
       }
       BIENdatasetKeys <- append(
         BIENdatasetKeys,
-        unlist(as.character((occResults$BIEN$OccurrenceTable$DatasetKey)))
+        unlist(as.character((occResults$BIEN$OccurrenceTable$datasetKey)))
       )
       BIENdatasetKeys <- BIENdatasetKeys[!is.na(BIENdatasetKeys)]
 
@@ -161,10 +161,10 @@ occCitation <- function(x = NULL) {
         noNameKeys <- unlist(BIENdatasetKeys[!BIENdatasetKeys %in%
           BIENsources$datasource_id]) # Gets keys missing names
         datasetLookupTable <- unique(occResults$BIEN$OccurrenceTable[,
-                                                                     c("DatasetKey",
-                                                                       "Dataset")])
+                                                                     c("datasetKey",
+                                                                       "datasetName")])
         datasetLookupTable[] <- lapply(datasetLookupTable, as.character)
-        missingNames <- datasetLookupTable$Dataset[datasetLookupTable$DatasetKey %in%
+        missingNames <- datasetLookupTable$datasetName[datasetLookupTable$datasetKey %in%
           noNameKeys] # Pulls missing names
 
         print(paste0(

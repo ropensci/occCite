@@ -23,7 +23,7 @@ summary.occCiteData <- function(object, ...) {
       "\t\n",
       sprintf(
         "OccCite query occurred on: %s\n",
-        as.character(as.Date(x@occCiteSearchDate),
+        format(as.Date(x@occCiteSearchDate),
           format = "%d %B, %Y"
         )
       )
@@ -89,7 +89,7 @@ summary.occCiteData <- function(object, ...) {
           nrow(x@occResults[[i]]$
             GBIF$OccurrenceTable[!is.na(x@occResults[[i]]$
             GBIF$OccurrenceTable$
-            DatasetKey), ]) == 0,
+            datasetKey), ]) == 0,
           na.rm = T
         )) {
           occurrenceCountGBIF[[i]] <- 0
@@ -99,7 +99,7 @@ summary.occCiteData <- function(object, ...) {
             x@occResults[[i]]$GBIF$OccurrenceTable
           )
           sourceCountGBIF[[i]] <- length(
-            unique(x@occResults[[i]]$GBIF$OccurrenceTable$DatasetKey)
+            unique(x@occResults[[i]]$GBIF$OccurrenceTable$datasetKey)
           )
         }
         # BIEN counts
@@ -114,7 +114,7 @@ summary.occCiteData <- function(object, ...) {
             x@occResults[[i]]$BIEN$OccurrenceTable
           )
           sourceCountBIEN[[i]] <- length(
-            unique(x@occResults[[i]]$BIEN$OccurrenceTable$DatasetKey)
+            unique(x@occResults[[i]]$BIEN$OccurrenceTable$datasetKey)
           )
         }
       }

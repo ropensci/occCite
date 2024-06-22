@@ -181,11 +181,13 @@ occCiteMap <- function(occCiteData,
 
   d <- dplyr::bind_rows(d.tbl)
 
-  d$Dataset[d$Dataset == ""] <- "Dataset not specified"
+  d$datasetName[d$datasetName == ""] <- "Dataset not specified"
 
   # remove coordinate duplicates with same data service
-  d <- dplyr::distinct(d, .data$longitude, .data$latitude,
-    .data$DataService,
+  longitude <- NULL # Cheat to silence R CMD check
+  latitude <- NULL # Cheat to silence R CMD check
+  d <- dplyr::distinct(d, longitude, latitude,
+    dataService,
     .keep_all = TRUE
   )
 
@@ -196,15 +198,15 @@ occCiteMap <- function(occCiteData,
       "day: ", d$day, ", month: ",
       d$month, ", year: ", d$year
     ),
-    paste("dataset:", d$Dataset),
+    paste("dataset:", d$datasetName),
     paste(
-      "data service:", d$DataService,
+      "data service:", d$dataService,
       "<br/><br/>"
     ),
     sep = "<br/>"
   )
   d$label <- lapply(d$label, htmltools::HTML)
-  d$DataService <- factor(d$DataService)
+  d$dataService <- factor(d$dataService)
 
   if (awesomeMarkers == TRUE) {
     cols <- awesomeMarkers.cols
@@ -220,17 +222,18 @@ occCiteMap <- function(occCiteData,
   names(sp.cols) <- sp.names
 
   d.nest <- tidyr::nest(d, data = -c("longitude", "latitude", "name"))
-  d.nest.ds <- lapply(d.nest$data, function(x) as.character(x$DataService))
+  d.nest.ds <- lapply(d.nest$data, function(x) as.character(x$dataService))
   if (length(ds_map) > 1 | all(ds_map == "GBIF_BIEN")) {
     d.nest.dsBoth <- which(sapply(d.nest.ds, length) == 2)
     d.nest.ds[d.nest.dsBoth] <- "GBIF_BIEN"
   }
-  d.nest$DataService <- d.nest.ds
+  d.nest$dataService <- d.nest.ds
+  dataService <- NULL # Cheat to silence R CMD check
   d.nest <- d.nest %>%
-    tidyr::unnest(.data$DataService) %>%
-    dplyr::mutate(DataService = factor(.data$DataService))
+    tidyr::unnest(dataService) %>%
+    dplyr::mutate(dataService = factor(dataService))
   if (length(ds_map) == 1) {
-    d.nest <- d.nest[d.nest$DataService %in% ds_map, ]
+    d.nest <- d.nest[dataService %in% ds_map, ]
   }
   labs.lst <- lapply(sp.names, function(x) {
     lapply(
@@ -280,7 +283,7 @@ occCiteMap <- function(occCiteData,
         data = as.data.frame(d.nest) %>% dplyr::filter(.data$name == i),
         ~longitude, ~latitude,
         label = ~labs.lst.i,
-        icon = ~ sp.icons.i[DataService],
+        icon = ~ sp.icons.i[dataService],
         clusterOptions = clusterOpts
       )
     }
@@ -416,8 +419,8 @@ plot.occCiteData <- function(x, ...) {
   }
 
   d <- dplyr::bind_rows(d.tbl)
-  d$Dataset[d$Dataset == ""] <- "Dataset not specified"
-  d <- d[, c("name", "year", "Dataset", "DataService")]
+  d$datasetName[d$datasetName == ""] <- "Dataset not specified"
+  d <- d[, c("name", "year", "datasetName", "dataService")]
   d <- d[complete.cases(d), ]
 
   if (!bySpecies) {
@@ -443,7 +446,7 @@ plot.occCiteData <- function(x, ...) {
       allPlots[[1]] <- yearHistogram
     }
     if ("source" %in% plotTypes) {
-      datasetTab <- sort(table(d$Dataset), decreasing = T)
+      datasetTab <- sort(table(d$datasetName), decreasing = T)
       pct <- round(datasetTab / sum(datasetTab) * 100)
       lbls <- names(datasetTab)
       lbls <- paste0(lbls, " ", pct) # add percents to labels
@@ -474,7 +477,7 @@ plot.occCiteData <- function(x, ...) {
       }
     }
     if ("aggregator" %in% plotTypes) {
-      datasetTab <- sort(table(d$DataService), decreasing = T)
+      datasetTab <- sort(table(d$dataService), decreasing = T)
       pct <- round(datasetTab / sum(datasetTab) * 100)
       lbls <- names(datasetTab)
       lbls <- paste(lbls, pct) # add percents to labels
@@ -519,7 +522,7 @@ plot.occCiteData <- function(x, ...) {
         allPlots[[1]] <- yearHistogram
       }
       if ("source" %in% plotTypes) {
-        datasetTab <- sort(table(sub.d$Dataset), decreasing = T)
+        datasetTab <- sort(table(sub.d$datasetName), decreasing = T)
         pct <- round(datasetTab / sum(datasetTab) * 100)
         lbls <- names(datasetTab)
         lbls <- paste(lbls, pct) # add percents to labels
@@ -541,7 +544,7 @@ plot.occCiteData <- function(x, ...) {
         }
       }
       if ("aggregator" %in% plotTypes) {
-        datasetTab <- sort(table(sub.d$DataService), decreasing = T)
+        datasetTab <- sort(table(sub.d$dataService), decreasing = T)
         pct <- round(datasetTab / sum(datasetTab) * 100)
         lbls <- names(datasetTab)
         lbls <- paste(lbls, pct) # add percents to labels

@@ -33,7 +33,7 @@ test_that("GBIFLoginManager actually picks up login information", {
   ),
   silent = T
   )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  skip_if(class(test) != "list", "GBIF login unsuccessful")
 
   expect_true("username" %in% slotNames(GBIFLogin))
   expect_true(nchar(GBIFLogin@username) > 0)

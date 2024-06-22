@@ -13,6 +13,8 @@
 #' occurrence data  \item GBIF search metadata for every GBIF download in
 #' the specified directory.}
 #'
+#' @importFrom dplyr inner_join join_by %>%
+#'
 #' @keywords internal
 #'
 #' @noRd
@@ -31,23 +33,28 @@ tabGBIF <- function(GBIFresults, taxon) {
     occFromGBIF$decimalLatitude,
     occFromGBIF$coordinateUncertaintyInMeters,
     occFromGBIF$day, occFromGBIF$month,
-    occFromGBIF$year, occFromGBIF$datasetName,
+    occFromGBIF$year,
     as.character(occFromGBIF$datasetKey)
   )
-  occFromGBIF$dataService <- "GBIF"
-
   colnames(occFromGBIF) <- c(
     "gbifID", "name", "longitude",
     "latitude", "coordinateUncertaintyInMeters", "day", "month",
-    "year", "Dataset",
-    "DatasetKey", "DataService"
+    "year",
+    "datasetKey"
   )
 
-  occFromGBIF$Dataset <- unlist(lapply(occFromGBIF$DatasetKey,
-    FUN = function(y) {
-      rgbif::gbif_citation(y)$citation$title
-    }
-  ))
+  occFromGBIF$dataService <- "GBIF"
+
+  datasetTitles <- data.frame(do.call(rbind,lapply(unique(occFromGBIF$datasetKey),
+                                                      FUN = function(y) {
+                                                        c(y, rgbif::dataset_get(y)$title)
+                                                      }
+  )))
+  colnames(datasetTitles) <- c("datasetKey","datasetName")
+
+  datasetKey <- NULL # Cheat to silence R check
+  occFromGBIF <- occFromGBIF %>%
+    inner_join(datasetTitles, by = join_by(datasetKey))
 
   # Remove entries with NA values in long, lat, and year
   occFromGBIF <- occFromGBIF[complete.cases(occFromGBIF[, c(

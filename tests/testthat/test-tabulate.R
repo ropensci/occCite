@@ -1,9 +1,7 @@
 context("Testing tabulate.occResults")
-
 library(occCite)
-
+data("myOccCiteObject")
 test_that("inputs to tabulate.occResults are as expected", {
-  data("myOccCiteObject")
   testResults <- myOccCiteObject@occResults
   resNames <- names(testResults)
 
@@ -20,7 +18,6 @@ test_that("outputs to tablulate.occResults are as expected", {
 
   expect_error(tabulate.occResults())
 
-  data("myOccCiteObject")
   sp.name <- names(myOccCiteObject@occResults)[[1]]
   x <- myOccCiteObject@occResults[[1]]
   testResults <- tabulate.occResults(x = x, sp.name = sp.name)
@@ -40,12 +37,12 @@ test_that("outputs to tablulate.occResults are as expected", {
   expect_equal(class(testResults$month), "integer")
   expect_true("year" %in% names(testResults))
   expect_equal(class(testResults$year), "integer")
-  expect_true("Dataset" %in% names(testResults))
-  expect_equal(class(testResults$Dataset), "character")
-  expect_true("DatasetKey" %in% names(testResults))
-  expect_equal(class(testResults$DatasetKey), "character")
-  expect_true("DataService" %in% names(testResults))
-  expect_equal(class(testResults$DataService), "character")
-  expect_true("GBIF" %in% testResults$DataService)
-  expect_true("BIEN" %in% testResults$DataService)
+  expect_true("datasetName" %in% names(testResults))
+  expect_equal(class(testResults$datasetName), "character")
+  expect_true("datasetKey" %in% names(testResults))
+  expect_equal(class(testResults$datasetKey), "character")
+  expect_true("dataService" %in% names(testResults))
+  expect_equal(class(testResults$dataService), "character")
+  expect_true("GBIF" %in% testResults$dataService)
+  expect_true("BIEN" %in% testResults$dataService)
 })

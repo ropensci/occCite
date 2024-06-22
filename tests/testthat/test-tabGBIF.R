@@ -2,13 +2,13 @@ context("GBIF tabulation")
 
 library(occCite)
 
+GBIFLogin <- try(GBIFLoginManager(), silent = T)
+key <- 5637947
+
 test_that("data entered into tabGBIF is as expected", {
   skip_on_cran() # Requires GBIF login information
-
-  GBIFLogin <- try(GBIFLoginManager(), silent = T)
   skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
-  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
@@ -22,11 +22,8 @@ test_that("data entered into tabGBIF is as expected", {
 
 test_that("verify occ_download_import results have expected columns", {
   skip_on_cran() # Requires GBIF login information
-
-  GBIFLogin <- try(GBIFLoginManager(), silent = T)
   skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
-  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
@@ -49,11 +46,8 @@ test_that("verify occ_download_import results have expected columns", {
 
 test_that("tabGBIF results as expected", {
   skip_on_cran() # Requires GBIF login information
-
-  GBIFLogin <- try(GBIFLoginManager(), silent = T)
   skip_if(is(GBIFLogin, "try-error"), "GBIF login unsuccessful")
 
-  key <- 5637947
   occD <- prevGBIFdownload(key, GBIFLogin)
   res <- rgbif::occ_download_get(
     key = occD, overwrite = TRUE,
@@ -68,7 +62,7 @@ test_that("tabGBIF results as expected", {
   expect_true("day" %in% colnames(occFromGBIF))
   expect_true("month" %in% colnames(occFromGBIF))
   expect_true("year" %in% colnames(occFromGBIF))
-  expect_true("Dataset" %in% colnames(occFromGBIF))
-  expect_true("DatasetKey" %in% colnames(occFromGBIF))
-  expect_true("DataService" %in% colnames(occFromGBIF))
+  expect_true("datasetName" %in% colnames(occFromGBIF))
+  expect_true("datasetKey" %in% colnames(occFromGBIF))
+  expect_true("dataService" %in% colnames(occFromGBIF))
 })

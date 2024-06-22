@@ -32,7 +32,7 @@ test_that("input data object for summary behaves as expected", {
   %in% names(myOccCiteObject@occResults[[1]][[1]])))
   expect_true(all(c("name", "longitude", "latitude",
                     "day", "month", "year",
-                    "Dataset", "DatasetKey", "DataService") %in%
+                    "datasetName", "datasetKey", "dataService") %in%
                     colnames(myOccCiteObject@occResults[[1]][[1]][[1]])))
   expect_true("BIEN" %in% names(myOccCiteObject@occResults[[1]]))
   expect_true(all(c("OccurrenceTable", "Metadata", "RawOccurrences")
@@ -40,7 +40,7 @@ test_that("input data object for summary behaves as expected", {
   expect_true(all(c(
     "name", "longitude", "latitude",
     "day", "month", "year",
-    "Dataset", "DatasetKey", "DataService"
+    "datasetName", "datasetKey", "dataService"
   )
   %in% colnames(myOccCiteObject@occResults[[1]][[2]][[1]])))
 })

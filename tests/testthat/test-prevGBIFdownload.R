@@ -18,7 +18,7 @@ test_that("download list retrievable from GBIF.org", {
   ),
   silent = T
   )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  skip_if(class(test) != "list", "GBIF login unsuccessful")
 
   GBIFLogin <- GBIFLoginManager()
   dl <- rgbif::occ_download_list(
@@ -42,7 +42,7 @@ test_that("download list parseable by prevGBIFdownload", {
   ),
   silent = T
   )
-  skip_if(class(test) != "occ_download", "GBIF login unsuccessful")
+  skip_if(class(test) != "list", "GBIF login unsuccessful")
 
   dl <- rgbif::occ_download_list(
     user = GBIFLogin@username,

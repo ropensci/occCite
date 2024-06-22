@@ -3,21 +3,22 @@ context("Testing occCitation")
 library(occCite)
 library(lubridate)
 
+data("myOccCiteObject")
+
 test_that("inputs to occCitation are as expected", {
-  data("myOccCiteObject")
   expect_true(class(myOccCiteObject) == "occCiteData")
   expect_true(names(myOccCiteObject@occResults) > 0)
   expect_true("BIEN" %in% names(myOccCiteObject@occResults[[1]]))
   expect_true("OccurrenceTable"
   %in% names(myOccCiteObject@occResults[[1]]$BIEN))
-  expect_true("DatasetKey"
+  expect_true("datasetKey"
   %in% names(myOccCiteObject@occResults[[1]]$BIEN$OccurrenceTable))
 
   expect_true("GBIF"
   %in% names(myOccCiteObject@occResults[[1]]))
   expect_true("OccurrenceTable"
   %in% names(myOccCiteObject@occResults[[1]]$GBIF))
-  expect_true("DatasetKey"
+  expect_true("datasetKey"
   %in% names(myOccCiteObject@occResults[[1]]$GBIF$OccurrenceTable))
 })
 
@@ -29,10 +30,9 @@ test_that("outputs for GBIF results are as expected", {
   )
   skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
 
-  expect_warning(occCitation())
-  expect_warning(occCitation(2))
+  expect_error(occCitation())
+  expect_error(occCitation(2))
 
-  data("myOccCiteObject")
   myOccCiteObject@occResults[[1]]$BIEN <- NULL
   testResults <- occCitation(myOccCiteObject)
 

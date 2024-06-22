@@ -179,7 +179,7 @@ occQuery <- function(x = NULL,
   }
 
   # Get time stamp for search
-  x@occCiteSearchDate <- as.character(Sys.Date(), format = "%Y-%m-%d")
+  x@occCiteSearchDate <- format(Sys.Date(), format = "%Y-%m-%d")
 
   # Occurrence queries for each species
   queryResults <- x
@@ -216,7 +216,7 @@ occQuery <- function(x = NULL,
       for (i in 1:length(searchTaxa)) {
         # Gets *all* downloaded records
         temp <- gbifRetriever(searchTaxa[[i]])
-        temp$OccurrenceTable <- GBIFtableCleanup(temp$OccurrenceTable)
+        temp$OccurrenceTable <- occCite:::GBIFtableCleanup(temp$OccurrenceTable)
         gbifResults[[i]] <- temp
       }
       setwd(currentWD)
@@ -228,7 +228,7 @@ occQuery <- function(x = NULL,
           GBIFDownloadDirectory = GBIFDownloadDirectory,
           checkPreviousGBIFDownload = checkPreviousGBIFDownload
         )
-        temp$OccurrenceTable <- GBIFtableCleanup(temp$OccurrenceTable)
+        temp$OccurrenceTable <- occCite:::GBIFtableCleanup(temp$OccurrenceTable)
         gbifResults[[i]] <- temp
       }
     }

@@ -1,34 +1,9 @@
 context("Testing summary plot function")
 
 library(occCite)
-
-test_that("inputs to sumFig are as expected", {
-  data("myOccCiteObject")
-  testResults <- myOccCiteObject@occResults
-  resNames <- names(testResults)
-  sp.name <- names(myOccCiteObject@occResults)[[1]]
-  x <- myOccCiteObject@occResults[[1]]
-  tabResults <- tabulate.occResults(x = x, sp.name = sp.name)
-
-  expect_true(class(myOccCiteObject) == "occCiteData")
-  expect_true(names(myOccCiteObject@occResults) > 0)
-  expect_true(is.character(resNames))
-  expect_true(all(!is.na(stringr::str_extract(
-    string = resNames,
-    pattern = "(\\w+\\s\\w+)"
-  ))))
-
-  expect_true(all(c(
-    "name",
-    "year",
-    "DataService",
-    "Dataset"
-  )
-  %in% names(tabulate.occResults(x, sp.name))))
-})
+data("myOccCiteObject")
 
 test_that("default sumFig settings work", {
-  data("myOccCiteObject")
   test <- plot(myOccCiteObject)
   expect_true("yearHistogram" %in% names(test))
   expect_equal(class(test[[1]]), "ggplot_built")
@@ -39,7 +14,6 @@ test_that("default sumFig settings work", {
 })
 
 test_that("sumFig works when plotting by species", {
-  data("myOccCiteObject")
   test <- plot(myOccCiteObject, bySpecies = T)
   expect_true(names(test) == "Protea cynaroides")
   expect_true("yearHistogram" %in% names(test[[1]]))

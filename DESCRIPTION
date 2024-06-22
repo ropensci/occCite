@@ -37,7 +37,8 @@ Suggests:
     covr,
     ape,
     bit64,
-    knitr
+    knitr,
+    httr
 Imports:
     bib2df,
     BIEN,
@@ -53,7 +54,6 @@ Imports:
     htmltools,
     ggplot2,
     rlang,
-    httr,
     tidyr,
     RPostgreSQL,
     RColorBrewer,
@@ -61,4 +61,4 @@ Imports:
     DBI,
     waffle
 VignetteBuilder: knitr, rmarkdown
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.1

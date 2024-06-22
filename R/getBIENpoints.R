@@ -93,13 +93,13 @@ getBIENpoints <- function(taxon) {
     "longitude", "latitude")], NA, occs[c("dayCollected", "monthCollected",
     "yearCollected", "dataset", "datasource_id"
   )])
-  outdata$dataService <- "BIEN"
   colnames(outdata) <- c(
     "name", "longitude", "latitude",
     "coordinateUncertaintyInMeters",
     "day", "month", "year",
-    "Dataset", "DatasetKey", "DataService"
+    "datasetName", "datasetKey"
   )
+  outdata$dataService <- "BIEN"
 
   outdata["name"] <- as.factor(unlist(outdata["name"]))
   outdata["longitude"] <- as.numeric(unlist(outdata["longitude"]))
@@ -107,9 +107,9 @@ getBIENpoints <- function(taxon) {
   outdata["day"] <- as.integer(unlist(outdata["day"]))
   outdata["month"] <- as.integer(unlist(outdata["month"]))
   outdata["year"] <- as.integer(unlist(outdata["year"]))
-  outdata["Dataset"] <- as.factor(unlist(outdata["Dataset"]))
-  outdata["DatasetKey"] <- as.factor(unlist(outdata["DatasetKey"]))
-  outdata["DataService"] <- as.factor(unlist(outdata["DataService"]))
+  outdata["datasetName"] <- as.factor(unlist(outdata["datasetName"]))
+  outdata["datasetKey"] <- as.factor(unlist(outdata["datasetKey"]))
+  outdata["dataService"] <- as.factor(unlist(outdata["dataService"]))
 
   # Get metadata
   occMetadata <- BIEN::BIEN_metadata_citation()
