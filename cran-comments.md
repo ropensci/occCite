@@ -13,13 +13,7 @@ This is a package update. In this version, I have:
 * macOS-latest (on GitHub Actions), R 4.4.1
 
 ## R CMD check results
-0 errors | 0 warnings | 1 note
-
-NOTE: There are ::: calls to the package's namespace in its code. A package
-    almost never needs to use ::: for its own objects:
-    'GBIFtableCleanup'
-    
-    - There are no ::: calls in GBIFtableCleanup. I have verified this.
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
