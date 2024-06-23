@@ -1,21 +1,25 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Added "coordinateUncertaintyInMeters" column in processed occurrence results table.
+* Fixed warning in `occCitation()` when getting GBIF citations
+* Updated date formatting using `format()` instead of `as.character()`
+* Updated test files to incorporate rgbif 3.8.0 output changes, make more efficient
+* In occResults, renamed "Dataset", "DatasetKey", and "DataService" to "datasetName", "datasetKey", "dataService", respectively.
 
 ## Test environments
-* local OS X 10.15.7 install, R 4.1.2 (with and without internet connection)
-* win-builder (devel and release)
-* ubuntu 20.04 (devel and release; on GitHub Actions), R 4.1.3
-* windows-latest (on GitHub Actions), R 4.1.3
-* macOS-latest (on GitHub Actions), R 4.1.3
-* Apple Silicon (M1), macOS 11.6 Big Sur, R-release (rhub), R 4.1.2
-* Fedora Linux, R-devel, clang, gfortran (rhub)
-* Ubuntu Linux 20.04.1 LTS, R-release, GCC (rhub)
-* Windows Server 2022, R-devel, 64 bit (rhub)
+* local OS X 14.5 install, R 4.3.2 (with and without internet connection)
+* ubuntu 20.04 (devel and release; on GitHub Actions), R 4.4.1
+* windows-latest (on GitHub Actions), R 4.4.1
+* macOS-latest (on GitHub Actions), R 4.4.1
 
 ## R CMD check results
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
+
+NOTE: There are ::: calls to the package's namespace in its code. A package
+    almost never needs to use ::: for its own objects:
+    'GBIFtableCleanup'
+    
+    - There are no ::: calls in GBIFtableCleanup. I have verified this.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
