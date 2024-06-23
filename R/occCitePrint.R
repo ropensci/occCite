@@ -33,6 +33,12 @@ print.occCiteCitation <- function(x, ...) {
     bySpecies <- FALSE
   }
 
+  if ("skipPackages" %in% names(args)) {
+    skipPackages <- args$skipPackages
+  } else {
+    skipPackages <- FALSE
+  }
+
   stopifnot(is(x, "occCiteCitation"))
 
   if (!requireNamespace("RefManageR", quietly = TRUE)) {
@@ -173,7 +179,11 @@ print.occCiteCitation <- function(x, ...) {
       packages <- unique(x$occCitationResults[[i]]$occSearch)
       if ("GBIF" %in% packages) packCit <- c(packCit, "rgbif")
       if ("BIEN" %in% packages) packCit <- c(packCit, "BIEN")
-      packCit <- packageCitations(packCit)
+      if(skipPackages){
+        packCit <- NULL
+      } else {
+        packCit <- packageCitations(packCit)
+      }
 
       # Print results
       cat(paste("Species:", names(x$occCitationResults)[[i]], "\n\n"))
@@ -202,7 +212,11 @@ print.occCiteCitation <- function(x, ...) {
     packages <- unique(recordCitations$occSearch)
     if ("GBIF" %in% packages) packCit <- c(packCit, "rgbif")
     if ("BIEN" %in% packages) packCit <- c(packCit, "BIEN")
-    packCit <- packageCitations(packCit)
+    if(skipPackages){
+      packCit <- NULL
+    } else {
+      packCit <- packageCitations(packCit)
+    }
 
     # Print results
     recordCitations <- recordCitations[order(recordCitations$Citation), ]

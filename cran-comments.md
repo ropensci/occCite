@@ -5,6 +5,7 @@ This is a package update. In this version, I have:
 * Updated date formatting using `format()` instead of `as.character()`
 * Updated test files to incorporate rgbif 3.8.0 output changes, make more efficient
 * In occResults, renamed "Dataset", "DatasetKey", and "DataService" to "datasetName", "datasetKey", "dataService", respectively.
+* Made an option for removing package citations.
 
 ## Test environments
 * local OS X 14.5 install, R 4.3.2 (with and without internet connection)

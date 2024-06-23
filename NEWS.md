@@ -4,6 +4,7 @@
 * Updated date formatting using `format()` instead of `as.character()`
 * Updated test files to incorporate rgbif 3.8.0 output changes, make more efficient
 * In occResults, renamed "Dataset", "DatasetKey", and "DataService" to "datasetName", "datasetKey", "dataService", respectively.
+* Made an option for removing package citations
 
 # occCite 0.5.6
 
