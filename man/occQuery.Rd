@@ -42,7 +42,7 @@ occCite will check for previously-prepared GBIF downloads on the user's
 GBIF account. Setting this option to `TRUE` can significantly speed up
 query time if the user has previously queried GBIF for the same taxa.}
 
-\item{options}{A vector of options to pass to \code{\link{occ_download}}.}
+\item{options}{A vector of options to pass to \code{\link[rgbif]{occ_download}}.}
 }
 \value{
 The object of class \code{\link{occCiteData}} supplied by the user
@@ -52,7 +52,7 @@ on the occurrence sources queried.
 \description{
 Takes rectified list of specimens from
 \code{\link{studyTaxonList}} and returns point data from
-\code{\link{rgbif}} with metadata.
+\code{\link[rgbif]{rgbif}} with metadata.
 }
 \details{
 If you are querying GBIF, note that `occQuery()` only returns

@@ -10,13 +10,13 @@ taxonRectification(taxName = NULL, datasources = NULL)
 \item{taxName}{A string that, ideally, is a taxonomic name}
 
 \item{datasources}{A vector of taxonomic data sources implemented in
-\code{\link{gnr_resolve}}. See the
+\code{\link[taxize]{gnr_resolve}}. See the
 \href{http://gni.globalnames.org/}{Global Names List} for more information.}
 }
 \value{
 A string with the closest match according to
-\code{\link{gnr_resolve}}, and a list of taxonomic data sources that contain
-the matching name.
+\code{\link[taxize]{gnr_resolve}}, and a list of taxonomic data sources that
+contain the matching name.
 }
 \description{
 An function that takes an input taxonomic name, checks against

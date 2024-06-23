@@ -7,12 +7,12 @@
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
 #' @param datasources A vector of taxonomic data sources implemented in
-#' \code{\link{gnr_resolve}}. See the
+#' \code{\link[taxize]{gnr_resolve}}. See the
 #' \href{http://gni.globalnames.org/}{Global Names List} for more information.
 #'
 #' @return A string with the closest match according to
-#' \code{\link{gnr_resolve}}, and a list of taxonomic data sources that contain
-#' the matching name.
+#' \code{\link[taxize]{gnr_resolve}}, and a list of taxonomic data sources that
+#' contain the matching name.
 #'
 #' @examples
 #' # Inputting taxonomic name and specifying what taxonomic sources to search

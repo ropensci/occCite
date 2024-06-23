@@ -24,7 +24,7 @@ contain the matching name.
 \description{
 Takes input phylogenies or vectors of taxon names, checks
 against taxonomic database, returns vector of cleaned taxonomic names
-(using \code{\link{taxonRectification}}) for use in spocc queries, as
+(using \code{\link[taxize]{gnr_resolve}}) for use in spocc queries, as
 well as warnings if there are invalid names.
 }
 \examples{

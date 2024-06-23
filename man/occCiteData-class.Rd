@@ -21,7 +21,7 @@ list of taxonomic sources for cleaning taxonomy of queries. This can be
 user-specified or default.}
 
 \item{\code{cleanedTaxonomy}}{A data frame with containing input taxon names, the
-closest match according to \code{\link{gnr_resolve}}, and a list of
+closest match according to \code{\link[taxize]{gnr_resolve}}, and a list of
 taxonomic data sources that contain the matching name, generated
 by \code{\link{studyTaxonList}}.}
 

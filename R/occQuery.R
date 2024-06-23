@@ -2,7 +2,7 @@
 #'
 #' @description Takes rectified list of specimens from
 #' \code{\link{studyTaxonList}} and returns point data from
-#' \code{\link{rgbif}} with metadata.
+#' \code{\link[rgbif]{rgbif}} with metadata.
 #'
 #' @param x An object of class \code{\link{occCiteData}} (the results of
 #' a \code{\link{studyTaxonList}} search) OR a vector with a list of species
@@ -31,7 +31,7 @@
 #' GBIF account. Setting this option to `TRUE` can significantly speed up
 #' query time if the user has previously queried GBIF for the same taxa.
 #'
-#' @param options A vector of options to pass to \code{\link{occ_download}}.
+#' @param options A vector of options to pass to \code{\link[rgbif]{occ_download}}.
 #'
 #' @return The object of class \code{\link{occCiteData}} supplied by the user
 #' as an argument, with occurrence data search results, as well as metadata
@@ -216,7 +216,7 @@ occQuery <- function(x = NULL,
       for (i in 1:length(searchTaxa)) {
         # Gets *all* downloaded records
         temp <- gbifRetriever(searchTaxa[[i]])
-        temp$OccurrenceTable <- occCite:::GBIFtableCleanup(temp$OccurrenceTable)
+        temp$OccurrenceTable <- GBIFtableCleanup(temp$OccurrenceTable)
         gbifResults[[i]] <- temp
       }
       setwd(currentWD)
@@ -228,7 +228,7 @@ occQuery <- function(x = NULL,
           GBIFDownloadDirectory = GBIFDownloadDirectory,
           checkPreviousGBIFDownload = checkPreviousGBIFDownload
         )
-        temp$OccurrenceTable <- occCite:::GBIFtableCleanup(temp$OccurrenceTable)
+        temp$OccurrenceTable <- GBIFtableCleanup(temp$OccurrenceTable)
         gbifResults[[i]] <- temp
       }
     }
