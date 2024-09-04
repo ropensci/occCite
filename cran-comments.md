@@ -1,11 +1,8 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Fixed warning in `occCitation()` when getting GBIF citations
-* Updated date formatting using `format()` instead of `as.character()`
-* Updated test files to incorporate rgbif 3.8.0 output changes, make more efficient
-* In occResults, renamed "Dataset", "DatasetKey", and "DataService" to "datasetName", "datasetKey", "dataService", respectively.
-* Made an option for removing package citations.
+* Moved `taxize` package to `Suggests`, as it is now orphaned.
+* `studyTaxonList()` allows user to skip taxonomic rectification, which relies on functions from `taxize` package. `studyTaxonList()` automatically skips taxonomic rectification if `taxize` is unavailable.
 
 ## Test environments
 * local OS X 14.5 install, R 4.3.2 (with and without internet connection)
@@ -14,7 +11,10 @@ This is a package update. In this version, I have:
 * macOS-latest (on GitHub Actions), R 4.4.1
 
 ## R CMD check results
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 notes
+
+Note: Suggests orphaned package: ‘taxize’
+- Use is conditional on presence of package. If taxize is absent, taxonomic rectification is skipped. This is noted in metadata and does not affect downstream processes.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 

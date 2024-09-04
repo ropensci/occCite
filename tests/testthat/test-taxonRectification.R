@@ -36,7 +36,6 @@ test_that("taxonRectification performs as expected", {
 
   expect_true(class(testResult) == "data.frame")
   expect_true("Input Name" %in% colnames(testResult))
-  expect_true("Input Name" %in% colnames(testResult))
   expect_true("Searched Taxonomic Databases w/ Matches"
   %in% colnames(testResult))
   expect_true(nrow(testResult) == 1)
@@ -47,4 +46,20 @@ test_that("taxonRectification performs as expected", {
   expect_warning(taxonRectification(taxName = "Buteo buteo hartedi", datasources = "cheese"))
   expect_warning(taxonRectification(taxName = "Buteo buteo hartedi", datasources = NULL))
   expect_warning(taxonRectification(taxName = "cheese", datasources = "National Center for Biotechnology Information"))
+  expect_warning(taxonRectification(taxName = "Buteo buteo hartedi", datasources = "National Center for Biotechnology Information", skipTaxize = "purple"))
+
+  testResult <- taxonRectification(
+    taxName = "Buteo buteo hartedi",
+    datasources = "National Center for Biotechnology Information",
+    skipTaxize = TRUE
+  )
+
+  expect_true(class(testResult) == "data.frame")
+  expect_true("Input Name" %in% colnames(testResult))
+  expect_true("Searched Taxonomic Databases w/ Matches"
+              %in% colnames(testResult))
+  expect_true(nrow(testResult) == 1)
+  expect_true(testResult$`Input Name`[1] == "Buteo buteo hartedi")
+  expect_true(testResult$`Best Match`[1] == "Buteo buteo hartedi")
+  expect_true(testResult$`Searched Taxonomic Databases w/ Matches` == "Not rectified.")
 })

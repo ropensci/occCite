@@ -1,3 +1,8 @@
+# occCite 0.5.8
+
+* Moved `taxize` package to `Suggests`, as it is now orphaned.
+* `studyTaxonList()` allows user to skip taxonomic rectification, which relies on functions from `taxize` package. `studyTaxonList()` automatically skips taxonomic rectification if `taxize` is unavailable.
+
 # occCite 0.5.7
 
 * Fixed warning in `occCitation()` when getting GBIF citations

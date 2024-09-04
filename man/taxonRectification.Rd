@@ -4,7 +4,7 @@
 \alias{taxonRectification}
 \title{Taxon Rectification}
 \usage{
-taxonRectification(taxName = NULL, datasources = NULL)
+taxonRectification(taxName = NULL, datasources = NULL, skipTaxize = FALSE)
 }
 \arguments{
 \item{taxName}{A string that, ideally, is a taxonomic name}
@@ -12,6 +12,11 @@ taxonRectification(taxName = NULL, datasources = NULL)
 \item{datasources}{A vector of taxonomic data sources implemented in
 \code{\link[taxize]{gnr_resolve}}. See the
 \href{http://gni.globalnames.org/}{Global Names List} for more information.}
+
+\item{skipTaxize}{If \code{skipTaxize = TRUE}, occCite will skip taxonomic
+rectification using taxize, which has been orphaned on CRAN. Setting this
+option to `TRUE` will result in a check for the taxize package before taxonomic
+rectification is attempted.}
 }
 \value{
 A string with the closest match according to
