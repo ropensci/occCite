@@ -5,9 +5,10 @@ This is a package update. In this version, I have:
 * `studyTaxonList()` allows user to skip taxonomic rectification, which relies on functions from `taxize` package. `studyTaxonList()` automatically skips taxonomic rectification if `taxize` is unavailable.
 
 ## Test environments
-* local OS X 14.5 install, R 4.3.2 (with and without internet connection)
+* local OS X 14.6.1, R 4.4.1
+* mac-latest (release), R 4.4.1
+* win-builder (devel and release), R 4.4.1
 * ubuntu 20.04 (devel and release; on GitHub Actions), R 4.4.1
-* windows-latest (on GitHub Actions), R 4.4.1
 * macOS-latest (on GitHub Actions), R 4.4.1
 
 ## R CMD check results
