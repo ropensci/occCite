@@ -7,13 +7,13 @@
   "codeRepository": "https://github.com/ropensci/occCite",
   "issueTracker": "https://github.com/ropensci/occCite/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.5.4",
+  "version": "0.5.9",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -50,7 +50,7 @@
       "@type": "Person",
       "givenName": "Vijay",
       "familyName": "Barve",
-      "email": "vijay.barve@gmail.com ",
+      "email": "vijay.barve@gmail.com",
       "@id": "https://orcid.org/0000-0002-4852-2567"
     },
     {
@@ -165,6 +165,23 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "httr",
+      "name": "httr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "taxize",
+      "name": "taxize"
     }
   ],
   "softwareRequirements": {
@@ -254,18 +271,6 @@
     },
     "9": {
       "@type": "SoftwareApplication",
-      "identifier": "taxize",
-      "name": "taxize",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=taxize"
-    },
-    "10": {
-      "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
       "provider": {
@@ -276,12 +281,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
@@ -293,7 +298,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "htmltools",
       "name": "htmltools",
@@ -305,7 +310,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=htmltools"
     },
-    "14": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
@@ -317,7 +322,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
-    "15": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -329,19 +334,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "16": {
-      "@type": "SoftwareApplication",
-      "identifier": "httr",
-      "name": "httr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=httr"
-    },
-    "17": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -353,7 +346,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "18": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "RPostgreSQL",
       "name": "RPostgreSQL",
@@ -365,7 +358,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RPostgreSQL"
     },
-    "19": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "RColorBrewer",
       "name": "RColorBrewer",
@@ -377,7 +370,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RColorBrewer"
     },
-    "20": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "viridis",
       "name": "viridis",
@@ -389,7 +382,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=viridis"
     },
-    "21": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "DBI",
       "name": "DBI",
@@ -401,7 +394,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=DBI"
     },
-    "22": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "waffle",
       "name": "waffle",
@@ -415,11 +408,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1972.735KB",
+  "fileSize": "1983.238KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2022",
+      "datePublished": "2024",
       "author": [
         {
           "@type": "Person",
@@ -453,16 +446,16 @@
         }
       ],
       "name": "occCite: Querying and Managing Large Biodiversity Occurrence Datasets",
-      "identifier": "10.5281/zenodo.4726676",
+      "identifier": "10.5281/zenodo.6327707",
       "url": "https://CRAN.R-project.org/package=occCite",
-      "description": "R package version 0.5.4",
-      "@id": "https://doi.org/10.5281/zenodo.4726676",
-      "sameAs": "https://doi.org/10.5281/zenodo.4726676"
+      "description": "R package version 0.5.9",
+      "@id": "https://doi.org/10.5281/zenodo.6327707",
+      "sameAs": "https://doi.org/10.5281/zenodo.6327707"
     }
   ],
-  "relatedLink": "https://ropensci.github.io/occCite/",
+  "relatedLink": "https://docs.ropensci.org/occCite/",
   "releaseNotes": "https://github.com/ropensci/occCite/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/occCite/blob/main/readme.md",
+  "readme": "https://github.com/ropensci/occCite/blob/main/README.md",
   "contIntegration": ["https://github.com/ropensci/occCite/actions", "https://codecov.io/gh/ropensci/occCite?branch=main"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "review": {

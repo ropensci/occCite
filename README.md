@@ -16,7 +16,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 coverage](https://codecov.io/gh/ropensci/occCite/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/occCite?branch=main)
 [![ROpenSci
 status](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci/software-review/issues/407)
-[![DOI](https://zenodo.org/badge/151783900.svg)](https://zenodo.org/badge/latestdoi/151783900)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13692036.svg)](https://doi.org/10.5281/zenodo.13692036)
 
 <!-- badges: end -->
 
