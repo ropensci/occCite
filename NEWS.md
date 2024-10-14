@@ -1,3 +1,7 @@
+# occCite 0.5.9
+
+* Fix tests to be robust to missing `taxize` package if not present.
+
 # occCite 0.5.8
 
 * Moved `taxize` package to `Suggests`, as it is now orphaned.
