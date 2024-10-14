@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Advanced search and citation of occurrences • occCite</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -12,81 +12,57 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Advanced search and citation of occurrences">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Advanced search and citation of occurrences">
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">occCite</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.8</span>
-      </span>
-    </div>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
+    <a class="navbar-brand me-2" href="../index.html">occCite</a>
 
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/a_Simple.html">Simple search and citation of occurrences</a>
-    </li>
-    <li>
-      <a href="../articles/b_Advanced.html">Advanced search and citation of occurrences</a>
-    </li>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.9</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/a_Simple.html">Simple search and citation of occurrences</a></li>
+    <li><a class="dropdown-item" href="../articles/b_Advanced.html">Advanced search and citation of occurrences</a></li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/ropensci/occCite/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ropensci/occCite/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
 
 
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Advanced search and citation of occurrences</h1>
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Advanced search and citation of occurrences</h1>
                         <h4 data-toc-skip class="author">Hannah L.
 Owens</h4>
                         <h4 data-toc-skip class="author">Cory Merow</h4>
@@ -99,11 +75,10 @@ Barve</h4>
                         <h4 data-toc-skip class="author">Robert
 Guralnick</h4>
             
-            <h4 data-toc-skip class="date">2024-09-04</h4>
+            <h4 data-toc-skip class="date">2024-10-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/occCite/blob/HEAD/vignettes/b_Advanced.Rmd" class="external-link"><code>vignettes/b_Advanced.Rmd</code></a></small>
-      <div class="hidden name"><code>b_Advanced.Rmd</code></div>
-
+      <div class="d-none name"><code>b_Advanced.Rmd</code></div>
     </div>
 
     
@@ -203,18 +178,18 @@ previously-downloaded data as it does from a fresh data set.</p>
 <span><span class="co">## Results written to file 'temp.bib'</span></span></code></pre>
 <pre><code><span><span class="co">## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, CHOUET M, GRESSE H, BONNET P (2023). Pl@ntNet observations. Version 1.8. Pl@ntNet. https://doi.org/10.15468/gtebaa. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, CHOUET M, GRESSE H, BOTELLA C, BONNET P (2023). Pl@ntNet automatically identified occurrences. Version 1.8. Pl@ntNet. https://doi.org/10.15468/mma2ec. Accessed via GBIF on 2022-03-02.</span></span>
-<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.0. https://CRAN.R-project.org/package = rgbif.</span></span>
+<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.1. https://CRAN.R-project.org/package = rgbif.</span></span>
 <span><span class="co">## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.</span></span>
 <span><span class="co">## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## iNaturalist contributors, iNaturalist (2024). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## Maitner, B. (2023). . R package version 1.2.6. https://CRAN.R-project.org/package = BIEN.</span></span>
 <span><span class="co">## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.</span></span>
-<span><span class="co">## MNHN, Chagnoux S (2024). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.376. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2022-03-02.</span></span>
+<span><span class="co">## MNHN, Chagnoux S (2024). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.382. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## MNHN. Accessed via BIEN on NA.</span></span>
 <span><span class="co">## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## Observation.org (2024). Observation.org, Nature data from around the World. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2022-03-02.</span></span>
-<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.8. https://CRAN.R-project.org/package = occCite.</span></span>
-<span><span class="co">## Ranwashe F (2024). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.24. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.</span></span>
+<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.9. https://CRAN.R-project.org/package = occCite.</span></span>
+<span><span class="co">## Ranwashe F (2024). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.25. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## Rob Cubey (2022). Royal Botanic Garden Edinburgh Living Plant Collections (E). Royal Botanic Garden Edinburgh. https://doi.org/10.15468/bkzv1l. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## SANBI. Accessed via BIEN on NA.</span></span>
 <span><span class="co">## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2022-03-02.</span></span>
@@ -262,7 +237,7 @@ unpublished phylogeny of billfishes.</p>
 <span><span class="co"># What does a multispecies query look like?</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">myPhyOccCiteObject</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  </span></span>
-<span><span class="co">##  OccCite query occurred on: 04 September, 2024</span></span>
+<span><span class="co">##  OccCite query occurred on: 14 October, 2024</span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">##  User query type: User-supplied phylogeny.</span></span>
 <span><span class="co">##  </span></span>
@@ -321,9 +296,9 @@ not, but in this example, they’re separate).</p>
 <span><span class="co">## Australian Museum (2023). Australian Museum provider for OZCAM. https://doi.org/10.15468/e7susi. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Barde J (2011). ecoscope_observation_database. IRD - Institute of Research for Development. https://doi.org/10.15468/dz1kk0. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Bureau of Rural Sciences - National commercial fisheries half-degree data set 2000-2002 https://doi.org/10.15468/0esdv0. Accessed via GBIF on 2019-07-04.</span></span>
-<span><span class="co">## Catania D, Fong J (2024). CAS Ichthyology (ICH). Version 150.436. California Academy of Sciences. Occurrence dataset. http://ipt.calacademy.org:8080/resource?r=ich&amp;v=150.436 https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.</span></span>
+<span><span class="co">## Catania D, Fong J (2024). CAS Ichthyology (ICH). Version 150.441. California Academy of Sciences. Occurrence dataset. http://ipt.calacademy.org:8080/resource?r=ich&amp;v=150.441 https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.</span></span>
-<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.0. https://CRAN.R-project.org/package = rgbif.</span></span>
+<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.1. https://CRAN.R-project.org/package = rgbif.</span></span>
 <span><span class="co">## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.</span></span>
 <span><span class="co">## Chiang W (2014). Taiwan Fisheries Research Institute – Digital archives of coastal and offshore specimens. TELDAP. https://doi.org/10.15468/xvxngy. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.</span></span>
@@ -337,11 +312,11 @@ not, but in this example, they’re separate).</p>
 <span><span class="co">## Mertz W, Ludt W, Clardy T, Robson S, Suh Y H, Camacho N (2024). LACM Vertebrate Collection. Version 18.15. Natural History Museum of Los Angeles County. https://doi.org/10.15468/77rmwd. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Ministry for Primary Industries (2014). New Zealand research tagging database. Southwestern Pacific OBIS, National Institute of Water and Atmospheric Research (NIWA), Wellington, New Zealand, 411926 records, Online http://nzobisipt.niwa.co.nz/resource.do?r=mpi_tag released on November 5, 2014. https://doi.org/10.15468/i66xdm. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Motomura H (2024). Fish collection of the Kagoshima University Museum. National Museum of Nature and Science, Japan. https://doi.org/10.15468/vcj3j8. Accessed via GBIF on 2019-07-04.</span></span>
-<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.8. https://CRAN.R-project.org/package = occCite.</span></span>
+<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.9. https://CRAN.R-project.org/package = occCite.</span></span>
 <span><span class="co">## Queensland Museum (2023). Queensland Museum provider for OZCAM. https://doi.org/10.15468/lotsye. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Raiva R, Santana P (2021). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.7. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/4fj2tq. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Raiva R, Viador R, Santana P (2021). Diversidade e ocorrência de peixes na Zambézia (2003-2016). Version 1.6. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/mrz36h. Accessed via GBIF on 2019-07-04.</span></span>
-<span><span class="co">## Robins R (2024). UF FLMNH Ichthyology. Version 117.461. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.</span></span>
+<span><span class="co">## Robins R (2024). UF FLMNH Ichthyology. Version 117.467. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## South Australian Museum (2023). South Australian Museum Adelaide provider for OZCAM. https://doi.org/10.15468/wz4rrh. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Team}, {.C. (2024). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.</span></span>
 <span><span class="co">## The International Barcode of Life Consortium (2024). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.</span></span>
@@ -351,16 +326,16 @@ not, but in this example, they’re separate).</p>
 <span><span class="co">## Results written to file 'temp.bib'</span></span></code></pre>
 <pre><code><span><span class="co">## Species: Tetrapturus belone Rafinesque, 1810 </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.0. https://CRAN.R-project.org/package = rgbif.</span></span>
+<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.1. https://CRAN.R-project.org/package = rgbif.</span></span>
 <span><span class="co">## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.</span></span>
 <span><span class="co">## Conselleria de Medio Ambiente, Agua, Infraestructuras y Territorio. Generalitat Valenciana (2024). Banco de Datos de la Biodiversidad de la Comunitat Valenciana. Biodiversity data bank of Generalitat Valenciana. https://doi.org/10.15468/b4yqdy. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Harvard University M, Morris P J (2024). Museum of Comparative Zoology, Harvard University. Version 162.441. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.</span></span>
 <span><span class="co">## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.</span></span>
-<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.8. https://CRAN.R-project.org/package = occCite.</span></span>
+<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.9. https://CRAN.R-project.org/package = occCite.</span></span>
 <span><span class="co">## ROBERT S, LEPAREUR F, Inventaire National du Patrimoine Naturel (2022). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.7. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2019-07-04.</span></span>
-<span><span class="co">## Robins R (2024). UF FLMNH Ichthyology. Version 117.461. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.</span></span>
+<span><span class="co">## Robins R (2024). UF FLMNH Ichthyology. Version 117.467. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Team}, {.C. (2024). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.</span></span>
 <span><span class="co">## University of Kansas Biodiversity Institute: KUBI Ichthyology Collection https://doi.org/10.15468/mgjasg. Accessed via GBIF on 2019-07-04.</span></span></code></pre>
 <pre><code><span><span class="co">## Writing 6 Bibtex entries ... OK</span></span>
@@ -370,42 +345,35 @@ not, but in this example, they’re separate).</p>
 <span><span class="co">## Barde J (2011). ecoscope_observation_database. IRD - Institute of Research for Development. https://doi.org/10.15468/dz1kk0. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Boateng M (2021). Fishes of Ghana. Version 1.4. Department of Marine and Fisheries Sciences, University of Ghana. https://doi.org/10.15468/pgesnw. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Cauquil P, Barde J (2011). observe_tuna_bycatch_ecoscope. IRD - Institute of Research for Development. https://doi.org/10.15468/23m361. Accessed via GBIF on 2019-07-04.</span></span>
-<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.0. https://CRAN.R-project.org/package = rgbif.</span></span>
+<span><span class="co">## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2024). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.1. https://CRAN.R-project.org/package = rgbif.</span></span>
 <span><span class="co">## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.</span></span>
 <span><span class="co">## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Inventaire National du Patrimoine Naturel (2018). Programme Ecoscope: données d'observations des écosystèmes marins exploités (Réunion). UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/elttrd. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Inventaire National du Patrimoine Naturel (2018). Programme Ecoscope: données d'observations des écosystèmes marins exploités. UMS PatriNat (OFB-CNRS-MNHN), Paris. https://doi.org/10.15468/gdrknh. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.</span></span>
 <span><span class="co">## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.</span></span>
-<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.8. https://CRAN.R-project.org/package = occCite.</span></span>
-<span><span class="co">## Robins R (2024). UF FLMNH Ichthyology. Version 117.461. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.</span></span>
+<span><span class="co">## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2024). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.5.9. https://CRAN.R-project.org/package = occCite.</span></span>
+<span><span class="co">## Robins R (2024). UF FLMNH Ichthyology. Version 117.467. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.</span></span>
 <span><span class="co">## Team}, {.C. (2024). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.</span></span>
 <span><span class="co">## The International Barcode of Life Consortium (2024). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.</span></span></code></pre>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-      </div>
-
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>Developed by Hannah L. Owens, Cory Merow, Brian Maitner, Jamie M. Kass, Vijay Barve, Robert P. Guralnick.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>Developed by Hannah L. Owens, Cory Merow, Brian Maitner, Jamie M. Kass, Vijay Barve, Robert P. Guralnick.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
-
 
 
 

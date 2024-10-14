@@ -1,10 +1,11 @@
+url: https://docs.ropensci.org/occCite/
+
 home:
   title: Querying and Managing Large Biodiversity Occurrence Datasets
   description: Facilitates the gathering of biodiversity occurrence data from disparate sources. Metadata is managed throughout the process to facilitate reporting and enhanced ability to repeat analyses.
 
 template:
-  bootswatch:
-    params: litera
+  bootstrap: 5
   opengraph:
     image:
       src: man/figures/occHex.png
