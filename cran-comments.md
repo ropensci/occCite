@@ -1,8 +1,7 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Moved `taxize` package to `Suggests`, as it is now orphaned.
-* `studyTaxonList()` allows user to skip taxonomic rectification, which relies on functions from `taxize` package. `studyTaxonList()` automatically skips taxonomic rectification if `taxize` is unavailable.
+* Fix tests to be robust to suggested package `taxize` if not present.
 
 ## Test environments
 * local OS X 14.6.1, R 4.4.1
@@ -15,7 +14,7 @@ This is a package update. In this version, I have:
 0 errors | 0 warnings | 1 notes
 
 Note: Suggests orphaned package: ‘taxize’
-- Use is conditional on presence of package. If taxize is absent, taxonomic rectification is skipped. This is noted in metadata and does not affect downstream processes.
+- Use is conditional on presence of package. If `taxize` is absent, taxonomic rectification is skipped. This is noted in metadata and does not affect downstream processes.
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 
