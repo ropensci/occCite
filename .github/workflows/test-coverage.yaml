@@ -22,10 +22,7 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: 
-            covr
-            taxize
+        run: install.packages(c("covr", "taxize"), repos='http://cran.us.r-project.org')
 
       - name: Test coverage
         run: covr::codecov()
