@@ -21,10 +21,17 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-      
-      - run: install.packages(c("covr", "remotes"), repos='http://cran.us.r-project.org')
-      - run: remotes::install_github("ropensci/taxize")
+      - name: Query dependencies
+        run: |
+          install.packages("remotes")
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
+        shell: Rscript {0}
+
+      - name: Install dependencies
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
 
       - name: Test coverage
         run: covr::codecov()
