@@ -23,7 +23,8 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
       
-      - run: install.packages(c("covr", "taxize"), repos='http://cran.us.r-project.org')
+      - run: install.packages(c("covr", "remotes"), repos='http://cran.us.r-project.org')
+      - run: remotes::install_github("ropensci/taxize")
 
       - name: Test coverage
         run: covr::codecov()
