@@ -60,5 +60,6 @@ Imports:
     viridis,
     DBI,
     waffle
+Remotes: ropensci/taxize
 VignetteBuilder: knitr, rmarkdown
 RoxygenNote: 7.3.2
