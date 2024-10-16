@@ -7,23 +7,24 @@
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
 #' @param datasources A vector of taxonomic data sources implemented in
-#' \code{\link[taxize]{gnr_resolve}}. See the
+#' \code{taxize::gnr_resolve()}. See the
 #' \href{http://gni.globalnames.org/}{Global Names List} for more information.
 #'
 #' @param skipTaxize If \code{skipTaxize = TRUE}, occCite will skip taxonomic
 #'  rectification using taxize, which has been orphaned on CRAN. Setting this
-#'  option to `TRUE` will result in a check for the taxize package before taxonomic
+#'  option to `TRUE` will result in a check for the \code{taxize} package before taxonomic
 #'  rectification is attempted.
 #'
 #' @return A string with the closest match according to
-#' \code{\link[taxize]{gnr_resolve}}, and a list of taxonomic data sources that
+#' \code{taxize::gnr_resolve()}, and a list of taxonomic data sources that
 #' contain the matching name.
 #'
 #' @examples
 #' # Inputting taxonomic name and specifying what taxonomic sources to search
 #' taxonRectification(
 #'   taxName = "Buteo buteo hartedi",
-#'   datasources = "National Center for Biotechnology Information"
+#'   datasources = "National Center for Biotechnology Information",
+#'   skipTaxize = TRUE
 #' )
 #' @export
 #'

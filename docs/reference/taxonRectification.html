@@ -62,21 +62,21 @@ warnings if the name is invalid.</p>
 
 <dt id="arg-datasources">datasources<a class="anchor" aria-label="anchor" href="#arg-datasources"></a></dt>
 <dd><p>A vector of taxonomic data sources implemented in
-<code><a href="https://docs.ropensci.org/taxize/reference/gnr_resolve.html" class="external-link">gnr_resolve</a></code>. See the
+<code><a href="https://docs.ropensci.org/taxize/reference/gnr_resolve.html" class="external-link">taxize::gnr_resolve()</a></code>. See the
 <a href="http://gni.globalnames.org/" class="external-link">Global Names List</a> for more information.</p></dd>
 
 
 <dt id="arg-skiptaxize">skipTaxize<a class="anchor" aria-label="anchor" href="#arg-skiptaxize"></a></dt>
 <dd><p>If <code>skipTaxize = TRUE</code>, occCite will skip taxonomic
 rectification using taxize, which has been orphaned on CRAN. Setting this
-option to `TRUE` will result in a check for the taxize package before taxonomic
+option to `TRUE` will result in a check for the <code>taxize</code> package before taxonomic
 rectification is attempted.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A string with the closest match according to
-<code><a href="https://docs.ropensci.org/taxize/reference/gnr_resolve.html" class="external-link">gnr_resolve</a></code>, and a list of taxonomic data sources that
+<code><a href="https://docs.ropensci.org/taxize/reference/gnr_resolve.html" class="external-link">taxize::gnr_resolve()</a></code>, and a list of taxonomic data sources that
 contain the matching name.</p>
     </div>
 
@@ -85,12 +85,13 @@ contain the matching name.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Inputting taxonomic name and specifying what taxonomic sources to search</span></span></span>
 <span class="r-in"><span><span class="fu">taxonRectification</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  taxName <span class="op">=</span> <span class="st">"Buteo buteo hartedi"</span>,</span></span>
-<span class="r-in"><span>  datasources <span class="op">=</span> <span class="st">"National Center for Biotechnology Information"</span></span></span>
+<span class="r-in"><span>  datasources <span class="op">=</span> <span class="st">"National Center for Biotechnology Information"</span>,</span></span>
+<span class="r-in"><span>  skipTaxize <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Input Name           Best Match</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Buteo buteo hartedi Buteo buteo harterti</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Searched Taxonomic Databases w/ Matches</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 National Center for Biotechnology Information</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Input Name          Best Match</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Buteo buteo hartedi Buteo buteo hartedi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Searched Taxonomic Databases w/ Matches</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          Not rectified.</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
