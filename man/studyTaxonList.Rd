@@ -11,20 +11,20 @@ studyTaxonList(x = NULL, datasources = "GBIF Backbone Taxonomy")
 containing the names of taxa of interest}
 
 \item{datasources}{A vector of taxonomic data sources implemented in
-\code{\link[taxize]{gnr_resolve}}. You can see the list using
+\code{taxize::gnr_resolve}. You can see the list using
 \code{taxize::gnr_datasources()}.}
 }
 \value{
 An object of class \code{\link{occCiteData}} containing the type
 of inquiry the user has made --a phylogeny or a vector of names-- and a
 data frame containing input taxa names, the closest match according to
-\code{\link[taxize]{gnr_resolve}}, and a list of taxonomic data sources that
+\code{taxize::gnr_resolve}, and a list of taxonomic data sources that
 contain the matching name.
 }
 \description{
 Takes input phylogenies or vectors of taxon names, checks
 against taxonomic database, returns vector of cleaned taxonomic names
-(using \code{\link[taxize]{gnr_resolve}}) for use in spocc queries, as
+(using \code{taxize::gnr_resolve()}) for use in spocc queries, as
 well as warnings if there are invalid names.
 }
 \examples{
