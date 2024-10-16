@@ -55,6 +55,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-test-failures
-          path: react/coverage-test-failures 
+          name: bundle
+          path: build
           if-no-files-found: error
