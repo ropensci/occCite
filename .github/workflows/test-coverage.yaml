@@ -56,4 +56,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-test-failures
-          path: ${{ runner.temp }}/package
+          path: react/coverage-test-failures 
+          if-no-files-found: error
