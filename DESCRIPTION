@@ -60,6 +60,6 @@ Imports:
     viridis,
     DBI,
     waffle
-Remotes: ropensci/taxize/releases/tag/v0.9.99
+Remotes: https://github.com/ropensci/taxize/archive/refs/tags/v0.9.99.tar.gz
 VignetteBuilder: knitr, rmarkdown
 RoxygenNote: 7.3.2
