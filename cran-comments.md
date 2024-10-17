@@ -2,6 +2,9 @@
 This is a package update. In this version, I have:
 
 * Fix tests to be robust to suggested package `taxize` if not present.
+* `bold` added as suggested.
+* GitHub remote sources for most recent releases for `bold` and `taxize` 
+added to `Remotes`.
 
 ## Test environments
 * local OS X 14.6.1, R 4.4.1
@@ -11,10 +14,7 @@ This is a package update. In this version, I have:
 * macOS-latest (on GitHub Actions), R 4.4.1
 
 ## R CMD check results
-0 errors | 0 warnings | 1 notes
-
-Note: Suggests orphaned package: ‘taxize’
-- Use is conditional on presence of package. If `taxize` is absent, taxonomic rectification is skipped. This is noted in metadata and does not affect downstream processes.
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 I ran tools::check_packages_in_dir() check on downstream dependencies of 

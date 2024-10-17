@@ -1,6 +1,9 @@
 # occCite 0.5.9
 
-* Fix tests to be robust to missing `taxize` package if not present.
+* Fix tests to be robust to suggested package `taxize` if not present.
+* `bold` added as suggested.
+* GitHub remote sources for most recent releases for `bold` and `taxize` 
+added to `Remotes`.
 
 # occCite 0.5.8
 
