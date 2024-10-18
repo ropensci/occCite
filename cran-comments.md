@@ -2,7 +2,7 @@
 This is a package update. In this version, I have:
 
 * Fix tests to be robust to `taxize` if not present.
-* `taxize` removed from Suggests, since it's archived.
+* `taxonRectification()` GNR name rectification if `taxize` is not available.
 
 ## Test environments
 * local OS X 14.6.1, R 4.4.1
