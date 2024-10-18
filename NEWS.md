@@ -1,9 +1,7 @@
 # occCite 0.5.9
 
-* Fix tests to be robust to suggested package `taxize` if not present.
-* `bold` added as suggested.
-* GitHub remote sources for most recent releases for `bold` and `taxize` 
-added to `Remotes`.
+* Fix tests to be robust to `taxize` if not present.
+* `taxonRectification()` GNR name rectification if `taxize` is not available.
 
 # occCite 0.5.8
 

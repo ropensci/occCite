@@ -62,12 +62,13 @@ taxonRectification <- function(taxName = NULL, datasources = NULL,
 
   } else{
     # Checks for source connectivity
-    tryCatch(
-      expr = sources <- taxize::gnr_datasources(),
-      error = function(e) {
-        message(paste("GNR server unreachable; please try again later. \n"))
-      }
-    )
+    if(requireNamespace("taxize")){
+      tryCatch(
+        expr = sources <- taxize::gnr_datasources(),
+        error = function(e) {
+          message(paste("GNR server unreachable; please try again later. \n"))
+        }
+      )}
 
     if (!exists("sources")) {
       return(invisible(NULL))
@@ -108,7 +109,9 @@ taxonRectification <- function(taxName = NULL, datasources = NULL,
       sourceIDs <- NULL
     }
     taxonomicDatabaseMatches <- vector("list")
-    temp <- taxize::gnr_resolve(sci = taxName, data_source_ids = sourceIDs)
+    if(requireNamespace("taxize")){
+      temp <- taxize::gnr_resolve(sci = taxName, data_source_ids = sourceIDs)
+    }
     if (nrow(temp) == 0) {
       bestMatch <- "No match"
       taxonomicDatabaseMatches <- "No match"

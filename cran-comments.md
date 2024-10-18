@@ -1,10 +1,8 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Fix tests to be robust to suggested package `taxize` if not present.
-* `bold` added as suggested.
-* GitHub remote sources for most recent releases for `bold` and `taxize` 
-added to `Remotes`.
+* Fix tests to be robust to `taxize` if not present.
+* `taxize` removed from Suggests, since it's archived.
 
 ## Test environments
 * local OS X 14.6.1, R 4.4.1

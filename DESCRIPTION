@@ -39,8 +39,7 @@ Suggests:
     bit64,
     knitr,
     httr,
-    taxize,
-    bold
+    taxize
 Imports:
     bib2df,
     BIEN,
@@ -61,8 +60,5 @@ Imports:
     viridis,
     DBI,
     waffle
-Remotes: 
-  ropensci/bold@v1.3.0,
-  ropensci/taxize@v0.9.99
 VignetteBuilder: knitr, rmarkdown
 RoxygenNote: 7.3.2
