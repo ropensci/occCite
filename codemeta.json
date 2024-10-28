@@ -96,18 +96,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "RefManageR",
-      "name": "RefManageR",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=RefManageR"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "provider": {
@@ -129,18 +117,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=covr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "ape",
-      "name": "ape",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ape"
     },
     {
       "@type": "SoftwareApplication",
@@ -177,16 +153,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "taxize",
-      "name": "taxize"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "bold",
-      "name": "bold"
     }
   ],
   "softwareRequirements": {
@@ -198,6 +164,18 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "ape",
+      "name": "ape",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ape"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
       "identifier": "bib2df",
       "name": "bib2df",
       "provider": {
@@ -208,7 +186,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=bib2df"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "BIEN",
       "name": "BIEN",
@@ -220,7 +198,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=BIEN"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "curl",
       "name": "curl",
@@ -232,7 +210,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=curl"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -244,7 +222,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "lubridate",
       "name": "lubridate",
@@ -256,12 +234,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lubridate"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "methods",
       "name": "methods"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "rgbif",
       "name": "rgbif",
@@ -274,7 +252,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rgbif"
     },
-    "9": {
+    "10": {
+      "@type": "SoftwareApplication",
+      "identifier": "RefManageR",
+      "name": "RefManageR",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=RefManageR"
+    },
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
@@ -286,12 +276,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
-    "10": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "11": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
@@ -303,7 +293,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
-    "12": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "htmltools",
       "name": "htmltools",
@@ -315,7 +305,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=htmltools"
     },
-    "13": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
@@ -327,7 +317,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
-    "14": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -339,7 +329,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "15": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -351,7 +341,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "16": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "RPostgreSQL",
       "name": "RPostgreSQL",
@@ -363,7 +353,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RPostgreSQL"
     },
-    "17": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "RColorBrewer",
       "name": "RColorBrewer",
@@ -375,7 +365,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RColorBrewer"
     },
-    "18": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "viridis",
       "name": "viridis",
@@ -387,7 +377,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=viridis"
     },
-    "19": {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "DBI",
       "name": "DBI",
@@ -399,7 +389,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=DBI"
     },
-    "20": {
+    "22": {
       "@type": "SoftwareApplication",
       "identifier": "waffle",
       "name": "waffle",
@@ -413,7 +403,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1983.485KB",
+  "fileSize": "1983.79KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
