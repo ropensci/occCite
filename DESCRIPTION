@@ -32,14 +32,13 @@ Depends: R (>= 3.5.0)
 Suggests:
     rmarkdown,
     remotes,
-    RefManageR,
     testthat,
     covr,
-    ape,
     bit64,
     knitr,
     httr
 Imports:
+    ape,
     bib2df,
     BIEN,
     curl,
@@ -47,6 +46,7 @@ Imports:
     lubridate,
     methods,
     rgbif (>= 3.1),
+    RefManageR,
     stringr,
     stats,
     leaflet,
