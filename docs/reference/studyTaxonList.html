@@ -90,6 +90,9 @@ contain the matching name.</p>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"National Center for Biotechnology Information"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An object of class "occCiteData"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "userQueryType":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "User-supplied list of taxa."</span>
@@ -98,14 +101,10 @@ contain the matching name.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "National Center for Biotechnology Information"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "cleanedTaxonomy":</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Input Name           Best Match</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         Buteo buteo          Buteo buteo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Buteo buteo hartedi Buteo buteo harterti</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     Buteo japonicus      Buteo japonicus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  Taxonomic Databases w/ Matches</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 National Center for Biotechnology Information</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 National Center for Biotechnology Information</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 National Center for Biotechnology Information</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Input Name          Best Match Taxonomic Databases w/ Matches</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         Buteo buteo         Buteo buteo                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Buteo buteo hartedi Buteo buteo hartedi                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     Buteo japonicus     Buteo japonicus                 Not rectified.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "occSources":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> logical(0)</span>
@@ -129,6 +128,13 @@ contain the matching name.</p>
 <span class="r-in"><span>  x <span class="op">=</span> <span class="va">phylogeny</span>,</span></span>
 <span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Package taxize unavailable. Skipping taxonomic rectification.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An object of class "occCiteData"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "userQueryType":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "User-supplied phylogeny."</span>
@@ -137,22 +143,22 @@ contain the matching name.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GBIF Backbone Taxonomy"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "cleanedTaxonomy":</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   Input Name                                    Best Match</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1           Istiompax_indica               Istiompax indica (Cuvier, 1832)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2             Kajikia_albida                   Kajikia albida (Poey, 1860)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3              Kajikia_audax                Kajikia audax (Philippi, 1887)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Tetrapturus_angustirostris       Tetrapturus angustirostris Tanaka, 1915</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         Tetrapturus_belone           Tetrapturus belone Rafinesque, 1810</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        Tetrapturus_georgii                Tetrapturus georgii Lowe, 1841</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7      Tetrapturus_pfluegeri Tetrapturus pfluegeri Robins &amp; de Sylva, 1963</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   Input Name                 Best Match</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1           Istiompax_indica           Istiompax_indica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             Kajikia_albida             Kajikia_albida</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3              Kajikia_audax              Kajikia_audax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Tetrapturus_angustirostris Tetrapturus_angustirostris</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         Tetrapturus_belone         Tetrapturus_belone</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        Tetrapturus_georgii        Tetrapturus_georgii</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7      Tetrapturus_pfluegeri      Tetrapturus_pfluegeri</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Taxonomic Databases w/ Matches</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         GBIF Backbone Taxonomy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         GBIF Backbone Taxonomy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         GBIF Backbone Taxonomy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         GBIF Backbone Taxonomy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         GBIF Backbone Taxonomy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         GBIF Backbone Taxonomy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 Not rectified.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 Not rectified.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "occSources":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> logical(0)</span>

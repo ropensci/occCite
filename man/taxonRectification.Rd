@@ -16,7 +16,7 @@ taxonRectification(taxName = NULL, datasources = NULL, skipTaxize = FALSE)
 \item{skipTaxize}{If \code{skipTaxize = TRUE}, occCite will skip taxonomic
 rectification using taxize, which has been orphaned on CRAN. Setting this
 option to `TRUE` will result in a check for the \code{taxize} package before taxonomic
-rectification is attempted.}
+rectification is attempted. *The code using `taxize` has been disabled to comply with CRAN.*}
 }
 \value{
 A string with the closest match according to

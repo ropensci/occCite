@@ -46,11 +46,11 @@ mySimpleOccCitations <- occCitation(mySimpleOccCiteObject)
 ## ----show_simple_citations----------------------------------------------------
 print(mySimpleOccCitations)
 
-## ----taxonomic_rectification--------------------------------------------------
-#Rectify taxonomy
-myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
-                                  datasources = c("National Center for Biotechnology Information",
-                                                  "Encyclopedia of Life", 
-                                                  "Integrated Taxonomic Information SystemITIS"))
-myTROccCiteObject@cleanedTaxonomy
+## ----taxonomic_rectification, eval=FALSE--------------------------------------
+#  #Rectify taxonomy
+#  myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides",
+#                                    datasources = c("National Center for Biotechnology Information",
+#                                                    "Encyclopedia of Life",
+#                                                    "Integrated Taxonomic Information SystemITIS"))
+#  myTROccCiteObject@cleanedTaxonomy
 

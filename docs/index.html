@@ -73,6 +73,11 @@
 
 <!-- badges: end -->
 <div class="section level2">
+<h2 id="important-note">IMPORTANT NOTE<a class="anchor" aria-label="anchor" href="#important-note"></a>
+</h2>
+<p>The <code>taxize</code> package, which occCite uses for <code><a href="reference/taxonRectification.html">taxonRectification()</a></code>, has been archived. To prevent <code>occCite</code> from being archived, which would result in downstream problems, we have disabled external taxonomic rectification as an option. If <code>taxize</code> comes back, or we identify an alternative, we will reinstate this feature.</p>
+</div>
+<div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
 <p>The <code>occCite</code> workflow follows a three-step process. First, the user inputs one or more taxonomic names (or a phylogeny). <code>occCite</code> then rectifies these names by checking them against one or more taxonomic databases, which can be specified by the user (see the <a href="http://gni.globalnames.org/data_sources" class="external-link">Global Names List</a>). The results of the taxonomic rectification are then kept in an <code>occCiteData</code> object in local memory. Next, <code>occCite</code> takes the <code>occCiteData</code> object and user-defined search parameters to query BIEN (through <code>rbien</code>) and/or GBIF(through <code>rGBIF</code>) for records. The results are appended to the <code>occCiteData</code> object, along with metadata on the search. Finally, the user can pass the <code>occCiteData</code> object to <code>occCitation</code>, which compiles citations for the primary providers, database aggregators, and <code>R</code> packages used to build the dataset.</p>

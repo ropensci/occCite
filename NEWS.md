@@ -1,7 +1,6 @@
 # occCite 0.5.9
 
-* Fix tests to be robust to `taxize` if not present.
-* `taxonRectification()` GNR name rectification if `taxize` is not available.
+* Commented out dependencies on `taxize` package. Taxonomic rectification no longer works. It will be reinstated if taxize becomes available on CRAN.
 
 # occCite 0.5.8
 

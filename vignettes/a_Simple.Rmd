@@ -113,12 +113,13 @@ print(mySimpleOccCitations)
 ```
 
 ## Simple Taxonomic Rectification
+**Note:**The `taxize` package, which occCite uses for `taxonRectification()`, has been archived. To prevent `occCite` from being archived, which would result in downstream problems, we have disabled external taxonomic rectification as an option. If `taxize` comes back, or we identify an alternative, we will reinstate this feature. The code still exists, it's just been commented out. Contact Hannah Owens (<hannah.owens@gmail.com>) for tips on how to reactivate the feature using the gitHub version of `taxize`.
 
 In the simplest of searches, such as the one above, the taxonomy of your input species name is automatically rectified through the `occCite` function `studyTaxonList()` using `gnr_resolve()` from the `taxize` `R` package. If you would like to change the source of the taxonomy being used to rectify your species names, you can specify as many taxonomic repositories as you like from the Global Names Index (GNI). The complete list of GNI repositories can be found [here](http://gni.globalnames.org/data_sources). 
 
 `studyTaxonList()` chooses the taxonomic names closest to those being input and documents which taxonomic repositories agreed with those names. `studyTaxonList()` instantiates an `occCiteData` object the same way `occQuery()` does. This object can be passed into `occQuery()` to perform your occurrence data search.
 
-```{r taxonomic_rectification}
+```{r taxonomic_rectification, eval=FALSE}
 #Rectify taxonomy
 myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
                                   datasources = c("National Center for Biotechnology Information",

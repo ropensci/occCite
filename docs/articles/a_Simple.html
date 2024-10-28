@@ -75,7 +75,7 @@ Barve</h4>
                         <h4 data-toc-skip class="author">Robert
 Guralnick</h4>
             
-            <h4 data-toc-skip class="date">2024-10-18</h4>
+            <h4 data-toc-skip class="date">2024-10-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/occCite/blob/HEAD/vignettes/a_Simple.Rmd" class="external-link"><code>vignettes/a_Simple.Rmd</code></a></small>
       <div class="d-none name"><code>a_Simple.Rmd</code></div>
@@ -264,7 +264,7 @@ the results of <code><a href="../reference/occCitation.html">occCitation()</a></
 <span><span class="co">## iNaturalist contributors, iNaturalist (2024). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## Maitner, B. (2023). . R package version 1.2.6. https://CRAN.R-project.org/package = BIEN.</span></span>
 <span><span class="co">## Missouri Botanical Garden,Herbarium. Accessed via BIEN on NA.</span></span>
-<span><span class="co">## MNHN, Chagnoux S (2024). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.383. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2022-03-02.</span></span>
+<span><span class="co">## MNHN, Chagnoux S (2024). The vascular plants collection (P) at the Herbarium of the Muséum national d'Histoire Naturelle (MNHN - Paris). Version 69.384. MNHN - Museum national d'Histoire naturelle. https://doi.org/10.15468/nc6rxy. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## MNHN. Accessed via BIEN on NA.</span></span>
 <span><span class="co">## naturgucker.de. naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-03-02.</span></span>
 <span><span class="co">## Observation.org (2024). Observation.org, Nature data from around the World. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2022-03-02.</span></span>
@@ -282,6 +282,14 @@ the results of <code><a href="../reference/occCitation.html">occCitation()</a></
 <div class="section level3">
 <h3 id="simple-taxonomic-rectification">Simple Taxonomic Rectification<a class="anchor" aria-label="anchor" href="#simple-taxonomic-rectification"></a>
 </h3>
+<p><strong>Note:</strong>The <code>taxize</code> package, which occCite
+uses for <code><a href="../reference/taxonRectification.html">taxonRectification()</a></code>, has been archived. To
+prevent <code>occCite</code> from being archived, which would result in
+downstream problems, we have disabled external taxonomic rectification
+as an option. If <code>taxize</code> comes back, or we identify an
+alternative, we will reinstate this feature. The code still exists, it’s
+just been commented out. Contact Hannah Owens (<a href="mailto:hannah.owens@gmail.com" class="email">hannah.owens@gmail.com</a>) for tips on how to reactivate
+the feature using the gitHub version of <code>taxize</code>.</p>
 <p>In the simplest of searches, such as the one above, the taxonomy of
 your input species name is automatically rectified through the
 <code>occCite</code> function <code><a href="../reference/studyTaxonList.html">studyTaxonList()</a></code> using
@@ -303,10 +311,6 @@ your occurrence data search.</p>
 <span>                                                  <span class="st">"Encyclopedia of Life"</span>, </span>
 <span>                                                  <span class="st">"Integrated Taxonomic Information SystemITIS"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">myTROccCiteObject</span><span class="op">@</span><span class="va">cleanedTaxonomy</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Input Name        Best Match</span></span>
-<span><span class="co">## 1 Protea cynaroides Protea cynaroides</span></span>
-<span><span class="co">##                                        Taxonomic Databases w/ Matches</span></span>
-<span><span class="co">## 1 National Center for Biotechnology Information; Encyclopedia of Life</span></span></code></pre>
 <p>For advanced features, please refer to
 <code>vignette("Advanced", package = "occCite")</code>.</p>
 </div>

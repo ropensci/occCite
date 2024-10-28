@@ -38,8 +38,7 @@ Suggests:
     ape,
     bit64,
     knitr,
-    httr,
-    taxize
+    httr
 Imports:
     bib2df,
     BIEN,

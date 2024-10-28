@@ -20,6 +20,9 @@ status](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci
 
 <!-- badges: end -->
 
+## IMPORTANT NOTE
+The `taxize` package, which occCite uses for `taxonRectification()`, has been archived. To prevent `occCite` from being archived, which would result in downstream problems, we have disabled external taxonomic rectification as an option. If `taxize` comes back, or we identify an alternative, we will reinstate this feature.
+
 ## Summary
 
 The `occCite` workflow follows a three-step process. First, the user
