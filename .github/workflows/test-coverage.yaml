@@ -65,3 +65,6 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: test
+
+      - name: Codecov
+        uses: codecov/codecov-action@v5.4.3
