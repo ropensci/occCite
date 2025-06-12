@@ -1,3 +1,9 @@
+# occCite 0.6.0
+
+* Updated for compatibility with major `ggplot2` update; back-compatibility maintained.
+* Restored `taxize` functionality as a Suggested package.
+* Improved test coverage.
+
 # occCite 0.5.9
 
 * Commented out dependencies on `taxize` package. Taxonomic rectification no longer works. It will be reinstated if taxize becomes available on CRAN.

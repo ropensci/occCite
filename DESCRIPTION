@@ -1,7 +1,7 @@
 Package: occCite
 Type: Package
 Title: Querying and Managing Large Biodiversity Occurrence Datasets
-Version: 0.5.9
+Version: 0.6.0
 Authors@R: c(
   person(given = "Hannah L.", family = "Owens", ,"hannah.owens@gmail.com", role=c("aut","cre"),
     comment = c(ORCID = "0000-0003-0071-1745")),
@@ -30,13 +30,14 @@ LazyData: true
 Language: en-US
 Depends: R (>= 3.5.0)
 Suggests:
+    bit64,
+    covr,
+    knitr,
+    httr,
     rmarkdown,
     remotes,
     testthat,
-    covr,
-    bit64,
-    knitr,
-    httr
+    taxize (>= 0.10)
 Imports:
     ape,
     bib2df,
