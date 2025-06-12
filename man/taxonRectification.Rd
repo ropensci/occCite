@@ -10,17 +10,16 @@ taxonRectification(taxName = NULL, datasources = NULL, skipTaxize = FALSE)
 \item{taxName}{A string that, ideally, is a taxonomic name}
 
 \item{datasources}{A vector of taxonomic data sources implemented in
-\code{taxize::gnr_resolve()}. See the
-\href{http://gni.globalnames.org/}{Global Names List} for more information.}
+\code{taxize::gna_verifier()}. See the
+\href{http://verifier.globalnames.org/data_sources}{Global Names Verifier} for more information.}
 
 \item{skipTaxize}{If \code{skipTaxize = TRUE}, occCite will skip taxonomic
-rectification using taxize, which has been orphaned on CRAN. Setting this
-option to `TRUE` will result in a check for the \code{taxize} package before taxonomic
-rectification is attempted. *The code using `taxize` has been disabled to comply with CRAN.*}
+rectification using taxize. Setting this option to `TRUE` will result in a check for the
+\code{taxize} package before taxonomic rectification is attempted.}
 }
 \value{
 A string with the closest match according to
-\code{taxize::gnr_resolve()}, and a list of taxonomic data sources that
+\code{taxize::gna_verifier()}, and a list of taxonomic data sources that
 contain the matching name.
 }
 \description{

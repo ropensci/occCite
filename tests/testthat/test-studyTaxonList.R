@@ -1,6 +1,7 @@
 context("Verifies performance of studyTaxonList")
 
 library(occCite)
+library(httr)
 
 test_that("phylogeny can be read and manipulated as expected", {
   phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
@@ -12,9 +13,13 @@ test_that("phylogeny can be read and manipulated as expected", {
   expect_true(length(phylogeny$tip.label) == 3)
 })
 
+url <- "https://verifier.globalnames.org/api/v1/version"
+response <- try(GET(url, add_headers(`accept` = "application/json"), timeout(5)), silent = TRUE)
+
 test_that("studyTaxonList works with a phylogeny", {
   skip_if(!curl::has_internet(), "internet connection unsuccessful")
-  skip_if(httr::http_error("https://resolver.globalnames.org/data_sources.json"))
+  skip_if(inherits(response, "try-error") || http_error(response),
+          "GNverifier is unreachable or returned an error")
 
   phylogeny <- ape::read.nexus(system.file("extdata/Fish_12Tax_time_calibrated.tre",
     package = "occCite"
@@ -49,7 +54,7 @@ test_that("studyTaxonList works with a phylogeny", {
 
 test_that("studyTaxonList works with a vector of species", {
   skip_if(!curl::has_internet(), "internet connection unsuccessful")
-  skip_if(httr::http_error("https://resolver.globalnames.org/data_sources.json"))
+  skip_if(inherits(response, "try-error") || http_error(response))
 
   taxVector <- c("Buteo buteo", "Buteo buteo hartedi", "Buteo japonicus")
   testResult <- studyTaxonList(x = taxVector,
