@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' data(myOccCiteObject)
-#' tabulate.occResults(myOccCiteObject@occResults,
+#' tabulate.occResults(myOccCiteObject@occResults$`Protea cynaroides (L.) L.`,
 #'   sp.name = "Protea cynaroides"
 #' )
 #' @importFrom dplyr "%>%" mutate_if mutate bind_rows
@@ -491,6 +491,9 @@ plot.occCiteData <- function(x, ...) {
       aggregator <- ggplot_build(aggregator)
       allPlots[[length(allPlots)]] <- aggregator
     }
+    if(packageVersion("ggplot2") >= "3.5.2.9001"){
+      allPlots <- lapply(allPlots, FUN = function(p) p@plot) # Gets plot
+    }
     names(allPlots) <- plotTypes
     return(allPlots)
   } else {
@@ -560,6 +563,9 @@ plot.occCiteData <- function(x, ...) {
         )
         aggregator <- ggplot_build(aggregator)
         allPlots[[length(allPlots)]] <- aggregator
+      }
+      if(packageVersion("ggplot2") >= "3.5.2.9001"){
+        allPlots <- lapply(allPlots, FUN = function(p) p@plot) # Gets plot
       }
       names(allPlots) <- plotTypes
       spPlotList[[match(sp, spList)]] <- allPlots
