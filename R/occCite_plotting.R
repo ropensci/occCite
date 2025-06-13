@@ -342,10 +342,10 @@ occCiteMap <- function(occCiteData,
 #' @importFrom stats complete.cases
 #' @importFrom methods is
 #' @importFrom viridis viridis
+#' @importFrom utils packageVersion
 #'
 #' @method plot occCiteData
 #' @export
-#'
 plot.occCiteData <- function(x, ...) {
   # Function to wrap labels
   occ_strwrap <- function(x) {
@@ -493,6 +493,8 @@ plot.occCiteData <- function(x, ...) {
     }
     if(packageVersion("ggplot2") >= "3.5.2.9001"){
       allPlots <- lapply(allPlots, FUN = function(p) p@plot) # Gets plot
+    } else{
+      allPlots <- lapply(allPlots, FUN = function(p) p$plot)
     }
     names(allPlots) <- plotTypes
     return(allPlots)
@@ -566,6 +568,8 @@ plot.occCiteData <- function(x, ...) {
       }
       if(packageVersion("ggplot2") >= "3.5.2.9001"){
         allPlots <- lapply(allPlots, FUN = function(p) p@plot) # Gets plot
+      } else{
+        allPlots <- lapply(allPlots, FUN = function(p) p$plot)
       }
       names(allPlots) <- plotTypes
       spPlotList[[match(sp, spList)]] <- allPlots
