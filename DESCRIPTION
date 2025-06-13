@@ -30,6 +30,7 @@ LazyData: true
 Language: en-US
 Depends: R (>= 3.5.0)
 Suggests:
+    ape,
     bit64,
     covr,
     knitr,
@@ -39,7 +40,6 @@ Suggests:
     testthat,
     taxize (>= 0.10)
 Imports:
-    ape,
     bib2df,
     BIEN,
     curl,
