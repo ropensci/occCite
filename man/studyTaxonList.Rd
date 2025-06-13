@@ -51,4 +51,5 @@ studyTaxonList(
   datasources = c("GBIF Backbone Taxonomy")
 )
 }
+
 }

@@ -5,13 +5,12 @@ data(myOccCiteObject)
 mySimpleOccCiteObject <- myOccCiteObject
 myOccCitations <- occCitation(mySimpleOccCiteObject)
 
-test_that("is occCitePrint working?", {
+test_that("regular print", {
   output <- capture.output(print(myOccCitations))
-  test_that("regular print", {
-    expect_equal(length(output), 23)
-  })
+  expect_equal(length(output), 23)
+})
+
+test_that("print by species", {
   output <- capture.output(print(myOccCitations, bySpecies = TRUE))
-  test_that("print by species", {
-    expect_equal(length(output), 27)
-  })
+  expect_equal(length(output), 27)
 })

@@ -42,6 +42,7 @@
 #'   datasources = c("GBIF Backbone Taxonomy")
 #' )
 #' }
+#'
 #' @export
 studyTaxonList <- function(x = NULL,
                            datasources = "GBIF Backbone Taxonomy") {
