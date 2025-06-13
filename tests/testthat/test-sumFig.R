@@ -4,8 +4,7 @@ library(occCite)
 library(ggplot2)
 data("myOccCiteObject")
 
-print("Checking ggplot version...")
-packageVersion("ggplot2")
+print(paste0("Checking ggplot version...", packageVersion("ggplot2")))
 
 test_that("default sumFig settings work", {
   test <- plot(myOccCiteObject)
