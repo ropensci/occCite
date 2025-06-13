@@ -4,6 +4,9 @@ library(occCite)
 library(ggplot2)
 data("myOccCiteObject")
 
+print("Checking ggplot version...")
+packageVersion("ggplot2")
+
 test_that("default sumFig settings work", {
   test <- plot(myOccCiteObject)
   expect_true("yearHistogram" %in% names(test))
