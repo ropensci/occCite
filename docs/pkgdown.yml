@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   a_Simple: a_Simple.html
   b_Advanced: b_Advanced.html
-last_built: 2025-06-13T12:02Z
+last_built: 2025-06-16T08:26Z
 urls:
   reference: https://docs.ropensci.org/occCite/reference
   article: https://docs.ropensci.org/occCite/articles

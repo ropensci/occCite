@@ -1,8 +1,6 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://docs.ropensci.org/occCite/404.html</loc></url>
-<url><loc>https://docs.ropensci.org/occCite/CODE_OF_CONDUCT.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/CONTRIBUTING.html</loc></url>
-<url><loc>https://docs.ropensci.org/occCite/LICENSE-text.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/LICENSE.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/articles/a_Simple.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/articles/b_Advanced.html</loc></url>
@@ -10,14 +8,11 @@
 <url><loc>https://docs.ropensci.org/occCite/authors.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/index.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/news/index.html</loc></url>
-<url><loc>https://docs.ropensci.org/occCite/readme.html</loc></url>
-<url><loc>https://docs.ropensci.org/occCite/reference/BIENtableCleanup.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/GBIFLogin-class.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/GBIFLoginManager.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/getBIENpoints.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/getGBIFpoints.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/index.html</loc></url>
-<url><loc>https://docs.ropensci.org/occCite/reference/map.occCite.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/myOccCiteObject.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/occCitation.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/occCiteCitation-class.html</loc></url>
@@ -28,7 +23,6 @@
 <url><loc>https://docs.ropensci.org/occCite/reference/prevGBIFdownload.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/print.occCiteCitation.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/studyTaxonList.html</loc></url>
-<url><loc>https://docs.ropensci.org/occCite/reference/sumFig.occCite.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/summary.occCiteData.html</loc></url>
 <url><loc>https://docs.ropensci.org/occCite/reference/taxonRectification.html</loc></url>
 </urlset>
