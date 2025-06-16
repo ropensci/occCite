@@ -2,17 +2,11 @@ context("Setting up GBIF Login")
 
 library(occCite)
 
-test_that("GBIFLoginManager error messaging behaves as expected", {
-  skip_on_cran()
-
-  test <- try(rgbif::occ_count(country = "DK"),
-    silent = T
-  )
-  skip_if(class(test) != "numeric", "GBIF connection unsuccessful")
-
-  expect_warning(
-    GBIFLoginManager("testing", "the", "login")
-  )
+test_that("GBIFLoginManager error warning checks", {
+  skip_if(nchar(occCite:::check_user(NULL)) > 0, "GBIF login available")
+  expect_warning(GBIFLoginManager(user = NULL))
+  expect_warning(GBIFLoginManager(user = "test", email = NULL))
+  expect_warning(GBIFLoginManager(user = "test", email = "also@test.com", pwd = NULL))
 })
 
 test_that("GBIFLoginManager actually picks up login information", {
