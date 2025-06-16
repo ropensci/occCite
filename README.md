@@ -6,7 +6,7 @@
 [![R build status](https://github.com/ropensci/occCite/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/occCite/actions)
 [![CRAN version](https://www.r-pkg.org/badges/version/occCite)](https://cran.r-project.org/package=occCite)
 [![Downloads](https://cranlogs.r-pkg.org/badges/occCite)](https://github.com/r-hub/cranlogs.app)
-[![codecov](https://codecov.io/gh/hannahlowens/occCite/branch/main/graph/badge.svg)](https://codecov.io/gh/hannahlowens/occCite)
+[![codecov](https://codecov.io/gh/ropensci/occCite/branch/main/graph/badge.svg?token=01yJEEIEQN)](https://codecov.io/gh/ropensci/occCite)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![ROpenSci status](https://badges.ropensci.org/407_status.svg)](https://github.com/ropensci/software-review/issues/407)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13692036.svg)](https://doi.org/10.5281/zenodo.13692036)
