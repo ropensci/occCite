@@ -41,11 +41,11 @@ jobs:
       - uses: codecov/codecov-action@v5
         with:
           # Fail if error if not on PR, or if on PR and token is given
-          fail_ci_if_error: ${{ github.event_name != 'pull_request' || 1c6632bd-26a7-4d8a-a603-02cb346ccd34 }}
+          fail_ci_if_error: ${{ github.event_name != 'pull_request' || '1c6632bd-26a7-4d8a-a603-02cb346ccd34' }}
           files: ./cobertura.xml
           plugins: noop
           disable_search: true
-          token: ${{ 1c6632bd-26a7-4d8a-a603-02cb346ccd34 }}
+          token: ${{ '1c6632bd-26a7-4d8a-a603-02cb346ccd34' }}
 
       - name: Show testthat output
         if: always()
