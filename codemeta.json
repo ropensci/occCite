@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/ropensci/occCite",
   "issueTracker": "https://github.com/ropensci/occCite/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.5.9",
+  "version": "0.6.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -72,6 +72,66 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "ape",
+      "name": "ape",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ape"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "bit64",
+      "name": "bit64",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=bit64"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "httr",
+      "name": "httr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
       "provider": {
@@ -108,51 +168,16 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "covr",
-      "name": "covr",
+      "identifier": "taxize",
+      "name": "taxize",
+      "version": ">= 0.10",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=covr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "bit64",
-      "name": "bit64",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=bit64"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "knitr",
-      "name": "knitr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=knitr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "httr",
-      "name": "httr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=httr"
+      "sameAs": "https://CRAN.R-project.org/package=taxize"
     }
   ],
   "softwareRequirements": {
@@ -164,18 +189,6 @@
     },
     "2": {
       "@type": "SoftwareApplication",
-      "identifier": "ape",
-      "name": "ape",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ape"
-    },
-    "3": {
-      "@type": "SoftwareApplication",
       "identifier": "bib2df",
       "name": "bib2df",
       "provider": {
@@ -186,7 +199,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=bib2df"
     },
-    "4": {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "BIEN",
       "name": "BIEN",
@@ -198,7 +211,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=BIEN"
     },
-    "5": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "curl",
       "name": "curl",
@@ -210,7 +223,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=curl"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -222,7 +235,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "lubridate",
       "name": "lubridate",
@@ -234,12 +247,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lubridate"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "methods",
       "name": "methods"
     },
-    "9": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "rgbif",
       "name": "rgbif",
@@ -252,7 +265,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rgbif"
     },
-    "10": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "RefManageR",
       "name": "RefManageR",
@@ -264,7 +277,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RefManageR"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
@@ -276,12 +289,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
@@ -293,7 +306,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
-    "14": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "htmltools",
       "name": "htmltools",
@@ -305,7 +318,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=htmltools"
     },
-    "15": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
@@ -317,7 +330,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
-    "16": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -329,7 +342,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "17": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -341,7 +354,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "18": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "RPostgreSQL",
       "name": "RPostgreSQL",
@@ -353,7 +366,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RPostgreSQL"
     },
-    "19": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "RColorBrewer",
       "name": "RColorBrewer",
@@ -365,7 +378,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=RColorBrewer"
     },
-    "20": {
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "viridis",
       "name": "viridis",
@@ -377,7 +390,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=viridis"
     },
-    "21": {
+    "20": {
       "@type": "SoftwareApplication",
       "identifier": "DBI",
       "name": "DBI",
@@ -389,7 +402,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=DBI"
     },
-    "22": {
+    "21": {
       "@type": "SoftwareApplication",
       "identifier": "waffle",
       "name": "waffle",
@@ -403,11 +416,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1983.79KB",
+  "fileSize": "2590.942KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2024",
+      "datePublished": "2025",
       "author": [
         {
           "@type": "Person",
@@ -443,15 +456,15 @@
       "name": "occCite: Querying and Managing Large Biodiversity Occurrence Datasets",
       "identifier": "10.5281/zenodo.4726676",
       "url": "https://CRAN.R-project.org/package=occCite",
-      "description": "R package version 0.5.9",
+      "description": "R package version 0.6.0",
       "@id": "https://doi.org/10.5281/zenodo.4726676",
       "sameAs": "https://doi.org/10.5281/zenodo.4726676"
     }
   ],
-  "relatedLink": "https://docs.ropensci.org/occCite/",
+  "relatedLink": ["https://docs.ropensci.org/occCite/", "https://CRAN.R-project.org/package=occCite"],
   "releaseNotes": "https://github.com/ropensci/occCite/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/occCite/blob/main/README.md",
-  "contIntegration": ["https://github.com/ropensci/occCite/actions", "https://codecov.io/gh/ropensci/occCite?branch=main"],
+  "contIntegration": ["https://github.com/ropensci/occCite/actions", "https://codecov.io/gh/hannahlowens/occCite"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "review": {
     "@type": "Review",
