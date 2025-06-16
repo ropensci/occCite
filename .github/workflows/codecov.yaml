@@ -1,0 +1,13 @@
+comment: false
+coverage:
+  status:
+    patch:
+      default:
+        informational: true
+        target: auto
+        threshold: 1.0
+    project:
+      default:
+        informational: true
+        target: auto
+        threshold: 1.0
