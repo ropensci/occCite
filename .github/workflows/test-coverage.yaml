@@ -10,7 +10,6 @@ name: test-coverage.yaml
 permissions: read-all
 
 jobs:
-  jobs:
   unit-test:
     name: Run unit tests
     runs-on: ubuntu-latest
