@@ -90,7 +90,7 @@ studyTaxonList <- function(x = NULL,
     resolvedNames <- rbind(resolvedNames, newResName)
   }
 
-  if (ncol(resolvedNames == 3)) {
+  if (ncol(resolvedNames) == 3) {
     colnames(resolvedNames) <- c(
       "Input Name",
       "Best Match",
