@@ -393,6 +393,13 @@ plot.occCiteData <- function(x, ...) {
   } else if (is.null(plotTypes)) { # Fills in NULL
     plotTypes <- plots
   }
+  if(!requireNamespace("waffle")){
+    wafflePlots <- c("source", "aggregator")
+    warning(paste0(
+      "waffle package not available. Skipping ",
+      paste(noquote(plotTypes[plotTypes %in% wafflePlots]), collapse=', '), "."))
+    plotTypes <- plotTypes[!plotTypes %in% wafflePlots]
+  }
 
   d.res <- x@occResults
   d.tbl <- lapply(

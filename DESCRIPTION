@@ -38,7 +38,8 @@ Suggests:
     rmarkdown,
     remotes,
     testthat,
-    taxize (>= 0.10)
+    taxize (>= 0.10),
+    waffle
 Imports:
     bib2df,
     BIEN,
@@ -58,7 +59,6 @@ Imports:
     RPostgreSQL,
     RColorBrewer,
     viridis,
-    DBI,
-    waffle
+    DBI
 VignetteBuilder: knitr, rmarkdown
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
