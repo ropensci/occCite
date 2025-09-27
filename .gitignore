@@ -1,11 +1,28 @@
-Meta
-doc
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .Rhistory
 .RData
 .Ruserdata
 .Rprofile
+.*\.Rproj$
+^\.git$
+^\.gitignore$
+^\.github$
+^renv$
+^renv\.lock$
+^packrat$
+^data-raw$
+^inst/doc$
+^docs$
+^\.DS_Store$
+^\.vscode$
+^\.idea$
+^_targets$
+^targets\.json$
+^\.pytest_cache$
+^\.ruff_cache$
+^\.dropbox.*$
+^~$
 
 # History files
 .Rapp.history
