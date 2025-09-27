@@ -55,9 +55,9 @@ Imports:
     htmltools,
     ggplot2,
     rlang,
-    tidyr,
     RPostgreSQL,
     RColorBrewer,
+    tidyr,
     viridis,
     DBI
 VignetteBuilder: knitr, rmarkdown
