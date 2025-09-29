@@ -22,13 +22,17 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Add R-universe repo for pak 
+        run: |
+          Rscript -e 'install.packages("pak", repos = "https://cloud.r-project.org")'
+          Rscript -e 'pak::repo_add("hrbrmstr", "https://hrbrmstr.r-universe.dev")'
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::covr, any::xml2
           needs: coverage
           extra-repositories: https://hrbrmstr.r-universe.dev
           cache-version: 1
-
 
       - name: Test coverage
         run: |
