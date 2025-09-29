@@ -40,7 +40,7 @@ test_that("sumFig works when plotting only year histogram by species", {
 })
 
 test_that("sumFig works when plotting only source by species", {
-  skip_if(!requireNamespace("waffle"))
+  skip_if_not_installed("waffle")
   data("myOccCiteObject")
   test <- plot(myOccCiteObject, bySpecies = T, plotTypes = "source")
   expect_true(names(test) == "Protea cynaroides")
@@ -49,7 +49,7 @@ test_that("sumFig works when plotting only source by species", {
 })
 
 test_that("sumFig works when plotting only aggregator by species", {
-  skip_if(!requireNamespace("waffle"))
+  skip_if_not_installed("waffle")
   data("myOccCiteObject")
   test <- plot(x = myOccCiteObject, bySpecies = T, plotTypes = "aggregator")
   expect_true(names(test) == "Protea cynaroides")
