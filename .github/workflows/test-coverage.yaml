@@ -1,5 +1,7 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+# Workflow originally based on r-lib/actions examples
+# Updated with guidance from ChatGPT (OpenAI) to support additional repositories (e.g., R-universe)
+# and fix CI failures with optional packages like waffle.
+
 on:
   push:
     branches: [main, master]
@@ -14,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      _R_CHECK_FORCE_SUGGESTS_: false
 
     steps:
       - uses: actions/checkout@v4
@@ -22,10 +25,18 @@ jobs:
         with:
           use-public-rspm: true
 
+      # Teach pak about the R-universe repo BEFORE dependency resolution
+      - name: Add R-universe repo for pak 
+        run: |
+          Rscript -e 'install.packages("pak", repos = "https://cloud.r-project.org")'
+          Rscript -e 'pak::repo_add("hrbrmstr", "https://hrbrmstr.r-universe.dev"); pak::repo_get()'
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          dependencies: '"all"'
           extra-packages: any::covr, any::xml2
           needs: coverage
+          cache-version: 1
 
       - name: Test coverage
         run: |
@@ -40,7 +51,6 @@ jobs:
 
       - uses: codecov/codecov-action@v5
         with:
-          # Fail if error if not on PR, or if on PR and token is given
           fail_ci_if_error: ${{ github.event_name != 'pull_request' || '1c6632bd-26a7-4d8a-a603-02cb346ccd34' }}
           files: ./cobertura.xml
           plugins: noop
@@ -50,7 +60,6 @@ jobs:
       - name: Show testthat output
         if: always()
         run: |
-          ## --------------------------------------------------------------------
           find '${{ runner.temp }}/package' -name 'testthat.Rout*' -exec cat '{}' \; || true
         shell: bash
 
