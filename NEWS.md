@@ -1,11 +1,14 @@
+# occCite 0.6.1
+
+* Moved `waffle` to Suggested package, as it is now orphaned.
+* `plot.occCiteData()` now automatically skips source and aggregator plots if `waffle` is unavailable.
+* Small bug fixes.
+
 # occCite 0.6.0
 
 * Updated for compatibility with major `ggplot2` update; back-compatibility maintained.
 * Restored `taxize` functionality as a Suggested package.
 * Improved test coverage.
-* Moved `waffle` to Suggested package, as it is now orphaned.
-* `plot.occCiteData()` now automatically skips source and aggregator plots if `waffle` is unavailable.
-* Small bug fixes.
 
 # occCite 0.5.9
 
