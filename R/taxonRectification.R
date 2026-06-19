@@ -12,7 +12,8 @@
 #'
 #' @param skipTaxize If \code{skipTaxize = TRUE}, occCite will skip taxonomic
 #'  rectification using taxize. Setting this option to `TRUE` will result in a check for the
-#'  \code{taxize} package before taxonomic rectification is attempted.
+#'  \code{taxize} package before taxonomic rectification is attempted. The name returned
+#'  corresponds to the `matchedCanonicalSimple`, with no author or date.
 #'
 #' @return A string with the closest match according to
 #' \code{taxize::gna_verifier()}, and a list of taxonomic data sources that
@@ -103,9 +104,17 @@ taxonRectification <- function(taxName = NULL, datasources = NULL,
     sourceIDs <- sources$id[sources$title %in% datasources]
     taxonomicDatabaseMatches <- vector("list")
     if(requireNamespace("taxize")){
-      temp <- taxize::gna_verifier(names = taxName, data_sources = sourceIDs, all_matches = F)
-    }
-    if (is.na(temp$matchedName)) {
+      temp <- tryCatch(
+        expr = {
+          taxize::gna_verifier(
+            names = taxName,
+            data_sources = sourceIDs,
+            all_matches = TRUE)},
+        error = function(e) {
+          # This value is returned if an error occurs
+          return(NA)})
+      }
+    if (length(temp) == 1 && is.na(temp)) {
       bestMatch <- "No match"
       taxonomicDatabaseMatches <- "No match"
       warning(paste(taxName,
@@ -113,9 +122,9 @@ taxonRectification <- function(taxName = NULL, datasources = NULL,
                     sep = ""
       ))
     } else {
-      bestMatch <- temp[order(temp$sortScore), ]$matchedName[1]
-      matchingSources <- temp$dataSourceTitleShort[temp$matchedName == bestMatch]
-      taxonomicDatabaseMatches <- paste(matchingSources, collapse = "; ")
+      bestMatch <- unique(temp[order(temp$sortScore), ]$matchedCanonicalSimple)
+      matchingSources <- temp$dataSourceTitleShort[temp$matchedCanonicalSimple == bestMatch]
+      taxonomicDatabaseMatches <- paste(unique(matchingSources), collapse = "; ")
     }
 
     # Building the results table

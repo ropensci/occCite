@@ -15,7 +15,8 @@ taxonRectification(taxName = NULL, datasources = NULL, skipTaxize = FALSE)
 
 \item{skipTaxize}{If \code{skipTaxize = TRUE}, occCite will skip taxonomic
 rectification using taxize. Setting this option to `TRUE` will result in a check for the
-\code{taxize} package before taxonomic rectification is attempted.}
+\code{taxize} package before taxonomic rectification is attempted. The name returned
+corresponds to the `matchedCanonicalSimple`, with no author or date.}
 }
 \value{
 A string with the closest match according to

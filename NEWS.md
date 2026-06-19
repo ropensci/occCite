@@ -1,3 +1,9 @@
+# occCite 0.6.2
+
+* Bug fix to how `taxize` results are handled by `occCite::taxonomicRectification()`.
+* Documentation now specifies how `taxize` results are handled more explicitly.
+* Test files edited to ensure stability after above bug fix.
+
 # occCite 0.6.1
 
 * Moved `waffle` to Suggested package, as it is now orphaned.
