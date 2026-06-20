@@ -332,10 +332,16 @@ occCiteMap <- function(occCiteData,
 #'
 #' @examples
 #' data(myOccCiteObject)
-#' plot(
-#'   x = myOccCiteObject, bySpecies = FALSE,
-#'   plotTypes = c("yearHistogram", "source", "aggregator")
-#' )
+#' if(!requireNamespace("waffle", quietly = TRUE)){
+#'   plot(x = myOccCiteObject,
+#'        bySpecies = FALSE,
+#'        plotTypes = c("yearHistogram"))
+#' } else{
+#'   plot(x = myOccCiteObject,
+#'        bySpecies = FALSE,
+#'        plotTypes = c("yearHistogram", "source", "aggregator"))
+#' }
+#'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle
 #' @importFrom ggplot2 theme xlab ylab theme_classic
 #' @importFrom ggplot2 scale_y_continuous ggplot_build element_text
@@ -393,12 +399,15 @@ plot.occCiteData <- function(x, ...) {
   } else if (is.null(plotTypes)) { # Fills in NULL
     plotTypes <- plots
   }
-  if(!requireNamespace("waffle")){
-    wafflePlots <- c("source", "aggregator")
-    warning(paste0(
-      "waffle package not available. Skipping ",
-      paste(noquote(plotTypes[plotTypes %in% wafflePlots]), collapse=', '), "."))
-    plotTypes <- plotTypes[!plotTypes %in% wafflePlots]
+
+  wafflePlots <- c("source", "aggregator")
+  if (any (wafflePlots %in% plotTypes)){
+    if(!requireNamespace("waffle", quietly = TRUE)){
+      warning(paste0(
+        "waffle package not available. Skipping ",
+        paste(noquote(plotTypes[plotTypes %in% wafflePlots]), collapse=', '), "."))
+      plotTypes <- plotTypes[!plotTypes %in% wafflePlots]
+    }
   }
 
   d.res <- x@occResults

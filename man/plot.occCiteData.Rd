@@ -29,8 +29,14 @@ data sources, waffle::waffle plot of data aggregators.
 }
 \examples{
 data(myOccCiteObject)
-plot(
-  x = myOccCiteObject, bySpecies = FALSE,
-  plotTypes = c("yearHistogram", "source", "aggregator")
-)
+if(!requireNamespace("waffle", quietly = TRUE)){
+  plot(x = myOccCiteObject,
+       bySpecies = FALSE,
+       plotTypes = c("yearHistogram"))
+} else{
+  plot(x = myOccCiteObject,
+       bySpecies = FALSE,
+       plotTypes = c("yearHistogram", "source", "aggregator"))
+}
+
 }

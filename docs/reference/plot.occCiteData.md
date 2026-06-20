@@ -35,12 +35,15 @@ A list containing the desired plots.
 
 ``` r
 data(myOccCiteObject)
-plot(
-  x = myOccCiteObject, bySpecies = FALSE,
-  plotTypes = c("yearHistogram", "source", "aggregator")
-)
-#> Loading required namespace: waffle
-#> Warning: waffle package not available. Skipping source, aggregator.
+if(!requireNamespace("waffle", quietly = TRUE)){
+  plot(x = myOccCiteObject,
+       bySpecies = FALSE,
+       plotTypes = c("yearHistogram"))
+} else{
+  plot(x = myOccCiteObject,
+       bySpecies = FALSE,
+       plotTypes = c("yearHistogram", "source", "aggregator"))
+}
 #> $yearHistogram
 
 #> 
