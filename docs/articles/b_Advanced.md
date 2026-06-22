@@ -196,7 +196,7 @@ summary(myPhyOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 20 June, 2026
+    ##  OccCite query occurred on: 21 June, 2026
     ##  
     ##  User query type: User-supplied phylogeny.
     ##  
