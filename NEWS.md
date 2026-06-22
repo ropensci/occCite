@@ -1,7 +1,3 @@
-# occCite 0.6.3
-
-* Development version.
-
 # occCite 0.6.2
 
 * Bug fix to how `taxize` results are handled by `occCite::taxonomicRectification()`.
