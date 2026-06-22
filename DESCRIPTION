@@ -38,8 +38,7 @@ Suggests:
     remotes,
     rmarkdown,
     taxize (>= 0.10),
-    testthat,
-    waffle
+    testthat
 Imports:
     BIEN,
     DBI,
@@ -61,5 +60,4 @@ Imports:
     tidyr,
     viridis
 VignetteBuilder: knitr, rmarkdown
-Additional_repositories: https://hrbrmstr.r-universe.dev
 Config/roxygen2/version: 8.0.0

@@ -2,8 +2,8 @@
 
 Generates up to three different kinds of plots, with toggles determining
 whether plots should be done for individual species or aggregating all
-species–histogram by year of occurrence records, waffle::waffle plot of
-primary data sources, waffle::waffle plot of data aggregators.
+species–histogram by year of occurrence records, waffle plot of primary
+data sources, waffle plot of data aggregators.
 
 ## Usage
 
@@ -44,7 +44,17 @@ if(!requireNamespace("waffle", quietly = TRUE)){
        bySpecies = FALSE,
        plotTypes = c("yearHistogram", "source", "aggregator"))
 }
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> ℹ The deprecated feature was likely used in the waffle package.
+#>   Please report the issue to the authors.
 #> $yearHistogram
+
+#> 
+#> $source
+
+#> 
+#> $aggregator
 
 #> 
 ```

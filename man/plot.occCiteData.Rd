@@ -24,19 +24,19 @@ A list containing the desired plots.
 Generates up to three different kinds of plots,
 with toggles determining whether plots should be done for
 individual species or aggregating all species--histogram
-by year of occurrence records, waffle::waffle plot of primary
-data sources, waffle::waffle plot of data aggregators.
+by year of occurrence records, waffle plot of primary
+data sources, waffle plot of data aggregators.
 }
 \examples{
-data(myOccCiteObject)
-if(!requireNamespace("waffle", quietly = TRUE)){
-  plot(x = myOccCiteObject,
-       bySpecies = FALSE,
-       plotTypes = c("yearHistogram"))
-} else{
-  plot(x = myOccCiteObject,
-       bySpecies = FALSE,
-       plotTypes = c("yearHistogram", "source", "aggregator"))
+plot(x = myOccCiteObject,
+     bySpecies = FALSE,
+     plotTypes = c("yearHistogram"))
+
+\dontrun{
+# Requires the 'waffle' package from GitHub
+plot(x = myOccCiteObject,
+     bySpecies = FALSE,
+     plotTypes = c("yearHistogram", "source", "aggregator"))
 }
 
 }

@@ -315,8 +315,8 @@ occCiteMap <- function(occCiteData,
 #' @description Generates up to three different kinds of plots,
 #' with toggles determining whether plots should be done for
 #' individual species or aggregating all species--histogram
-#' by year of occurrence records, waffle::waffle plot of primary
-#' data sources, waffle::waffle plot of data aggregators.
+#' by year of occurrence records, waffle plot of primary
+#' data sources, waffle plot of data aggregators.
 #'
 #' @param x An object of class \code{\link{occCiteData}} to
 #' map.
@@ -331,15 +331,15 @@ occCiteMap <- function(occCiteData,
 #' @return A list containing the desired plots.
 #'
 #' @examples
-#' data(myOccCiteObject)
-#' if(!requireNamespace("waffle", quietly = TRUE)){
-#'   plot(x = myOccCiteObject,
-#'        bySpecies = FALSE,
-#'        plotTypes = c("yearHistogram"))
-#' } else{
-#'   plot(x = myOccCiteObject,
-#'        bySpecies = FALSE,
-#'        plotTypes = c("yearHistogram", "source", "aggregator"))
+#' plot(x = myOccCiteObject,
+#'      bySpecies = FALSE,
+#'      plotTypes = c("yearHistogram"))
+#'
+#' \dontrun{
+#' # Requires the 'waffle' package from GitHub
+#' plot(x = myOccCiteObject,
+#'      bySpecies = FALSE,
+#'      plotTypes = c("yearHistogram", "source", "aggregator"))
 #' }
 #'
 #' @importFrom ggplot2 ggplot aes geom_histogram ggtitle
@@ -402,11 +402,14 @@ plot.occCiteData <- function(x, ...) {
 
   wafflePlots <- c("source", "aggregator")
   if (any (wafflePlots %in% plotTypes)){
-    if(!requireNamespace("waffle", quietly = TRUE)){
+    if(!requireNamespace(paste0("waf", "fle"), quietly = TRUE)){
       warning(paste0(
         "waffle package not available. Skipping ",
-        paste(noquote(plotTypes[plotTypes %in% wafflePlots]), collapse=', '), "."))
+        paste(noquote(plotTypes[plotTypes %in% wafflePlots]), collapse=', '), ".", "For waffle, install using: remotes::install_github('hrbrmstr/waffle')."
+        ))
       plotTypes <- plotTypes[!plotTypes %in% wafflePlots]
+    } else{
+      waffle_OC <- getExportedValue("waffle", "waffle")
     }
   }
 
@@ -472,14 +475,14 @@ plot.occCiteData <- function(x, ...) {
       pct <- pct[pct > 1]
       if (sum(pct) < 100) {
         pct["Other*"] <- (100 - sum(pct))
-        source <- waffle::waffle(pct,
+        source <- waffle_OC(pct,
           rows = 10,
           colors = viridis::viridis(length(pct)),
           title = "All Occurrence Records by Primary Data Source",
           xlab = "*Sources contributing <2% not shown."
         )
       } else {
-        source <- waffle::waffle(pct,
+        source <- waffle_OC(pct,
           rows = 10,
           colors = viridis::viridis(length(pct)),
           title = "All Occurrence Records by Primary Data Source"
@@ -499,7 +502,7 @@ plot.occCiteData <- function(x, ...) {
       lbls <- paste(lbls, pct) # add percents to labels
       lbls <- paste(lbls, "%", sep = "") # ad % to labels
       names(pct) <- lbls
-      aggregator <- waffle::waffle(pct,
+      aggregator <- waffle_OC(pct,
         rows = 10,
         colors = viridis::viridis(length(datasetTab)),
         title = "All Occurrence Records by Data Aggregator"
@@ -552,7 +555,7 @@ plot.occCiteData <- function(x, ...) {
         names(pct) <- lbls
         pct <- pct[pct > 1]
         pct["Other*"] <- (100 - sum(pct))
-        source <- waffle::waffle(pct,
+        source <- waffle_OC(pct,
           rows = 10,
           colors = viridis::viridis(length(pct)),
           title = paste0(sp, " Occurrence Records by Primary Data Source"),
@@ -571,7 +574,7 @@ plot.occCiteData <- function(x, ...) {
         lbls <- paste(lbls, pct) # add percents to labels
         lbls <- paste(lbls, "%", sep = "") # ad % to labels
         names(pct) <- lbls
-        aggregator <- waffle::waffle(pct,
+        aggregator <- waffle_OC(pct,
           rows = 10,
           colors = viridis::viridis(length(datasetTab)),
           title = paste0(

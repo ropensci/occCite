@@ -173,7 +173,7 @@ plots.
 plot(mySimpleOccCiteObject)
 ```
 
-![](a_Simple_files/figure-html/plotting%20a%20simple%20search-1.png)
+![](a_Simple_files/figure-html/plotting%20a%20simple%20search-1.png)![](a_Simple_files/figure-html/plotting%20a%20simple%20search-2.png)![](a_Simple_files/figure-html/plotting%20a%20simple%20search-3.png)
 
 ### Simple citations
 
