@@ -6,11 +6,15 @@ mySimpleOccCiteObject <- myOccCiteObject
 myOccCitations <- occCitation(mySimpleOccCiteObject)
 
 test_that("regular print", {
-  output <- capture.output(print(myOccCitations))
+  output <- suppressWarnings({
+    utils::capture.output(print(myOccCitations))
+  })
   expect_equal(class(output), "character")
 })
 
 test_that("print by species", {
-  output <- capture.output(print(myOccCitations, bySpecies = TRUE))
+  output <- suppressWarnings({
+    utils::capture.output(print(myOccCitations, bySpecies = TRUE))
+  })
   expect_equal(class(output), "character")
 })

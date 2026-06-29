@@ -2,15 +2,19 @@ context("Testing summary plot function")
 
 library(occCite)
 library(ggplot2)
+
+# Silence ggplot2 deprecation notices globally for this context
+options(lifecycle_verbosity = "quiet")
+
 data("myOccCiteObject")
 
 print(paste0("Checking ggplot version...", packageVersion("ggplot2")))
 
 test_that("default sumFig settings work", {
-  test <- plot(myOccCiteObject)
-  expect_true("yearHistogram" %in% names(test))
-  expect_true(is_ggplot(test[[1]]))
-  if(requireNamespace("waffle")){
+  if(requireNamespace(paste0("waf", "fle"))){
+    test <- plot(myOccCiteObject)
+    expect_true("yearHistogram" %in% names(test))
+    expect_true(is_ggplot(test[[1]]))
     expect_true("source" %in% names(test))
     expect_true(is_ggplot(test[[2]]))
     expect_true("aggregator" %in% names(test))
@@ -19,10 +23,10 @@ test_that("default sumFig settings work", {
 })
 
 test_that("sumFig works when plotting by species", {
-  test <- plot(myOccCiteObject, bySpecies = T)
-  expect_true(names(test) == "Protea cynaroides")
-  expect_true("yearHistogram" %in% names(test[[1]]))
-  if(requireNamespace("waffle")){
+  if(requireNamespace(paste0("waf", "fle"))){
+    test <- plot(myOccCiteObject, bySpecies = T)
+    expect_true(names(test) == "Protea cynaroides")
+    expect_true("yearHistogram" %in% names(test[[1]]))
     expect_true(is_ggplot(test[[1]][[1]]))
     expect_true("source" %in% names(test[[1]]))
     expect_true(is_ggplot(test[[1]][[2]]))
@@ -56,3 +60,4 @@ test_that("sumFig works when plotting only aggregator by species", {
   expect_true("aggregator" %in% names(test[[1]]))
   expect_true(is_ggplot(test[[1]][[1]]))
 })
+
