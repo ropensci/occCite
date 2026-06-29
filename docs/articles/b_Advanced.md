@@ -196,7 +196,7 @@ summary(myPhyOccCiteObject)
 ```
 
     ##  
-    ##  OccCite query occurred on: 22 June, 2026
+    ##  OccCite query occurred on: 29 June, 2026
     ##  
     ##  User query type: User-supplied phylogeny.
     ##  
@@ -276,7 +276,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
     ## Chiang W (2014). Taiwan Fisheries Research Institute – Digital archives of coastal and offshore specimens. TELDAP. https://doi.org/10.15468/xvxngy. Accessed via GBIF on 2019-07-04.
     ## European Nucleotide Archive (EMBL-EBI) (2019). Geographically tagged INSDC sequences. https://doi.org/10.15468/cndomv. Accessed via GBIF on 2019-07-04.
-    ## Fong J (2026). CAS Ichthyology (ICH). Version 150.527. California Academy of Sciences. Occurrence dataset. http://ipt.calacademy.org:8080/resource?r=ich&v=150.527 https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.
+    ## Fong J (2026). CAS Ichthyology (ICH). Version 150.528. California Academy of Sciences. Occurrence dataset. http://ipt.calacademy.org:8080/resource?r=ich&v=150.528 https://doi.org/10.15468/efh2ib. Accessed via GBIF on 2019-07-04.
     ## Frable B (2025). SIO Marine Vertebrate Collection. Version 1.9. Scripps Institution of Oceanography. https://doi.org/10.15468/ad1ovc. Accessed via GBIF on 2019-07-04.
     ## Harvard University M, Morris P J (2026). Museum of Comparative Zoology, Harvard University. Version 162.514. Museum of Comparative Zoology, Harvard University. https://doi.org/10.15468/p5rupv. Accessed via GBIF on 2019-07-04.
     ## iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2019-07-04.
@@ -291,7 +291,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Queensland Museum (2026). Queensland Museum provider for OZCAM. https://doi.org/10.15468/lotsye. Accessed via GBIF on 2019-07-04.
     ## Raiva R, Santana P (2021). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.7. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/4fj2tq. Accessed via GBIF on 2019-07-04.
     ## Raiva R, Viador R, Santana P (2021). Diversidade e ocorrência de peixes na Zambézia (2003-2016). Version 1.6. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/mrz36h. Accessed via GBIF on 2019-07-04.
-    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.555. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.556. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
     ## South Australian Museum (2025). South Australian Museum Adelaide provider for OZCAM. https://doi.org/10.15468/wz4rrh. Accessed via GBIF on 2019-07-04.
     ## Team}, {.C. (2025). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
     ## The International Barcode of Life Consortium (2026). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.
@@ -312,7 +312,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
     ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2. https://CRAN.R-project.org/package = occCite.
     ## ROBERT S, LEPAREUR F, Inventaire National du Patrimoine Naturel (2022). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.7. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2019-07-04.
-    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.555. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.556. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
     ## Team}, {.C. (2025). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
     ## University of Kansas Biodiversity Institute: KUBI Ichthyology Collection https://doi.org/10.15468/mgjasg. Accessed via GBIF on 2019-07-04.
 
@@ -330,7 +330,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
     ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2. https://CRAN.R-project.org/package = occCite.
     ## ROBERT S, LEPAREUR F, Inventaire National du Patrimoine Naturel (2022). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.7. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2019-07-04.
-    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.555. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.556. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
     ## Team}, {.C. (2025). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
     ## University of Kansas Biodiversity Institute: KUBI Ichthyology Collection https://doi.org/10.15468/mgjasg. Accessed via GBIF on 2019-07-04.
 
@@ -350,6 +350,6 @@ print(myPhyOccCitations, bySpecies = T)
     ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
     ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
     ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2. https://CRAN.R-project.org/package = occCite.
-    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.555. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
+    ## Robins R (2026). UF FLMNH Ichthyology. Version 117.556. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2019-07-04.
     ## Team}, {.C. (2025). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
     ## The International Barcode of Life Consortium (2026). International Barcode of Life project (iBOL). https://doi.org/10.15468/inygc6. Accessed via GBIF on 2019-07-04.

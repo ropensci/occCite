@@ -13,66 +13,30 @@
 #' @noRd
 
 GBIFtableCleanup <- function(GBIFtable) {
+  col_types <- list(
+    name = as.factor, longitude = as.numeric, latitude = as.numeric,
+    coordinateUncertaintyInMeters = as.numeric, day = as.integer,
+    month = as.integer, year = as.integer, datasetName = as.factor,
+    datasetKey = as.factor, dataService = as.factor
+  )
+
+  # Helper to check if a table is functionally empty
   isnothing <- function(x) {
-    any(is.null(x)) | any(all(is.na(x)) | sum(apply(x, 2, is.nan)) > 0)
+    any(is.null(x)) || any(all(is.na(x)) || sum(apply(x, 2, is.nan)) > 0)
   }
 
-  if (is.null(nrow(GBIFtable))) {
-    GBIFtable <- NULL
-    GBIFtable["name"] <- NA
-    GBIFtable["longitude"] <- NA
-    GBIFtable["latitude"] <- NA
-    GBIFtable["coordinateUncertaintyInMeters"] <- NA
-    GBIFtable["day"] <- NA
-    GBIFtable["month"] <- NA
-    GBIFtable["year"] <- NA
-    GBIFtable["datasetName"] <- NA
-    GBIFtable["datasetKey"] <- NA
-    GBIFtable["dataService"] <- NA
-    GBIFtable <- as.data.frame(as.list(GBIFtable))
-    return(GBIFtable)
-  } else if (nrow(GBIFtable) == 0) {
-    GBIFtable <- NULL
-    GBIFtable["name"] <- NA
-    GBIFtable["longitude"] <- NA
-    GBIFtable["latitude"] <- NA
-    GBIFtable["coordinateUncertaintyInMeters"] <- NA
-    GBIFtable["day"] <- NA
-    GBIFtable["month"] <- NA
-    GBIFtable["year"] <- NA
-    GBIFtable["datasetName"] <- NA
-    GBIFtable["datasetKey"] <- NA
-    GBIFtable["dataService"] <- NA
-    GBIFtable <- as.data.frame(as.list(GBIFtable))
-    return(GBIFtable)
-  } else {
-    if (!isnothing(GBIFtable)) {
-      GBIFtable <- GBIFtable[, -1]
-      GBIFtable["name"] <- as.factor(unlist(GBIFtable["name"]))
-      GBIFtable["longitude"] <- as.numeric(unlist(GBIFtable["longitude"]))
-      GBIFtable["latitude"] <- as.numeric(unlist(GBIFtable["latitude"]))
-      GBIFtable["coordinateUncertaintyInMeters"] <- as.numeric(unlist(GBIFtable["coordinateUncertaintyInMeters"]))
-      GBIFtable["day"] <- as.integer(unlist(GBIFtable["day"]))
-      GBIFtable["month"] <- as.integer(unlist(GBIFtable["month"]))
-      GBIFtable["year"] <- as.integer(unlist(GBIFtable["year"]))
-      GBIFtable["datasetName"] <- as.factor(unlist(GBIFtable["datasetName"]))
-      GBIFtable["datasetKey"] <- as.factor(unlist(GBIFtable["datasetKey"]))
-      GBIFtable["dataService"] <- as.factor(unlist(GBIFtable["dataService"]))
-      return(GBIFtable)
-    } else {
-      GBIFtable <- NULL
-      GBIFtable["name"] <- NA
-      GBIFtable["longitude"] <- NA
-      GBIFtable["latitude"] <- NA
-      GBIFtable["coordinateUncertaintyInMeters"] <- NA
-      GBIFtable["day"] <- NA
-      GBIFtable["month"] <- NA
-      GBIFtable["year"] <- NA
-      GBIFtable["datasetName"] <- NA
-      GBIFtable["datasetKey"] <- NA
-      GBIFtable["dataService"] <- NA
-      GBIFtable <- as.data.frame(as.list(GBIFtable))
-      return(GBIFtable)
+  if (is.null(nrow(GBIFtable)) || nrow(GBIFtable) == 0 || isnothing(GBIFtable)) {
+    empty_list <- lapply(col_types, function(f) f(NA))
+    return(as.data.frame(empty_list, stringsAsFactors = FALSE))
+  }
+
+  GBIFtable <- GBIFtable[, -1, drop = FALSE]
+
+  for (col in names(col_types)) {
+    if (col %in% names(GBIFtable)) {
+      GBIFtable[[col]] <- col_types[[col]](GBIFtable[[col]])
     }
   }
+
+  return(GBIFtable)
 }

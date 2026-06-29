@@ -34,27 +34,17 @@ A list containing the desired plots.
 ## Examples
 
 ``` r
-data(myOccCiteObject)
-if(!requireNamespace("waffle", quietly = TRUE)){
-  plot(x = myOccCiteObject,
-       bySpecies = FALSE,
-       plotTypes = c("yearHistogram"))
-} else{
-  plot(x = myOccCiteObject,
-       bySpecies = FALSE,
-       plotTypes = c("yearHistogram", "source", "aggregator"))
-}
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> ℹ The deprecated feature was likely used in the waffle package.
-#>   Please report the issue to the authors.
+plot(x = myOccCiteObject,
+     bySpecies = FALSE,
+     plotTypes = c("yearHistogram"))
 #> $yearHistogram
 
 #> 
-#> $source
 
-#> 
-#> $aggregator
-
-#> 
+if (FALSE) { # \dontrun{
+# Requires the 'waffle' package from GitHub
+plot(x = myOccCiteObject,
+     bySpecies = FALSE,
+     plotTypes = c("yearHistogram", "source", "aggregator"))
+} # }
 ```

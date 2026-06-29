@@ -20,7 +20,8 @@ test_that("functions on which it depends function as necessary", {
 
   datasources <- "National Center for Biotechnology Information"
   sourceIDs <- sources$id[sources$title %in% datasources]
-  temp <- taxize::gna_verifier(names = "Helianthus annuus L., 1753", data_sources = sourceIDs, all_matches = TRUE)
+  temp <- taxize::gna_verifier(names = "Helianthus annuus L., 1753",
+                               data_sources = sourceIDs, all_matches = TRUE)
 
   expect_true("data.frame" %in% class(temp))
   expect_true("submittedName" %in% colnames(temp))
@@ -34,6 +35,7 @@ test_that("taxonRectification performs as expected", {
   skip_if(!curl::has_internet(), "internet connection unsuccessful")
   skip_if(inherits(response, "try-error") || http_error(response),
           "GNverifier is unreachable or returned an error")
+  skip_if(!requireNamespace("taxize", quietly = TRUE))
 
   testResult <- taxonRectification(
     taxName = "Helianthus annuus L., 1753",
@@ -48,11 +50,15 @@ test_that("taxonRectification performs as expected", {
   expect_true(testResult$`Input Name`[1] == "Helianthus annuus L., 1753")
   expect_true(testResult$`Best Match`[1] == "Helianthus annuus")
   expect_true(testResult$`Searched Taxonomic Databases w/ Matches` == "NCBI")
-  expect_warning(testResult <- taxonRectification(taxName = "Helianthus annuus lenticularis", datasources = NULL, skipTaxize = FALSE))
-  expect_warning(taxonRectification(taxName = "Helianthus annuus lenticularis", datasources = "cheese"))
-  expect_warning(taxonRectification(taxName = "cheese", datasources = "National Center for Biotechnology Information"))
+  expect_warning(testResult <- taxonRectification(taxName = "Helianthus annuus lenticularis",
+                                                  datasources = NULL, skipTaxize = FALSE))
   expect_warning(taxonRectification(taxName = "Helianthus annuus lenticularis",
-                                    datasources = "National Center for Biotechnology Information", skipTaxize = "purple"))
+                                    datasources = "cheese"))
+  expect_warning(taxonRectification(taxName = "cheese",
+                                    datasources = "National Center for Biotechnology Information"))
+  expect_warning(taxonRectification(taxName = "Helianthus annuus lenticularis",
+                                    datasources = "National Center for Biotechnology Information",
+                                    skipTaxize = "purple"))
 
   testResult <- taxonRectification(
     taxName = "Helianthus annuus lenticularis",
