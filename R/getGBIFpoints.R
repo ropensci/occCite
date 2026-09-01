@@ -50,10 +50,10 @@ getGBIFpoints <- function(taxon, GBIFLogin = GBIFLogin,
   )
 
   tryCatch(
-    expr = key <- rgbif::name_suggest(
-      q = cleanTaxon,
+    expr = key <- rgbif::name_backbone(
+      name = cleanTaxon,
       rank = "species"
-    )$data$key[1],
+    )$usageKey,
     error = function(e) {
       message(paste("GBIF unreachable; please try again later. \n"))
     }

@@ -24,7 +24,7 @@ gbifRetriever <- function(taxon = NULL) {
   ) # Remove problem characters, i.e. "æ"
 
   tryCatch(
-    expr = taxon_key <- try(as.numeric(rgbif::name_backbone(cleanTaxon)$usageKey),
+    expr = taxon_key <- try(rgbif::name_backbone(cleanTaxon)$usageKey,
       silent = T
     ),
     error = function(e) {
@@ -68,8 +68,11 @@ gbifRetriever <- function(taxon = NULL) {
     }
 
     if (metadata$totalRecords > 0) {
-      if (!is.na(match(table = unlist(metadata$request), "TAXON_KEY")) &
-        taxon_key %in% unlist(metadata$request)) {
+      metadataRequest <- do.call(rbind, lapply(metadata$request$predicate$predicates, function(x) {
+        data.frame(key = x$key, value = x$value, stringsAsFactors = FALSE)
+      }))
+      if ("TAXON_KEY" %in% metadataRequest$key &
+          taxon_key %in% metadataRequest[metadataRequest$key == "TAXON_KEY",]$value) {
         matchIndex <- append(matchIndex, i)
         matchDate <- append(matchDate, metadata$modified)
       }
