@@ -1,4 +1,7 @@
-# occCite (development version)
+# occCite 0.6.3
+
+* Updated `taxonRectification()` to catch user-supplied full titles from the GNA and convert to short titles.
+* Updated example data downloads and GBIF-related functions to encompass new alphanumeric `rgbif` taxon keys in impeding update. These fixes are not breaking changes for packages that depend on occCite.
 
 # occCite 0.6.2
 

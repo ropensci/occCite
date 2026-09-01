@@ -29,13 +29,14 @@ Source:
 Owens H, Merow C, Maitner B, Kass J, Barve V, Guralnick R (2026).
 *occCite: Querying and Managing Large Biodiversity Occurrence Datasets*.
 [doi:10.5281/zenodo.4726676](https://doi.org/10.5281/zenodo.4726676), R
-package version 0.6.2, <https://CRAN.R-project.org/package=occCite>.
+package version 0.6.2.9000,
+<https://CRAN.R-project.org/package=occCite>.
 
     @Manual{,
       title = {occCite: Querying and Managing Large Biodiversity Occurrence Datasets},
       author = {Hannah Owens and Cory Merow and Brian Maitner and Jamie Kass and Vijay Barve and Robert Guralnick},
       year = {2026},
-      note = {R package version 0.6.2},
+      note = {R package version 0.6.2.9000},
       url = {https://CRAN.R-project.org/package=occCite},
       doi = {10.5281/zenodo.4726676},
     }
