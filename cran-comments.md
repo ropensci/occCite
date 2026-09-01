@@ -1,12 +1,8 @@
 ## Update
 This is a package update. In this version, I have:
 
-* Updated for compatibility with major `ggplot2` update; back-compatibility maintained.
-* Restored `taxize` functionality as a Suggested package.
-* Improved test coverage.
-* Moved `waffle` to Suggested package, as it is now orphaned.
-* `plot.occCiteData()` now automatically skips source and aggregator plots if `waffle` is unavailable.
-* Small bug fixes.
+* Updated `taxonRectification()` to catch user-supplied full titles from the GNA and convert to short titles (leftover problem from major `taxize` update).
+* Updated example data downloads and GBIF-related functions to encompass new alphanumeric `rgbif` taxon keys in impeding update. These fixes are not breaking changes for packages that depend on occCite.
 
 ## Test environments
 * local macOS X 26.3.1, R 4.5.2
