@@ -203,7 +203,7 @@ print(mySimpleOccCitations)
 
     ## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, CHOUET M, GRESSE H, BONNET P (2025). Pl@ntNet observations. Version 1.9. Pl@ntNet. https://doi.org/10.15468/gtebaa. Accessed via GBIF on 2022-03-02.
     ## AFFOUARD A, JOLY A, LOMBARDO J, CHAMP J, GOEAU H, CHOUET M, GRESSE H, BOTELLA C, BONNET P (2023). Pl@ntNet automatically identified occurrences. Version 1.8. Pl@ntNet. https://doi.org/10.15468/mma2ec. Accessed via GBIF on 2022-03-02.
-    ## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2026). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.5. https://CRAN.R-project.org/package = rgbif.
+    ## Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., Ram, K. (2026). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 3.8.5.13. https://CRAN.R-project.org/package = rgbif.
     ## Chamberlain, S., Boettiger, C. (2017). R Python, and Ruby clients for GBIF species occurrence data. PeerJ PrePrints.
     ## Fatima Parker-Allie, Ranwashe F (2018). PRECIS. South African National Biodiversity Institute. https://doi.org/10.15468/rckmn2. Accessed via GBIF on 2022-03-02.
     ## iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2022-03-02.
@@ -213,8 +213,8 @@ print(mySimpleOccCitations)
     ## MNHN. Accessed via BIEN on NA.
     ## naturgucker.de. NABU|naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-03-02.
     ## Observation.org (2026). Observation.org, Nature data from around the World. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2022-03-02.
-    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2. https://CRAN.R-project.org/package = occCite.
-    ## Ranwashe F (2026). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.31. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.
+    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2.9000. https://CRAN.R-project.org/package = occCite.
+    ## Ranwashe F (2026). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.32. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.
     ## Rob Cubey (2022). Royal Botanic Garden Edinburgh Living Plant Collections (E). Royal Botanic Garden Edinburgh. https://doi.org/10.15468/bkzv1l. Accessed via GBIF on 2022-03-02.
     ## SANBI. Accessed via BIEN on NA.
     ## Senckenberg (2020). African Plants - a photo guide. https://doi.org/10.15468/r9azth. Accessed via GBIF on 2022-03-02.
@@ -262,7 +262,7 @@ to perform your occurrence data search.
 myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
                                   datasources = c("National Center for Biotechnology Information",
                                                   "Encyclopedia of Life", 
-                                                  "Integrated Taxonomic Information SystemITIS"))
+                                                  "Integrated Taxonomic Information System"))
 myTROccCiteObject@cleanedTaxonomy
 ```
 

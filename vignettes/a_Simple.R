@@ -5,20 +5,20 @@ knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 knitr::opts_knit$set(root.dir = system.file('extdata/', package='occCite'))
 
 ## ----login, eval=FALSE--------------------------------------------------------
-#  library(occCite);
-#  #Creating a GBIF login
-#  GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
-#                                email = "****@yahoo.com",
-#                                pwd = "12345")
+# library(occCite);
+# #Creating a GBIF login
+# GBIFLogin <- GBIFLoginManager(user = "occCiteTester",
+#                               email = "****@yahoo.com",
+#                               pwd = "12345")
 
 ## ----simple_search, eval=F----------------------------------------------------
-#  # Simple search
-#  mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
-#                                    datasources = c("gbif", "bien"),
-#                                    GBIFLogin = GBIFLogin,
-#                                    GBIFDownloadDirectory =
-#                                      system.file('extdata/', package='occCite'),
-#                                    checkPreviousGBIFDownload = T)
+# # Simple search
+# mySimpleOccCiteObject <- occQuery(x = "Protea cynaroides",
+#                                   datasources = c("gbif", "bien"),
+#                                   GBIFLogin = GBIFLogin,
+#                                   GBIFDownloadDirectory =
+#                                     system.file('extdata/', package='occCite'),
+#                                   checkPreviousGBIFDownload = T)
 
 ## ----simple_search sssssecret cooking show, eval=T, echo = F------------------
 # Simple search
@@ -47,10 +47,10 @@ mySimpleOccCitations <- occCitation(mySimpleOccCiteObject)
 print(mySimpleOccCitations)
 
 ## ----taxonomic_rectification, eval=FALSE--------------------------------------
-#  #Rectify taxonomy
-#  myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides",
-#                                    datasources = c("National Center for Biotechnology Information",
-#                                                    "Encyclopedia of Life",
-#                                                    "Integrated Taxonomic Information SystemITIS"))
-#  myTROccCiteObject@cleanedTaxonomy
+# #Rectify taxonomy
+# myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides",
+#                                   datasources = c("National Center for Biotechnology Information",
+#                                                   "Encyclopedia of Life",
+#                                                   "Integrated Taxonomic Information System"))
+# myTROccCiteObject@cleanedTaxonomy
 

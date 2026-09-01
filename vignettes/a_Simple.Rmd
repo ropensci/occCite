@@ -124,7 +124,7 @@ In the simplest of searches, such as the one above, the taxonomy of your input s
 myTROccCiteObject <- studyTaxonList(x = "Protea cynaroides", 
                                   datasources = c("National Center for Biotechnology Information",
                                                   "Encyclopedia of Life", 
-                                                  "Integrated Taxonomic Information SystemITIS"))
+                                                  "Integrated Taxonomic Information System"))
 myTROccCiteObject@cleanedTaxonomy
 ```
 
