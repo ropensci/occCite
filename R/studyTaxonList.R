@@ -10,7 +10,7 @@
 #'
 #' @param datasources A vector of taxonomic data sources implemented in
 #' \code{taxize::gnr_resolve}. You can see the list using
-#' \code{taxize::gnr_datasources()}.
+#' \code{taxize::gna_data_sources()}.
 #'
 #' @return An object of class \code{\link{occCiteData}} containing the type
 #' of inquiry the user has made --a phylogeny or a vector of names-- and a

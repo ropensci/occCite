@@ -6,7 +6,7 @@
 #'
 #' @param taxName A string that, ideally, is a taxonomic name
 #'
-#' @param datasources A vector of taxonomic data sources implemented in
+#' @param datasources A vector of taxonomic data sources (`titleShort`) implemented in
 #' \code{taxize::gna_verifier()}. See the
 #' \href{http://verifier.globalnames.org/data_sources}{Global Names Verifier} for more information.
 #'
@@ -74,9 +74,16 @@ taxonRectification <- function(taxName = NULL, datasources = NULL,
 
     # Are user-input databases included in data sources for Global Names Architecture?
     if (!is.null(datasources)) {
+
+      # Replace user-supplied long titles with short titles
+      datasourcesUpdate <- datasources
+      matches <- match(datasourcesUpdate, sources$title)
+      datasourcesUpdate[!is.na(matches)] <- sources$titleShort[na.omit(matches)]
+      datasources <- datasourcesUpdate
+
       for (db in datasources) {
         notInDB <- character()
-        if (!(db %in% sources$title)) {
+        if (!(db %in% sources$titleShort)) {
           notInDB <- append(notInDB, db)
         }
       }
@@ -97,11 +104,11 @@ taxonRectification <- function(taxName = NULL, datasources = NULL,
         "No valid taxonomic data sources supplied.\n",
         "Populating default list from all available sources."
       ))
-      datasources <- sources$title
+      datasources <- sources$titleShort
     }
 
     # Resolving the user-input taxonomic names
-    sourceIDs <- sources$id[sources$title %in% datasources]
+    sourceIDs <- sources$id[sources$titleShort %in% datasources]
     taxonomicDatabaseMatches <- vector("list")
     if(requireNamespace("taxize")){
       temp <- tryCatch(
