@@ -120,7 +120,7 @@ print(myOldOccCitations)
     ## MNHN. Accessed via BIEN on NA.
     ## naturgucker.de. NABU|naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-03-02.
     ## Observation.org (2026). Observation.org, Nature data from around the World. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2022-03-02.
-    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2.9000. https://CRAN.R-project.org/package = occCite.
+    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.3. https://CRAN.R-project.org/package = occCite.
     ## Ranwashe F (2026). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.32. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.
     ## Rob Cubey (2022). Royal Botanic Garden Edinburgh Living Plant Collections (E). Royal Botanic Garden Edinburgh. https://doi.org/10.15468/bkzv1l. Accessed via GBIF on 2022-03-02.
     ## SANBI. Accessed via BIEN on NA.
@@ -265,7 +265,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## Mokhtar A F, Ab Manaf N, Mohd Azmi Ramasamy A (2024). Fish Collection (2009, 2018 & 2019) (Kemaman & LKIM Kuantan) from the South China Sea Repository and Reference Centre (RRC), Institute of Oceanography and Environment (INOS), Universiti Malaysia Terengganu (UMT). Version 1.1. Institute of Oceanography and Environment (INOS). https://doi.org/10.15468/h9f8r6. Accessed via GBIF on 2026-09-01.
     ## Motomura H (2026). Fish collection of the Kagoshima University Museum. National Museum of Nature and Science, Japan. https://doi.org/10.15468/vcj3j8. Accessed via GBIF on 2026-09-01.
     ## Naretto J, Contreras V, Munizaga J L, Bujes D, Munizaga J L (2025). Biodiversidad asociada a principales pesquerías de recursos altamente migratorios del Programa Asesoría Integral para la Toma de Decisiones en Pesca y Acuicultura, Subsecretaria de Pesca y Acuicultura. Subsecretaría de Pesca y Acuicultura. Sampling event dataset https://doi.org/10.15468/szt26p. Accessed via GBIF on 2026-09-01.
-    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2.9000. https://CRAN.R-project.org/package = occCite.
+    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.3. https://CRAN.R-project.org/package = occCite.
     ## Queensland Museum (2026). Queensland Museum provider for OZCAM. https://doi.org/10.15468/lotsye. Accessed via GBIF on 2026-09-01.
     ## Raiva R, Santana P (2021). Diversidade e ocorrência de peixes em Inhambane (2009-2017). Version 1.7. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/4fj2tq. Accessed via GBIF on 2026-09-01.
     ## Raiva R, Viador R, Santana P (2021). Diversidade e ocorrência de peixes na Zambézia (2003-2016). Version 1.6. National Institute of Fisheries Research (IIP) – Mozambique. https://doi.org/10.15468/mrz36h. Accessed via GBIF on 2026-09-01.
@@ -286,7 +286,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations. iNaturalist.org. https://doi.org/10.15468/ab3s5x. Accessed via GBIF on 2026-09-01.
     ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
     ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
-    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2.9000. https://CRAN.R-project.org/package = occCite.
+    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.3. https://CRAN.R-project.org/package = occCite.
     ## ROBERT S, LEPAREUR F, Inventaire National du Patrimoine Naturel (2022). Données d'occurrences Espèces issues de l'inventaire des ZNIEFF. Version 1.7. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. https://doi.org/10.15468/ikshke. Accessed via GBIF on 2026-09-01.
     ## Robins R (2026). UF FLMNH Ichthyology. Version 117.565. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2026-09-01.
     ## Team}, {.C. (2025). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
@@ -309,7 +309,7 @@ print(myPhyOccCitations, bySpecies = T)
     ## McLean, M.W. (2014). Straightforward Bibliography Management in R Using the RefManager Package. NA, NA. https://arxiv.org/abs/1403.2036.
     ## McLean, M.W. (2017). RefManageR: Import and Manage BibTeX and BibLaTeX References in R. The Journal of Open Source Software.
     ## Orrell T, Informatics and Data Science Center - Digital Stewardship (2026). NMNH Extant Specimen Records (USNM, US). Version 1.111. National Museum of Natural History, Smithsonian Institution. https://doi.org/10.15468/hnhrg3. Accessed via GBIF on 2026-09-01.
-    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2.9000. https://CRAN.R-project.org/package = occCite.
+    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.3. https://CRAN.R-project.org/package = occCite.
     ## Robins R (2026). UF FLMNH Ichthyology. Version 117.565. Florida Museum of Natural History. https://doi.org/10.15468/8mjsel. Accessed via GBIF on 2026-09-01.
     ## Rodriguez Jimenez A, Rueda M, Escobar Toledo F, Correa Daza J L, Salas Castro S T, Viloria Maestre E, Mejía Mercado B, Viaña Tous J, Ojeda K, Montoya-Cadavid E, Bohórquez Naranjo J C, Ojeda Ochoa K A (2023). Composición de pesca de prospección para grandes pelágicos del Caribe colombiano, recolectados en el marco del Programa de Investigación Pesquera en Aguas Marinas Jurisdiccionales de Colombia INVEMAR – AUNAP (2013-2018). Version 1.1. Instituto de Investigaciones Marinas y Costeras - Invemar. Sampling event dataset https://doi.org/10.15472/jlg8ij. Accessed via GBIF on 2026-09-01.
     ## Team}, {.C. (2025). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.

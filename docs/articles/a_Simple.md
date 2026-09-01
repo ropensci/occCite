@@ -213,7 +213,7 @@ print(mySimpleOccCitations)
     ## MNHN. Accessed via BIEN on NA.
     ## naturgucker.de. NABU|naturgucker. https://doi.org/10.15468/uc1apo. Accessed via GBIF on 2022-03-02.
     ## Observation.org (2026). Observation.org, Nature data from around the World. https://doi.org/10.15468/5nilie. Accessed via GBIF on 2022-03-02.
-    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.2.9000. https://CRAN.R-project.org/package = occCite.
+    ## Owens, H., Merow, C., Maitner, B., Kass, J., Barve, V., Guralnick, R. (2026). occCite: Querying and Managing Large Biodiversity Occurrence Datasets. R package version 0.6.3. https://CRAN.R-project.org/package = occCite.
     ## Ranwashe F (2026). Botanical Database of Southern Africa (BODATSA): Botanical Collections. Version 1.32. South African National Biodiversity Institute. https://doi.org/10.15468/2aki0q. Accessed via GBIF on 2022-03-02.
     ## Rob Cubey (2022). Royal Botanic Garden Edinburgh Living Plant Collections (E). Royal Botanic Garden Edinburgh. https://doi.org/10.15468/bkzv1l. Accessed via GBIF on 2022-03-02.
     ## SANBI. Accessed via BIEN on NA.
