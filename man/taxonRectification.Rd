@@ -9,7 +9,7 @@ taxonRectification(taxName = NULL, datasources = NULL, skipTaxize = FALSE)
 \arguments{
 \item{taxName}{A string that, ideally, is a taxonomic name}
 
-\item{datasources}{A vector of taxonomic data sources implemented in
+\item{datasources}{A vector of taxonomic data sources (`titleShort`) implemented in
 \code{taxize::gna_verifier()}. See the
 \href{http://verifier.globalnames.org/data_sources}{Global Names Verifier} for more information.}
 

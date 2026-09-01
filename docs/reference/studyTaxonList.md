@@ -24,7 +24,7 @@ studyTaxonList(x = NULL, datasources = "GBIF Backbone Taxonomy")
   A vector of taxonomic data sources implemented in
   [`taxize::gnr_resolve`](https://docs.ropensci.org/taxize/reference/gnr_resolve.html).
   You can see the list using
-  [`taxize::gnr_datasources()`](https://docs.ropensci.org/taxize/reference/gnr_datasources.html).
+  [`taxize::gna_data_sources()`](https://docs.ropensci.org/taxize/reference/gna_data_sources.html).
 
 ## Value
 
@@ -83,36 +83,6 @@ studyTaxonList(
   x = phylogeny,
   datasources = c("GBIF Backbone Taxonomy")
 )
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
-#> handled warning: longer object length is not a multiple of shorter object length
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
-#> handled warning: longer object length is not a multiple of shorter object length
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
-#> handled warning: Following sources not found in
-#> Global Names Index source list: GBIF Backbone Taxonomy
-#> handled warning: No valid taxonomic data sources supplied.
-#> Populating default list from all available sources.
 #> An object of class "occCiteData"
 #> Slot "userQueryType":
 #> [1] "User-supplied phylogeny."
@@ -121,28 +91,22 @@ studyTaxonList(
 #> [1] "GBIF Backbone Taxonomy"
 #> 
 #> Slot "cleanedTaxonomy":
-#>                    Input Name                 Best Match
-#> 1            Istiompax_indica          Istiompax indicus
-#> 2            Istiompax_indica           Istiompax indica
-#> 3              Kajikia_albida            Kajikia albidus
-#> 4              Kajikia_albida             Kajikia albida
-#> 5               Kajikia_audax              Kajikia audax
-#> 6  Tetrapturus_angustirostris Tetrapturus angustirostris
-#> 7          Tetrapturus_belone         Tetrapturus beloni
-#> 8          Tetrapturus_belone         Tetrapturus belone
-#> 9         Tetrapturus_georgii        Tetrapturus georgii
-#> 10      Tetrapturus_pfluegeri      Tetrapturus pfluegeri
-#>                                                                                                                                                                                                                                                                                                                                                                                            Taxonomic Databases w/ Matches
-#> 1                                                                                                                                                                                                                                                                        ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Arctos; IRMNG (old); ION; Catalogue of Life; FishBase; OBIS; uBio NameBank
-#> 2                                                                                                                                                                                                                                                                        ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Arctos; IRMNG (old); ION; Catalogue of Life; FishBase; OBIS; uBio NameBank
-#> 3                                                                                                                                                                                                                                                                                                               ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Open Tree of Life; IRMNG (old); ION
-#> 4                                                                                                                                                                                                                                                                                                               ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Open Tree of Life; IRMNG (old); ION
-#> 5                                                                                                                                                                                                       Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; TAXREF; Wikispecies; FishBase; FishBase Cache; Plazi; GBIF Backbone Taxonomy; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); ION
-#> 6  Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; TAXREF; Wikispecies; Catalog of Fishes; FishBase; FishBase Cache; Plazi; NZOR; GBIF Backbone Taxonomy; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; MCZbase; Wikidata; IRMNG (old); NCBI; Papahanaumokuakea Marine National Monument; The National Checklist of Taiwan; CU*STAR; Bishop Museum; BioLib.cz; nlbif; ION; uBio NameBank; New Zealand Animalia
-#> 7                                                                                                                                                                                                                       ITIS; IUCN; TAXREF; FishBase; Sherborn Index Animalium; Plazi; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); CU*STAR; BioLib.cz; ION; uBio NameBank; Bishop Museum
-#> 8                                                                                                                                                                                                                       ITIS; IUCN; TAXREF; FishBase; Sherborn Index Animalium; Plazi; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); CU*STAR; BioLib.cz; ION; uBio NameBank; Bishop Museum
-#> 9                                                                                            Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; Wikispecies; Catalog of Fishes; FishBase; FishBase Cache; Sherborn Index Animalium; Plazi; GBIF Backbone Taxonomy; Catalogue of Life XR; EUNIS; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); NCBI; CU*STAR; Bishop Museum; BioLib.cz; nlbif; ION; uBio NameBank
-#> 10                                                                                            Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; TAXREF; Fauna of Brazil; Wikispecies; Catalog of Fishes; FishBase; FishBase Cache; Plazi; GBIF Backbone Taxonomy; Catalogue of Life XR; EUNIS; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); NCBI; CU*STAR; Bishop Museum; BioLib.cz; nlbif; ION; uBio NameBank
+#>                   Input Name                 Best Match
+#> 1           Istiompax_indica           Istiompax indica
+#> 2             Kajikia_albida             Kajikia albida
+#> 3              Kajikia_audax              Kajikia audax
+#> 4 Tetrapturus_angustirostris Tetrapturus angustirostris
+#> 5         Tetrapturus_belone         Tetrapturus belone
+#> 6        Tetrapturus_georgii        Tetrapturus georgii
+#> 7      Tetrapturus_pfluegeri      Tetrapturus pfluegeri
+#>   Taxonomic Databases w/ Matches
+#> 1         GBIF Backbone Taxonomy
+#> 2         GBIF Backbone Taxonomy
+#> 3         GBIF Backbone Taxonomy
+#> 4         GBIF Backbone Taxonomy
+#> 5         GBIF Backbone Taxonomy
+#> 6         GBIF Backbone Taxonomy
+#> 7         GBIF Backbone Taxonomy
 #> 
 #> Slot "occSources":
 #> logical(0)

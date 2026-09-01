@@ -12,7 +12,7 @@ containing the names of taxa of interest}
 
 \item{datasources}{A vector of taxonomic data sources implemented in
 \code{taxize::gnr_resolve}. You can see the list using
-\code{taxize::gnr_datasources()}.}
+\code{taxize::gna_data_sources()}.}
 }
 \value{
 An object of class \code{\link{occCiteData}} containing the type

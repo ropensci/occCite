@@ -18,7 +18,7 @@ taxonRectification(taxName = NULL, datasources = NULL, skipTaxize = FALSE)
 
 - datasources:
 
-  A vector of taxonomic data sources implemented in
+  A vector of taxonomic data sources (\`titleShort\`) implemented in
   [`taxize::gna_verifier()`](https://docs.ropensci.org/taxize/reference/gna_verifier.html).
   See the [Global Names
   Verifier](http://verifier.globalnames.org/data_sources) for more

@@ -16,10 +16,10 @@ test_that("functions on which it depends function as necessary", {
   expect_true("data.frame" %in% class(sources))
   expect_true("title" %in% colnames(sources))
   expect_true("id" %in% colnames(sources))
-  expect_true("National Center for Biotechnology Information" %in% sources$title)
+  expect_true("NCBI" %in% sources$titleShort)
 
-  datasources <- "National Center for Biotechnology Information"
-  sourceIDs <- sources$id[sources$title %in% datasources]
+  datasources <- "NCBI"
+  sourceIDs <- sources$id[sources$titleShort %in% datasources]
   temp <- taxize::gna_verifier(names = "Helianthus annuus L., 1753",
                                data_sources = sourceIDs, all_matches = TRUE)
 
@@ -39,13 +39,11 @@ test_that("taxonRectification performs as expected", {
 
   testResult <- taxonRectification(
     taxName = "Helianthus annuus L., 1753",
-    datasources = "National Center for Biotechnology Information"
-  )
+    datasources = "National Center for Biotechnology Information")
 
   expect_true(class(testResult) == "data.frame")
   expect_true("Input Name" %in% colnames(testResult))
-  expect_true("Searched Taxonomic Databases w/ Matches"
-  %in% colnames(testResult))
+  expect_true("Searched Taxonomic Databases w/ Matches" %in% colnames(testResult))
   expect_true(nrow(testResult) == 1)
   expect_true(testResult$`Input Name`[1] == "Helianthus annuus L., 1753")
   expect_true(testResult$`Best Match`[1] == "Helianthus annuus")

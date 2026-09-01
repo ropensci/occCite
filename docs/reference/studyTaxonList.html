@@ -13,7 +13,7 @@ well as warnings if there are invalid names."><meta property="og:image" content=
 
     <a class="navbar-brand me-2" href="../index.html">occCite</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@ containing the names of taxa of interest</p></dd>
 <dt id="arg-datasources">datasources<a class="anchor" aria-label="anchor" href="#arg-datasources"></a></dt>
 <dd><p>A vector of taxonomic data sources implemented in
 <code><a href="https://docs.ropensci.org/taxize/reference/gnr_resolve.html" class="external-link">taxize::gnr_resolve</a></code>. You can see the list using
-<code><a href="https://docs.ropensci.org/taxize/reference/gnr_datasources.html" class="external-link">taxize::gnr_datasources()</a></code>.</p></dd>
+<code><a href="https://docs.ropensci.org/taxize/reference/gna_data_sources.html" class="external-link">taxize::gna_data_sources()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -125,36 +125,6 @@ contain the matching name.</p>
 <span class="r-in"><span>  x <span class="op">=</span> <span class="va">phylogeny</span>,</span></span>
 <span class="r-in"><span>  datasources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GBIF Backbone Taxonomy"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: longer object length is not a multiple of shorter object length</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: longer object length is not a multiple of shorter object length</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: Following sources not found in</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Global Names Index source list: GBIF Backbone Taxonomy</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> handled warning: No valid taxonomic data sources supplied.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Populating default list from all available sources.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> An object of class "occCiteData"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "userQueryType":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "User-supplied phylogeny."</span>
@@ -163,28 +133,22 @@ contain the matching name.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GBIF Backbone Taxonomy"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "cleanedTaxonomy":</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    Input Name                 Best Match</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            Istiompax_indica          Istiompax indicus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            Istiompax_indica           Istiompax indica</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3              Kajikia_albida            Kajikia albidus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4              Kajikia_albida             Kajikia albida</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5               Kajikia_audax              Kajikia audax</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  Tetrapturus_angustirostris Tetrapturus angustirostris</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7          Tetrapturus_belone         Tetrapturus beloni</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8          Tetrapturus_belone         Tetrapturus belone</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         Tetrapturus_georgii        Tetrapturus georgii</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10      Tetrapturus_pfluegeri      Tetrapturus pfluegeri</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                            Taxonomic Databases w/ Matches</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                                                                                                                                                                        ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Arctos; IRMNG (old); ION; Catalogue of Life; FishBase; OBIS; uBio NameBank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                                                                                                                                                                                        ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Arctos; IRMNG (old); ION; Catalogue of Life; FishBase; OBIS; uBio NameBank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                                                                                                                                               ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Open Tree of Life; IRMNG (old); ION</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                                                                                                                                               ITIS; IUCN; TAXREF; FishBase Cache; Plazi; Catalogue of Life XR; EOL; Open Tree of Life; IRMNG (old); ION</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                                                                                                                       Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; TAXREF; Wikispecies; FishBase; FishBase Cache; Plazi; GBIF Backbone Taxonomy; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); ION</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; TAXREF; Wikispecies; Catalog of Fishes; FishBase; FishBase Cache; Plazi; NZOR; GBIF Backbone Taxonomy; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; MCZbase; Wikidata; IRMNG (old); NCBI; Papahanaumokuakea Marine National Monument; The National Checklist of Taiwan; CU*STAR; Bishop Museum; BioLib.cz; nlbif; ION; uBio NameBank; New Zealand Animalia</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                                                                                                                                                                                                                       ITIS; IUCN; TAXREF; FishBase; Sherborn Index Animalium; Plazi; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); CU*STAR; BioLib.cz; ION; uBio NameBank; Bishop Museum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                                                                                                                                                                                                                       ITIS; IUCN; TAXREF; FishBase; Sherborn Index Animalium; Plazi; Catalogue of Life XR; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); CU*STAR; BioLib.cz; ION; uBio NameBank; Bishop Museum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9                                                                                            Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; Wikispecies; Catalog of Fishes; FishBase; FishBase Cache; Sherborn Index Animalium; Plazi; GBIF Backbone Taxonomy; Catalogue of Life XR; EUNIS; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); NCBI; CU*STAR; Bishop Museum; BioLib.cz; nlbif; ION; uBio NameBank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10                                                                                            Catalogue of Life; ITIS; WoRMS; IUCN; iNaturalist; TAXREF; Fauna of Brazil; Wikispecies; Catalog of Fishes; FishBase; FishBase Cache; Plazi; GBIF Backbone Taxonomy; Catalogue of Life XR; EUNIS; Arctos; EOL; Open Tree of Life; Wikidata; IRMNG (old); NCBI; CU*STAR; Bishop Museum; BioLib.cz; nlbif; ION; uBio NameBank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   Input Name                 Best Match</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1           Istiompax_indica           Istiompax indica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             Kajikia_albida             Kajikia albida</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3              Kajikia_audax              Kajikia audax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Tetrapturus_angustirostris Tetrapturus angustirostris</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         Tetrapturus_belone         Tetrapturus belone</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        Tetrapturus_georgii        Tetrapturus georgii</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7      Tetrapturus_pfluegeri      Tetrapturus pfluegeri</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Taxonomic Databases w/ Matches</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         GBIF Backbone Taxonomy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         GBIF Backbone Taxonomy</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Slot "occSources":</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> logical(0)</span>
@@ -208,7 +172,7 @@ contain the matching name.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
