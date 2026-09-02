@@ -1,3 +1,5 @@
+# occCite (development version)
+
 # occCite 0.6.3
 
 * Updated `taxonRectification()` to catch user-supplied full titles from the GNA and convert to short titles (leftover problem from major `taxize` update).
